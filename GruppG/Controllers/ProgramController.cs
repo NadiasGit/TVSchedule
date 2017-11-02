@@ -11,7 +11,35 @@ namespace GruppG.Controllers
         // GET: Program
         public ActionResult Index()
         {
+            //Startsida. 
             return View();
         }
+
+        //Views
+        public ActionResult Tableau()
+        {
+            //Tv - tablån
+            return View();
+        }
+
+        //Pariella vyer
+        //public ActionResult PartielView()
+        //{
+        //    Visa populära/rekomendeade program program
+        //    return View();
+        //}
+
+        //public ActionResult PartielView()
+        //{
+        //    Visa program per kanal
+        //    return View();
+        //}
+
+        //public ActionResult PartielView()
+        //{
+        //    Visa program som visas nu
+        //    return View();
+        //}
+
     }
 }
