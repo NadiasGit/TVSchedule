@@ -7,5 +7,6 @@ namespace GruppG.Models
 {
     public class Program
     {
+        public string title { get; set; }
     }
 }
