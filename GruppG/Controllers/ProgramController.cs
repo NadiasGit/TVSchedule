@@ -31,7 +31,7 @@ namespace GruppG.Controllers
 
         //public ActionResult PartielView()
         //{
-        //    Visa program per kanal
+        //    Visa program per kanal (en partiell vy per kanal)
         //    return View();
         //}
 
