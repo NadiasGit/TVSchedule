@@ -15,14 +15,14 @@ namespace GruppG.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Här kan vi visa info om programmen";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontakta oss:";
 
             return View();
         }
