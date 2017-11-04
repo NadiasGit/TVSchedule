@@ -43,6 +43,31 @@ namespace GruppG.Data
 
 
 
+
+        //Metoder från cirkus-kursen
+
+    //        Sql sqlData = new Sql();
+    //            if(sqlData.GetData(query) != null)
+    //            {
+    //                foreach (DataRow item in sqlData.GetData(query).Rows)
+    //                {
+    //                    if(item != null)
+    //                    {
+    //                        Shows NewShow = new Shows()
+    //                        {
+    //                            ShowId = int.Parse(item["ShowID"].ToString()),
+    //                            Name = item["Name"].ToString(),
+    //                            Description = item["Description"].ToString(),
+    //                            SalesStart = DateTime.Parse(item["SalesStart"].ToString()),
+    //                            Date = DateTime.Parse(item["Date"].ToString())
+    //                        };
+    //        ShowList.Add(NewShow.ShowId, NewShow);
+    //                    }
+    //}
+    //            }
+
+
+
         //Metoder från databaskursen:
 
 
