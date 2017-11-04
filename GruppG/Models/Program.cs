@@ -13,7 +13,7 @@ namespace GruppG.Models
         public DateTime Day { get; set; }
         public DateTime Time { get; set; }
         public string Category { get; set; }
-        public string Channel { get; set; }
+        public int Channel { get; set; }  //Foreign Key)
         public bool Recommend { get; set; }
 
 

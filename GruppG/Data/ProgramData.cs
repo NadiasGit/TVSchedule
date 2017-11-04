@@ -11,12 +11,19 @@ namespace GruppG.Data
         //Class for our methods
 
         Program program = new Program();
+        List<Program> ProgramList = new List<Program>();
+        List<Program> Svt1List = new List<Program>();
+        List<Program> Svt2List = new List<Program>();
+        List<Program> Tv3List = new List<Program>();
+        List<Program> Tv4List = new List<Program>();
+        List<Program> Kanal5List = new List<Program>();
 
         //Framtida metoder
 
         //public List<Program> PopluarProgram()
         //{
         //    Forechloop. Alla program i databasen => lägg till i programlista/ kanallista + per dag lista
+
 
         //}
 
@@ -28,6 +35,39 @@ namespace GruppG.Data
         //}
 
 
+        public List<Program> Svt1L()
+        {
+            Svt1List = ProgramList.FindAll(s => s.Channel == 1);
+            return Svt1List;
+        }
+
+        //public List<Program> Svt1()
+        //{
+        //    Svt1List = Svt1List.OrderBy(s => s.Time);
+        //    return Svt1List;
+        //}
+
+        public List<Program> Svt2L()
+        {
+            Svt2List = ProgramList.FindAll(s => s.Channel == 1);
+            return Svt2List;
+        }
+        public List<Program> Tv3L()
+        {
+            Tv3List = ProgramList.FindAll(s => s.Channel == 1);
+            return Tv3List;
+        }
+        public List<Program> Tv4L()
+        {
+            Tv4List = ProgramList.FindAll(s => s.Channel == 1);
+            return Tv4List;
+        }
+
+        public List<Program> Kanal5()
+        {
+            Kanal5List = ProgramList.FindAll(s => s.Channel == 1);
+            return Kanal5List;
+        }
 
         //Metoder som kanske kommer ligga i andra klasser
 
@@ -46,32 +86,32 @@ namespace GruppG.Data
 
         //Metoder från cirkus-kursen
 
-    //        Sql sqlData = new Sql();
-    //            if(sqlData.GetData(query) != null)
-    //            {
-    //                foreach (DataRow item in sqlData.GetData(query).Rows)
-    //                {
-    //                    if(item != null)
-    //                    {
-    //                        Shows NewShow = new Shows()
-    //                        {
-    //                            ShowId = int.Parse(item["ShowID"].ToString()),
-    //                            Name = item["Name"].ToString(),
-    //                            Description = item["Description"].ToString(),
-    //                            SalesStart = DateTime.Parse(item["SalesStart"].ToString()),
-    //                            Date = DateTime.Parse(item["Date"].ToString())
-    //                        };
-    //        ShowList.Add(NewShow.ShowId, NewShow);
-    //                    }
-    //}
-    //            }
+        //        Sql sqlData = new Sql();
+        //            if(sqlData.GetData(query) != null)
+        //            {
+        //                foreach (DataRow item in sqlData.GetData(query).Rows)
+        //                {
+        //                    if(item != null)
+        //                    {
+        //                        Shows NewShow = new Shows()
+        //                        {
+        //                            ShowId = int.Parse(item["ShowID"].ToString()),
+        //                            Name = item["Name"].ToString(),
+        //                            Description = item["Description"].ToString(),
+        //                            SalesStart = DateTime.Parse(item["SalesStart"].ToString()),
+        //                            Date = DateTime.Parse(item["Date"].ToString())
+        //                        };
+        //        ShowList.Add(NewShow.ShowId, NewShow);
+        //                    }
+        //}
+        //            }
 
 
 
         //Metoder från databaskursen:
 
 
-         
+
         //   //HÄMTA MEDLEMMAR TILL LISTA
         //public List<Member> GetMembers(List<Member> members)
         //{
