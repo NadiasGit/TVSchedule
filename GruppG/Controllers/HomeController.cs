@@ -53,6 +53,23 @@ namespace GruppG.Controllers
             return View();
         }
 
+        public ActionResult PartiellViewAbout(int? id)
+        {
+            //ViewBag.Message = "Här kan vi visa info om programmen";
+            //var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Program program = db.Program.Find(id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+            return View(program);
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Kontakta oss:";

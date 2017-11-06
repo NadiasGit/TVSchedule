@@ -1,0 +1,24 @@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+
+<div>
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Starttime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chanel1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category1.Name)
+            </td>
+           
+        </tr>
+    }
+
+</div>
+
