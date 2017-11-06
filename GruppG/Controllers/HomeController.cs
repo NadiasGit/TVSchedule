@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Net;
 using GruppG.Models.db;
+using GruppG.Data;
 
 namespace GruppG.Controllers
 {
@@ -17,6 +18,7 @@ namespace GruppG.Controllers
 
         //NYTT (klassen finns i db-dataModel.Context.tt-dataModel.Context.cs
         private U4Entities db = new U4Entities();
+        private ProgramData pd = new ProgramData();
 
         public ActionResult Index()
         {   
@@ -32,18 +34,9 @@ namespace GruppG.Controllers
         // GET: ProgramsCategory/Details/
         /*Den här action-metoden kan vi använda för att visa detaljer om programmen 
         -både från nyhetspuffar och i programtablåerna. */
-        public ActionResult Details(int? id)
+        public ActionResult PartialViewDetails(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Program program = db.Program.Find(id);
-            if (program == null)
-            {
-                return HttpNotFound();
-            }
-            return View(program);
+            return View();
         }
 
         public ActionResult About()
@@ -53,21 +46,19 @@ namespace GruppG.Controllers
             return View();
         }
 
-        public ActionResult PartiellViewAbout(int? id)
+        //public ActionResult Svt()
+        //{
+        //    ViewBag.Message = "Här kan vi visa info om programmen";
+        //    pd.Svt1L();
+        //    return View(pd);
+        //}
+
+        public ActionResult PartialViewSvt2()
         {
             //ViewBag.Message = "Här kan vi visa info om programmen";
             //var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Program program = db.Program.Find(id);
-            if (program == null)
-            {
-                return HttpNotFound();
-            }
-            return View(program);
+            var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
+            return View(program.ToList());
         }
 
         public ActionResult Contact()

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+
+<table>
+
+    <tr>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Titel)-->
+            <p>Program</p>
+        </th>
+
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Starttime)-->
+            <p>Datum & tid</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Chanel1.Name)-->
+            <p>Kanal</p>
+        </th>
+        <th>
+            <!--@Html.DisplayNameFor(model => model.Category1.Name)-->
+            <p>Kategori</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Starttime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chanel1.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category1.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Mer info", "PartialViewDetails", "Home", new { id = item.Id }, null) |
+
+            <button onclick="alert('@Html.DisplayFor(modelItem => item.Titel) @Html.DisplayFor(modelItem => item.Description)')">Mer information</button>
+
+        </td>
+    </tr>
+
+}
+</table>
+
+
+
+@*@foreach (var item in Model)
+    {
+     <ul>
+    <li>
+       @item.Titel  
+     </li>
+     </ul>   
+    }*@
+
+
+

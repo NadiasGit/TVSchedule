@@ -1,4 +1,5 @@
 ﻿using GruppG.Models;
+using GruppG.Models.db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,15 @@ namespace GruppG.Data
     {
         //Class for our methods
 
-        Program program = new Program();
-        List<Program> ProgramList = new List<Program>();
-        List<Program> Svt1List = new List<Program>();
-        List<Program> Svt2List = new List<Program>();
-        List<Program> Tv3List = new List<Program>();
-        List<Program> Tv4List = new List<Program>();
-        List<Program> Kanal5List = new List<Program>();
+        private U4Entities db = new U4Entities();
+
+        //Program program = new Program();
+        //List<Program> ProgramList = new List<Program>();
+        //List<Program> Svt1List = new List<Program>();
+        //List<Program> Svt2List = new List<Program>();
+        //List<Program> Tv3List = new List<Program>();
+        //List<Program> Tv4List = new List<Program>();
+        //List<Program> Kanal5List = new List<Program>();
 
         //Framtida metoder
 
@@ -35,11 +38,12 @@ namespace GruppG.Data
         //}
 
 
-        public List<Program> Svt1L()
-        {
-            Svt1List = ProgramList.FindAll(s => s.Channel == 1);
-            return Svt1List;
-        }
+        //public List<Program> Svt1L()
+        //{
+            
+        //    Svt1List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Svt1List;
+        //}
 
         //public List<Program> Svt1()
         //{
@@ -47,27 +51,27 @@ namespace GruppG.Data
         //    return Svt1List;
         //}
 
-        public List<Program> Svt2L()
-        {
-            Svt2List = ProgramList.FindAll(s => s.Channel == 1);
-            return Svt2List;
-        }
-        public List<Program> Tv3L()
-        {
-            Tv3List = ProgramList.FindAll(s => s.Channel == 1);
-            return Tv3List;
-        }
-        public List<Program> Tv4L()
-        {
-            Tv4List = ProgramList.FindAll(s => s.Channel == 1);
-            return Tv4List;
-        }
+        //public List<Program> Svt2L()
+        //{
+        //    Svt2List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Svt2List;
+        //}
+        //public List<Program> Tv3L()
+        //{
+        //    Tv3List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Tv3List;
+        //}
+        //public List<Program> Tv4L()
+        //{
+        //    Tv4List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Tv4List;
+        //}
 
-        public List<Program> Kanal5()
-        {
-            Kanal5List = ProgramList.FindAll(s => s.Channel == 1);
-            return Kanal5List;
-        }
+        //public List<Program> Kanal5()
+        //{
+        //    Kanal5List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Kanal5List;
+        //}
 
         //Metoder som kanske kommer ligga i andra klasser
 

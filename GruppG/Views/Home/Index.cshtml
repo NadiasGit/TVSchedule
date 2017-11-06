@@ -61,8 +61,6 @@
                     <td>
 
                         @Html.ActionLink("Mer info", "Details", new { id = item.Id }) |
-                        
-                        
 
                     </td>
                 </tr>
@@ -72,17 +70,37 @@
     <div class="col-md-4">
         <h2>SVT2</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>-->
+        @{
+            Html.RenderAction("PartialViewSvt2");
+        }
+    
     </div>
     <div class="col-md-4">
         <h2>TV3</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+    
+        @{
+            Html.RenderAction("PartialViewSvt2");
+        }
+    
     </div>
+    <tr>
     <div class="col-md-4">
         <h2>TV4</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+    
+        @{
+            Html.RenderAction("PartialViewSvt2");
+        }
+    
     </div>
     <div class="col-md-4">
         <h2>Kanal 5</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+    
+        @{
+            Html.RenderAction("PartialViewSvt2");
+        }
+    
     </div>
 </div>

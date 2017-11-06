@@ -288,8 +288,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Program\Index.cshtml" />
     <Content Include="Views\Program\Tableau.cshtml" />
-    <Content Include="Views\Home\PartiellViewAbout.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\PartialViewSvt2.cshtml" />
+    <Content Include="Views\Home\PartialViewDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
