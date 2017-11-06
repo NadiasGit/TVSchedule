@@ -24,7 +24,7 @@ namespace GruppG
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css",//Den här kan vi byta ut till ett eget tema som
                       "~/Content/site.css"));
         }
     }
