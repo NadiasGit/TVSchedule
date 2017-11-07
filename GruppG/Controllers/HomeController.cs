@@ -10,6 +10,7 @@ using System.Data.Entity;
 using System.Net;
 using GruppG.Models.db;
 using GruppG.Data;
+using GruppG.Models.ViewModels;
 
 namespace GruppG.Controllers
 {
@@ -92,11 +93,29 @@ namespace GruppG.Controllers
             return View(kanal5.ToList());
         }
 
-        public ActionResult PartialViewLogIn()
+        public ActionResult LogIn()
         {
             //Log in
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginVM model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View();
+        }
+
+        public ActionResult MyPage()
+        {
+            //Visitor or admins page
+            //var myChannel = db.Chanel.Include(p => p.Name);
+            return View(db.Chanel.ToList());
         }
 
         public ActionResult Contact()
