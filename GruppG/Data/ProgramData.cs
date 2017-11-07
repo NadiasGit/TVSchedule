@@ -219,5 +219,26 @@ namespace GruppG.Data
 
         //}
 
+
+        
+        public List<U4Entities> GetProgramDate()
+        {
+            //ProgramList = new List<U4Entities>();
+            U4Entities pwdb = new U4Entities();
+            
+
+            var p = pwdb.Program.Where(Program => Program.Starttime == DateTime.Today);
+
+            //Forechloop.Alla program i databasen => lägg till i programlista/ kanallista + per dag lista
+            foreach (var i in ProgramList)
+            {
+               ProgramList.Add(i);
+            }
+
+            return ProgramList.ToList();
+
+        }
+
     }
+
 }
