@@ -81,6 +81,15 @@ namespace GruppG.Controllers
             return View(kanal5.ToList());
         }
 
+        public ActionResult PartialViewLena()
+        {
+
+            U4Entities pwdb = new U4Entities();
+            var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
+
+            return View(kanal5.ToList());
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Kontakta oss:";

@@ -14,7 +14,7 @@ namespace GruppG.Data
         private U4Entities db = new U4Entities();
 
         //Program program = new Program();
-        //List<Program> ProgramList = new List<Program>();
+        List<Program> ProgramList = new List<Program>();
         //List<Program> Svt1List = new List<Program>();
         //List<Program> Svt2List = new List<Program>();
         //List<Program> Tv3List = new List<Program>();
@@ -23,10 +23,15 @@ namespace GruppG.Data
 
         //Framtida metoder
 
-        //public List<Program> PopluarProgram()
+        //public List<U4Entities> GetPrograms()
         //{
-        //    Forechloop. Alla program i databasen => lägg till i programlista/ kanallista + per dag lista
+        //    //Forechloop.Alla program i databasen => lägg till i programlista/ kanallista + per dag lista
+        //    //foreach (var item in db.Program)
+        //    //{
+        //    //    ProgramList.Add(item);
+        //    //}
 
+        //    var Svt = ProgramList.FindAll(s => s.Channel == 1);
 
         //}
 
@@ -40,7 +45,7 @@ namespace GruppG.Data
 
         //public List<Program> Svt1L()
         //{
-            
+
         //    Svt1List = ProgramList.FindAll(s => s.Channel == 1);
         //    return Svt1List;
         //}
@@ -61,11 +66,11 @@ namespace GruppG.Data
         //    Tv3List = ProgramList.FindAll(s => s.Channel == 1);
         //    return Tv3List;
         //}
-        //public List<Program> Tv4L()
-        //{
-        //    Tv4List = ProgramList.FindAll(s => s.Channel == 1);
-        //    return Tv4List;
-        //}
+        public List<Program> Tv4L()
+        {
+            Tv4List = ProgramList.FindAll(s => s.Channel == 1);
+            return Tv4List;
+        }
 
         //public List<Program> Kanal5()
         //{
