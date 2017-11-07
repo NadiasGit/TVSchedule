@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
 
-@*<p>
-    @Html.ActionLink("Lägg till som favorit", "Create")
-</p>*@
+@{
+    ViewBag.Title = "Kanal5";
+}
+
 
 <table class="table">
     <tr>
@@ -17,28 +18,23 @@
         <th>
             <p>Datum & tid</p>
         </th>
+
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titel)
-            </td>
 
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Chanel)
-            </td>*@
+            <td> @item.Titel</td>
+
+            <td> @item.Starttime</td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Starttime)
-            </td>
-          
-            <td>
-
                 @Html.ActionLink("Mer info", "Details", new { id = item.Id })
             </td>
         </tr>
+
     }
 
 </table>
+

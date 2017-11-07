@@ -49,12 +49,15 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Titel)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Starttime)
-                    </td>
+
                     <td>
                         @Html.DisplayFor(modelItem => item.Chanel1.Name)
                     </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Starttime)
+                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Category1.Name)
                     </td>
@@ -69,7 +72,7 @@
     </div>
     <div class="col-md-4">
         <h2>SVT2</h2>
-        <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>-->
+
         @{
             Html.RenderAction("PartialViewSvt2");
         }
@@ -77,20 +80,18 @@
     </div>
     <div class="col-md-4">
         <h2>TV3</h2>
-        <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+
     
         @{
-            Html.RenderAction("PartialViewTV3");
+            Html.RenderAction("TV3");
         }
-        @*@foreach (var item in Model){
-            @Html.Partial("_Program", item)
-        }*@
+        
     
     </div>
     
     <div class="col-md-4">
         <h2>TV4</h2>
-        <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+        
     
         @{
             Html.RenderAction("TV4");
@@ -99,10 +100,10 @@
     </div>
     <div class="col-md-4">
         <h2>Kanal 5</h2>
-        <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
+        
     
         @{
-            Html.RenderAction("PartialViewSvt2");
+            Html.RenderAction("Kanal5");
         }
     
     </div>

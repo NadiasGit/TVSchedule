@@ -1,0 +1,81 @@
+﻿@model GruppG.Models.db.Program
+
+@*@model IEnumerable<GruppG.Models.db.Program>*@
+
+<div>
+    <h4>Program</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <p><strong>Program</strong></p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+
+        <dt>
+            <p><strong>Om programmet</strong></p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            <p><strong>Kanal</strong></p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chanel1)
+        </dd>
+
+        <dt>
+            <p><strong>Kategori</strong></p>
+        </dt>
+
+        <dd>
+    
+            @Html.DisplayNameFor(model => model.Category1.Name)
+        </dd>
+
+        <dt>
+            <p><strong>Datum & tid</strong></p>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Starttime)
+            <p>-</p>
+            @Html.DisplayFor(model => model.Endtime)
+        </dd>
+
+    </dl>
+    
+</div>
+
+<!--Det behövs en lista att iterera igenom-->
+@*@foreach (var item in Model)
+            {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Starttime)
+            <p>-</p>
+            @Html.DisplayFor(modelItem => item.Endtime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category1.Name)
+        </td>
+    </tr>
+}*@
+    
+
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Tillbaka", "Index")
+    @*<button onclick="alert('@Html.DisplayFor(modelItem => Model.Titel) @Html.DisplayFor(modelItem => Model.Description)')">Mer information</button>*@
+

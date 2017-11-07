@@ -292,11 +292,13 @@
     <Content Include="Views\Home\PartialViewSvt2.cshtml" />
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
-    <Content Include="Views\Home\PartialViewTV3.cshtml" />
+    <Content Include="Views\Home\TV3.cshtml" />
     <Content Include="Views\Home\LogIn.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
     <Content Include="Views\Home\SVT1.cshtml" />
     <Content Include="Views\Home\TV4.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Kanal5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

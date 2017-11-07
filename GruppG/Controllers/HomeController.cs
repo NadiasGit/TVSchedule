@@ -65,7 +65,7 @@ namespace GruppG.Controllers
         }
 
         //PartialView som visar TV3s tablå
-        public ActionResult PartialViewTV3()
+        public ActionResult TV3()
         {
 
             U4Entities pwdb = new U4Entities();
@@ -85,7 +85,7 @@ namespace GruppG.Controllers
             return View(p.ToList());
         }
 
-        public ActionResult PartialViewKanal5()
+        public ActionResult Kanal5()
         {
 
             U4Entities pwdb = new U4Entities();
@@ -93,6 +93,28 @@ namespace GruppG.Controllers
 
             return View(kanal5.ToList());
         }
+
+
+        // Hämta programmets details
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Program program = db.Program.Find(id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+            return View(program);
+        }
+
+
+
+
+
+
 
         public ActionResult LogIn()
         {
