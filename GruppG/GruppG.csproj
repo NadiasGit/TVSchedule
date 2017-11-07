@@ -294,6 +294,8 @@
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Home\PartialViewTV3.cshtml" />
     <Content Include="Views\Home\PartialViewLogIn.cshtml" />
+    <Content Include="Views\Home\SVT1.cshtml" />
+    <Content Include="Views\Home\TV4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

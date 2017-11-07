@@ -46,12 +46,13 @@ namespace GruppG.Controllers
             return View();
         }
 
-        //public ActionResult Svt()
-        //{
-        //    ViewBag.Message = "Här kan vi visa info om programmen";
-        //    pd.Svt1L();
-        //    return View(pd);
-        //}
+        public ActionResult SVT1()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1);
+
+            return View(p.ToList());
+        }
 
         public ActionResult PartialViewSvt2()
         {
@@ -72,6 +73,14 @@ namespace GruppG.Controllers
 
             return View(p.ToList());
 
+        }
+
+        public ActionResult TV4()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 4);
+
+            return View(p.ToList());
         }
 
         public ActionResult PartialViewKanal5()
