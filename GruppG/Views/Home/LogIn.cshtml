@@ -5,21 +5,27 @@
 
 <h2>LogIn</h2>
 
-@using (@Html.BeginForm(FormMethod.Post))
+@* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s *@
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
     <table>
         <tr>
             <td>
                 @Html.LabelFor(model => model.UserName)
                 @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
             </td>
         </tr>
+        
         <tr>
             <td>
                 @Html.LabelFor(model => model.Password)
                 @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </td>
         </tr>
+        
         <tr>
             <td>
                 <input type="submit" name="name" value="Login" />

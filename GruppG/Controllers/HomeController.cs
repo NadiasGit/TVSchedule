@@ -123,22 +123,6 @@ namespace GruppG.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Login(LoginVM model, string ReturnUrl)
-        {
-            if (ModelState.IsValid)
-            {
-                //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-                FormsAuthentication.SetAuthCookie(model.UserName, false);
-                //FormsAuthentication.SetAuthCookie(model.Password, false);
-                return Redirect(ReturnUrl);
-
-
-            }
-
-            return View();
-        }
-
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)
         //{
@@ -147,11 +131,27 @@ namespace GruppG.Controllers
         //        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
         //        FormsAuthentication.SetAuthCookie(model.UserName, false);
         //        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //        pd.CheckUserCreadentials();
         //        return Redirect(ReturnUrl);
 
 
         //    }
+
+        //    return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Login()
+        {
+            //if (ModelState.IsValid)
+            //{
+                //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
+                //FormsAuthentication.SetAuthCookie(model.UserName, false);
+                //FormsAuthentication.SetAuthCookie(model.Password, false);
+                //pd.CheckUserCreadentials();
+                return View();
+
+
+            }
 
         //    return View();
         //}
