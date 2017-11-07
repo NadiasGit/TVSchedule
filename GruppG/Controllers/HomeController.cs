@@ -61,15 +61,17 @@ namespace GruppG.Controllers
             return View(program.ToList());
         }
 
-
+        //PartialView som visar TV3s tablå
         public ActionResult PartialViewTV3()
         {
-            
+
             U4Entities pwdb = new U4Entities();
-            var SVT2 = pwdb.Program.Where(Program => Program.Chanel == 2);
+
+            var p = pwdb.Program.Where(Program => Program.Chanel == 3);
             //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
 
-            return View(SVT2.ToList());
+            return View(p.ToList());
+
         }
 
         public ActionResult PartialViewKanal5()

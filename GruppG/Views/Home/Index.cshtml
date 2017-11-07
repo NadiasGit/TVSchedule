@@ -79,9 +79,12 @@
         <h2>TV3</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>-->
     
-        @foreach (var item in Model){
-            @Html.Partial("_Program", item)
+        @{
+            Html.RenderAction("PartialViewTV3");
         }
+        @*@foreach (var item in Model){
+            @Html.Partial("_Program", item)
+        }*@
     
     </div>
     
