@@ -17,7 +17,7 @@ namespace GruppG.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         //NYTT (klassen finns i db-dataModel.Context.tt-dataModel.Context.cs
         private U4Entities db = new U4Entities();
         private ProgramData pd = new ProgramData();
@@ -87,7 +87,7 @@ namespace GruppG.Controllers
 
         public ActionResult Kanal5()
         {
-
+            
             U4Entities pwdb = new U4Entities();
             var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
 
