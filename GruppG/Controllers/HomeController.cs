@@ -86,8 +86,9 @@ namespace GruppG.Controllers
 
             U4Entities pwdb = new U4Entities();
             var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
+            //var tv4 = pd.GetPrograms();
 
-            return View(kanal5.ToList());
+            return View();
         }
 
         public ActionResult Contact()
