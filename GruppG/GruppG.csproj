@@ -290,6 +290,8 @@
     <Content Include="Views\Program\Tableau.cshtml" />
     <Content Include="Views\Home\PartialViewSvt2.cshtml" />
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
+    <Content Include="Views\Shared\_Program.cshtml" />
+    <Content Include="Views\Home\PartialViewTV3.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

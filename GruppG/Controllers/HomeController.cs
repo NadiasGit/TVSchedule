@@ -61,6 +61,16 @@ namespace GruppG.Controllers
             return View(program.ToList());
         }
 
+
+        public ActionResult PartialViewTV3()
+        {
+            U4Entities pwdb = new U4Entities();
+            var SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
+            //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
+
+            return View(SVT1.ToList());
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Kontakta oss:";

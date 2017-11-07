@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+
+@{
+    ViewBag.Title = "PartialViewTV3";
+}
+
+<h2>PartialViewTV3</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@foreach (var item in Model)
+{
+    <table style="font-family:Arial; border:1px solid black; width: 300px">
+
+        <tr>
+            <td>
+                <p>SVT1</p>
+            </td>
+
+            <td>
+                <table>
+                    <tr>
+                        <td>Program:</td>
+                    </tr>
+                    <tr>@item.Titel</tr>
+                    <tr>
+                        <td>Datum & tid</td>
+                        <td>@item.Starttime</td>
+                    </tr>
+                    <tr>
+                        <td>Kanal</td>
+                        <td>@item.Chanel</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+}
+
