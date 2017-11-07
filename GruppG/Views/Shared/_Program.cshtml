@@ -1,28 +1,31 @@
-﻿@model GruppG.Models.Program
+﻿@model GruppG.Models.db.Program
 
-<table style="font-family:Arial; border:1px solid black; width: 300px">
 
+
+<!--<table style="font-family:Arial; border:1px solid red; width: 300px">-->
+<table>
     <tr>
-        <td>
-            <p>SVT1</p>
-        </td>
 
         <td>
             <table>
+                
                 <tr>
-                    <td>Program:</td>
-                </tr>
-                <tr>@Model.Title</tr>
-                <tr>
-                    <td>Datum & tid</td>
-                    <td>@Model.Time</td>
+                <td><strong>Program: </strong></td>
+                <td> @Model.Titel</td>
                 </tr>
                 <tr>
-                    <td>Kanal</td>
-                    <td>@Model.Channel</td>
+                    <td><strong>Datum & tid: </strong></td>
+                    <td> @Model.Starttime</td>
+                </tr>
+                <tr>
+                    <td>Test (kanal):</td>
+                    <td> @Model.Chanel</td>
                 </tr>
                 </table>
         </td>
     </tr>
 </table>
+
+
+
 
