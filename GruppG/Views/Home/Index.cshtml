@@ -18,7 +18,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <h2>SVT1</h2>
         <!--<p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p> 
             vi kan använda oss av "btn btn-default"-classen-->
@@ -69,7 +69,18 @@
                 </tr>
             }
         </table>
+    </div>*@
+
+
+    <div class="col-md-4">
+        <h2>SVT1</h2>
+
+        @{
+            Html.RenderAction("SVT1");
+        }
+
     </div>
+
     <div class="col-md-4">
         <h2>SVT2</h2>
 

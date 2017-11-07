@@ -17,7 +17,7 @@ namespace GruppG.Controllers
 {
     public class HomeController : Controller
     {
-
+        
         //NYTT (klassen finns i db-dataModel.Context.tt-dataModel.Context.cs
         private U4Entities db = new U4Entities();
         private ProgramData pd = new ProgramData();
@@ -54,7 +54,7 @@ namespace GruppG.Controllers
             U4Entities pwdb = new U4Entities();
             var p = pwdb.Program.Where(Program => Program.Chanel == 1);
 
-            return View(p.ToList());
+            return PartialView(p.ToList());
         }
 
         public ActionResult PartialViewSvt2()
@@ -62,7 +62,7 @@ namespace GruppG.Controllers
             //ViewBag.Message = "Här kan vi visa info om programmen";
             //var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
             var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-            return View(program.ToList());
+            return PartialView(program.ToList());
         }
 
         //PartialView som visar TV3s tablå
@@ -74,7 +74,7 @@ namespace GruppG.Controllers
             var p = pwdb.Program.Where(Program => Program.Chanel == 3);
             //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
 
-            return View(p.ToList());
+            return PartialView(p.ToList());
 
         }
 
@@ -88,11 +88,11 @@ namespace GruppG.Controllers
 
         public ActionResult Kanal5()
         {
-
+            
             U4Entities pwdb = new U4Entities();
             var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
 
-            return View(kanal5.ToList());
+            return PartialView(kanal5.ToList());
         }
 
 
