@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<GruppG.Models.db.Chanel>
 @{
     ViewBag.Title = "Mina sidor";
+    if (Session["Id"] == null)
+    {
+        Response.Redirect("~/Login/Login");
+    }
 }
 
 <h2>MyPage</h2>

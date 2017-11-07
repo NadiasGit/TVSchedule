@@ -1,13 +1,14 @@
-﻿@model GruppG.Models.db.Person
-@{
-    ViewBag.Title = "Logga in till mina sidor/admin";
-}
+﻿@*@model GruppG.Models.ViewModels.LoginVM*@
+@model GruppG.Models.db.Person
+    @{
+            ViewBag.Title = "Logga in till mina sidor/admin";
+        }
 
-<h2>LogIn</h2>
+        <h2>Logga in på mina sidor</h2>
 
-@* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s *@
+        @* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s*@ 
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
     <table>
         <tr>
@@ -17,6 +18,7 @@
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
             </td>
         </tr>
+
         
         <tr>
             <td>
@@ -25,14 +27,16 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </td>
         </tr>
-        
+
+
         <tr>
             <td>
                 <input type="submit" name="name" value="Login" />
+                <label class="field-validation-error">@Html.DisplayFor(e => e.LoginErrorMessage) </label>
             </td>
         </tr>
-            
-        
+
+
     </table>
 }
 
@@ -80,7 +84,7 @@
             </div>
         </div>
     </div>*@
-}
+@*}*@
 
 
 

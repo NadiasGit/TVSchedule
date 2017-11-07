@@ -171,6 +171,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Data\ProgramData.cs" />
@@ -293,12 +294,13 @@
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Home\TV3.cshtml" />
-    <Content Include="Views\Home\LogIn.cshtml" />
+    <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Home\MyPage.cshtml" />
     <Content Include="Views\Home\SVT1.cshtml" />
     <Content Include="Views\Home\TV4.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Kanal5.cshtml" />
+    <Content Include="Views\Login\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

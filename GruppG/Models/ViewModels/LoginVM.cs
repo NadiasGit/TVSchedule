@@ -15,5 +15,7 @@ namespace GruppG.Models.ViewModels
         [Required(ErrorMessage = "Du måste ange ett användarnamn")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string LoginErrorMessage { get; set; }
     }
 }
