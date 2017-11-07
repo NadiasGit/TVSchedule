@@ -1,20 +1,50 @@
-﻿
+﻿@model GruppG.Models.db.Person
 @{
-    ViewBag.Title = "LogIn";
+    ViewBag.Title = "Logga in till mina sidor/admin";
 }
 
 <h2>LogIn</h2>
 
-@* Inloggningsformulär *@
+@using (@Html.BeginForm(FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+                @Html.EditorFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+                @Html.EditorFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="name" value="Login" />
+            </td>
+        </tr>
+            
+        
+    </table>
+}
 
-@model GruppG.Models.ViewModels.LoginVM
+
+
+
+
+
+    @* Inloggningsformulär *@
+
+@*@model GruppG.Models.ViewModels.LoginVM
 @{
     ViewBag.Title = "Logga in";
 }
 
-<h2>Logga in</h2>
+<h2>Logga in</h2>*@*
 
-@using (@Html.BeginForm())
+@*@using (@Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -43,7 +73,7 @@
                 <input type="submit" value="Login" class="btn-default" />
             </div>
         </div>
-    </div>
+    </div>*@
 }
 
 

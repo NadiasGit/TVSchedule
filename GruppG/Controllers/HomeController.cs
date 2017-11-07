@@ -11,6 +11,7 @@ using System.Net;
 using GruppG.Models.db;
 using GruppG.Data;
 using GruppG.Models.ViewModels;
+using System.Web.Security;
 
 namespace GruppG.Controllers
 {
@@ -101,15 +102,38 @@ namespace GruppG.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(LoginVM model)
+        public ActionResult Login(LoginVM model, string ReturnUrl)
         {
             if (ModelState.IsValid)
             {
+                //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
+                FormsAuthentication.SetAuthCookie(model.UserName, false);
+                //FormsAuthentication.SetAuthCookie(model.Password, false);
+                return Redirect(ReturnUrl);
+
 
             }
 
             return View();
         }
+
+        //[HttpPost]
+        //public ActionResult Login(LoginVM model, string ReturnUrl)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
+        //        FormsAuthentication.SetAuthCookie(model.UserName, false);
+        //        //FormsAuthentication.SetAuthCookie(model.Password, false);
+        //        pd.CheckUserCreadentials();
+        //        return Redirect(ReturnUrl);
+
+
+        //    }
+
+        //    return View();
+        //}
+
 
         public ActionResult MyPage()
         {

@@ -13,6 +13,17 @@ namespace GruppG.Data
 
         private U4Entities db = new U4Entities();
 
+        public bool CheckUserCreadentials(string username, string password)
+        {
+            var user = db.Person.Where(p => p.UserName == username && p.Password == password).FirstOrDefault();
+            if (user == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         //Program program = new Program();
         List<U4Entities> ProgramList = new List<U4Entities>();
         List<U4Entities> Svt1List = new List<U4Entities>();
