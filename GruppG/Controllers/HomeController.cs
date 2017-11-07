@@ -83,12 +83,9 @@ namespace GruppG.Controllers
             return View(kanal5.ToList());
         }
 
-        public ActionResult PartialViewLena()
+        public ActionResult PartialViewLogIn()
         {
-
-            U4Entities pwdb = new U4Entities();
-            var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
-            //var tv4 = pd.GetPrograms();
+            //Log in
 
             return View();
         }
