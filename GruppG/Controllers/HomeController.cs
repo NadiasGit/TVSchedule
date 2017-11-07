@@ -64,11 +64,21 @@ namespace GruppG.Controllers
 
         public ActionResult PartialViewTV3()
         {
+            
             U4Entities pwdb = new U4Entities();
-            var SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
+            var SVT2 = pwdb.Program.Where(Program => Program.Chanel == 2);
             //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
 
-            return View(SVT1.ToList());
+            return View(SVT2.ToList());
+        }
+
+        public ActionResult PartialViewKanal5()
+        {
+
+            U4Entities pwdb = new U4Entities();
+            var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
+
+            return View(kanal5.ToList());
         }
 
         public ActionResult Contact()
