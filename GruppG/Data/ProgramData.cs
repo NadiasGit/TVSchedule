@@ -14,7 +14,7 @@ namespace GruppG.Data
         private U4Entities db = new U4Entities();
 
         //Program program = new Program();
-        List<Program> ProgramList = new List<Program>();
+        //List<Program> ProgramList = new List<Program>();
         //List<Program> Svt1List = new List<Program>();
         //List<Program> Svt2List = new List<Program>();
         //List<Program> Tv3List = new List<Program>();
@@ -66,11 +66,11 @@ namespace GruppG.Data
         //    Tv3List = ProgramList.FindAll(s => s.Channel == 1);
         //    return Tv3List;
         //}
-        public List<Program> Tv4L()
-        {
-            Tv4List = ProgramList.FindAll(s => s.Channel == 1);
-            return Tv4List;
-        }
+        //public List<Program> Tv4L()
+        //{
+        //    Tv4List = ProgramList.FindAll(s => s.Channel == 1);
+        //    return Tv4List;
+        //}
 
         //public List<Program> Kanal5()
         //{

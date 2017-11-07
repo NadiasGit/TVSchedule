@@ -4,40 +4,38 @@
     ViewBag.Title = "PartialViewTV3";
 }
 
-<h2>PartialViewTV3</h2>
+@*<h2>PartialViewTV3</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 
 
 @foreach (var item in Model)
 {
-    <table style="font-family:Arial; border:1px solid black; width: 300px">
-
+    <table>
         <tr>
-            <td>
-                <p>SVT1</p>
-            </td>
 
             <td>
                 <table>
+
                     <tr>
-                        <td>Program:</td>
-                    </tr>
-                    <tr>@item.Titel</tr>
-                    <tr>
-                        <td>Datum & tid</td>
-                        <td>@item.Starttime</td>
+                        <td><strong>Program: </strong></td>
+                        <td> @item.Titel</td>
                     </tr>
                     <tr>
-                        <td>Kanal</td>
-                        <td>@item.Chanel</td>
+                        <td><strong>Datum & tid: </strong></td>
+                        <td> @item.Starttime</td>
+                    </tr>
+                    <tr>
+                        <td>Test (kanal):</td>
+                        <td> @item.Chanel</td>
                     </tr>
                 </table>
             </td>
         </tr>
     </table>
+
 
 }
 
