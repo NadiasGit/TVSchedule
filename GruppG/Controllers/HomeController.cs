@@ -52,7 +52,11 @@ namespace GruppG.Controllers
         public ActionResult SVT1()
         {
             U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1);
+            DateTime date1 = DateTime.Today;
+            
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == date1);
+            //.Where(p => p.Starttime.Equals("2017,11,08")
+            //var p = pwdb.Program.Where(Program => Program.Chanel == 1);
 
             return PartialView(p.ToList());
         }
@@ -178,13 +182,13 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-
+       
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Kontakta oss:";
 
-            return View();
+            return View(); 
         }
     }
 }

@@ -14,7 +14,8 @@ namespace GruppG.Data
         private U4Entities db = new U4Entities();
         private Person pr = new Person();
         Models.db.Program program = new Models.db.Program();
-        public DateTime? Date { get; set; }
+        private DateTime selectedDates = new DateTime();
+        
 
 
         public bool CheckUserCreadentials(string username, string password)
@@ -43,19 +44,22 @@ namespace GruppG.Data
         //}
 
         //:::::HÄMTA DATUM-FÖRSÖK::::::::
-        public List<Models.db.Program> SVT1()
+        public List<Models.db.Program> SVT1(DateTime sortBy)
         {
             U4Entities pwdb = new U4Entities();
+            //DateTime date2 = DateTime.Today;
             var p = pwdb.Program.Where(Program => Program.Chanel == 1);
+            //var dr = db.Program.Include(q => q.Starttime);
 
             return p.ToList();
+            //return p = p.OrderBy(t => t.Starttime).ToList();
         }
 
         public List<Models.db.Program> SVT2()
         {
             U4Entities pwdb = new U4Entities();
             DateTime date2 = DateTime.Today;
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2);
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == date2);
             var dateresult = db.Program.Where(q => q.Starttime == date2);
 
             return p.ToList();
@@ -69,10 +73,89 @@ namespace GruppG.Data
 
             return dateresult.ToList();
         }
-        //:::::::::::::::::::::::::::::::::::::::::::
-        
 
-        
+        //Call method for if-statement
+        static void Main()
+        {
+            // Call method with embedded if-statement three times.
+            DateTime date1 = DateTime.Today;
+            
+        }
+        //public ChanelByShowDate(int year, int month, int day)
+        //{
+
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Starttime == year, month, day);
+
+        //    return p.ToList());
+
+        //}
+
+
+        //public DateTime test()
+        //{
+        //    var StartDate = program.Starttime;
+        //    var EndDate = program.Endtime;
+        //    for (var date = StartDate; date <= EndDate; date = date.Value.AddDays(1))
+        //    {
+        //        selectedDates.Add(date);
+        //    }
+           
+
+        //}
+
+    
+
+
+
+        //Metod för att kontrollera vilket datum som valts
+        public int testDatum(string inp)
+        {
+            
+            U4Entities pwdb = new U4Entities();
+            DateTime date1 = DateTime.Today;
+            //DateTime date2 = Convert.ToDateTime();
+            var dateresult = db.Program.Where(q => q.Starttime == date1);
+
+            if (inp == "2017-11-12")
+            {
+                return 1;
+            }
+            else if (inp == "2017-11-12")
+            {
+                return 2;
+            }
+            else if (inp == "2017-11-13")
+            {
+                return 3;
+            }
+            else if (inp == "2017-11-13")
+            {
+                return 4;
+            }
+            else if (inp == "2017-11-14")
+            {
+                return 5;
+            }
+            else if (inp == "2017-11-15")
+            {
+                return 6;
+            }
+            else if (inp == "2017-11 -15")
+            {
+                return 7;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+
+        //:::::::::::::::::::::::::::::::::::::::::::
+
+
+
 
 
 
@@ -80,12 +163,13 @@ namespace GruppG.Data
         //Program program = new Program();
         List<U4Entities> ProgramList = new List<U4Entities>();
         List<U4Entities> Svt1List = new List<U4Entities>();
+
         //List<Program> Svt2List = new List<Program>();
         //List<Program> Tv3List = new List<Program>();
         //List<Program> Tv4List = new List<Program>();
         //List<Program> Kanal5List = new List<Program>();
 
-      
+
 
         //Framtida metoder
 
@@ -275,7 +359,7 @@ namespace GruppG.Data
         //}
 
 
-        
+
         public List<U4Entities> GetProgramDate()
         {
             //ProgramList = new List<U4Entities>();
