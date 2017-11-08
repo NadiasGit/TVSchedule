@@ -1,10 +1,15 @@
-﻿using GruppG.Data;
-using GruppG.Models.db;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GruppG.Models.ViewModels;
+using System.Web.Security;
+using System.Data.Entity;
+using System.Net;
+using GruppG.Data;
+using GruppG.Models.db;
+
 
 namespace GruppG.Controllers
 {
@@ -15,6 +20,7 @@ namespace GruppG.Controllers
         U4Entities ue = new U4Entities();
         Program pr = new Program();
         PersonData personData = new PersonData();
+        //Chanel channel = new Chanel();
         PersonData pd = new PersonData();
         private U4Entities db = new U4Entities();
 
@@ -97,20 +103,15 @@ namespace GruppG.Controllers
             {
                 return RedirectToAction("LogIn");
             }
-            //return View(db.Chanel.ToList());
+            
         }
 
-        public ActionResult PartialViewPerson()
-        {
-            if (Session["Id"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("LogIn");
-            }
-        }
+        //public ActionResult PartialViewChannel()
+        //{
+           
+        //    //var myCh = db.Chanel.Include(m => m
+        //    //return View(db.Chanel.ToList());
+        //}
 
         public ActionResult UserPage(int id)
         {
@@ -139,12 +140,12 @@ namespace GruppG.Controllers
 
         //}
 
-        //public ActionResult LogInAdmin()
-        //{
-        //    //Log in to admin
-
-        //    return View();
-        //}
+        public ActionResult PartialViewChannel()
+        {
+            var chan = ue.Chanel.Include(c => c.Name);
+            var chan1 = ue.Chanel;
+            return View(chan1.ToList());
+        }
 
         //[HttpPost]
         //public ActionResult LoginAdmin(GruppG.Models.db.Person pers)

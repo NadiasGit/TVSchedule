@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Data\ChannelData.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Data\ProgramData.cs" />
     <Compile Include="Global.asax.cs">
@@ -310,6 +311,7 @@
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
     <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
+    <Content Include="Views\Login\PartialViewChannel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

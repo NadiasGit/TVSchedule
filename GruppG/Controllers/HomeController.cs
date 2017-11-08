@@ -131,12 +131,7 @@ namespace GruppG.Controllers
 
 
 
-        //public ActionResult LogIn()
-        //{
-        //    //Log in
-
-        //    return View();
-        //}
+      
 
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)
@@ -183,7 +178,7 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-       
+
 
         public ActionResult Contact()
         {
