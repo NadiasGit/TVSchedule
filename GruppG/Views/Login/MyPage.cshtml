@@ -9,6 +9,10 @@
 
 <h2>MyPage</h2>
 
+<p>
+    Welcome @Session["UserName"].ToString();
+</p>
+
 <div>
     @*@{
         Html.RenderAction("PartialViewPerson()");
@@ -16,7 +20,7 @@
    
 </div>
 
-@foreach (var item in Model)
+@*@foreach (var item in Model)
 {
     <ul>
         <li>
@@ -24,6 +28,6 @@
         </li>
     </ul>
 
-}
+}*@
 
 

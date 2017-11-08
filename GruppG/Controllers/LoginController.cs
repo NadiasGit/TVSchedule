@@ -46,7 +46,7 @@ namespace GruppG.Controllers
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("UserPage", "Login");
+                    return RedirectToAction("MyPage", "Login");
                 }
             }
         }
@@ -54,7 +54,6 @@ namespace GruppG.Controllers
 
         public ActionResult Register()
         {
-            //Ingen vy
             return View();
         }
 
@@ -86,11 +85,19 @@ namespace GruppG.Controllers
         //}
 
         
-            public ActionResult MyPage()
+        public ActionResult MyPage()
         {
             //Visitor or admins page
             //var myChannel = db.Chanel.Include(p => p.Name);
-            return View(db.Chanel.ToList());
+            if (Session["Id"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("LogIn");
+            }
+            //return View(db.Chanel.ToList());
         }
 
         public ActionResult PartialViewPerson()
