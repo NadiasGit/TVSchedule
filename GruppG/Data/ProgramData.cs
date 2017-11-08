@@ -13,6 +13,9 @@ namespace GruppG.Data
 
         private U4Entities db = new U4Entities();
         private Person pr = new Person();
+        Models.db.Program program = new Models.db.Program();
+        public DateTime? Date { get; set; }
+
 
         public bool CheckUserCreadentials(string username, string password)
         {
@@ -23,6 +26,55 @@ namespace GruppG.Data
             }
             return true;
         }
+
+        ////Hämtar ett specifikt datum
+        //public Program GetDate(DateTime? d)
+        //{
+        //    if (d == null)
+        //    {
+
+        //    }
+        //    Program program = db.Program.Find(d);
+        //    if (program == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return PartialView(program);
+        //}
+
+        //:::::HÄMTA DATUM-FÖRSÖK::::::::
+        public List<Models.db.Program> SVT1()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1);
+
+            return p.ToList();
+        }
+
+        public List<Models.db.Program> SVT2()
+        {
+            U4Entities pwdb = new U4Entities();
+            DateTime date2 = DateTime.Today;
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2);
+            var dateresult = db.Program.Where(q => q.Starttime == date2);
+
+            return p.ToList();
+        }
+
+        public List<Models.db.Program> SVT2Date()
+        {
+            DateTime date2 = DateTime.Today;
+            var dateresult = db.Program.Where(q => q.Starttime == date2);
+            //DateTime dateOnly = date1.Date;
+
+            return dateresult.ToList();
+        }
+        //:::::::::::::::::::::::::::::::::::::::::::
+        
+
+        
+
+
 
 
         //Program program = new Program();
