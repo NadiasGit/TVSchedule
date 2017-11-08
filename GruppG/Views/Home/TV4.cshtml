@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
 
-@*<p>
-    @Html.ActionLink("Lägg till som favorit", "Create")
-</p>*@
+@{
+    ViewBag.Title = "TV4";
+}
 
 <table class="table">
     <tr>
@@ -45,11 +45,11 @@
                             <div class="modal-body">
                                 @{
                                     Html.RenderAction("Details", new { id = item.Id });
-                                }
+                                } 
                             </div>
                             @*<div class="modal-footer">
-                        <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
-                    </div>*@
+                                <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
+                            </div>*@
                         </div>
                     </div>
                 </div> 
