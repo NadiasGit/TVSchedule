@@ -45,11 +45,14 @@ namespace GruppG.Controllers
 
         public ActionResult About()
         {
-            var today = DateTime.Today;
+            DateTime today = DateTime.Today.Date;
             var thisDay = db.Program.Where(x => x.Starttime == today);
 
             //ViewBag.Message = "Här kan vi visa info om programmen";
             //var model = channeldate.Today();
+            
+            //Lägg till en dag:
+            //DateTime.Today.AddDays(1);
             return View(thisDay.ToList());
         }
 
