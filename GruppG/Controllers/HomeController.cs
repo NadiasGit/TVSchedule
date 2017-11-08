@@ -108,7 +108,7 @@ namespace GruppG.Controllers
             {
                 return HttpNotFound();
             }
-            return View(program);
+            return PartialView(program);
         }
 
 
