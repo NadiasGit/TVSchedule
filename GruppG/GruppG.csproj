@@ -300,13 +300,15 @@
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Home\TV3.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
-    <Content Include="Views\Home\MyPage.cshtml" />
+    <Content Include="Views\Login\MyPage.cshtml" />
     <Content Include="Views\Home\SVT1.cshtml" />
     <Content Include="Views\Home\TV4.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Kanal5.cshtml" />
     <Content Include="Views\Login\Admin.cshtml" />
     <Content Include="Views\Person\GetPerson.cshtml" />
+    <Content Include="Views\Login\PartialViewPerson.cshtml" />
+    <Content Include="Views\Login\UserPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

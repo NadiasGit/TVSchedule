@@ -183,12 +183,7 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-        public ActionResult MyPage()
-        {
-            //Visitor or admins page
-            //var myChannel = db.Chanel.Include(p => p.Name);
-            return View(db.Chanel.ToList());
-        }
+       
 
         public ActionResult Contact()
         {

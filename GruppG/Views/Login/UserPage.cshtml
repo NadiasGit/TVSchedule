@@ -1,0 +1,15 @@
+﻿@model GruppG.Models.db.Person
+@*if (Session["Id"] == null)
+    {
+        Response.Redirect("~/Login/Login");
+    }*@
+
+<ul>
+    <li>
+        @Html.DisplayFor(p => p.FirstName)
+    </li>
+</ul>
+
+<p>
+    Welcome @Session["UserName"].ToString();
+</p>
