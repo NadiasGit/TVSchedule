@@ -9,7 +9,7 @@ namespace GruppG.Controllers
 {
     public class PersonController : Controller
     {
-        ProgramData pd = new ProgramData(); 
+        ProgramData pd = new ProgramData();
 
         // GET: Person
         public ActionResult Index()
@@ -17,10 +17,10 @@ namespace GruppG.Controllers
             return View();
         }
 
-        public ActionResult GetPerson(int id)
-        {
-            var pers = pd.GetPersonById(id);
-            return View();
-        }
+        //public ActionResult GetPerson(int id)
+        //{
+        //    var pers = pd.GetPersonById(id);
+        //    return View();
+        //}
     }
 }
