@@ -22,5 +22,7 @@ namespace GruppG.Models.db
         public Nullable<int> Role { get; set; }
     
         public virtual Role Role1 { get; set; }
+
+        public string LoginErrorMessage { get; set; }
     }
 }
