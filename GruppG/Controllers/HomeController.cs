@@ -111,6 +111,20 @@ namespace GruppG.Controllers
             return PartialView(program);
         }
 
+        public ActionResult Datum(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Program program = db.Program.Find(id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(program);
+        }
+
 
 
 

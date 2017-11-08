@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
     <!--Gör om till lista (det är ingen skillnad, men lista är lättare att förstå :)-->
 @{
-    ViewBag.Title = "HEM";
+    ViewBag.Title = "Hem";
 }
 
 <div class="jumbotron">
@@ -17,6 +17,7 @@
     </div>
 </div>
 <div class="date">
+    @Html.ActionLink("Idag", "Index")
     @Html.ActionLink("Idag", "Index")
     @Html.ActionLink("Idag", "Index")
     @Html.ActionLink("Idag", "Index")
