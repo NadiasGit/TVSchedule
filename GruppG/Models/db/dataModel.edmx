@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="U4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="U4Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Chanel">
@@ -19,13 +19,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" />
         </EntityType>
-        <EntityType Name="Favoriteprogram">
+        <EntityType Name="FavoriteChannel">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Person" Type="int" />
-          <Property Name="Program" Type="int" />
+          <Property Name="Chanel" Type="int" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -36,6 +36,7 @@
           <Property Name="LastName" Type="nchar" MaxLength="50" />
           <Property Name="UserName" Type="nchar" MaxLength="10" />
           <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="Role" Type="int" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -49,27 +50,22 @@
           <Property Name="Starttime" Type="datetime" />
           <Property Name="Endtime" Type="datetime" />
         </EntityType>
-        <Association Name="FK_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="Favoriteprogram" Type="Self.Favoriteprogram" Multiplicity="*" />
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Chanel">
+          <End Role="Chanel" Type="Self.Chanel" Multiplicity="0..1" />
+          <End Role="FavoriteChannel" Type="Self.FavoriteChannel" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="Chanel">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Favoriteprogram">
-              <PropertyRef Name="Person" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
-          <End Role="Favoriteprogram" Type="Self.Favoriteprogram" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Favoriteprogram">
-              <PropertyRef Name="Program" />
+            <Dependent Role="FavoriteChannel">
+              <PropertyRef Name="Chanel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -97,19 +93,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="U4ModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Chanel" EntityType="Self.Chanel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Favoriteprogram" EntityType="Self.Favoriteprogram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteChannel" EntityType="Self.FavoriteChannel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Person" Association="Self.FK_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Favoriteprogram" EntitySet="Favoriteprogram" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program" Association="Self.FK_Program">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Favoriteprogram" EntitySet="Favoriteprogram" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Chanel" Association="Self.FK_Chanel">
+            <End Role="Chanel" EntitySet="Chanel" />
+            <End Role="FavoriteChannel" EntitySet="FavoriteChannel" />
           </AssociationSet>
           <AssociationSet Name="FK_Program_ToTable" Association="Self.FK_Program_ToTable">
             <End Role="Chanel" EntitySet="Chanel" />
@@ -119,9 +124,12 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Program" EntitySet="Program" />
           </AssociationSet>
+          <AssociationSet Name="FK_Role" Association="Self.FK_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="U4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -140,16 +148,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Program" Relationship="Self.FK_Program_ToTable" FromRole="Chanel" ToRole="Program" />
-        </EntityType>
-        <EntityType Name="Favoriteprogram">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Person" Type="Int32" />
-          <Property Name="Program" Type="Int32" />
-          <NavigationProperty Name="Person1" Relationship="Self.FK_Person" FromRole="Favoriteprogram" ToRole="Person" />
-          <NavigationProperty Name="Program1" Relationship="Self.FK_Program" FromRole="Favoriteprogram" ToRole="Program" />
+          <NavigationProperty Name="FavoriteChannel" Relationship="U4Model.FK_Chanel" FromRole="Chanel" ToRole="FavoriteChannel" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -160,7 +159,8 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Favoriteprogram" Relationship="Self.FK_Person" FromRole="Person" ToRole="Favoriteprogram" />
+          <Property Name="Role" Type="Int32" />
+          <NavigationProperty Name="Role1" Relationship="U4Model.FK_Role" FromRole="Person" ToRole="Role" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -175,7 +175,6 @@
           <Property Name="Endtime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Program_ToTable_1" FromRole="Program" ToRole="Category" />
           <NavigationProperty Name="Chanel1" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Chanel" />
-          <NavigationProperty Name="Favoriteprogram" Relationship="Self.FK_Program" FromRole="Program" ToRole="Favoriteprogram" />
         </EntityType>
         <Association Name="FK_Program_ToTable_1">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -201,34 +200,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="0..1" />
-          <End Role="Favoriteprogram" Type="Self.Favoriteprogram" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Favoriteprogram">
-              <PropertyRef Name="Person" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
-          <End Role="Favoriteprogram" Type="Self.Favoriteprogram" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Favoriteprogram">
-              <PropertyRef Name="Program" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="U4Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Chanel" EntityType="Self.Chanel" />
-          <EntitySet Name="Favoriteprogram" EntityType="Self.Favoriteprogram" />
           <EntitySet Name="Person" EntityType="Self.Person" />
           <EntitySet Name="Program" EntityType="Self.Program" />
           <AssociationSet Name="FK_Program_ToTable_1" Association="Self.FK_Program_ToTable_1">
@@ -239,15 +213,58 @@
             <End Role="Chanel" EntitySet="Chanel" />
             <End Role="Program" EntitySet="Program" />
           </AssociationSet>
-          <AssociationSet Name="FK_Person" Association="Self.FK_Person">
-            <End Role="Person" EntitySet="Person" />
-            <End Role="Favoriteprogram" EntitySet="Favoriteprogram" />
+          <EntitySet Name="FavoriteChannel" EntityType="U4Model.FavoriteChannel" />
+          <EntitySet Name="Role" EntityType="U4Model.Role" />
+          <AssociationSet Name="FK_Chanel" Association="U4Model.FK_Chanel">
+            <End Role="Chanel" EntitySet="Chanel" />
+            <End Role="FavoriteChannel" EntitySet="FavoriteChannel" />
           </AssociationSet>
-          <AssociationSet Name="FK_Program" Association="Self.FK_Program">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Favoriteprogram" EntitySet="Favoriteprogram" />
+          <AssociationSet Name="FK_Role" Association="U4Model.FK_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Person" EntitySet="Person" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FavoriteChannel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Person" Type="Int32" />
+          <Property Name="Chanel" Type="Int32" />
+          <NavigationProperty Name="Chanel1" Relationship="U4Model.FK_Chanel" FromRole="FavoriteChannel" ToRole="Chanel" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Person" Relationship="U4Model.FK_Role" FromRole="Role" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK_Chanel">
+          <End Type="U4Model.Chanel" Role="Chanel" Multiplicity="0..1" />
+          <End Type="U4Model.FavoriteChannel" Role="FavoriteChannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chanel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteChannel">
+              <PropertyRef Name="Chanel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role">
+          <End Type="U4Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="U4Model.Person" Role="Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -270,18 +287,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Favoriteprogram">
-            <EntityTypeMapping TypeName="U4Model.Favoriteprogram">
-              <MappingFragment StoreEntitySet="Favoriteprogram">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Person" ColumnName="Person" />
-                <ScalarProperty Name="Program" ColumnName="Program" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Person">
             <EntityTypeMapping TypeName="U4Model.Person">
               <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -300,6 +309,23 @@
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Starttime" ColumnName="Starttime" />
                 <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteChannel">
+            <EntityTypeMapping TypeName="U4Model.FavoriteChannel">
+              <MappingFragment StoreEntitySet="FavoriteChannel">
+                <ScalarProperty Name="Chanel" ColumnName="Chanel" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="U4Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

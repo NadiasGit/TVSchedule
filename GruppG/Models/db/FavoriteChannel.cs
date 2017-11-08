@@ -12,15 +12,12 @@ namespace GruppG.Models.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class FavoriteChannel
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> Role { get; set; }
+        public Nullable<int> Person { get; set; }
+        public Nullable<int> Chanel { get; set; }
     
-        public virtual Role Role1 { get; set; }
+        public virtual Chanel Chanel1 { get; set; }
     }
 }

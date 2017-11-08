@@ -14,12 +14,6 @@ namespace GruppG.Models.db
     
     public partial class Program
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Program()
-        {
-            this.Favoriteprogram = new HashSet<Favoriteprogram>();
-        }
-    
         public int Id { get; set; }
         public string Titel { get; set; }
         public string Description { get; set; }
@@ -30,7 +24,5 @@ namespace GruppG.Models.db
     
         public virtual Category Category1 { get; set; }
         public virtual Chanel Chanel1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Favoriteprogram> Favoriteprogram { get; set; }
     }
 }

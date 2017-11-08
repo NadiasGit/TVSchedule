@@ -12,6 +12,7 @@ namespace GruppG.Data
         //Class for our methods
 
         private U4Entities db = new U4Entities();
+        private Person pr = new Person();
 
         public bool CheckUserCreadentials(string username, string password)
         {
@@ -31,6 +32,13 @@ namespace GruppG.Data
         //List<Program> Tv3List = new List<Program>();
         //List<Program> Tv4List = new List<Program>();
         //List<Program> Kanal5List = new List<Program>();
+
+        //Koppla ihop inloggad person med person i databasen.
+        public Person GetPersonById(int id)
+        {
+            var person = db.Person.FirstOrDefault(x => x.Id == id);
+            return person;
+        }
 
         //Framtida metoder
 

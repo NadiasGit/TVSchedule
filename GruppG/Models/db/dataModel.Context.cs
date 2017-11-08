@@ -27,8 +27,9 @@ namespace GruppG.Models.db
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Chanel> Chanel { get; set; }
-        public virtual DbSet<Favoriteprogram> Favoriteprogram { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Program> Program { get; set; }
+        public virtual DbSet<FavoriteChannel> FavoriteChannel { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
     }
 }

@@ -12,13 +12,18 @@ namespace GruppG.Models.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Favoriteprogram
+    public partial class Role
     {
-        public int Id { get; set; }
-        public Nullable<int> Person { get; set; }
-        public Nullable<int> Program { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.Person = new HashSet<Person>();
+        }
     
-        public virtual Person Person1 { get; set; }
-        public virtual Program Program1 { get; set; }
+        public int Id { get; set; }
+        public string Type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Person> Person { get; set; }
     }
 }

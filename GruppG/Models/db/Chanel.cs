@@ -18,6 +18,7 @@ namespace GruppG.Models.db
         public Chanel()
         {
             this.Program = new HashSet<Program>();
+            this.FavoriteChannel = new HashSet<FavoriteChannel>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace GruppG.Models.db
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program> Program { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FavoriteChannel> FavoriteChannel { get; set; }
     }
 }
