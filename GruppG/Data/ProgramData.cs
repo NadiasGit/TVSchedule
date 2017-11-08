@@ -85,12 +85,7 @@ namespace GruppG.Data
         //List<Program> Tv4List = new List<Program>();
         //List<Program> Kanal5List = new List<Program>();
 
-        //Koppla ihop inloggad person med person i databasen.
-        public Person GetPersonById(int id)
-        {
-            var person = db.Person.FirstOrDefault(x => x.Id == id);
-            return person;
-        }
+      
 
         //Framtida metoder
 
