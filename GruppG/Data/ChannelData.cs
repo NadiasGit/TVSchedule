@@ -16,9 +16,9 @@ namespace GruppG.Data
         public List<Program> Today()
         {
             var today = DateTime.Today;
-            var thisDay = db.Program.Where(x => x.Starttime == today).ToList();
+            var thisDay = db.Program.Where(x => x.Starttime == today);
             //where t.date >= new DateTime(2007, 9, 9) && t.date < new DateTime(2008, 1, 1) select t;
-            return thisDay;
+            return thisDay.ToList();
             
         }
 

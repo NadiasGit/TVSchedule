@@ -22,6 +22,7 @@ namespace GruppG.Controllers
         private U4Entities db = new U4Entities();
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
+        private ChannelData channeldate = new ChannelData();
 
         public ActionResult Index()
         {   
@@ -44,9 +45,12 @@ namespace GruppG.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Här kan vi visa info om programmen";
+            var today = DateTime.Today;
+            var thisDay = db.Program.Where(x => x.Starttime == today);
 
-            return View();
+            //ViewBag.Message = "Här kan vi visa info om programmen";
+            //var model = channeldate.Today();
+            return View(thisDay.ToList());
         }
 
         public ActionResult SVT1()
