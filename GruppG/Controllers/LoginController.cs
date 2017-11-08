@@ -14,7 +14,7 @@ namespace GruppG.Controllers
 
         U4Entities ue = new U4Entities();
         Program pr = new Program();
-        PersonData person = new PersonData();
+        PersonData personData = new PersonData();
         PersonData pd = new PersonData();
         private U4Entities db = new U4Entities();
 
@@ -31,6 +31,44 @@ namespace GruppG.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Login(GruppG.Models.db.Person pers)
+        {
+            using (U4Entities u4 = new U4Entities())
+            {
+                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
+                if (user == null)
+                {
+                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+                    return View("LogIn");
+                }
+                else
+                {
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    return RedirectToAction("UserPage", "Login");
+                }
+            }
+        }
+
+
+        public ActionResult Register()
+        {
+            //Ingen vy
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(Person pers)
+        {
+            //Ingen vy
+            using (U4Entities newPerson = new U4Entities())
+            {
+                newPerson.Person.Add(pers);
+                newPerson.SaveChanges();
+            }
+            return View();
+        }
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)
         //{
@@ -47,26 +85,7 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-        [HttpPost]
-        public ActionResult Login(GruppG.Models.db.Person pers)
-        {
-            using (U4Entities u4 = new U4Entities())
-            {
-                var ud = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-                if (ud == null)
-                {
-                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-                    return View("LogIn", pers);
-                }
-                else
-                {
-                    Session["Id"] = ud.Id;
-                    Session["UserName"] = ud.UserName.ToString();
-                    return RedirectToAction("UserPage", "Login");
-                }
-            }
-        }
-
+        
             public ActionResult MyPage()
         {
             //Visitor or admins page
@@ -86,7 +105,7 @@ namespace GruppG.Controllers
             }
         }
 
-        public ActionResult UserPage()
+        public ActionResult UserPage(int id)
         {
             if (Session["Id"] != null)
             {

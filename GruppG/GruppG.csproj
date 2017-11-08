@@ -309,6 +309,7 @@
     <Content Include="Views\Person\GetPerson.cshtml" />
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
     <Content Include="Views\Login\UserPage.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

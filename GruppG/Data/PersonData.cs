@@ -15,5 +15,15 @@ namespace GruppG.Data
             var person = db.Person.FirstOrDefault(x => x.Id == id);
             return person;
         }
+
+        public Person RegisterNewPerson(Person pers)
+        {
+            using (U4Entities newPerson = new U4Entities())
+            {
+                newPerson.Person.Add(pers);
+                newPerson.SaveChanges();
+            }
+            return pers;
+        }
     }
 }
