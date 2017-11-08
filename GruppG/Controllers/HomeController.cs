@@ -22,6 +22,7 @@ namespace GruppG.Controllers
         private U4Entities db = new U4Entities();
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
+        private ChannelData channeldate = new ChannelData();
 
         public ActionResult Index()
         {   
@@ -44,9 +45,15 @@ namespace GruppG.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Här kan vi visa info om programmen";
+            DateTime today = DateTime.Today.Date;
+            var thisDay = db.Program.Where(x => x.Starttime == today);
 
-            return View();
+            //ViewBag.Message = "Här kan vi visa info om programmen";
+            //var model = channeldate.Today();
+            
+            //Lägg till en dag:
+            //DateTime.Today.AddDays(1);
+            return View(thisDay.ToList());
         }
 
         public ActionResult SVT1()
@@ -135,12 +142,7 @@ namespace GruppG.Controllers
 
 
 
-        //public ActionResult LogIn()
-        //{
-        //    //Log in
-
-        //    return View();
-        //}
+      
 
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)
@@ -185,15 +187,6 @@ namespace GruppG.Controllers
         //}
 
         //    return View();
-        //}
-
-        //public ActionResult ChanelByShowDate(int year, int month, int day)
-        //{
-        //    U4Entities pwdb = new U4Entities();
-        //    var p = pwdb.Program.Where(Program => Program.Starttime == year, month, day);
-
-        //    return PartialView(p.ToList());
-            
         //}
 
        
