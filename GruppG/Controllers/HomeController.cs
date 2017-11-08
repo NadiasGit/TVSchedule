@@ -59,7 +59,7 @@ namespace GruppG.Controllers
         public ActionResult SVT1()
         {
             U4Entities pwdb = new U4Entities();
-            DateTime date1 = DateTime.Today;
+            DateTime date1 = DateTime.Today.AddDays(1);
             
             var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == date1);
             //.Where(p => p.Starttime.Equals("2017,11,08")
@@ -70,10 +70,12 @@ namespace GruppG.Controllers
 
         public ActionResult PartialViewSvt2()
         {
-            //ViewBag.Message = "Här kan vi visa info om programmen";
-            //var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-            var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-            return PartialView(program.ToList());
+            U4Entities pwdb = new U4Entities();
+            DateTime date1 = DateTime.Today.AddDays(1);
+
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == date1);
+
+            return PartialView(p.ToList());
         }
 
         //PartialView som visar TV3s tablå
