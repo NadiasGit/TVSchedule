@@ -19,6 +19,7 @@ namespace GruppG.Controllers
 
         U4Entities ue = new U4Entities();
         Program pr = new Program();
+        Person person = new Person();
         PersonData personData = new PersonData();
         //Chanel channel = new Chanel();
         PersonData pd = new PersonData();
@@ -52,7 +53,8 @@ namespace GruppG.Controllers
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("MyPage", "Login");
+                    var p = ue.Person.Where(per => per.Id == user.Id);
+                    return RedirectToAction("MyPage", "Login", p);
                 }
             }
         }

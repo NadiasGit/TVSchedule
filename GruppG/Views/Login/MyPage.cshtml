@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GruppG.Models.db.Chanel>
+﻿@model IEnumerable<GruppG.Models.db.Person>
 @{
     ViewBag.Title = "Mina sidor";
     if (Session["Id"] == null)
@@ -12,6 +12,10 @@
 <p>
     Welcome @Session["UserName"].ToString();
 </p>
+
+<div>
+    @Html.DisplayNameFor(model => model.FirstName)
+</div>
 
 <div>
     @*@{
