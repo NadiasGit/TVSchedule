@@ -11,8 +11,7 @@ namespace GruppG.Models.db
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Person
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,21 +23,10 @@ namespace GruppG.Models.db
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Du måste ange ett användarnamn")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Du måste ange ett lösenord")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
-
-        //Egna properties
-        public string LoginErrorMessage { get; set; }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Favoriteprogram> Favoriteprogram { get; set; }
-
-
-
     }
 }
