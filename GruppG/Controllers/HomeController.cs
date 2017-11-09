@@ -295,7 +295,13 @@ namespace GruppG.Controllers
 
             return PartialView(p.ToList());
         }
+        public ActionResult Kanal5thursday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == wednesday);
 
+            return PartialView(p.ToList());
+        }
         //public ActionResult Kanal5Saturday()
         //{
         //    U4Entities pwdb = new U4Entities();
