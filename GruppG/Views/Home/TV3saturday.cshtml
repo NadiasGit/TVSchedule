@@ -4,14 +4,12 @@
     ViewBag.Title = "TV3";
 }
 
-@foreach (var item in Model)
-{
+
 <table class="table">
     <tr>
         <th>
             <p>Program</p>
         </th>
-        <td> @item.Titel</td>
 
         @*<th>
                 <p>Kanal</p>
@@ -20,12 +18,18 @@
         <th>
             <p>Datum</p>
         </th>
-        <td> @item.Starttime.Value.ToShortDateString()</td>
 
     </tr>
 
-    
+    @foreach (var item in Model)
+    {
         <tr>
+
+            <td> @item.Titel</td>
+
+            <td> @item.Starttime.Value.ToShortDateString()</td>
+
+            @*<td>@Html.DisplayFor(modelItem => item.Chanel1.Name)</td>*@
             <td>
                 @*@Html.ActionLink("Mer info", "Details", new { id = item.Id })*@
 
@@ -50,34 +54,6 @@
 
         </tr>
 
+                                    }
+
 </table>
-}
-
-
-
-@*<table style="font-family:Arial; border:1px solid grey; width: auto">
-    <tr>
-
-        <td>
-            <table>
-                
-                <tr>
-                <td><strong>Program: </strong></td>
-                <td> @Model.Titel</td>
-                </tr>
-                <tr>
-                    <td><strong>Datum & tid: </strong></td>
-                    <td> @Model.Starttime</td>
-                </tr>
-                <tr>
-                    <td>Test (kanal):</td>
-                    <td> @Model.Chanel</td>
-                </tr>
-                </table>
-        </td>
-    </tr>
-</table>*@
-
-
-
-

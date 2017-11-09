@@ -1,0 +1,80 @@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+<!--Gör om till lista (det är ingen skillnad, men lista är lättare att förstå :)-->
+@{
+    ViewBag.Title = "Hem";
+}
+
+<div class="jumbotron">
+    <h4>Nyhetspuffar</h4>
+    <div class="nyhetspuff">
+        <p class="lead">Nyhetspuff 1</p>
+    </div>
+    <div class="nyhetspuff">
+        <p class="lead">Nyhetspuff 2</p>
+    </div>
+    <div class="nyhetspuff">
+        <p class="lead">Nyhetspuff 3</p>
+    </div>
+</div>
+<div class="date">
+    @Html.ActionLink("   Igår   |", "Index", "Home")
+    @Html.ActionLink("   Idag   |", "Index", "Home")
+    @Html.ActionLink("   2017-11-09   | ", "PartialViewSvt2", "Home")
+    @Html.ActionLink("   Friday   | ", "Friday", "Home")
+    @Html.ActionLink("   Lördag   | ", "Saturday", "Home")
+    @Html.ActionLink("   Söndag   | ", "Sunday", "Home")
+    @Html.ActionLink("   Måndag   | ", "Monday", "Home")
+    @Html.ActionLink("   Tisdag   | ", "Tuesday", "Home")
+    @Html.ActionLink("   Onsdag   | ", "Wednesday", "Home")
+    @Html.ActionLink("   Torsdag   | ", "Thursday", "Home")
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <h2>SVT1</h2>
+
+        @{
+            Html.RenderAction("SVT1");
+        }
+
+    </div>
+
+    <div class="col-md-4">
+        <h2>SVT2</h2>
+
+        @{
+            Html.RenderAction("SVT2");
+        }
+
+    </div>
+    <div class="col-md-4">
+        <h2>TV3</h2>
+
+
+        @{
+            Html.RenderAction("TV3");
+        }
+
+
+    </div>
+
+    <div class="col-md-4">
+        <h2>TV4</h2>
+
+
+        @{
+            Html.RenderAction("TV4");
+        }
+
+    </div>
+    <div class="col-md-4">
+        <h2>Kanal 5</h2>
+
+
+        @{
+            Html.RenderAction("Kanal5");
+        }
+
+    </div>
+</div>
