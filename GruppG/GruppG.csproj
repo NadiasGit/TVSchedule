@@ -314,6 +314,12 @@
     <Content Include="Views\Login\PartialViewChannel.cshtml" />
     <Content Include="Views\Home\Kanal5saturday.cshtml" />
     <Content Include="Views\Home\Saturday.cshtml" />
+    <Content Include="Views\Home\Sunday.cshtml" />
+    <Content Include="Views\Home\Monday.cshtml" />
+    <Content Include="Views\Home\Tuesday.cshtml" />
+    <Content Include="Views\Home\Wednesday.cshtml" />
+    <Content Include="Views\Home\Thursday.cshtml" />
+    <Content Include="Views\Home\Friday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

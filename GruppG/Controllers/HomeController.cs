@@ -46,11 +46,31 @@ namespace GruppG.Controllers
             //Gammal kod:
             //return View(); 
         }
+        public ActionResult Friday()
+        {
+            return View();
+        }
         public ActionResult Saturday()
         {
             return View(); 
         }
         public ActionResult Sunday()
+        {
+            return View();
+        }
+        public ActionResult Monday()
+        {
+            return View();
+        }
+        public ActionResult Tuesday()
+        {
+            return View();
+        }
+        public ActionResult Wednesday()
+        {
+            return View();
+        }
+        public ActionResult Thursday()
         {
             return View();
         }
