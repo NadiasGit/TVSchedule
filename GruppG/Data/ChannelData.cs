@@ -22,14 +22,7 @@ namespace GruppG.Data
             
         }
 
-        //public List<Program> Tomarrow()
-        //{
-        //    var today = DateTime.Today.AddDays(1);
-        //    var thisDay = db.Program.All(x => x.Starttime == today);
-        //    //where t.date >= new DateTime(2007, 9, 9) && t.date < new DateTime(2008, 1, 1) select t;
-
-
-        //}
+        
 
 
     }

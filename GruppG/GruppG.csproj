@@ -309,9 +309,7 @@
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Person\GetPerson.cshtml" />
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
-    <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
-    <Content Include="Views\Login\PartialViewChannel.cshtml" />
     <Content Include="Views\Home\Kanal5saturday.cshtml" />
     <Content Include="Views\Home\Saturday.cshtml" />
     <Content Include="Views\Home\Sunday.cshtml" />
@@ -342,6 +340,7 @@
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />
     <Content Include="Views\Login\LogInAdmin.cshtml" />
     <Content Include="Views\Login\PartialViewChannels.cshtml" />
+    <Content Include="Views\Login\Userspage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
