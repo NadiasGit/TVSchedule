@@ -332,6 +332,11 @@
     <Content Include="Views\Home\TV4monday.cshtml" />
     <Content Include="Views\Home\TV4tuesday.cshtml" />
     <Content Include="Views\Home\TV4wednesday.cshtml" />
+    <Content Include="Views\Home\Kanal5friday.cshtml" />
+    <Content Include="Views\Home\Kanal5sunday.cshtml" />
+    <Content Include="Views\Home\Kanal5monday.cshtml" />
+    <Content Include="Views\Home\Kanal5tuesday.cshtml" />
+    <Content Include="Views\Home\Kanal5wednesday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
