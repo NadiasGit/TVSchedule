@@ -4,17 +4,11 @@
     ViewBag.Title = "Kanal5";
 }
 
-
 <table class="table">
     <tr>
         <th>
             <p>Program</p>
         </th>
-
-        @*<th>
-            <p>Kanal</p>
-        </th>*@
-
         <th>
             <p>Datum</p>
         </th>
@@ -26,34 +20,37 @@
     @foreach (var item in Model)
     {
         <tr>
-
             <td> @item.Titel</td>
 
-            <td> @item.Starttime.Value.ToShortDateString()</td>
-            
             <td>
+                @item.Starttime.Value.ToShortDateString()
+                @item.Programstart.Value.ToShortTimeString()
+            </td>
 
-                <!--Visa ett pop-up-fönster-->
-                <a href="#descriptionModal" data-toggle="modal">Mer info</a>
+            <td>
+                @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                @*Visa ett pop-up-fönster*@
+                @*<a href="#descriptionModal" data-toggle="modal">Mer info</a>
                 <button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>
                 <div class="modal" id="descriptionModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-body">
-                                @{
-                                    Html.RenderAction("Details", new { id = item.Id });
-                                }
+                            <div class="modal-body">*@
+                                @*@{Html.RenderAction("Mer info", "Details", new { id = item.Id });
+                                }*@
+
+                            @*</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
                             </div>
-                            @*<div class="modal-footer">
-                        <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
-                    </div>*@
                         </div>
                     </div>
-                </div> 
-            </td>
+                </div>
+            </td>*@
         </tr>
-
     }
 
 </table>
+
+
 
