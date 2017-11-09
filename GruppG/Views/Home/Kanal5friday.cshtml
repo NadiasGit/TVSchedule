@@ -9,57 +9,42 @@
         <th>
             <p>Program</p>
         </th>
-
-        @*<th>
-                <p>Kanal</p>
-            </th>*@
-
         <th>
-            <p>Datum</p>
+            <p>Tid</p>
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Titel)
-            </td>
-
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Chanel)
-                </td>*@
+            <td> @item.Titel</td>
 
             <td>
-                @item.Starttime.Value.ToShortDateString()
-                @item.Programstart.Value.ToShortTimeString()
-
-            </td>
-            <td>
+                @*@item.Starttime.Value.ToShortDateString()*@
                 @item.Programstart.Value.ToShortTimeString()
             </td>
 
             <td>
+                @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                @*Visa ett pop-up-fönster*@
+                @*<a href="#descriptionModal" data-toggle="modal">Mer info</a>
+                    <button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>
+                    <div class="modal" id="descriptionModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body">*@
+                @*@{Html.RenderAction("Mer info", "Details", new { id = item.Id });
+                    }*@
 
-                <!--Visa ett pop-up-fönster-->
-                <a href="#descriptionModal" data-toggle="modal">Mer info</a>
-                <!--<button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>-->
-                <div class="modal" id="descriptionModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                @{
-                                    Html.RenderAction("Details", new { id = item.Id });
-                                }
+                @*</div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
+                                    </div>
+                                </div>
                             </div>
-                            @*<div class="modal-footer">
-                                    <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
-                                </div>*@
                         </div>
-                    </div>
-                </div>
-            </td>
+                    </td>*@
         </tr>
-                                    }
+    }
 
 </table>

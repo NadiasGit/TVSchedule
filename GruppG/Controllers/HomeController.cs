@@ -174,6 +174,48 @@ namespace GruppG.Controllers
 
             return PartialView(p.ToList());
         }
+        public ActionResult SVT2friday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == friday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2saturday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == saturday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2sunday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == sunday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2monday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == monday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2tuesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == tuesday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2wednesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == wednesday);
+
+            return PartialView(p.ToList());
+        }
         //--------------------
 
         //PartialView TV3
