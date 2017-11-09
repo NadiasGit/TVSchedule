@@ -23,6 +23,9 @@ namespace GruppG.Controllers
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
+        DateTime yesterday = DateTime.Today.Date.AddDays(-1);
+        DateTime today = DateTime.Today.Date.AddDays(1);
+        DateTime tomorrow = DateTime.Today.Date.AddDays(2);
 
         public ActionResult Index()
         {   
@@ -68,10 +71,11 @@ namespace GruppG.Controllers
             return PartialView(p.ToList());
         }
 
-        public ActionResult PartialViewSvt2()
+        public ActionResult SVT2()
         {
             U4Entities pwdb = new U4Entities();
-            DateTime date1 = DateTime.Today.AddDays(1);
+            // (-1) visar gårdagens program :)
+            DateTime date1 = DateTime.Today.AddDays(-1);
 
             var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == date1);
 
@@ -96,16 +100,22 @@ namespace GruppG.Controllers
             U4Entities pwdb = new U4Entities();
             var p = pwdb.Program.Where(Program => Program.Chanel == 4);
 
-            return View(p.ToList());
+            return PartialView(p.ToList());
         }
 
         public ActionResult Kanal5()
         {
             
             U4Entities pwdb = new U4Entities();
-            var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
+            var kanal5yd = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == yesterday);
+            var kanal5td = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == today);
+            var kanal5tm = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == tomorrow);
+            var kanal5datm = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == tomorrow);
+            //var kanal5 = pwdb.Program.Where(Program => Program.Chanel == 5);
+          
+            return PartialView(kanal5td.ToList());
 
-            return PartialView(kanal5.ToList());
+          
         }
 
 
@@ -123,6 +133,7 @@ namespace GruppG.Controllers
             }
             return PartialView(program);
         }
+        
 
         public ActionResult Datum(int? id)
         {

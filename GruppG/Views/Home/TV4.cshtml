@@ -15,7 +15,7 @@
         </th>*@
 
         <th>
-            <p>Datum & tid</p>
+            <p>Datum</p>
         </th>
     </tr>
 
@@ -31,7 +31,7 @@
             </td>*@
 
             <td>
-                @Html.DisplayFor(modelItem => item.Starttime)
+                @item.Starttime.Value.ToShortDateString()
             </td>
           
             <td>

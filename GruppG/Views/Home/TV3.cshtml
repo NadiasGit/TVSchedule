@@ -16,7 +16,7 @@
         </th>*@
 
         <th>
-            <p>Datum & tid</p>
+            <p>Datum</p>
         </th>
         
     </tr>
@@ -27,7 +27,7 @@
             
             <td> @item.Titel</td>
             
-            <td> @item.Starttime</td>
+            <td> @item.Starttime.Value.ToShortDateString()</td>
             
             @*<td>@Html.DisplayFor(modelItem => item.Chanel1.Name)</td>*@
             <td>

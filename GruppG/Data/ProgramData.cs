@@ -14,7 +14,7 @@ namespace GruppG.Data
         private U4Entities db = new U4Entities();
         private Person pr = new Person();
         Models.db.Program program = new Models.db.Program();
-        private DateTime selectedDates = new DateTime();
+        //private DateTime selectedDates = new DateTime();
         
 
 
@@ -100,11 +100,11 @@ namespace GruppG.Data
         //    {
         //        selectedDates.Add(date);
         //    }
-           
+
 
         //}
 
-    
+
 
 
 

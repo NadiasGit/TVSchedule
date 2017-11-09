@@ -24,5 +24,6 @@ namespace GruppG.Models.db
     
         public virtual Category Category1 { get; set; }
         public virtual Chanel Chanel1 { get; set; }
+
     }
 }

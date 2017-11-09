@@ -16,9 +16,11 @@
         </th>*@
 
         <th>
-            <p>Datum & tid</p>
+            <p>Datum</p>
         </th>
-
+        <th>
+            <p>Tid</p>
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -27,13 +29,13 @@
 
             <td> @item.Titel</td>
 
-            <td> @item.Starttime</td>
+            <td> @item.Starttime.Value.ToShortDateString()</td>
             
             <td>
 
                 <!--Visa ett pop-up-fönster-->
                 <a href="#descriptionModal" data-toggle="modal">Mer info</a>
-                <!--<button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>-->
+                <button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>
                 <div class="modal" id="descriptionModal">
                     <div class="modal-dialog">
                         <div class="modal-content">

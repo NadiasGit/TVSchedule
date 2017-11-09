@@ -296,7 +296,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Program\Index.cshtml" />
     <Content Include="Views\Program\Tableau.cshtml" />
-    <Content Include="Views\Home\PartialViewSvt2.cshtml" />
+    <Content Include="Views\Home\SVT2.cshtml" />
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Home\TV3.cshtml" />
