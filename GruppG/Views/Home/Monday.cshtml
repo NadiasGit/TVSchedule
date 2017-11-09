@@ -7,14 +7,11 @@
 <div class="jumbotron">
     <h4>Nyhetspuffar</h4>
     <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 1</p>
+        @{
+            Html.RenderAction("PartialViewPuffs");
+        }
     </div>
-    <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 2</p>
-    </div>
-    <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 3</p>
-    </div>
+    
 </div>
 <div class="date">
  
