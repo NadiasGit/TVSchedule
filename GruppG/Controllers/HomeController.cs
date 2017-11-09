@@ -97,6 +97,11 @@ namespace GruppG.Controllers
             return View(thisDay.ToList());
         }
 
+        public ActionResult PartialViewPuffs()
+        {
+            var puff = pd.PuffPrograms();
+            return PartialView(puff);
+        }
         //------------------------------------------------------------
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4

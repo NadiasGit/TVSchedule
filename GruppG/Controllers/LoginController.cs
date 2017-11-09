@@ -46,7 +46,7 @@ namespace GruppG.Controllers
                 var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
                 if (user == null)
                 {
-                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+                    //pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
                     return View("LogIn");
                 }
                 else

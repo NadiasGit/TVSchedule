@@ -1,0 +1,11 @@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+          Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
+        </li>
+   </ul>
+
+}
