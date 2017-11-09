@@ -24,7 +24,7 @@ namespace GruppG.Controllers
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
-        DateTime today = DateTime.Today.Date.AddDays(1);
+        DateTime today = DateTime.Today;
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
@@ -168,9 +168,7 @@ namespace GruppG.Controllers
         {
             U4Entities pwdb = new U4Entities();
             // (-1) visar gårdagens program :)
-            DateTime date1 = DateTime.Today.AddDays(-1);
-
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == date1);
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
 
             return PartialView(p.ToList());
         }
