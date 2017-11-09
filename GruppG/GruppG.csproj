@@ -339,6 +339,7 @@
     <Content Include="Views\Home\Kanal5wednesday.cshtml" />
     <Content Include="Views\Home\PartialViewPuffs.cshtml" />
     <Content Include="Views\Home\ProgramDetails.cshtml" />
+    <Content Include="Views\Home\AdminProgramEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

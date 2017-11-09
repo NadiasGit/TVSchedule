@@ -33,6 +33,9 @@
             <td> @item.Starttime.Value.ToShortDateString()</td>
 
             <td> @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null )</td>
+
+            <td> @Html.ActionLink("Redigera", "AdminProgramEdit", new { @id = item.Id }, null)</td>
+
             
             <td>
 

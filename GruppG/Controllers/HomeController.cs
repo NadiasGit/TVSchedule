@@ -115,11 +115,24 @@ namespace GruppG.Controllers
             return View(progEdit);
         }
 
+        [HttpPost]
+        public ActionResult AdminProgramEdit(Program prog)
+        {
+            //Ingen vy
+            using (U4Entities editProgram = new U4Entities())
+            {
+                editProgram.Program.Add(prog);
+                editProgram.SaveChanges();
+            }
+            return View();
+        }
+
         public ActionResult ProgramDetails(int id)
         {
             var progEdit = db.Program.Single(e => e.Id == id);
             return View(progEdit);
         }
+
 
         //[HttpPost]
         //public ActionResult PartialViewAdminPuffs()
