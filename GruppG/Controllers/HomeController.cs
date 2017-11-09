@@ -24,7 +24,7 @@ namespace GruppG.Controllers
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
-        DateTime today = DateTime.Today.Date.AddDays(1);
+        DateTime today = DateTime.Today;
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
@@ -88,9 +88,6 @@ namespace GruppG.Controllers
         {
             DateTime today = DateTime.Today.Date;
             var thisDay = db.Program.Where(x => x.Starttime == today);
-
-            //ViewBag.Message = "Här kan vi visa info om programmen";
-            //var model = channeldate.Today();
             
             //Lägg till en dag:
             //DateTime.Today.AddDays(1);
@@ -137,27 +134,107 @@ namespace GruppG.Controllers
        
 
         //------------------------------------------------------------
+        //------------------------------------------------------------
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
         public ActionResult SVT1()
         {
             U4Entities pwdb = new U4Entities();
-            DateTime date1 = DateTime.Today.AddDays(1);
-            
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == date1);
-            //.Where(p => p.Starttime.Equals("2017,11,08")
-            //var p = pwdb.Program.Where(Program => Program.Chanel == 1);
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == today);
 
             return PartialView(p.ToList());
         }
+        public ActionResult SVT1friday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == friday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT1saturday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == saturday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT1sunday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == sunday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT1monday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == monday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT1tuesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == tuesday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT1wednesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == wednesday);
+
+            return PartialView(p.ToList());
+        }
+        //-------------------------------------
 
         public ActionResult SVT2()
         {
             U4Entities pwdb = new U4Entities();
             // (-1) visar gårdagens program :)
-            DateTime date1 = DateTime.Today.AddDays(-1);
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
 
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == date1);
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2friday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == friday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2saturday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == saturday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2sunday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == sunday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2monday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == monday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2tuesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == tuesday);
+
+            return PartialView(p.ToList());
+        }
+        public ActionResult SVT2wednesday()
+        {
+            U4Entities pwdb = new U4Entities();
+            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == wednesday);
 
             return PartialView(p.ToList());
         }

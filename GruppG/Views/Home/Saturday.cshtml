@@ -1,25 +1,21 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
-<!--Gör om till lista (det är ingen skillnad, men lista är lättare att förstå :)-->
+
 @{
     ViewBag.Title = "Hem";
 }
 
+
 <div class="jumbotron">
     <h4>Nyhetspuffar</h4>
     <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 1</p>
+        @{
+            Html.RenderAction("PartialViewPuffs");
+        }
     </div>
-    <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 2</p>
-    </div>
-    <div class="nyhetspuff">
-        <p class="lead">Nyhetspuff 3</p>
-    </div>
+    
 </div>
 <div class="date">
-    @Html.ActionLink("   Igår   |", "Index", "Home")
     @Html.ActionLink("   Idag   |", "Index", "Home")
-    @Html.ActionLink("   2017-11-09   | ", "PartialViewSvt2", "Home")
     @Html.ActionLink("   Fredag   | ", "Friday", "Home")
     @Html.ActionLink("   Lördag   | ", "Saturday", "Home")
     @Html.ActionLink("   Söndag   | ", "Sunday", "Home")
@@ -36,7 +32,7 @@
         <h2>SVT1</h2>
 
         @{
-            Html.RenderAction("SVT1");
+            Html.RenderAction("SVT1saturday");
         }
 
     </div>
@@ -45,7 +41,7 @@
         <h2>SVT2</h2>
 
         @{
-            Html.RenderAction("SVT2");
+            Html.RenderAction("SVT2saturday");
         }
 
     </div>
