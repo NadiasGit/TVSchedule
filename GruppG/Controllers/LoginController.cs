@@ -43,7 +43,7 @@ namespace GruppG.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(LoginVM pers)
+        public ActionResult LogIn(Person pers)
         {
             using (U4Entities u4 = new U4Entities())
             {
@@ -166,15 +166,7 @@ namespace GruppG.Controllers
             }
         }
 
-        public ActionResult FavoritChannel()
-        {
-            //Visitor or admins page
-            //var myChannel = db.Chanel.Include(p => p.Name);
-            
-                return View();
-            
-            
-        }
+      
 
         [HttpPost]
         public ActionResult MyPage(FavoriteChannel favChan)
@@ -224,6 +216,12 @@ namespace GruppG.Controllers
 
         //}
 
+        public ActionResult PartialViewChannels()
+        {
+            var chan = ue.Chanel.Include(c => c.Name);
+            var chan1 = ue.Chanel;
+            return PartialView(chan1.ToList());
+        }
         public ActionResult PartialViewChannel()
         {
             var chan = ue.Chanel.Include(c => c.Name);

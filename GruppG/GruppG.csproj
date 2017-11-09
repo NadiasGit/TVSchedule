@@ -341,6 +341,7 @@
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />
     <Content Include="Views\Login\LogInAdmin.cshtml" />
+    <Content Include="Views\Login\PartialViewChannels.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

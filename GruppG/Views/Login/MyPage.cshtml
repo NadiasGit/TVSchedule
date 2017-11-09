@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GruppG.Models.db.Chanel>
+﻿@model IEnumerable<GruppG.Models.db.Person>
 @{
     ViewBag.Title = "Mina sidor";
     if (Session["Id"] == null)
@@ -14,17 +14,23 @@
 </p>
 
 <div>
-    @*@Html.DisplayNameFor(model => model.FirstName)*@
+    
+        @Html.DisplayNameFor(model => model.FirstName)
+    
 </div>
 
-<div>
-    @*@{
-        Html.RenderAction("PartialViewPerson()");
-    }*@
-   
+<div class="col-md-4">
+    
+    
+    @*@Html.ActionLink("Mer information", "PartialViewChannels", new { @id = item.Id }, null)*@
+     
+    
+
 </div>
 
-@foreach (var item in Model)
+
+
+@*@foreach (var item in Model)
 {
     <ul>
         <li>
@@ -33,7 +39,7 @@
       
     </ul>
 
-}
+}*@
 
 
 
