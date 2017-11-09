@@ -17,9 +17,7 @@
     </div>
 </div>
 <div class="date">
-    @Html.ActionLink("   Igår   |", "Index", "Home")
     @Html.ActionLink("   Idag   |", "Index", "Home")
-    @Html.ActionLink("   2017-11-09   | ", "PartialViewSvt2", "Home")
     @Html.ActionLink("   Fredag   | ", "Friday", "Home")
     @Html.ActionLink("   Lördag   | ", "Saturday", "Home")
     @Html.ActionLink("   Söndag   | ", "Sunday", "Home")
@@ -36,7 +34,7 @@
         <h2>SVT1</h2>
 
         @{
-            Html.RenderAction("SVT1");
+            Html.RenderAction("SVT1saturday");
         }
 
     </div>

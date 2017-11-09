@@ -347,6 +347,12 @@
     <Content Include="Views\Home\SVT2monday.cshtml" />
     <Content Include="Views\Home\SVT2tuesday.cshtml" />
     <Content Include="Views\Home\SVT2wednesday.cshtml" />
+    <Content Include="Views\Home\SVT1friday.cshtml" />
+    <Content Include="Views\Home\SVT1saturday.cshtml" />
+    <Content Include="Views\Home\SVT1sunday.cshtml" />
+    <Content Include="Views\Home\SVT1monday.cshtml" />
+    <Content Include="Views\Home\SVT1tuesday.cshtml" />
+    <Content Include="Views\Home\SVT1wednesday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
