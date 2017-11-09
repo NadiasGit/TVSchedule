@@ -326,6 +326,12 @@
     <Content Include="Views\Home\TV3monday.cshtml" />
     <Content Include="Views\Home\TV3tuesday.cshtml" />
     <Content Include="Views\Home\TV3wednesday.cshtml" />
+    <Content Include="Views\Home\TV4friday.cshtml" />
+    <Content Include="Views\Home\TV4saturday.cshtml" />
+    <Content Include="Views\Home\TV4sunday.cshtml" />
+    <Content Include="Views\Home\TV4monday.cshtml" />
+    <Content Include="Views\Home\TV4tuesday.cshtml" />
+    <Content Include="Views\Home\TV4wednesday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
