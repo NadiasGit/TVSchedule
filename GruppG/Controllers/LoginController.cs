@@ -9,7 +9,7 @@ using System.Data.Entity;
 using System.Net;
 using GruppG.Data;
 using GruppG.Models.db;
-
+using Microsoft.AspNet.Identity;
 
 namespace GruppG.Controllers
 {
@@ -59,6 +59,15 @@ namespace GruppG.Controllers
             }
         }
 
+        //chack user account/details
+        public ActionResult Details()
+        {
+            var userId = User.Identity.GetUserId();
+            //Person person = new Person();
+            //var personDetails = db.Person.Where(x => x.Id == userId);
+            return View(person);
+        }
+
 
         public ActionResult Register()
         {
@@ -76,6 +85,25 @@ namespace GruppG.Controllers
             }
             return View();
         }
+
+        public ActionResult MyFavotieChannel()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult MyFavotieChannel(FavoriteChannel favchan)
+        {
+            //Ingen vy
+            using (U4Entities myChannel = new U4Entities())
+            {
+                myChannel.FavoriteChannel.Add(favchan);
+                myChannel.SaveChanges();
+            }
+            return View();
+        }
+
+
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)
         //{
@@ -92,25 +120,49 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-        
+
         public ActionResult MyPage()
         {
             //Visitor or admins page
             //var myChannel = db.Chanel.Include(p => p.Name);
             if (Session["Id"] != null)
             {
-                return View();
+                var chan = db.Chanel;
+                return View(chan);
             }
             else
             {
                 return RedirectToAction("LogIn");
             }
+        }
+
+        public ActionResult FavoritChannel()
+        {
+            //Visitor or admins page
+            //var myChannel = db.Chanel.Include(p => p.Name);
+            
+                return View();
+            
             
         }
 
+        [HttpPost]
+        public ActionResult MyPage(FavoriteChannel favChan)
+        {
+            //Ingen vy
+            using (U4Entities newChannel = new U4Entities())
+            {
+                newChannel.FavoriteChannel.Add(favChan);
+                newChannel.SaveChanges();
+            }
+            return View();
+        }
+
+
+
         //public ActionResult PartialViewChannel()
         //{
-           
+
         //    //var myCh = db.Chanel.Include(m => m
         //    //return View(db.Chanel.ToList());
         //}

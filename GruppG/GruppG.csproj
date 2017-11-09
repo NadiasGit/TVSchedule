@@ -312,6 +312,9 @@
     <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Login\PartialViewChannel.cshtml" />
+    <Content Include="Views\Login\Details.cshtml" />
+    <Content Include="Views\Login\MyFavotieChannel.cshtml" />
+    <Content Include="Views\Login\FavoritChannel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
