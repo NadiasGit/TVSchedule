@@ -21,9 +21,9 @@ namespace GruppG.Models.db
         public Nullable<int> Category { get; set; }
         public Nullable<System.DateTime> Starttime { get; set; }
         public Nullable<System.DateTime> Endtime { get; set; }
+        public Nullable<int> Puff { get; set; }
     
         public virtual Category Category1 { get; set; }
         public virtual Chanel Chanel1 { get; set; }
-
     }
 }

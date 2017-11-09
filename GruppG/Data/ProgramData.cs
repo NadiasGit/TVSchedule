@@ -28,6 +28,13 @@ namespace GruppG.Data
             return true;
         }
 
+        public List<Models.db.Program> PuffPrograms()
+        {
+            var puff = db.Program.Where(p => p.Puff == 1);
+            return puff.ToList();
+        }
+
+
         ////Hämtar ett specifikt datum
         //public Program GetDate(DateTime? d)
         //{

@@ -337,6 +337,7 @@
     <Content Include="Views\Home\Kanal5monday.cshtml" />
     <Content Include="Views\Home\Kanal5tuesday.cshtml" />
     <Content Include="Views\Home\Kanal5wednesday.cshtml" />
+    <Content Include="Views\Home\PartialViewPuffs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

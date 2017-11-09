@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GruppG.Models.db.Person>
+﻿@model IEnumerable<GruppG.Models.db.Chanel>
 @{
     ViewBag.Title = "Mina sidor";
     if (Session["Id"] == null)
@@ -14,7 +14,7 @@
 </p>
 
 <div>
-    @Html.DisplayNameFor(model => model.FirstName)
+    @*@Html.DisplayNameFor(model => model.FirstName)*@
 </div>
 
 <div>
@@ -24,14 +24,17 @@
    
 </div>
 
-@*@foreach (var item in Model)
+@foreach (var item in Model)
 {
     <ul>
         <li>
             @Html.DisplayFor(modelItem => item.Name) <a>Lägg till som favoritkanal</a>
         </li>
+      
     </ul>
 
-}*@
+}
+
+
 
 
