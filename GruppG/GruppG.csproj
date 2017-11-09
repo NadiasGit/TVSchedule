@@ -320,6 +320,12 @@
     <Content Include="Views\Home\Wednesday.cshtml" />
     <Content Include="Views\Home\Thursday.cshtml" />
     <Content Include="Views\Home\Friday.cshtml" />
+    <Content Include="Views\Home\TV3friday.cshtml" />
+    <Content Include="Views\Home\TV3saturday.cshtml" />
+    <Content Include="Views\Home\TV3sunday.cshtml" />
+    <Content Include="Views\Home\TV3monday.cshtml" />
+    <Content Include="Views\Home\TV3tuesday.cshtml" />
+    <Content Include="Views\Home\TV3wednesday.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
