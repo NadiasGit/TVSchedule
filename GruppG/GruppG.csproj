@@ -306,7 +306,7 @@
     <Content Include="Views\Home\TV4.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Kanal5.cshtml" />
-    <Content Include="Views\Login\Admin.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Person\GetPerson.cshtml" />
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
     <Content Include="Views\Login\UserPage.cshtml" />
@@ -338,6 +338,7 @@
     <Content Include="Views\Home\Kanal5tuesday.cshtml" />
     <Content Include="Views\Home\Kanal5wednesday.cshtml" />
     <Content Include="Views\Home\PartialViewPuffs.cshtml" />
+    <Content Include="Views\Home\ProgramDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
