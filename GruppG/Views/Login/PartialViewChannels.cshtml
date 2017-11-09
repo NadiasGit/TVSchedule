@@ -1,0 +1,13 @@
+﻿@model IEnumerable<GruppG.Models.db.Chanel>
+
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            @Html.DisplayFor(modelItem => item.Name) <a>Lägg till som favoritkanal</a>
+        </li>
+    </ul>
+
+}
+
+

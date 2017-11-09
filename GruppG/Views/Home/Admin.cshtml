@@ -4,7 +4,7 @@
     ViewBag.Title = "Admin";
     if (Session["Id"] == null)
     {
-        Response.Redirect("~/Login/LogInAdmin");
+        Response.Redirect("~Login/LogInAdmin");
     }
 }
 
@@ -23,9 +23,7 @@
         <th>
             <p>Datum</p>
         </th>
-        <th>
-            <p>Tid</p>
-        </th>
+        
     </tr>
 
     @foreach (var item in Model)
@@ -41,26 +39,7 @@
             <td> @Html.ActionLink("Redigera", "AdminProgramEdit", new { @id = item.Id }, null)</td>
 
             
-            <td>
-
-                <!--Visa ett pop-up-fönster-->
-                <a href="#descriptionModal" data-toggle="modal">Mer info</a>
-                <button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>
-                <div class="modal" id="descriptionModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                @{
-                                    Html.RenderAction("Details", new { id = item.Id });
-                                }
-                            </div>
-                            @*<div class="modal-footer">
-                                    <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
-                                </div>*@
-                        </div>
-                    </div>
-                </div>
-            </td>
+            
         </tr>
 
                                     }

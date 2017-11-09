@@ -43,7 +43,7 @@ namespace GruppG.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(LoginVM pers)
+        public ActionResult LogIn(Person pers)
         {
             using (U4Entities u4 = new U4Entities())
             {
@@ -57,7 +57,6 @@ namespace GruppG.Controllers
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    //var p = ue.Person.Where(per => per.Id == user.Id);
                     return RedirectToAction("MyPage", "Login");
                 }
             }
@@ -153,111 +152,28 @@ namespace GruppG.Controllers
 
         public ActionResult MyPage()
         {
-            //Visitor or admins page
-            //var myChannel = db.Chanel.Include(p => p.Name);
-            if (Session["Id"] != null)
-            {
-                var chan = db.Chanel;
-                return View(chan);
-            }
-            else
-            {
-                return RedirectToAction("LogIn");
-            }
-        }
-
-        public ActionResult FavoritChannel()
-        {
-            //Visitor or admins page
-            //var myChannel = db.Chanel.Include(p => p.Name);
-            
-                return View();
-            
-            
-        }
-
-        [HttpPost]
-        public ActionResult MyPage(FavoriteChannel favChan)
-        {
-            //Ingen vy
-            using (U4Entities newChannel = new U4Entities())
-            {
-                newChannel.FavoriteChannel.Add(favChan);
-                newChannel.SaveChanges();
-            }
             return View();
         }
 
-
-
-        //public ActionResult PartialViewChannel()
-        //{
-
-        //    //var myCh = db.Chanel.Include(m => m
-        //    //return View(db.Chanel.ToList());
-        //}
-
-        public ActionResult UserPage(int id)
+        public ActionResult Userspage(int id)
         {
-            if (Session["Id"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("LogIn");
-            }
+            var progEdit = db.Person.Single(e => e.Id == id);
+            return View(progEdit);
         }
-
-        //public ActionResult PartialViewPerson(int id)
-        //{
-        //    var pers = pd.GetPersonById(id);
-        //    return PartialView();
-        //}
-
-        //if (ModelState.IsValid)
-        //{
-        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //pd.CheckUserCreadentials();
-
-        //}
-
-        public ActionResult PartialViewChannel()
+        
+        
+        public ActionResult PartialViewChannels()
         {
             var chan = ue.Chanel.Include(c => c.Name);
             var chan1 = ue.Chanel;
-            return View(chan1.ToList());
+            return PartialView(chan1.ToList());
         }
 
-        //[HttpPost]
-        //public ActionResult LoginAdmin(GruppG.Models.db.Person pers)
-        //{
-        //    using (U4Entities u4 = new U4Entities())
-        //    {
-        //        var ud = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-        //        if (ud == null)
-        //        {
-        //            pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-        //            return View("LogIn", pers);
-        //        }
-        //        else
-        //        {
-        //            Session["Id"] = ud.Id;
-        //            return RedirectToAction("MyPage", "Home");
-        //        }
-        //    }
+
+        
 
 
-        //if (ModelState.IsValid)
-        //{
-        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //pd.CheckUserCreadentials();
-
-        //    }
+        
     }
 }
 

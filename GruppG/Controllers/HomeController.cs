@@ -131,20 +131,7 @@ namespace GruppG.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult PartialViewAdminPuffs()
-        //{
-        //    //using (U4Entities newPerson = new U4Entities())
-        //    //{
-        //    //    newPerson.Person.Add();
-        //    //    newPerson.SaveChanges();
-        //    //}
-        //    return View();
-
-
-        //    //var puff = pd.PuffPrograms();
-        //    //return PartialView(puff);
-        //}
+       
 
         //------------------------------------------------------------
         //------------------------------------------------------------
