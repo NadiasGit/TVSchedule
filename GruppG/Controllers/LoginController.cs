@@ -35,27 +35,60 @@ namespace GruppG.Controllers
             return View();
         }
 
+        public ActionResult LogInAdmin()
+        {
+            //Log in
+
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Login(GruppG.Models.db.Person pers)
+        public ActionResult LogIn(LoginVM pers)
         {
             using (U4Entities u4 = new U4Entities())
             {
                 var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
                 if (user == null)
                 {
-                    //pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
                     return View("LogIn");
                 }
                 else
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    var p = ue.Person.Where(per => per.Id == user.Id);
-                    return RedirectToAction("MyPage", "Login", p);
+                    //var p = ue.Person.Where(per => per.Id == user.Id);
+                    return RedirectToAction("MyPage", "Login");
                 }
             }
         }
 
+        [HttpPost]
+        public ActionResult LogInAdmin(LoginVM pers)
+        {
+            using (U4Entities u4 = new U4Entities())
+            {
+                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password && pers.Role ==1).FirstOrDefault();
+
+                if(person.Role == 2)
+                {
+                    pers.LoginErrorMessage = "Du är ej behörig för denna sida";
+                    return View("LogInAdmin");
+                }
+                else if (user == null)
+                {
+                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+                    return View("LogInAdmin");
+                }
+                else
+                {
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    //var p = ue.Person.Where(per => per.Id == user.Id);
+                    return RedirectToAction("MyPage", "Login");
+                }
+            }
+        }
         //chack user account/details
         public ActionResult Details()
         {

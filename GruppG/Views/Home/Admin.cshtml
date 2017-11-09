@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Admin";
+    if (Session["Id"] == null)
+    {
+        Response.Redirect("~/Login/LogInAdmin");
+    }
 }
 
 <h2>Administrering av program</h2>
@@ -33,6 +37,9 @@
             <td> @item.Starttime.Value.ToShortDateString()</td>
 
             <td> @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null )</td>
+
+            <td> @Html.ActionLink("Redigera", "AdminProgramEdit", new { @id = item.Id }, null)</td>
+
             
             <td>
 
