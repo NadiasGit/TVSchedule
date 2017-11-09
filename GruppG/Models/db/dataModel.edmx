@@ -50,6 +50,7 @@
           <Property Name="Starttime" Type="datetime" />
           <Property Name="Endtime" Type="datetime" />
           <Property Name="Puff" Type="int" />
+          <Property Name="Programstart" Type="datetime" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -177,6 +178,7 @@
           <NavigationProperty Name="Category1" Relationship="Self.FK_Program_ToTable_1" FromRole="Program" ToRole="Category" />
           <NavigationProperty Name="Chanel1" Relationship="Self.FK_Program_ToTable" FromRole="Program" ToRole="Chanel" />
           <Property Name="Puff" Type="Int32" />
+          <Property Name="Programstart" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_Program_ToTable_1">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -304,6 +306,7 @@
           <EntitySetMapping Name="Program">
             <EntityTypeMapping TypeName="U4Model.Program">
               <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="Programstart" ColumnName="Programstart" />
                 <ScalarProperty Name="Puff" ColumnName="Puff" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Titel" ColumnName="Titel" />
