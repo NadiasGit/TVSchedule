@@ -4,7 +4,8 @@
 {
     <ul>
         <li>
-          Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
+            Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
+            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
         </li>
    </ul>
 

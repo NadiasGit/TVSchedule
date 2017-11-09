@@ -25,10 +25,7 @@ namespace GruppG.Controllers
         PersonData pd = new PersonData();
         private U4Entities db = new U4Entities();
 
-        public ActionResult Admin()
-        {
-            return View();
-        }
+        
 
 
         public ActionResult LogIn()

@@ -102,6 +102,40 @@ namespace GruppG.Controllers
             var puff = pd.PuffPrograms();
             return PartialView(puff);
         }
+
+        public ActionResult Admin()
+        {
+            var prog = db.Program;
+            return View(prog.ToList());
+        }
+
+        public ActionResult AdminProgramEdit(int id)
+        {
+            var progEdit = db.Program.Single(e => e.Id == id);
+            return View(progEdit);
+        }
+
+        public ActionResult ProgramDetails(int id)
+        {
+            var progEdit = db.Program.Single(e => e.Id == id);
+            return View(progEdit);
+        }
+
+        //[HttpPost]
+        //public ActionResult PartialViewAdminPuffs()
+        //{
+        //    //using (U4Entities newPerson = new U4Entities())
+        //    //{
+        //    //    newPerson.Person.Add();
+        //    //    newPerson.SaveChanges();
+        //    //}
+        //    return View();
+
+
+        //    //var puff = pd.PuffPrograms();
+        //    //return PartialView(puff);
+        //}
+
         //------------------------------------------------------------
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
