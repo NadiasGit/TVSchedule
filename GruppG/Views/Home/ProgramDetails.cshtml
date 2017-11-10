@@ -4,14 +4,14 @@
     ViewBag.Title = "ProgramDetails";
 }
 
-<h2>ProgramDetails</h2>
+<h3>Programdetaljer</h3>
 
 <div>
-    <h4>Program</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Titel)
+            @*@Html.DisplayNameFor(model => model.Titel)*@
+            <strong>Program</strong>
         </dt>
 
         <dd>
@@ -19,7 +19,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @*@Html.DisplayNameFor(model => model.Description)*@
+            <strong>Om programmet</strong>
         </dt>
 
         <dd>
@@ -27,16 +28,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Starttime)
+            @*@Html.DisplayNameFor(model => model.Programstart)*@
+            <strong>Datum & tid</strong>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Starttime)
+            @Html.DisplayFor(model => model.Programstart)
+            
+        </dd>
+        <dd><strong>-</strong>
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Endtime)
-        </dt>
+        </dt>*@
 
         <dd>
             @Html.DisplayFor(model => model.Endtime)
@@ -50,16 +55,17 @@
             @Html.DisplayFor(model => model.Puff)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Programstart)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Programstart)
-        </dd>
+        </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.Category1.Name)
+            @*@Html.DisplayNameFor(model => model.Category1.Name)*@
+            <strong>Kategori</strong>
         </dt>
 
         <dd>
@@ -67,7 +73,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Chanel1.Name)
+            @*@Html.DisplayNameFor(model => model.Chanel1.Name)*@
+            <strong>Kanal</strong>
         </dt>
 
         <dd>
@@ -77,6 +84,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @Html.ActionLink("Tillbaka", "Index")
 </p>
