@@ -23,6 +23,8 @@ namespace GruppG.Controllers
         PersonData personData = new PersonData();
         //Chanel channel = new Chanel();
         PersonData pd = new PersonData();
+        FavoriteChannel favC = new FavoriteChannel();
+        Chanel channel = new Chanel();
         private U4Entities db = new U4Entities();
 
         
@@ -43,7 +45,7 @@ namespace GruppG.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(Person pers)
+        public ActionResult LogIn(Person pers, int id)
         {
             using (U4Entities u4 = new U4Entities())
             {
@@ -57,7 +59,7 @@ namespace GruppG.Controllers
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("MyPage", "Login");
+                    return RedirectToAction("MyPage", "Login", new { @id = user.Id } );
                 }
             }
         }
@@ -115,23 +117,16 @@ namespace GruppG.Controllers
             return View();
         }
 
-        public ActionResult MyFavotieChannel()
+        
+
+        public ActionResult FavoriteChannel()
         {
-            return View();
+            var chan = ue.Chanel.Include(c => c.Name);
+            var chan1 = ue.Chanel;
+            return PartialView(chan1.ToList());
         }
 
-        [HttpPost]
-        public ActionResult MyFavotieChannel(FavoriteChannel favchan)
-        {
-            //Ingen vy
-            using (U4Entities myChannel = new U4Entities())
-            {
-                myChannel.FavoriteChannel.Add(favchan);
-                myChannel.SaveChanges();
-            }
-            return View();
-        }
-
+        
 
         //[HttpPost]
         //public ActionResult Login(LoginVM model, string ReturnUrl)

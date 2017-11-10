@@ -1,0 +1,43 @@
+﻿@model IEnumerable<GruppG.Models.db.Person>
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                <p>Person</p>
+            </th>
+
+            @*<th>
+                    <p>Kanal</p>
+                </th>*@
+
+            <th>
+                <p>Datum</p>
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td> @item.FirstName</td>
+
+                <td> @item.LastName</td>
+
+                <td> @Html.ActionLink("Mer information", "ProgramDetails", "MyPage", new { @id = item.Id }, null)</td>
+
+                <td> @Html.ActionLink("Redigera", "MyFavotieChannel", "MyPage", new { @id = item.Id }, null)</td>
+
+
+
+            </tr>
+
+        }
+
+    </table>
+
