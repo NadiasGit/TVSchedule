@@ -45,7 +45,7 @@ namespace GruppG.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogIn(Person pers, int id)
+        public ActionResult LogIn(Person pers)
         {
             using (U4Entities u4 = new U4Entities())
             {
@@ -53,13 +53,13 @@ namespace GruppG.Controllers
                 if (user == null)
                 {
                     pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-                    return View("LogIn");
+                    return View();
                 }
                 else
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("MyPage", "Login", new { @id = user.Id } );
+                    return RedirectToAction("MyPage", "Login", new { @id = user.Id});
                 }
             }
         }
@@ -145,9 +145,10 @@ namespace GruppG.Controllers
         //}
 
 
-        public ActionResult MyPage()
+        public ActionResult MyPage(int id)
         {
-            return View();
+            var pers = db.Person.Single(e => e.Id == id);
+            return View(pers);
         }
 
         public ActionResult Userspage(int id)
