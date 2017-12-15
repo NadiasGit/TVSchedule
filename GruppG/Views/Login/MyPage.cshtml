@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GruppG.Models.db.Person>
+﻿@model GruppG.Models.db.Person
 @{
     ViewBag.Title = "Mina sidor";
     if (Session["Id"] == null)
@@ -7,22 +7,50 @@
     }
 }
 
-<h2>MyPage</h2>
+<h2>Välkommen till mina sidor  @Model.FirstName @Model.LastName</h2>
 
-<p>
-    Welcome @Session["UserName"].ToString();
-</p>
+<h4>
+    
+</h4>
 
 <div>
-    
-        @*@Html.DisplayNameFor(model => model.FirstName)*@
-    
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <strong>Förnamn:</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            <strong>Efternamn</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            <strong>Användarnamn</strong>
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+
 </div>
+
 
 <div class="col-md-4">
     
     
-    @*@Html.ActionLink("Mer information", "PartialViewChannels", new { @id = item.Id }, null)*@
+    @Html.ActionLink("Våra kanaler", "Channels", "Channel")
      
     
 
