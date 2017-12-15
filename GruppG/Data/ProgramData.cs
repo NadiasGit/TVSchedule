@@ -36,6 +36,14 @@ namespace GruppG.Data
 
        
 
+        //Ny metod 15 dec. 2017
+        //Hämtar kanalen via en parameter, en början till att kunna ta bort alla partialViews :)
+        public List<Models.db.Program>Programs(int channel)
+        {
+            U4Entities u4 = new U4Entities();
+            var result = u4.Program.Where(c => c.Chanel == channel);
+            return result.ToList();
+        }
         
 
         //:::::HÄMTA DATUM-FÖRSÖK::::::::
