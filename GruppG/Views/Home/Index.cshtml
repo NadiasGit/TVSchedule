@@ -32,9 +32,10 @@
     <div class="col-md-4">
         <h2>SVT1</h2>
 
-        @{
+        @*@{
             Html.RenderAction("SVT1");
-        }
+        }*@
+        @Html.Action("_Channel", "Home", new { channel = 1 })
 
     </div>
 

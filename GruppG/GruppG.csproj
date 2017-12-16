@@ -372,6 +372,7 @@
     <Content Include="Views\MyPage\MyFavotieChannel.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
     <Content Include="Views\Channel\Channels.cshtml" />
+    <Content Include="Views\Home\_Channel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

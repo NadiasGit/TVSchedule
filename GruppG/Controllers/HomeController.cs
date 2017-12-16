@@ -134,6 +134,13 @@ namespace GruppG.Controllers
        
 
         //------------------------------------------------------------
+
+        //Nytt 16/12
+        public ActionResult _Channel (int channel)
+        {
+            var p = pd.GetChannel(channel);
+            return PartialView(p);
+        }
         //------------------------------------------------------------
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
