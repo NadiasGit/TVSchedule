@@ -35,17 +35,30 @@ namespace GruppG.Controllers
         DateTime wednesday = Convert.ToDateTime("11/15/2017");
         DateTime thursday = Convert.ToDateTime("11/16/2017");
         
+        //GAMLA INDEX
+        //public ActionResult Index()
+        //{
+        //    var d = pd.SortByDate(date);
+        //    return View(d);
+        //    //NYTT
+        //    var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
+        //    return View(program.ToList()); //ToList = linq /"Program" är inte klassen "Program"  
+        //    //------
 
-        public ActionResult Index()
-        {   
-            //NYTT
-            var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-            return View(program.ToList()); //ToList = linq /"Program" är inte klassen "Program"  
-            //------
+        //    //Gammal kod:
+        //    //return View(); 
+        //}
 
-            //Gammal kod:
-            //return View(); 
+        //NY INDEX:
+        public ActionResult Index(string date)
+        {
+            var d = pd.SortByDate(date);
+            return View(d);
+            
         }
+
+
+
         public ActionResult Friday()
         {
             return View();
@@ -136,9 +149,9 @@ namespace GruppG.Controllers
         //------------------------------------------------------------
 
         //Nytt 16/12
-        public ActionResult _Channel (int channel)
+        public ActionResult _Channel (int channel, DateTime date)
         {
-            var p = pd.GetChannel(channel);
+            var p = pd.GetChannel(channel, date);
             return PartialView(p);
         }
         //------------------------------------------------------------

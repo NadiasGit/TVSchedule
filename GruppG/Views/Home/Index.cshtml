@@ -15,7 +15,8 @@
     </div>
 </div>
 <div class="date">
-   
+    @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
+    @Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
     @Html.ActionLink("   Idag   |", "Index", "Home")
     @Html.ActionLink("   Fredag   | ", "Friday", "Home")
     @Html.ActionLink("   Lördag   | ", "Saturday", "Home")
@@ -35,7 +36,7 @@
         @*@{
             Html.RenderAction("SVT1");
         }*@
-        @Html.Action("_Channel", "Home", new { channel = 1 })
+        @Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
 
     </div>
 

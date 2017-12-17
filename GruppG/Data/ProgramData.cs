@@ -38,13 +38,87 @@ namespace GruppG.Data
 
         //Ny metod 15 dec. 2017
         //Hämtar kanalen via en parameter, en början till att kunna ta bort alla partialViews :)
-        public List<Models.db.Program>GetChannel(int channel)
+        public List<Models.db.Program>GetChannel(int channel, DateTime date)
         {
             U4Entities u4 = new U4Entities();
-            var result = u4.Program.Where(c => c.Chanel == channel);
+            //var result = u4.Program.Where(c => c.Chanel == channel);
+            var result = u4.Program.Where(Program => Program.Chanel == channel).Where(q => q.Starttime == date);
             return result.ToList();
         }
-        
+
+        //Metod som hämtar angiven kanal samt kontrollerar dag/datum.
+        public List<Models.db.Program> test(int channel, string date)
+        {
+            U4Entities u4 = new U4Entities();
+            var result = u4.Program.Where(Program => Program.Chanel == channel);
+            var programs = from s in result
+                           select s;
+            switch (date)
+            {
+                case "friday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/10/2017"));
+                    break;
+                case "saturday":
+                    programs = programs.OrderBy(s => s.Starttime == Convert.ToDateTime("11/11/2017"));
+                    break;
+                case "sunday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/12/2017"));
+                    break;
+                case "monday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/13/2017"));
+                    break;
+                case "tuesday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/14/2017"));
+                    break;
+                case "wednesday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/15/2017"));
+                    break;
+                case "thursday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/16/2017"));
+                    break;
+                default:
+                    programs = programs.OrderBy(s => s.Starttime == DateTime.Today);
+                    break;
+            }
+            return programs.ToList();
+        }
+
+        public List<Models.db.Program> SortByDate(string sortDate)
+        {
+                      
+            var programs = from s in db.Program
+                           select s;
+            switch (sortDate)
+            {
+                case "friday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/10/2017"));
+                    break;
+                case "saturday":
+                    programs = programs.OrderBy(s => s.Starttime == Convert.ToDateTime("11/11/2017"));
+                    break;
+                case "sunday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/12/2017"));
+                    break;
+                case "monday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/13/2017"));
+                    break;
+                case "tuesday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/14/2017"));
+                    break;
+                case "wednesday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/15/2017"));
+                    break;
+                case "thursday":
+                    programs = programs.OrderByDescending(s => s.Starttime == Convert.ToDateTime("11/16/2017"));
+                    break;
+                default:
+                    programs = programs.OrderBy(s => s.Starttime == DateTime.Today);
+                    break;
+            }
+            return programs.ToList();
+        }
+
+
 
         //:::::HÄMTA DATUM-FÖRSÖK::::::::
         public List<Models.db.Program> SVT1(DateTime sortBy)
