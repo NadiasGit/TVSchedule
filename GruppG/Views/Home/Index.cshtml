@@ -43,9 +43,10 @@
     <div class="col-md-4">
         <h2>SVT2</h2>
 
-        @{
+        @*@{
             Html.RenderAction("SVT2");
-        }
+        }*@
+        @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
     
     </div>
     <div class="col-md-4">

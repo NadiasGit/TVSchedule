@@ -23,24 +23,7 @@
 
             <td>
                 @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                @*Visa ett pop-up-fönster*@
-                @*<a href="#descriptionModal" data-toggle="modal">Mer info</a>
-                    <button class="btn btn-primary btn-sm" data-target="#descriptionModal" data-toggle="modal">Mer info</button>
-                    <div class="modal" id="descriptionModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">*@
-                @*@{Html.RenderAction("Mer info", "Details", new { id = item.Id });
-                    }*@
-
-                @*</div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" data-dissmiss="modal">Stäng</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </td>*@
+            </td>
         </tr>
     }
 
