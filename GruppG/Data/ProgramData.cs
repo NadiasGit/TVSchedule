@@ -118,7 +118,7 @@ namespace GruppG.Data
             return programs.ToList();
         }
 
-
+        //------------------------------------------------------------------------
 
         //:::::HÄMTA DATUM-FÖRSÖK::::::::
         public List<Models.db.Program> SVT1(DateTime sortBy)
