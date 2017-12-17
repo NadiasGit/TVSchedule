@@ -17,8 +17,8 @@ namespace GruppG
             //HomeController
             routes.MapRoute(
                 name: "Home",
-                url: "Hem/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "Hem",
+                defaults: new { controller = "Home", action = "Index" }
             );
 
             routes.MapRoute(
@@ -29,14 +29,14 @@ namespace GruppG
 
             routes.MapRoute(
                 name: "Contact",
-                url: "Hem/Kontakt/{id}",
-                defaults: new { controller = "Home", action = "Contact", id = UrlParameter.Optional }
+                url: "Kontakt",
+                defaults: new { controller = "Home", action = "Contact" }
             );
 
 
             routes.MapRoute(
                 name: "Programinfo",
-                url: "Hem/Programdetaljer/{title}",
+                url: "Programdetaljer/{title}",
                 defaults: new { controller = "Home", action = "ProgramDetails", title = "" }
             );
 
@@ -50,8 +50,8 @@ namespace GruppG
             //LoginController
             routes.MapRoute(
                 name: "LogIn",
-                url: "LoggaIn",
-                defaults: new { controller = "Login", action = "LogIn"}
+                url: "MinaSidor",
+                defaults: new { controller = "Login", action = "LogIn" }
             );
 
             routes.MapRoute(
