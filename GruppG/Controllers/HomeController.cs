@@ -36,7 +36,7 @@ namespace GruppG.Controllers
         DateTime wednesday = Convert.ToDateTime("11/15/2017");
         DateTime thursday = Convert.ToDateTime("11/16/2017");
         //-----------------------------------------------------------
-        
+
         //GAMLA INDEX
         //public ActionResult Index()
         //{
@@ -52,11 +52,15 @@ namespace GruppG.Controllers
         //}
 
         //NY INDEX:
-        public ActionResult Index(string date)
+        public ActionResult Index()
+        //public ActionResult Index(string date)
         {
-            var d = pd.SortByDate(date);
-            return View(d);
-            
+            //var d = pd.SortByDate(date);
+            //return View(d);
+            //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
+            var program = db.Program.Include(p => p.Chanel1);
+            return View(program.ToList());
+
         }
 
 

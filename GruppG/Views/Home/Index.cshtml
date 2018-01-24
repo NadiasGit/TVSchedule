@@ -32,6 +32,36 @@
 </div>
 
 <div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                <p>Program</p>
+            </th>
+            <th>
+                <p>Tid</p>
+            </th>
+            <th>
+                <p>Kanal</p>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @item.Titel</td>
+
+                <td>
+                    @item.Programstart.Value.ToShortTimeString()
+                </td>
+                <td>@item.Chanel1</td>
+
+                <td>
+                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                </td>
+            </tr>
+        }
+
+    </table>
 
     <div class="col-md-4">
         <h2>SVT1</h2>

@@ -190,6 +190,7 @@
     <Compile Include="Controllers\MyPageController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\ProgramController.cs" />
+    <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Data\ChannelData.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Data\ProgramData.cs" />
@@ -373,6 +374,11 @@
     <Content Include="Views\MyPage\Index.cshtml" />
     <Content Include="Views\Channel\Channels.cshtml" />
     <Content Include="Views\Home\_Channel.cshtml" />
+    <Content Include="Views\ProgramsC\Create.cshtml" />
+    <Content Include="Views\ProgramsC\Delete.cshtml" />
+    <Content Include="Views\ProgramsC\Details.cshtml" />
+    <Content Include="Views\ProgramsC\Edit.cshtml" />
+    <Content Include="Views\ProgramsC\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

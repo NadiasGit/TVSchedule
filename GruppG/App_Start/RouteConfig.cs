@@ -19,6 +19,7 @@ namespace GruppG
                 name: "Home",
                 url: "Hem",
                 defaults: new { controller = "Home", action = "Index" }
+                //Lägg till datum som id här?
             );
 
             routes.MapRoute(

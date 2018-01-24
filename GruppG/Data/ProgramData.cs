@@ -132,6 +132,14 @@ namespace GruppG.Data
             //return p = p.OrderBy(t => t.Starttime).ToList();
         }
 
+        //public List<Models.db.Program> ProgramsByChannel()
+        //{
+
+        //    var p = db.Program.Where(Program => Program.Chanel);
+            
+        //    return p.ToList();
+        //}
+
         public List<Models.db.Program> SVT2()
         {
             U4Entities pwdb = new U4Entities();
