@@ -225,45 +225,6 @@ namespace GruppG.Controllers
 
 
 
-
-        //----------------------------------------------------------
-        //Dessa kommer tas bort så fort datum-parametern fungerar! :)
-
-        public ActionResult Friday()
-        {
-            return View();
-        }
-        public ActionResult Saturday()
-        {
-            return View();
-        }
-        public ActionResult Sunday()
-        {
-            return View();
-        }
-        public ActionResult Monday()
-        {
-            return View();
-        }
-        public ActionResult Tuesday()
-        {
-            return View();
-        }
-        public ActionResult Wednesday()
-        {
-            return View();
-        }
-        public ActionResult Thursday()
-        {
-            return View();
-        }
-        //------------------------------------------------
-
-
-
-
-
-
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
         public ActionResult SVT1()
         {
@@ -272,48 +233,7 @@ namespace GruppG.Controllers
 
             return PartialView(p.ToList());
         }
-        public ActionResult SVT1friday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == friday);
 
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT1saturday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == saturday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT1sunday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == sunday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT1monday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == monday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT1tuesday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == tuesday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT1wednesday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == wednesday);
-
-            return PartialView(p.ToList());
-        }
         //-------------------------------------
 
         public ActionResult SVT2()
@@ -324,48 +244,7 @@ namespace GruppG.Controllers
 
             return PartialView(p.ToList());
         }
-        public ActionResult SVT2friday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == friday);
 
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT2saturday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == saturday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT2sunday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == sunday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT2monday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == monday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT2tuesday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == tuesday);
-
-            return PartialView(p.ToList());
-        }
-        public ActionResult SVT2wednesday()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == wednesday);
-
-            return PartialView(p.ToList());
-        }
         //--------------------
 
         //PartialView TV3
@@ -373,11 +252,8 @@ namespace GruppG.Controllers
         {
 
             U4Entities pwdb = new U4Entities();
-
-
             var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == friday);
             //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
-
             return PartialView(p.ToList());
         }
 
