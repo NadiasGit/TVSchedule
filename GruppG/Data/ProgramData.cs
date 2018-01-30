@@ -168,48 +168,6 @@ namespace GruppG.Data
         }
         
 
-        //Metod för att kontrollera vilket datum som valts
-        public int testDatum(string inp)
-        {
-            
-            U4Entities pwdb = new U4Entities();
-            DateTime date1 = DateTime.Today;
-            //DateTime date2 = Convert.ToDateTime();
-            var dateresult = db.Program.Where(q => q.Starttime == date1);
-
-            if (inp == "2017-11-12")
-            {
-                return 1;
-            }
-            else if (inp == "2017-11-12")
-            {
-                return 2;
-            }
-            else if (inp == "2017-11-13")
-            {
-                return 3;
-            }
-            else if (inp == "2017-11-13")
-            {
-                return 4;
-            }
-            else if (inp == "2017-11-14")
-            {
-                return 5;
-            }
-            else if (inp == "2017-11-15")
-            {
-                return 6;
-            }
-            else if (inp == "2017-11 -15")
-            {
-                return 7;
-            }
-            else
-            {
-                return 0;
-            }
-        }
 
 
         
