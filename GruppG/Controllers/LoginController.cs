@@ -37,31 +37,56 @@ namespace GruppG.Controllers
             return View();
         }
 
+      
+
+
+
+            [HttpPost]
+        public ActionResult Login(LoginVM model, string ReturnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
+                FormsAuthentication.SetAuthCookie(model.UserName, false);
+                //FormsAuthentication.SetAuthCookie(model.Password, false);
+                return Redirect(ReturnUrl);
+
+
+            }
+
+            return View();
+        }
+
+
+
+        //[HttpPost]
+        //public ActionResult LogIn(Person pers)
+        //{
+        //using (U4Entities u4 = new U4Entities())
+        //{
+        //    var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
+        //    if (user == null)
+        //    {
+        //        pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        Session["Id"] = user.Id;
+        //        Session["UserName"] = user.UserName.ToString();
+        //        return RedirectToAction("MyPage", "Login", new { @id = user.Id});
+        //    }
+
+
+        //}
+
+
+
         public ActionResult LogInAdmin()
         {
             //Log in
 
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult LogIn(Person pers)
-        {
-            using (U4Entities u4 = new U4Entities())
-            {
-                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-                if (user == null)
-                {
-                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-                    return View();
-                }
-                else
-                {
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("MyPage", "Login", new { @id = user.Id});
-                }
-            }
         }
 
         [HttpPost]
@@ -128,21 +153,6 @@ namespace GruppG.Controllers
 
         
 
-        //[HttpPost]
-        //public ActionResult Login(LoginVM model, string ReturnUrl)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //        FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //        return Redirect(ReturnUrl);
-
-
-        //    }
-
-        //    return View();
-        //}
 
 
         public ActionResult MyPage(int id)

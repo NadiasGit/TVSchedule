@@ -1,15 +1,16 @@
-﻿@*@model GruppG.Models.ViewModels.LoginVM*@
-@model GruppG.Models.db.Person
-    @{
-            ViewBag.Title = "Logga in till mina sidor/admin";
-        }
+﻿@model GruppG.Models.ViewModels.LoginVM 
 
-        <h2>Logga in på mina sidor</h2>
 
-        @* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s*@ 
+
+
+
+
+        
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post))
 {
+
+    //Html.AntiForgeryToken();   erik har med detta
 
     <div class="form-horizontal">
         <hr />
