@@ -1,16 +1,15 @@
 ﻿@model GruppG.Models.ViewModels.LoginVM 
 
 
+@{
+    ViewBag.Title = "Logga in";
+}
 
-
-
-
-        
-
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+@*"Login", "Login", FormMethod.Post)*@
+@using (Html.BeginForm())
 {
 
-    //Html.AntiForgeryToken();   erik har med detta
+    Html.AntiForgeryToken();  /* erik har med detta*/
 
     <div class="form-horizontal">
         <hr />

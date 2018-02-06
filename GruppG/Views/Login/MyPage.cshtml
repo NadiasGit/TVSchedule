@@ -1,10 +1,10 @@
 ﻿@model GruppG.Models.db.Person
 @{
     ViewBag.Title = "Mina sidor";
-    if (Session["Id"] == null)
-    {
-        Response.Redirect("~/Login/LogIn");
-    }
+    //if (Session["Id"] == null)
+    //{
+    //    Response.Redirect("~/Login/LogIn");
+    //}
 }
 
 <h2>Välkommen till mina sidor  @Model.FirstName @Model.LastName</h2>
