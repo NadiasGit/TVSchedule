@@ -16,6 +16,17 @@ namespace GruppG.Models
         public int Channel { get; set; }  //Foreign Key)
         public bool Recommend { get; set; }
 
+        /* 2018-02-06 To do:
+        Starttime
+        Endtime
+        Programstart
+
+        Red ut om vi behöver alla tre. Lägg därefter in properties här i Program (model)...
+        Det som vi vill visa i Index är:
+
+        Programtitel / Tid / Kanal (mer info) */
+
+
 
         //Properties (information) som ska vara med enl upg (samma som i upg 3)   Du får gärna döpa om till bättre namn om du vill :D
         //    *Titel/namn/program

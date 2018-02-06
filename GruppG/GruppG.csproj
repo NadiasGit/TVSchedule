@@ -313,14 +313,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Program\Index.cshtml" />
     <Content Include="Views\Program\Tableau.cshtml" />
-    <Content Include="Views\Home\SVT2.cshtml" />
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
-    <Content Include="Views\Home\TV3.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Login\MyPage.cshtml" />
     <Content Include="Views\Home\SVT1.cshtml" />
-    <Content Include="Views\Home\TV4.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Kanal5.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
@@ -329,7 +326,6 @@
     <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
     <Content Include="Views\Login\PartialViewChannel.cshtml" />
-    <Content Include="Views\Home\Wednesday.cshtml" />
     <Content Include="Views\Home\PartialViewPuffs.cshtml" />
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />

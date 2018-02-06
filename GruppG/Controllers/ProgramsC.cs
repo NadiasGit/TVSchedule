@@ -10,6 +10,7 @@ using GruppG.Models.db;
 
 namespace GruppG.Controllers
 {
+    //Skapad med hjälp av entity-framework
     public class ProgramsC : Controller
     {
         private U4Entities db = new U4Entities();
