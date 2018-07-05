@@ -36,20 +36,16 @@ namespace GruppG.Controllers
 
             return View();
         }
-
-      
-
-
-
-            [HttpPost]
-        public ActionResult Login(LoginVM model, string ReturnUrl)
+        
+        [HttpPost]
+        public ActionResult LogIn(LoginVM model/*, string ReturnUrl*/)
         {
             if (ModelState.IsValid)
             {
-                //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-                FormsAuthentication.SetAuthCookie(model.UserName, false);
-                //FormsAuthentication.SetAuthCookie(model.Password, false);
-                return Redirect(ReturnUrl);
+                ////Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
+                //FormsAuthentication.SetAuthCookie(model.UserName, false);
+                ////FormsAuthentication.SetAuthCookie(model.Password, false);
+                //return Redirect(ReturnUrl);
 
 
             }
@@ -154,7 +150,7 @@ namespace GruppG.Controllers
         
 
 
-
+        [Authorize]
         public ActionResult MyPage(int id)
         {
             var pers = db.Person.Single(e => e.Id == id);
