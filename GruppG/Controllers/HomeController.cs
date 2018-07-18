@@ -29,27 +29,10 @@ namespace GruppG.Controllers
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
-        DateTime saturday = Convert.ToDateTime("11/11/2017");
-        DateTime sunday = Convert.ToDateTime("11/12/2017");
-        DateTime monday = Convert.ToDateTime("11/13/2017");
-        DateTime tuesday = Convert.ToDateTime("11/14/2017");
-        DateTime wednesday = Convert.ToDateTime("11/15/2017");
-        DateTime thursday = Convert.ToDateTime("11/16/2017");
-        //-----------------------------------------------------------
+        
+      
 
-        //GAMLA INDEX
-        //public ActionResult Index()
-        //{
-        //    var d = pd.SortByDate(date);
-        //    return View(d);
-        //    //NYTT
-        //    var program = db.Program.Include(p => p.Chanel1).Include(p => p.Category1);
-        //    return View(program.ToList()); //ToList = linq /"Program" är inte klassen "Program"  
-        //    //------
-
-        //    //Gammal kod:
-        //    //return View(); 
-        //}
+        
 
         //NY INDEX:
         public ActionResult Index()
@@ -252,7 +235,7 @@ namespace GruppG.Controllers
         {
 
             U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == friday);
+            var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
             //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
             return PartialView(p.ToList());
         }
