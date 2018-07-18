@@ -23,7 +23,7 @@ namespace GruppG.Controllers
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
 
-        //Dessa kommer att tas bort när adtumparametern fungerar
+        //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
         DateTime today = DateTime.Today;
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
