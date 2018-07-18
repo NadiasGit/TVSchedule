@@ -71,6 +71,7 @@ namespace GruppG.Controllers
             return PartialView(puff);
         }
 
+        //Flytta Admin till en egen controller? 18/7-2018
         public ActionResult Admin()
         {
             var prog = db.Program;
@@ -94,6 +95,8 @@ namespace GruppG.Controllers
             }
             return View();
         }
+        //---------------------------------------------------------------
+
 
         public ActionResult ProgramDetails(int id)
         {
@@ -156,58 +159,6 @@ namespace GruppG.Controllers
 
 
 
-
-
-
-        //[HttpPost]
-        //public ActionResult Login(LoginVM model, string ReturnUrl)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //        FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //        return Redirect(ReturnUrl);
-
-
-        //    }
-
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Login(GruppG.Models.db.Person pers)
-        //{
-        //    using (U4Entities u4 = new U4Entities())
-        //    {
-        //        var ud = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-        //        if (ud == null)
-        //        {
-        //            pers.Password = "Du har angett fel användarnamn eller lösenord";
-        //            return View("Index", pers);
-        //        }
-        //    }
-
-
-
-        //    return View();
-
-        //if (ModelState.IsValid)
-        //{
-        //Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //FormsAuthentication.SetAuthCookie(model.Password, false);
-        //pd.CheckUserCreadentials();
-
-        //}
-
-        //    return View();
-        //}
-
-
-
-
-
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
         public ActionResult SVT1()
         {
@@ -236,7 +187,7 @@ namespace GruppG.Controllers
 
             U4Entities pwdb = new U4Entities();
             var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
-            //Program SVT1 = pwdb.Program.Where(Program => Program.Chanel == 1);
+          
             return PartialView(p.ToList());
         }
 
