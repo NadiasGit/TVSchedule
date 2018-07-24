@@ -26,7 +26,7 @@ namespace GruppG.Models
 
         Programtitel / Tid / Kanal (mer info) */
 
-
+        
 
         //Properties (information) som ska vara med enl upg (samma som i upg 3)   Du får gärna döpa om till bättre namn om du vill :D
         //    *Titel/namn/program
