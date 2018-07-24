@@ -41,7 +41,8 @@ namespace GruppG.Controllers
             //var d = pd.SortByDate(date);
             //return View(d);
             //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
-            var program = db.Program.Include(p => p.Chanel1);
+            //var program = db.Program.Include(p => p.Chanel1);
+            var program = db.Program;
             return View(program.ToList());
 
         }

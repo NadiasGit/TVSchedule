@@ -46,9 +46,9 @@
                 <td> @item.Titel</td>
 
                 <td>
-                    @*@item.Programstart.Value.ToShortTimeString()*@
+                    @item.Programstart.Value.ToShortTimeString()
                 </td>
-                <td>@item.Chanel1</td>
+                <td>@item.Chanel</td>
 
                 <td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
