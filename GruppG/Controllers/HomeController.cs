@@ -30,9 +30,6 @@ namespace GruppG.Controllers
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
         
-      
-
-        
 
         //NY INDEX:
         public ActionResult Index()

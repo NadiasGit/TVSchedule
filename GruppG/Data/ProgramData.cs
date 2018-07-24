@@ -34,7 +34,8 @@ namespace GruppG.Data
             return puff.ToList();
         }
 
-       
+      
+
 
         //Ny metod 15 dec. 2017
         //Hämtar kanalen via en parameter, en början till att kunna ta bort alla partialViews :)
