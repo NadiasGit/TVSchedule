@@ -11,7 +11,8 @@ namespace GruppG.Models.ViewModels
     {
         private U4Entities db = new U4Entities();
 
-        public IEnumerable<Program> Program { get; set; }
+        public IEnumerable<db.Program> Program { get; set; }
+        public IEnumerable<db.Chanel> Channel { get; set; }
 
         List<string> Channels = new List<string>();
         

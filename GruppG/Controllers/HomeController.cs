@@ -22,6 +22,7 @@ namespace GruppG.Controllers
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
+        private ProgramChannelVM programChannelVM = new ProgramChannelVM();
 
         //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
@@ -29,6 +30,7 @@ namespace GruppG.Controllers
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
+
         
 
         //NY INDEX:
@@ -39,9 +41,11 @@ namespace GruppG.Controllers
             //return View(d);
             //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
             //var program = db.Program.Include(p => p.Chanel1);
-            var program = db.Program;
-            return View(program.ToList());
+            //var program = db.Program;
+            //return View(program.ToList());
+            programChannelVM.Program = db.Program;
 
+            
         }
 
 
