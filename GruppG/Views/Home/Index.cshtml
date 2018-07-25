@@ -1,5 +1,6 @@
-﻿@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>
-
+﻿@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+ 
+@model GruppG.Models.ViewModels.ProgramChannelVM
 @{
     ViewBag.Title = "Hem";
 }
@@ -26,6 +27,18 @@
     
 </div>
 
+<div>
+    <h4> Filtrering </h4>
+    <div class="list-group">
+        @Html.ActionLink("Alla", "Index", null, new { })
+        @foreach (var item in Model.Channel)
+        {
+            @Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })
+        }
+    </div>
+</div>
+
+
 <div class="row">
     <table class="table">
         <tr>
@@ -40,7 +53,7 @@
             </th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Program)
         {
             <tr>
                 <td> @item.Titel</td>
@@ -50,6 +63,9 @@
                 </td>
                 <td>@item.Chanel</td>
 
+                <td>
+                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                </td>
                 <td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
                 </td>

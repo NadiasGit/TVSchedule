@@ -23,6 +23,8 @@ namespace GruppG.Controllers
         private Person person = new Person();
         private ChannelData channeldate = new ChannelData();
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
+        private Repository<Program> ProgramRepository = new Repository<Program>();
+        private Repository<Chanel> ChannelRepository = new Repository<Chanel>();
 
         //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
@@ -34,7 +36,7 @@ namespace GruppG.Controllers
         
 
         //NY INDEX:
-        public ActionResult Index()
+        public ActionResult Index(int? Channel = null)
         //public ActionResult Index(string date)
         {
             //var d = pd.SortByDate(date);
@@ -43,9 +45,24 @@ namespace GruppG.Controllers
             //var program = db.Program.Include(p => p.Chanel1);
             //var program = db.Program;
             //return View(program.ToList());
-            programChannelVM.Program = db.Program;
+            List<Program> programList;
+            List<Chanel> channelList = ChannelRepository.Collection().ToList();
 
-            
+            if (Channel == null)
+            {
+                throw new Exception("Nothing to show today :( ... ");           //Fundera ut något bra!
+            }
+            else
+            {
+                programList = ProgramRepository.Collection().Where(p => p.Chanel == Channel).ToList();
+                programChannelVM.Program = db.Program;
+            }
+
+            ProgramChannelVM viewModel = new ProgramChannelVM();
+            viewModel.Program = programList;
+            viewModel.Channel = channelList;
+
+            return View(viewModel);
         }
 
 

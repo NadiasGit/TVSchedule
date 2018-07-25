@@ -15,7 +15,18 @@ namespace GruppG.Data
         public Repository()
         {
             className = typeof(PlaceHolder).Name;  //Hämtar klassens riktiga namn
-            
+            items = cache[className] as List<PlaceHolder>;
+            if (items == null)
+            {
+                items = new List<PlaceHolder>();
+            }
         }
+
+        public IQueryable<PlaceHolder> Collection()
+        {
+            return items.AsQueryable();
+        }
+
+
     }
 }

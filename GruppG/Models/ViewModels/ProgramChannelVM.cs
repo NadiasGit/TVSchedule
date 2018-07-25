@@ -14,7 +14,7 @@ namespace GruppG.Models.ViewModels
         public IEnumerable<db.Program> Program { get; set; }
         public IEnumerable<db.Chanel> Channel { get; set; }
 
-        List<string> Channels = new List<string>();
+        //List<string> Channels = new List<string>();
         
    
 	
