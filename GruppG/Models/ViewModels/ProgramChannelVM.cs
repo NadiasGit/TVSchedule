@@ -15,8 +15,16 @@ namespace GruppG.Models.ViewModels
         public IEnumerable<db.Chanel> Channel { get; set; }
 
         //List<string> Channels = new List<string>();
-        
-   
-	
+
+        //public List<Program> GetChannelPrograms(string channel)
+        //{
+        //    U4Entities u4 = new U4Entities();
+        //    //var result = u4.Program.Where(c => c.Chanel == channel);
+        //    var result = u4.Program.Where(Program => Program.Chanel.ToString() == channel);
+        //    return result.ToList();
+        //}
+
+
+
     }
 }

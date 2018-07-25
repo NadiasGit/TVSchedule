@@ -1,6 +1,7 @@
-﻿@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+﻿@model IEnumerable<GruppG.Models.db.Program>
+@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
  
-@model GruppG.Models.ViewModels.ProgramChannelVM
+@*@model GruppG.Models.ViewModels.ProgramChannelVM*@
 @{
     ViewBag.Title = "Hem";
 }
@@ -13,9 +14,9 @@
     @*foreach i in puffs
         <div class="col-md-4"></div>*@
         
-        @{
+        @*@{
             Html.RenderAction("PartialViewPuffs");
-        }
+        }*@
     </div>
 </div>
 <div class="date">
@@ -27,7 +28,7 @@
     
 </div>
 
-<div>
+@*<div>
     <h4> Filtrering </h4>
     <div class="list-group">
         @Html.ActionLink("Alla", "Index", null, new { })
@@ -36,7 +37,7 @@
             @Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })
         }
     </div>
-</div>
+</div>*@
 
 
 <div class="row">
@@ -53,7 +54,7 @@
             </th>
         </tr>
 
-        @foreach (var item in Model.Program)
+        @foreach (var item in Model)
         {
             <tr>
                 <td> @item.Titel</td>
@@ -63,12 +64,12 @@
                 </td>
                 <td>@item.Chanel</td>
 
-                <td>
+                @*<td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
                 </td>
                 <td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                </td>
+                </td>*@
             </tr>
         }
 

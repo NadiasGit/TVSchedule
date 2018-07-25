@@ -28,11 +28,11 @@ namespace GruppG.Data
             return true;
         }
 
-        public List<Models.db.Program> PuffPrograms()
-        {
-            var puff = db.Program.Where(p => p.Puff == 1);
-            return puff.ToList();
-        }
+        //public List<Models.db.Program> PuffPrograms()
+        //{
+        //    var puff = db.Program.Where(p => p.Puff == 1);
+        //    return puff.ToList();
+        //}
 
       
 
@@ -46,6 +46,8 @@ namespace GruppG.Data
             var result = u4.Program.Where(Program => Program.Chanel == channel).Where(q => q.Starttime == date);
             return result.ToList();
         }
+
+       
 
         //Metod som hämtar angiven kanal samt kontrollerar dag/datum.
         public List<Models.db.Program> test(int channel, string date)

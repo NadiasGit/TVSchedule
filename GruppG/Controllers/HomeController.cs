@@ -25,6 +25,7 @@ namespace GruppG.Controllers
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
         private Repository<Program> ProgramRepository = new Repository<Program>();
         private Repository<Chanel> ChannelRepository = new Repository<Chanel>();
+        List<Program> programList;
 
         //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
@@ -36,33 +37,34 @@ namespace GruppG.Controllers
         
 
         //NY INDEX:
-        public ActionResult Index(int? Channel = null)
+        public ActionResult Index(string Channel = null)
         //public ActionResult Index(string date)
         {
             //var d = pd.SortByDate(date);
             //return View(d);
             //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
             //var program = db.Program.Include(p => p.Chanel1);
-            //var program = db.Program;
-            //return View(program.ToList());
-            List<Program> programList;
+            var program = db.Program;
+            return View(program.ToList());
+
             List<Chanel> channelList = ChannelRepository.Collection().ToList();
 
-            if (Channel == null)
-            {
-                throw new Exception("Nothing to show today :( ... ");           //Fundera ut något bra!
-            }
-            else
-            {
-                programList = ProgramRepository.Collection().Where(p => p.Chanel == Channel).ToList();
-                programChannelVM.Program = db.Program;
-            }
+            //if (Channel == null)
+            //{
+            //    ViewBag.Message = ("Nothing to show today :( ... ");           //Fundera ut något bra!
+            //}
+            //else
+            //{
+            //    programList = ProgramRepository.Collection().Where(p => p.Chanel.ToString() == Channel).ToList();
+            //    programChannelVM.Program = db.Program;
+            //}
+            //var program = db.Program.Where(p => p.Chanel.ToString() == Channel).ToList();
+            //var p = programChannelVM.GetChannelPrograms(Channel);
+            //ProgramChannelVM viewModel = new ProgramChannelVM();
+            //viewModel.Program = programList;
+            //viewModel.Channel = channelList;
 
-            ProgramChannelVM viewModel = new ProgramChannelVM();
-            viewModel.Program = programList;
-            viewModel.Channel = channelList;
-
-            return View(viewModel);
+            //return View(p);
         }
 
 
@@ -84,11 +86,11 @@ namespace GruppG.Controllers
             return View(thisDay.ToList());
         }
 
-        public ActionResult PartialViewPuffs()
-        {
-            var puff = pd.PuffPrograms();
-            return PartialView(puff);
-        }
+        //public ActionResult PartialViewPuffs()
+        //{
+        //    var puff = pd.PuffPrograms();
+        //    return PartialView(puff);
+        //}
 
         //Flytta Admin till en egen controller? 18/7-2018
         public ActionResult Admin()
