@@ -14,6 +14,7 @@ namespace GruppG.Data
         private U4Entities db = new U4Entities();
         private Person pr = new Person();
         Models.db.Program program = new Models.db.Program();
+        Chanel channel = new Chanel();
         //private DateTime selectedDates = new DateTime();
         
 
@@ -47,7 +48,15 @@ namespace GruppG.Data
             return result.ToList();
         }
 
-       
+        //public List<Chanel> GetChannels()
+        //{
+        //    U4Entities u4 = new U4Entities();
+           
+        //    var result = u4.Chanel;
+        //    return result.ToList();
+        //}
+
+
 
         //Metod som hämtar angiven kanal samt kontrollerar dag/datum.
         public List<Models.db.Program> test(int channel, string date)

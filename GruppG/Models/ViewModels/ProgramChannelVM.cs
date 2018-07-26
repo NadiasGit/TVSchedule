@@ -14,19 +14,29 @@ namespace GruppG.Models.ViewModels
         //public List<db.Program> Program { get; set; }
         
         //public IEnumerable<Chanel> Channels { get; set; }
-        public List<Chanel> ChannelListVM { get; set; }
-        public List<Program> ProgramListVM { get; set; }
+        public Chanel ChannelListVM { get; set; }
+        public Program ProgramVM { get; set; }
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
+        public List<Chanel> ChannelTest = new List<Chanel>();
 
-
-        public void GetChannelList()
+        public List<Program> GetPrograms()
         {
-            foreach (var item in ChannelListVM)
-            {
+            U4Entities u4 = new U4Entities();
 
-            }
+            var result = u4.Program;
+            return result.ToList();
+        }
+
+
+
+        public List<Chanel> GetChannels()
+        {
+            U4Entities u4 = new U4Entities();
+
+            var result = u4.Chanel;
+            return result.ToList();
         }
 
         //List<string> Channels = new List<string>();

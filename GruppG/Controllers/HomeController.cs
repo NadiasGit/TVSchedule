@@ -51,7 +51,12 @@ namespace GruppG.Controllers
             List<Program> Programs = new List<Program>();
             ProgramChannelVM viewModel = new ProgramChannelVM();
 
-            
+            //foreach (var item in viewModel.ChannelListVM)
+            //{
+            //    Channels.Add(item);
+            //}
+
+
             //foreach (var item in viewModel.ChannelListVM)
             //{
             //    Channels.Add(item);
@@ -60,15 +65,19 @@ namespace GruppG.Controllers
             //Channels.Add(c);
             //Programs.Add(p);
 
-            viewModel.ChannelListVM = Channels;
-            viewModel.ProgramListVM = Programs;
-            return View(viewModel);
+            var cp = viewModel.GetChannels();
+            //viewModel.ChannelListVM = Channels;
+            //viewModel.ProgramListVM = Programs;
+            //return View(cp);
 
 
             var program = db.Program;
+
+            var program1 = viewModel.GetPrograms();
+            var channels1 = viewModel.GetChannels();
            
             var programs = programChannelVM.Programs;
-            //return View(program.ToList());
+            return View(channels1);
 
             
 

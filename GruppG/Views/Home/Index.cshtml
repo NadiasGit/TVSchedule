@@ -1,8 +1,9 @@
 ﻿@*@model IEnumerable<GruppG.Models.db.Program>*@
+@model IEnumerable<GruppG.Models.db.Chanel>
 
 @*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
  
-@model GruppG.Models.ViewModels.ProgramChannelVM
+@*@model GruppG.Models.ViewModels.ProgramChannelVM*@
 @{
     ViewBag.Title = "Hem";
 }
@@ -61,7 +62,7 @@
             </th>
         </tr>
 
-        @foreach (var item in Model.ChannelListVM)
+        @foreach (var item in Model)
         {
             <tr>
                 <td> @item.Name</td>
@@ -86,24 +87,24 @@
             </th>
         </tr>
 
-        @foreach (var item in Model.ProgramListVM)
+        @*@foreach (var item in Model)
         {
             <tr>
                 <td> @item.Titel</td>
 
                 <td>
-               @*     @item.Programstart.Value.ToShortTimeString()*@
+                    @item.Programstart.Value.ToShortTimeString()
                 </td>
                 <td>@item.Chanel</td>
 
                 <td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
                 </td>
-                @*<td>
+                <td>
                     @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                </td>*@
+                </td>
             </tr>
-        }
+        }*@
 
     </table>
 
