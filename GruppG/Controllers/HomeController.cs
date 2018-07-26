@@ -37,7 +37,7 @@ namespace GruppG.Controllers
         
 
         //NY INDEX:
-        public ActionResult Index(string Channel = null)
+        public ActionResult Index()
         //public ActionResult Index(string date)
         {
             //var d = pd.SortByDate(date);
@@ -45,9 +45,11 @@ namespace GruppG.Controllers
             //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
             //var program = db.Program.Include(p => p.Chanel1);
             var program = db.Program;
+           
+            var programs = programChannelVM.Program;
             return View(program.ToList());
 
-            List<Chanel> channelList = ChannelRepository.Collection().ToList();
+            
 
             //if (Channel == null)
             //{
