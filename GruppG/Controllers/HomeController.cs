@@ -44,10 +44,30 @@ namespace GruppG.Controllers
             //return View(d);
             //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
             //var program = db.Program.Include(p => p.Chanel1);
+
+            Chanel c = new Chanel();
+            Program p = new Program();
+            List<Chanel> Channels = new List<Chanel>();
+            List<Program> Programs = new List<Program>();
+            ProgramChannelVM viewModel = new ProgramChannelVM();
+
+            //foreach (var item in viewModel.ChannelListVM)
+            //{
+            //    Channels.Add(item);
+            //}
+
+            //Channels.Add(c);
+            //Programs.Add(p);
+
+            viewModel.ChannelListVM = Channels;
+            viewModel.ProgramListVM = Programs;
+            return View(viewModel);
+
+
             var program = db.Program;
            
-            var programs = programChannelVM.Program;
-            return View(program.ToList());
+            var programs = programChannelVM.Programs;
+            //return View(program.ToList());
 
             
 
@@ -123,6 +143,7 @@ namespace GruppG.Controllers
 
         public ActionResult ProgramDetails(int id)
         {
+            //Lägg till ett felmeddelande/felhantering om program-id saknas
             var progEdit = db.Program.Single(e => e.Id == id);
             return View(progEdit);
         }

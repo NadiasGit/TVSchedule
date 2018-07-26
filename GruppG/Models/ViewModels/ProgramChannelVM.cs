@@ -13,10 +13,21 @@ namespace GruppG.Models.ViewModels
 
         //public List<db.Program> Program { get; set; }
         
-        public IEnumerable<Chanel> Channels { get; set; }
-        public IEnumerable<Program> Program { get; set; }
-        public Program Programs { get; set; }
+        //public IEnumerable<Chanel> Channels { get; set; }
+        public List<Chanel> ChannelListVM { get; set; }
+        public List<Program> ProgramListVM { get; set; }
 
+        public IEnumerable<Program> Programs { get; set; }
+        public Program Program { get; set; }
+
+
+        public void GetChannelList()
+        {
+            foreach (var item in ChannelListVM)
+            {
+
+            }
+        }
 
         //List<string> Channels = new List<string>();
 
