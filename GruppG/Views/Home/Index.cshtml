@@ -1,7 +1,7 @@
 ﻿@*@model IEnumerable<GruppG.Models.db.Program>*@
-@model IEnumerable<GruppG.Models.db.Chanel>
-
-@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+@*@model IEnumerable<GruppG.Models.db.Chanel>*@
+@*@model IEnumerable<GruppG.Models.db.U4Entities>*@
+@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>
  
 @*@model GruppG.Models.ViewModels.ProgramChannelVM*@
 @{
@@ -61,16 +61,22 @@
                 <p>Kanal</p>
             </th>
         </tr>
-
+        
+    @if (Model != null)
+    {
         @foreach (var item in Model)
         {
             <tr>
-                <td> @item.Name</td>
+                <td> @item.ChannelListVM.Name </td>
 
                
             </tr>
         }
-
+    }
+    else
+    {
+        <tr><td><h4>Tomt!</h4></td></tr>
+    }    
     </table>
 
 
@@ -86,25 +92,31 @@
                 <p>Kanal</p>
             </th>
         </tr>
-
-        @*@foreach (var item in Model)
+        @if (Model != null)
         {
-            <tr>
-                <td> @item.Titel</td>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> @item.ProgramVM.Titel</td>
 
-                <td>
-                    @item.Programstart.Value.ToShortTimeString()
-                </td>
-                <td>@item.Chanel</td>
+                    @*<td>
+                            @item.Programstart.Value.ToShortTimeString()
+                        </td>
+                        <td>@item.Chanel</td>
 
-                <td>
-                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                </td>
-                <td>
-                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                </td>
-            </tr>
-        }*@
+                        <td>
+                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                        </td>*@
+                </tr>
+            }
+        }
+       else
+        { 
+            <tr><td><h4>Tomt!</h4></td></tr>
+        }
 
     </table>
 

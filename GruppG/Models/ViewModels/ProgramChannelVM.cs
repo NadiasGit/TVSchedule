@@ -7,7 +7,7 @@ using System.Web.DynamicData;
 
 namespace GruppG.Models.ViewModels
 {
-    public class ProgramChannelVM
+    public class ProgramChannelVM : U4Entities
     {
         private U4Entities db = new U4Entities();
 

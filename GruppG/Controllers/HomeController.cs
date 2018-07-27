@@ -70,14 +70,15 @@ namespace GruppG.Controllers
             //viewModel.ProgramListVM = Programs;
             //return View(cp);
 
+            
 
             var program = db.Program;
 
             var program1 = viewModel.GetPrograms();
-            var channels1 = viewModel.GetChannels();
+            var program2 = viewModel.GetChannels();
            
             var programs = programChannelVM.Programs;
-            return View(channels1);
+            return View(program1.ToString(), program2.ToString());
 
             
 
