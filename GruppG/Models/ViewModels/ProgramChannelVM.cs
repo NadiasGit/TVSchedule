@@ -7,15 +7,15 @@ using System.Web.DynamicData;
 
 namespace GruppG.Models.ViewModels
 {
-    public class ProgramChannelVM : U4Entities
+    public class ProgramChannelVM
     {
         private U4Entities db = new U4Entities();
 
         //public List<db.Program> Program { get; set; }
         
         //public IEnumerable<Chanel> Channels { get; set; }
-        public Chanel ChannelListVM { get; set; }
-        public Program ProgramVM { get; set; }
+        public List<Chanel> ChannelListVM { get; set; }
+        public List<Program> ProgramListVM { get; set; }
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }

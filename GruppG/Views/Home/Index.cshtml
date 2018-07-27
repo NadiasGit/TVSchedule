@@ -1,7 +1,8 @@
 ﻿@*@model IEnumerable<GruppG.Models.db.Program>*@
 @*@model IEnumerable<GruppG.Models.db.Chanel>*@
 @*@model IEnumerable<GruppG.Models.db.U4Entities>*@
-@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>
+@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+@model GruppG.Models.ViewModels.ProgramChannelVM
  
 @*@model GruppG.Models.ViewModels.ProgramChannelVM*@
 @{
@@ -64,10 +65,10 @@
         
     @if (Model != null)
     {
-        @foreach (var item in Model)
+        foreach (var item in Model.ChannelListVM)
         {
             <tr>
-                <td> @item.ChannelListVM.Name </td>
+                <td> @item.Name </td>
 
                
             </tr>
@@ -77,6 +78,40 @@
     {
         <tr><td><h4>Tomt!</h4></td></tr>
     }    
+    </table>
+
+    <table class="table">
+        <tr>
+            <th>
+                <p>Program</p>
+            </th>
+            <th>
+                <p>Tid</p>
+            </th>
+            <th>
+                <p>Kanal</p>
+            </th>
+        </tr>
+
+        @if (Model != null)
+        {
+            foreach (var item in Model.ChannelListVM)
+            {
+                <tr>
+                    <td> @item.Name </td>
+                </tr>
+                foreach (var i in Model.ProgramListVM)
+                {
+                    <tr>
+                        <td> @i.Titel </td>
+                    </tr>
+                }
+            }
+        }
+        else
+        {
+            <tr><td><h4>Tomt!</h4></td></tr>
+        }
     </table>
 
 
@@ -94,12 +129,12 @@
         </tr>
         @if (Model != null)
         {
-            @foreach (var item in Model)
+            foreach (var item in Model.ProgramListVM)
             {
                 <tr>
-                    <td> @item.ProgramVM.Titel</td>
+                    <td> @item.Titel</td>
 
-                    @*<td>
+                    <td>
                             @item.Programstart.Value.ToShortTimeString()
                         </td>
                         <td>@item.Chanel</td>
@@ -108,8 +143,8 @@
                             @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
                         </td>
                         <td>
-                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                        </td>*@
+                            @*@Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)*@
+                        </td>
                 </tr>
             }
         }

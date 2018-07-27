@@ -57,10 +57,10 @@ namespace GruppG.Controllers
             //}
 
 
-            //foreach (var item in viewModel.ChannelListVM)
-            //{
-            //    Channels.Add(item);
-            //}
+            foreach (var item in viewModel.GetChannels())
+            {
+                Channels.Add(item);
+            }
 
             //Channels.Add(c);
             //Programs.Add(p);
@@ -76,9 +76,13 @@ namespace GruppG.Controllers
 
             var program1 = viewModel.GetPrograms();
             var program2 = viewModel.GetChannels();
+
+            ProgramChannelVM finalItem = new ProgramChannelVM();
+            finalItem.ChannelListVM = program2;
+            finalItem.ProgramListVM = program1;
            
             var programs = programChannelVM.Programs;
-            return View(program1.ToString(), program2.ToString());
+            return View(finalItem);
 
             
 
