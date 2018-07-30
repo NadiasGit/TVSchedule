@@ -92,28 +92,41 @@
                 <p>Kanal</p>
             </th>
         </tr>
-
+        </table>
+        
+    <div>
         @if (Model != null)
         {
+            
             foreach (var item in Model.ChannelListVM)
             {
-                <tr>
-                    <td> @item.Name </td>
-                </tr>
-                foreach (var i in Model.ProgramListVM)
-                {
-                    <tr>
-                        <td> @i.Titel </td>
-                    </tr>
-                }
+                <div class="col-md-4">
+                
+                    <h4> @item.Name </h4>
+                
+                    <div>
+                        <ul>
+                            @foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                            {
+
+
+                                <li> @i.Titel
+                            @*@Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)*@
+                            </li>
+
+                            }
+                        </ul>
+                    </div>   
+                </div>     
             }
+           
         }
         else
         {
             <tr><td><h4>Tomt!</h4></td></tr>
         }
-    </table>
 
+    </div>
 
     <table class="table">
         <tr>
