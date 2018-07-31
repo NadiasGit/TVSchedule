@@ -219,58 +219,58 @@ namespace GruppG.Controllers
 
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
-        public ActionResult SVT1()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == today);
+        //public ActionResult SVT1()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == today);
 
-            return PartialView(p.ToList());
-        }
+        //    return PartialView(p.ToList());
+        //}
 
         //-------------------------------------
 
-        public ActionResult SVT2()
-        {
-            U4Entities pwdb = new U4Entities();
-            // (-1) visar gårdagens program :)
-            var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
+        //public ActionResult SVT2()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    // (-1) visar gårdagens program :)
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
 
-            return PartialView(p.ToList());
-        }
+        //    return PartialView(p.ToList());
+        //}
 
         //--------------------
 
         //PartialView TV3
-        public ActionResult TV3()
-        {
+        //public ActionResult TV3()
+        //{
 
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
           
-            return PartialView(p.ToList());
-        }
+        //    return PartialView(p.ToList());
+        //}
 
         //--------------------------------------
 
         //PartialView TV4
-        public ActionResult TV4()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 4).Where(q => q.Starttime == today);
+        //public ActionResult TV4()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 4).Where(q => q.Starttime == today);
 
-            return PartialView(p.ToList());
-        }
+        //    return PartialView(p.ToList());
+        //}
        
         //--------------------------------------
 
         //PartialView Kanal5
-        public ActionResult Kanal5()
-        {
-            U4Entities pwdb = new U4Entities();
-            var p = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == today);
+        //public ActionResult Kanal5()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == today);
 
-            return PartialView(p.ToList());
-        }
+        //    return PartialView(p.ToList());
+        //}
 
  
 

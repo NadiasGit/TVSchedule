@@ -128,95 +128,57 @@
 
     </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                <p>Program</p>
-            </th>
-            <th>
-                <p>Tid</p>
-            </th>
-            <th>
-                <p>Kanal</p>
-            </th>
-        </tr>
-        @if (Model != null)
-        {
-            foreach (var item in Model.ProgramListVM)
-            {
-                <tr>
-                    <td> @item.Titel</td>
+    
 
-                    <td>
-                            @item.Programstart.Value.ToShortTimeString()
-                        </td>
-                        <td>@item.Chanel</td>
+    @*<div class="col-md-4">
+            <h2>SVT1</h2>
 
-                        <td>
-                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                        </td>
-                        <td>
-                            @*@Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)*@
-                        </td>
-                </tr>
+            @{
+                Html.RenderAction("SVT1");
             }
-        }
-       else
-        { 
-            <tr><td><h4>Tomt!</h4></td></tr>
-        }
+            @Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
 
-    </table>
+        </div>
 
-    <div class="col-md-4">
-        <h2>SVT1</h2>
+        <div class="col-md-4">
+            <h2>SVT2</h2>
 
-        @*@{
-            Html.RenderAction("SVT1");
-        }*@
-        @Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
+            @{
+                Html.RenderAction("SVT2");
+            }
+            @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
 
-    </div>
+        </div>
+        <div class="col-md-4">
+            <h2>TV3</h2>
 
-    <div class="col-md-4">
-        <h2>SVT2</h2>
 
-        @*@{
-            Html.RenderAction("SVT2");
-        }*@
-        @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
-    
-    </div>
-    <div class="col-md-4">
-        <h2>TV3</h2>
+            @{
+                Html.RenderAction("TV3");
+            }
 
-    
-        @*@{
-            Html.RenderAction("TV3");
-        }*@
-        
-    
-    </div>
-    
-    <div class="col-md-4">
-        <h2>TV4</h2>
-        
-    
-        @*@{
-            Html.RenderAction("TV4");
-        }*@
-    
-    </div>
-    <div class="col-md-4">
-        <h2>Kanal 5</h2>
-        
-    
-        @*@{
-            Html.RenderAction("Kanal5");
-        }*@
-    
-    </div>
-</div>
+
+        </div>
+
+        <div class="col-md-4">
+            <h2>TV4</h2>
+
+
+            @{
+                Html.RenderAction("TV4");
+            }
+
+        </div>
+        <div class="col-md-4">
+            <h2>Kanal 5</h2>
+
+
+            @{
+                Html.RenderAction("Kanal5");
+            }
+
+        </div>
+    </div>*@
 
 <footer>
     <p>&copy; @DateTime.Now.Year - Berglund & Dahlgren</p>

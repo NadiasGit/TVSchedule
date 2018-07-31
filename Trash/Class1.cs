@@ -68,5 +68,45 @@ namespace Trash
 
         //    return View();
         //}
+
+
+
+        //Hämtar alla program till Index-vyn
+    //    @*<table class="table">
+    //    <tr>
+    //        <th>
+    //            <p>Program</p>
+    //        </th>
+    //        <th>
+    //            <p>Tid</p>
+    //        </th>
+    //        <th>
+    //            <p>Kanal</p>
+    //        </th>
+    //    </tr>
+    //    @if(Model != null)
+    //    {
+    //        foreach (var item in Model.ProgramListVM)
+    //        {
+    //            < tr >
+    //                < td > @item.Titel </ td >
+
+    //                < td >
+    //                        @item.Programstart.Value.ToShortTimeString()
+    //                    </ td >
+    //                    < td > @item.Chanel </ td >
+
+    //                    < td >
+    //                        @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+    //                    </ td >
+    //            </ tr >
+    //        }
+    //    }
+    //   else
+    //    { 
+    //        <tr><td><h4>Tomt!</h4></td></tr>
+    //    }
+
+    //</table>*@
     }
 }
