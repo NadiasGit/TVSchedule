@@ -111,6 +111,7 @@
 
 
                                 <li> @i.Titel
+                            @*@i.Starttime*@
                             @Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)
                             </li>
 
@@ -123,7 +124,7 @@
         }
         else
         {
-            <tr><td><h4>Tomt!</h4></td></tr>
+            <h4>Tomt!</h4>
         }
 
     </div>
