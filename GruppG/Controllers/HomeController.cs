@@ -50,28 +50,14 @@ namespace GruppG.Controllers
             List<Chanel> Channels = new List<Chanel>();
             List<Program> Programs = new List<Program>();
             ProgramChannelVM viewModel = new ProgramChannelVM();
-
-            //foreach (var item in viewModel.ChannelListVM)
-            //{
-            //    Channels.Add(item);
-            //}
-
+            
 
             foreach (var item in viewModel.GetChannels())
             {
                 Channels.Add(item);
             }
 
-            //Channels.Add(c);
-            //Programs.Add(p);
-
             var cp = viewModel.GetChannels();
-            //viewModel.ChannelListVM = Channels;
-            //viewModel.ProgramListVM = Programs;
-            //return View(cp);
-
-            
-
             //var program = db.Program;
 
             var program = viewModel.GetPrograms();
@@ -86,30 +72,6 @@ namespace GruppG.Controllers
             ViewBag.Message = ("Inget på TV idag :( ... ");
 
             return View(finalItem);
-            
-           
-                
-               
-            
-
-            
-
-            //if (Channel == null)
-            //{
-            //    ViewBag.Message = ("Nothing to show today :( ... ");           //Fundera ut något bra!
-            //}
-            //else
-            //{
-            //    programList = ProgramRepository.Collection().Where(p => p.Chanel.ToString() == Channel).ToList();
-            //    programChannelVM.Program = db.Program;
-            //}
-            //var program = db.Program.Where(p => p.Chanel.ToString() == Channel).ToList();
-            //var p = programChannelVM.GetChannelPrograms(Channel);
-            //ProgramChannelVM viewModel = new ProgramChannelVM();
-            //viewModel.Program = programList;
-            //viewModel.Channel = channelList;
-
-            //return View(p);
         }
 
 
