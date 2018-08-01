@@ -19,7 +19,36 @@ namespace GruppG.Models.ViewModels
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
-        public List<Chanel> ChannelTest = new List<Chanel>();
+        public List<string> Dates { get; set; }
+        public DateTime Today { get; set; }
+
+        public ProgramChannelVM()
+        {
+            //Om vi/du vill ha aktuella datum
+            //DateTime today = DateTime.Now;
+            //Om vi vill se hårdkodade programmen
+            DateTime today = Convert.ToDateTime("2017-11-09"); 
+
+            Dates = new List<string>();
+            Dates.Add(today.ToShortDateString());
+            Dates.Add(today.AddDays(1).ToShortDateString());
+            Dates.Add(today.AddDays(2).ToShortDateString());
+            Dates.Add(today.AddDays(3).ToShortDateString());
+            Dates.Add(today.AddDays(4).ToShortDateString());
+            Dates.Add(today.AddDays(5).ToShortDateString());
+            Dates.Add(today.AddDays(6).ToShortDateString());
+
+
+            //Dates.Add(Today.ToShortDateString());
+            //Dates.Add(Today.AddDays(1).ToShortDateString());
+            //Dates.Add(Today.AddDays(2).ToShortDateString());
+            //Dates.Add(Today.AddDays(3).ToShortDateString());
+            //Dates.Add(Today.AddDays(4).ToShortDateString());
+            //Dates.Add(Today.AddDays(5).ToShortDateString());
+            //Dates.Add(Today.AddDays(6).ToShortDateString());
+
+        }
+
 
         public List<Program> GetPrograms()
         {

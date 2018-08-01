@@ -23,63 +23,33 @@
     </div>
 </div>
 <div class="date">
+    @foreach (var d in Model.Dates)
+    {
+
+         @Html.ActionLink(d, "Index") 
+        <&nbsp></&nbsp>
+
+
+
+    @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
+    }
+
     @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
     @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
-    @Html.ActionLink("   Idag   |", "Index", "Home")
-    @Html.ActionLink("   Fredag   | ", "Friday", "Home")
- *@
-    
-</div>
+        @Html.ActionLink("   Idag   |", "Index", "Home")
+        @Html.ActionLink("   Fredag   | ", "Friday", "Home")
+    *@
 
+</div>
 @*<div>
     <h4> Filtrering </h4>
     <div class="list-group">
     @Html.ActionLink("Alla", "Index", null, new { })
-    @foreach (var item in Model)
-    {
-        
-             @item.Channels
-        
-
-
-                @Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })
-                }
-    @*</div>
+    </div>
 </div>*@
 
 
 <div class="row">
-
-    <table class="table">
-        <tr>
-            <th>
-                <p>Program</p>
-            </th>
-            <th>
-                <p>Tid</p>
-            </th>
-            <th>
-                <p>Kanal</p>
-            </th>
-        </tr>
-        
-    @if (Model != null)
-    {
-        foreach (var item in Model.ChannelListVM)
-        {
-            <tr>
-                <td> @item.Name </td>
-
-               
-            </tr>
-        }
-    }
-    else
-    {
-        <tr><td><h4>Tomt!</h4></td></tr>
-    }    
-    </table>
-
     <table class="table">
         <tr>
             <th>
@@ -93,8 +63,7 @@
             </th>
         </tr>
         </table>
-        
-    <div>
+   
         @if (Model.ChannelListVM != null)
         {
 
