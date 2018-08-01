@@ -72,17 +72,25 @@ namespace GruppG.Controllers
 
             
 
-            var program = db.Program;
+            //var program = db.Program;
 
-            var program1 = viewModel.GetPrograms();
-            var program2 = viewModel.GetChannels();
+            var program = viewModel.GetPrograms();
+            var channel = viewModel.GetChannels();
 
             ProgramChannelVM finalItem = new ProgramChannelVM();
-            finalItem.ChannelListVM = program2;
-            finalItem.ProgramListVM = program1;
+            finalItem.ChannelListVM = channel;
+            finalItem.ProgramListVM = program;
            
+
             var programs = programChannelVM.Programs;
+            ViewBag.Message = ("Inget på TV idag :( ... ");
+
             return View(finalItem);
+            
+           
+                
+               
+            
 
             
 

@@ -95,9 +95,9 @@
         </table>
         
     <div>
-        @if (Model != null)
+        @if (Model.ChannelListVM != null)
         {
-            
+
             foreach (var item in Model.ChannelListVM)
             {
                 <div class="col-md-4">
@@ -106,30 +106,43 @@
                 
                     <div>
                         <ul>
-                            @foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
-                            {
+                            
+                            
+                                @if (!Model.ProgramListVM.Any())
+                                {
+                                    @ViewBag.Message
+                                }
+                                else
+                                {
+                                    foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                                    {
+                                        <li>
+                                            @i.Titel
+                                            @*@i.Starttime*@
+                                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)
+                                        </li>
 
+                                    }
+                                    
+                                }
+                            
 
-                                <li> @i.Titel
-                            @*@i.Starttime*@
-                            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)
-                            </li>
-
-                            }
                         </ul>
-                    </div>   
+                    </div> 
+                      
                 </div>     
+
+
             }
-           
         }
         else
         {
-            <h4>Tomt!</h4>
+            < h4 > Tomt!</ h4 >
         }
 
     </div>
 
-    
+
 
     @*<div class="col-md-4">
             <h2>SVT1</h2>
