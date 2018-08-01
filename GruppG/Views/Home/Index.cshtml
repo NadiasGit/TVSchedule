@@ -118,7 +118,7 @@
                                     {
                                         <li>
                                             @i.Titel
-                                            @*@i.Starttime*@
+                                            @i.Programstart.Value.ToShortTimeString()
                                             @Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)
                                         </li>
 
