@@ -34,39 +34,47 @@ namespace GruppG.Controllers
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
 
-        
+
+
+        //var d = pd.SortByDate(date);
+        //return View(d);
+        //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
+        //var program = db.Program.Include(p => p.Chanel1);
+        //Chanel c = new Chanel();
+        //Program p = new Program();
+        //var cp = viewModel.GetChannels();
+        //var program = db.Program;
+        //foreach (var item in viewModel.GetChannels())
+        //{
+        //    Channels.Add(item);
+        //}
+
 
         //NY INDEX:
         public ActionResult Index()
         //public ActionResult Index(string date)
         {
-            //var d = pd.SortByDate(date);
-            //return View(d);
-            //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
-            //var program = db.Program.Include(p => p.Chanel1);
-
-            Chanel c = new Chanel();
-            Program p = new Program();
             List<Chanel> Channels = new List<Chanel>();
             List<Program> Programs = new List<Program>();
             ProgramChannelVM viewModel = new ProgramChannelVM();
-            
 
-            foreach (var item in viewModel.GetChannels())
-            {
-                Channels.Add(item);
-            }
-
-            var cp = viewModel.GetChannels();
-            //var program = db.Program;
 
             var program = viewModel.GetPrograms();
             var channel = viewModel.GetChannels();
 
             ProgramChannelVM finalItem = new ProgramChannelVM();
+
+            //if (Today == null)
+            //{
+
             finalItem.ChannelListVM = channel;
             finalItem.ProgramListVM = program;
-           
+            //}
+            //else
+            //{
+
+            //}
+
 
             var programs = programChannelVM.Programs;
             ViewBag.Message = ("Inget på TV idag :( ... ");
