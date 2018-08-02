@@ -16,6 +16,7 @@ namespace GruppG.Models.ViewModels
         //public IEnumerable<Chanel> Channels { get; set; }
         public List<Chanel> ChannelListVM { get; set; }
         public List<Program> ProgramListVM { get; set; }
+        public List<Category> CategoryListVM { get; set; }
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
@@ -31,13 +32,13 @@ namespace GruppG.Models.ViewModels
             Today = Convert.ToDateTime("2017-11-09");
 
             Dates = new List<string>();
-            Dates.Add(Today.ToShortDateString());
-            Dates.Add(Today.AddDays(1).ToShortDateString());
-            Dates.Add(Today.AddDays(2).ToShortDateString());
-            Dates.Add(Today.AddDays(3).ToShortDateString());
-            Dates.Add(Today.AddDays(4).ToShortDateString());
-            Dates.Add(Today.AddDays(5).ToShortDateString());
-            Dates.Add(Today.AddDays(6).ToShortDateString());
+            Dates.Add(Today.ToString());
+            //Dates.Add(Today.AddDays(1).ToShortDateString());
+            //Dates.Add(Today.AddDays(2).ToShortDateString());
+            //Dates.Add(Today.AddDays(3).ToShortDateString());
+            //Dates.Add(Today.AddDays(4).ToShortDateString());
+            //Dates.Add(Today.AddDays(5).ToShortDateString());
+            //Dates.Add(Today.AddDays(6).ToShortDateString());
 
 
             //Dates.Add(Today.ToShortDateString());
@@ -59,6 +60,13 @@ namespace GruppG.Models.ViewModels
             return result.ToList();
         }
 
+        public List<Category> GetCategories()
+        {
+            U4Entities u4 = new U4Entities();
+
+            var result = u4.Category;
+            return result.ToList();
+        }
 
         public List<Program> GetDate(DateTime date)
         {
@@ -71,6 +79,14 @@ namespace GruppG.Models.ViewModels
             U4Entities u4 = new U4Entities();
 
             var result = u4.Chanel;
+            return result.ToList();
+        }
+
+        public List<Program> GetCategoriesTest(string Category)
+        {
+            U4Entities u4 = new U4Entities();
+
+            var result = u4.Program.Where(c => c.Category.ToString() == Category);
             return result.ToList();
         }
 

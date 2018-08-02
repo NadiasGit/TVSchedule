@@ -24,7 +24,7 @@
 </div>
 <div class="date">
     <h4>Filtrera på datum</h4>
-    <div class="list-group">
+    @*<div class="list-group">
         @Html.ActionLink("Alla dagar", "Index", null, new { })
         @foreach (var d in Model.Dates)
         {
@@ -32,16 +32,31 @@
             @Html.ActionLink(d, "Index", "Home", new { Today = d }, new { })
             <&nbsp></&nbsp>
 
-            @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
-        }
+            @Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })
+        }*@
     </div>
-    @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
-    @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
-        @Html.ActionLink("   Idag   |", "Index", "Home")
-        @Html.ActionLink("   Fredag   | ", "Friday", "Home")
-    *@
 
-</div>
+    <div class="date">
+        <h4>Filtrera på kategori</h4>
+        <div class="list-group">
+            @Html.ActionLink("Alla kategorier", "Index", null, new { })
+            @foreach (var d in Model.CategoryListVM)
+            {
+
+                @Html.ActionLink(d.Name, "Index", "Home", new { Category = d }, new { })
+                <&nbsp></&nbsp>
+
+                @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
+            }
+        </div>
+
+        @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
+        @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
+            @Html.ActionLink("   Idag   |", "Index", "Home")
+            @Html.ActionLink("   Fredag   | ", "Friday", "Home")
+        *@
+
+    </div>
 @*<div>
     <h4> Filtrering </h4>
     <div class="list-group">

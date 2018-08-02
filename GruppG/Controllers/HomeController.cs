@@ -33,7 +33,7 @@ namespace GruppG.Controllers
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
-       
+
 
 
         //var d = pd.SortByDate(date);
@@ -48,45 +48,60 @@ namespace GruppG.Controllers
         //{
         //    Channels.Add(item);
         //}
-
+        //List<Chanel> Channels = new List<Chanel>();
+        //List<Program> Programs = new List<Program>();
 
         //NY INDEX:
-        public ActionResult Index(DateTime? Today = null)
+        public ActionResult Index(string Category = null)
         //public ActionResult Index(string date)
         {
-            List<Chanel> Channels = new List<Chanel>();
-            List<Program> Programs = new List<Program>();
+            string Today = null;
+            
             ProgramChannelVM viewModel = new ProgramChannelVM();
-
+            ProgramChannelVM finalItem = new ProgramChannelVM();
+            //ProgramChannelVM categories = new ProgramChannelVM();
 
             //var program = viewModel.GetPrograms();
-            //var channel = viewModel.GetChannels();
-
-            ProgramChannelVM finalItem = new ProgramChannelVM();
-            var program = viewModel.GetPrograms();
             var channel = viewModel.GetChannels();
-            //finalItem.ChannelListVM = channel;
+            var program = viewModel.GetPrograms();
+            var cat = viewModel.GetCategories();
+
+            finalItem.ChannelListVM = channel;
             //finalItem.ProgramListVM = program;
+
+            if (Category == null)
+            {
+                finalItem.CategoryListVM = cat;
+            }
+            else
+            {
+                finalItem.ProgramListVM = viewModel.GetCategoriesTest(Category);
+        }
 
             if (Today == null)
             {
 
-            finalItem.ChannelListVM = channel;
-            finalItem.ProgramListVM = program;
+                // finalItem.ChannelListVM = channel;
+                program = viewModel.GetPrograms();
+                finalItem.ProgramListVM = program;
+                
 
             }
             else
             {
-                finalItem.ChannelListVM = channel;
-                finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
-                //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today);
+                //finalItem.ChannelListVM = channel;
+                //finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
+                //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today).ToList();
+                program = viewModel.GetPrograms().Where(q => q.Programstart.ToString() == Today).ToList();
+                finalItem.ProgramListVM = program;
+                
             }
 
-
-            var programs = programChannelVM.Programs;
-            ViewBag.Message = ("Inget på TV idag :( ... ");
-
+            //finalItem.ProgramListVM = program;
+            //var programs = programChannelVM.Programs;
+            //ViewBag.Message = ("Inget på TV idag :( ... ");
             return View(finalItem);
+
         }
 
 
