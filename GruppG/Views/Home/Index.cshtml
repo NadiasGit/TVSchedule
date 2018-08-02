@@ -23,15 +23,18 @@
     </div>
 </div>
 <div class="date">
-    @foreach (var d in Model.Dates)
-    {
+    <h4>Filtrera på datum</h4>
+    <div class="list-group">
+        @Html.ActionLink("Alla dagar", "Index", null, new { })
+        @foreach (var d in Model.Dates)
+        {
 
-         @Html.ActionLink(d, "Index") 
-        <&nbsp></&nbsp>
+            @Html.ActionLink(d, "Index",  null, new { Programstart =d }, new { } )
+            <&nbsp></&nbsp>
 
-    @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
-    }
-
+            @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
+        }
+    </div>
     @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
     @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
         @Html.ActionLink("   Idag   |", "Index", "Home")

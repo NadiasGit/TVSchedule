@@ -27,10 +27,11 @@ namespace GruppG.Models.ViewModels
             //Om vi/du vill ha aktuella datum
             //DateTime today = DateTime.Now;
             //Om vi vill se hårdkodade programmen
-            DateTime today = Convert.ToDateTime("2017-11-09"); 
+            DateTime today = Convert.ToDateTime("2017-11-09");
+            Today = Convert.ToDateTime("2017-11-09");
 
             Dates = new List<string>();
-            Dates.Add(today.ToShortDateString());
+            Dates.Add(Today.ToShortDateString());
             Dates.Add(today.AddDays(1).ToShortDateString());
             Dates.Add(today.AddDays(2).ToShortDateString());
             Dates.Add(today.AddDays(3).ToShortDateString());
