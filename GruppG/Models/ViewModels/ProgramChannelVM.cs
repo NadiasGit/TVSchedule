@@ -60,10 +60,9 @@ namespace GruppG.Models.ViewModels
         }
 
 
-        public List<Models.db.Program> GetDate(DateTime date)
+        public List<Program> GetDate(DateTime date)
         {
             U4Entities u4 = new U4Entities();
-            //var result = u4.Program.Where(c => c.Chanel == channel);
             var result = u4.Program.Where(q => q.Programstart == date);
             return result.ToList();
         }

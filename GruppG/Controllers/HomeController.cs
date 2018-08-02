@@ -51,7 +51,7 @@ namespace GruppG.Controllers
 
 
         //NY INDEX:
-        public ActionResult Index(string Today = null)
+        public ActionResult Index(DateTime? Today = null)
         //public ActionResult Index(string date)
         {
             List<Chanel> Channels = new List<Chanel>();
@@ -79,6 +79,7 @@ namespace GruppG.Controllers
             {
                 finalItem.ChannelListVM = channel;
                 finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
+                //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today);
             }
 
 
