@@ -52,7 +52,7 @@ namespace GruppG.Controllers
         //List<Program> Programs = new List<Program>();
 
         //NY INDEX:
-        public ActionResult Index(int? id = null)
+        public ActionResult Index(DateTime? date, int ? id = null )
         //public ActionResult Index(string date)
         {
             string Today = null;
@@ -64,9 +64,20 @@ namespace GruppG.Controllers
             //var program = viewModel.GetPrograms();
             var channel = viewModel.GetChannels();
             var program = viewModel.GetPrograms();
+            
             var progCategories = viewModel.GetPrograms();
             var cat = viewModel.GetCategories();
 
+            if (date == null)
+            {
+                finalItem.ProgramListVM = program;
+            }
+            else
+            {
+                var programDate = program.Where(d => d.Programstart == date).ToList();
+
+                finalItem.ProgramListVM = programDate;
+            }
             
             //finalItem.ProgramListVM = program;
 
@@ -76,8 +87,8 @@ namespace GruppG.Controllers
             }
             else
             {
-                progCategories = program.Where(c => c.Category == id).ToList();
-                finalItem.ProgramListVM = progCategories;
+                program = program.Where(c => c.Category == id).ToList();
+                finalItem.ProgramListVM = program;
             }
 
             //if (Today == null)
@@ -103,6 +114,7 @@ namespace GruppG.Controllers
             //finalItem.ProgramListVM = program;
             //var programs = programChannelVM.Programs;
             //ViewBag.Message = ("Inget på TV idag :( ... ");
+            
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
             return View(finalItem);

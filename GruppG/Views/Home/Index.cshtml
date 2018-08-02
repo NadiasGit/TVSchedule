@@ -24,16 +24,19 @@
 </div>
 <div class="date">
     <h4>Filtrera på datum</h4>
-    @*<div class="list-group">
+    <div class="list-group">
         @Html.ActionLink("Alla dagar", "Index", null, new { })
-        @foreach (var d in Model.Dates)
+        @foreach (var date in Model.Dates)
         {
-
-            @Html.ActionLink(d, "Index", "Home", new { Today = d }, new { })
+            //int id = 0;
+            @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
+            @*if (d == Model.Program.Programstart)
+            {
+            @Html.ActionLink(d.ToShortDateString(), "Index", new { id = Model.Today }, new { })
             <&nbsp></&nbsp>
-
-            @Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })
-        }*@
+            }*@
+        }
+        </div>
     </div>
 
     <div class="date">
@@ -87,7 +90,7 @@
                                 {
                                     <tr>
                                         <td>@i.Titel</td>
-                                        <td>@i.Programstart.Value.ToShortTimeString()</td>
+                                        <td>@i.Programstart</td>
                                         <td>@Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
                                 }

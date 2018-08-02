@@ -21,7 +21,7 @@ namespace GruppG.Models.ViewModels
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
-        public List<string> Dates { get; set; }
+        public List<DateTime> Dates { get; set; }
         public DateTime Today { get; set; }
 
         public ProgramChannelVM()
@@ -32,9 +32,9 @@ namespace GruppG.Models.ViewModels
             DateTime today = Convert.ToDateTime("2017-11-09");
             Today = Convert.ToDateTime("2017-11-09");
 
-            Dates = new List<string>();
-            Dates.Add(Today.ToString());
-            //Dates.Add(Today.AddDays(1).ToShortDateString());
+            Dates = new List<DateTime>();
+            Dates.Add(Today);
+            Dates.Add(Today.AddDays(1));
             //Dates.Add(Today.AddDays(2).ToShortDateString());
             //Dates.Add(Today.AddDays(3).ToShortDateString());
             //Dates.Add(Today.AddDays(4).ToShortDateString());
@@ -52,6 +52,7 @@ namespace GruppG.Models.ViewModels
 
         }
 
+       
 
         public List<Program> GetPrograms()
         {
