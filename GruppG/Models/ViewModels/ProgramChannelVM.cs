@@ -32,12 +32,12 @@ namespace GruppG.Models.ViewModels
 
             Dates = new List<string>();
             Dates.Add(Today.ToShortDateString());
-            Dates.Add(today.AddDays(1).ToShortDateString());
-            Dates.Add(today.AddDays(2).ToShortDateString());
-            Dates.Add(today.AddDays(3).ToShortDateString());
-            Dates.Add(today.AddDays(4).ToShortDateString());
-            Dates.Add(today.AddDays(5).ToShortDateString());
-            Dates.Add(today.AddDays(6).ToShortDateString());
+            Dates.Add(Today.AddDays(1).ToShortDateString());
+            Dates.Add(Today.AddDays(2).ToShortDateString());
+            Dates.Add(Today.AddDays(3).ToShortDateString());
+            Dates.Add(Today.AddDays(4).ToShortDateString());
+            Dates.Add(Today.AddDays(5).ToShortDateString());
+            Dates.Add(Today.AddDays(6).ToShortDateString());
 
 
             //Dates.Add(Today.ToShortDateString());
@@ -60,7 +60,13 @@ namespace GruppG.Models.ViewModels
         }
 
 
-
+        public List<Models.db.Program> GetDate(DateTime date)
+        {
+            U4Entities u4 = new U4Entities();
+            //var result = u4.Program.Where(c => c.Chanel == channel);
+            var result = u4.Program.Where(q => q.Programstart == date);
+            return result.ToList();
+        }
         public List<Chanel> GetChannels()
         {
             U4Entities u4 = new U4Entities();

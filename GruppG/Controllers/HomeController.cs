@@ -33,7 +33,7 @@ namespace GruppG.Controllers
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
         DateTime friday = Convert.ToDateTime("11/10/2017");
-
+       
 
 
         //var d = pd.SortByDate(date);
@@ -51,7 +51,7 @@ namespace GruppG.Controllers
 
 
         //NY INDEX:
-        public ActionResult Index(DateTime? Today = null)
+        public ActionResult Index(string Today = null)
         //public ActionResult Index(string date)
         {
             List<Chanel> Channels = new List<Chanel>();
@@ -59,21 +59,26 @@ namespace GruppG.Controllers
             ProgramChannelVM viewModel = new ProgramChannelVM();
 
 
-            var program = viewModel.GetPrograms();
-            var channel = viewModel.GetChannels();
+            //var program = viewModel.GetPrograms();
+            //var channel = viewModel.GetChannels();
 
             ProgramChannelVM finalItem = new ProgramChannelVM();
+            var program = viewModel.GetPrograms();
+            var channel = viewModel.GetChannels();
+            //finalItem.ChannelListVM = channel;
+            //finalItem.ProgramListVM = program;
 
             if (Today == null)
             {
 
             finalItem.ChannelListVM = channel;
             finalItem.ProgramListVM = program;
+
             }
             else
             {
                 finalItem.ChannelListVM = channel;
-                finalItem.ProgramListVM = program.Where(p => p.Programstart == Today).ToList();
+                finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
             }
 
 

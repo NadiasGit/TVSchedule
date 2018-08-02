@@ -48,10 +48,11 @@ namespace GruppG.Data
             return result.ToList();
         }
 
+        
         //public List<Chanel> GetChannels()
         //{
         //    U4Entities u4 = new U4Entities();
-           
+
         //    var result = u4.Chanel;
         //    return result.ToList();
         //}

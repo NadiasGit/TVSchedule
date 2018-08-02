@@ -29,7 +29,7 @@
         @foreach (var d in Model.Dates)
         {
 
-            @Html.ActionLink(d, "Index",  null, new { Programstart =d }, new { } )
+            @Html.ActionLink(d, "Index", "Home", new { Today = d }, new { })
             <&nbsp></&nbsp>
 
             @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
@@ -66,11 +66,7 @@
                                 <th> Tid </th>
                             </tr>
                     
-                            @if (!Model.ProgramListVM.Any())
-                            {
-                                @ViewBag.Message
-                            }
-                            else
+                            @if (Model.ProgramListVM.Any())
                             {
                                 foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
                                 {
@@ -80,8 +76,11 @@
                                         <td>@Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
                                 }
-
                             }
+                            @*else
+                            {
+                                @ViewBag.Message
+                            }*@
                         </table>
                         </div>
                         }
