@@ -16,6 +16,7 @@ namespace GruppG.Models.ViewModels
         //public IEnumerable<Chanel> Channels { get; set; }
         public List<Chanel> ChannelListVM { get; set; }
         public List<Program> ProgramListVM { get; set; }
+        public List<Program> ProgramCategoryVM { get; set; }
         public List<Category> CategoryListVM { get; set; }
 
         public IEnumerable<Program> Programs { get; set; }
@@ -82,11 +83,11 @@ namespace GruppG.Models.ViewModels
             return result.ToList();
         }
 
-        public List<Program> GetCategoriesTest(string Category)
+        public List<Program> GetCategoriesTest(int id)
         {
             U4Entities u4 = new U4Entities();
 
-            var result = u4.Program.Where(c => c.Category.ToString() == Category);
+            var result = u4.Program.Where(c => c.Category == id);
             return result.ToList();
         }
 

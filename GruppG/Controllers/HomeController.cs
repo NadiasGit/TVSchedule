@@ -52,7 +52,7 @@ namespace GruppG.Controllers
         //List<Program> Programs = new List<Program>();
 
         //NY INDEX:
-        public ActionResult Index(string Category = null)
+        public ActionResult Index(int? id = null)
         //public ActionResult Index(string date)
         {
             string Today = null;
@@ -64,42 +64,47 @@ namespace GruppG.Controllers
             //var program = viewModel.GetPrograms();
             var channel = viewModel.GetChannels();
             var program = viewModel.GetPrograms();
+            var progCategories = viewModel.GetPrograms();
             var cat = viewModel.GetCategories();
 
-            finalItem.ChannelListVM = channel;
+            
             //finalItem.ProgramListVM = program;
 
-            if (Category == null)
+            if (id == null)
             {
-                finalItem.CategoryListVM = cat;
+                finalItem.ProgramListVM = program;
             }
             else
             {
-                finalItem.ProgramListVM = viewModel.GetCategoriesTest(Category);
-        }
-
-            if (Today == null)
-            {
-
-                // finalItem.ChannelListVM = channel;
-                program = viewModel.GetPrograms();
-                finalItem.ProgramListVM = program;
-                
-
+                progCategories = program.Where(c => c.Category == id).ToList();
+                finalItem.ProgramListVM = progCategories;
             }
-            else
-            {
-                //finalItem.ChannelListVM = channel;
-                //finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
-                //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today).ToList();
-                program = viewModel.GetPrograms().Where(q => q.Programstart.ToString() == Today).ToList();
-                finalItem.ProgramListVM = program;
-                
-            }
+
+            //if (Today == null)
+            //{
+
+            //    // finalItem.ChannelListVM = channel;
+            //    program = viewModel.GetPrograms();
+            //    finalItem.ProgramListVM = program;
+
+
+            //}
+            //else
+            //{
+            //    //finalItem.ChannelListVM = channel;
+            //    //finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
+            //    //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today).ToList();
+            //    program = viewModel.GetPrograms().Where(q => q.Programstart.ToString() == Today).ToList();
+            //    finalItem.ProgramCategoryVM = progCategories;
+            //    finalItem.ProgramListVM = program;
+
+            //}
 
             //finalItem.ProgramListVM = program;
             //var programs = programChannelVM.Programs;
             //ViewBag.Message = ("Inget på TV idag :( ... ");
+            finalItem.ChannelListVM = channel;
+            finalItem.CategoryListVM = cat;
             return View(finalItem);
 
         }

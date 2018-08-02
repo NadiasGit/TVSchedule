@@ -43,7 +43,7 @@
             @foreach (var d in Model.CategoryListVM)
             {
 
-                @Html.ActionLink(d.Name, "Index", "Home", new { Category = d }, new { })
+                @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
                 <&nbsp></&nbsp>
 
                 @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
