@@ -25,7 +25,8 @@
 <div class="date">
     <h4>Filtrera på datum</h4>
     <div class="list-group">
-        @Html.ActionLink("Alla dagar", "Index", null, new { })
+        @* Ta bort "alla dagar"? *@
+        @Html.ActionLink("Idag", "Index", null, new { })
         @foreach (var date in Model.Dates)
         {
             //int id = 0;

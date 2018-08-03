@@ -29,10 +29,11 @@ namespace GruppG.Controllers
 
         //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
-        DateTime today = DateTime.Today;
+        DateTime todayGammal = DateTime.Today;
         DateTime tomorrow = DateTime.Today.Date.AddDays(2);
         //mm/dd/yy
-        DateTime friday = Convert.ToDateTime("11/10/2017");
+        DateTime today = Convert.ToDateTime("11/09/2017");
+        
 
 
 
@@ -55,7 +56,7 @@ namespace GruppG.Controllers
         public ActionResult Index(DateTime? date, int ? id = null )
         //public ActionResult Index(string date)
         {
-            string Today = null;
+            
             
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
@@ -70,11 +71,12 @@ namespace GruppG.Controllers
 
             if (date == null)
             {
-                finalItem.ProgramListVM = program;
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
+                finalItem.ProgramListVM = programStart;
             }
             else
             {
-                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).ToList();
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
 
                 finalItem.ProgramListVM = programDate;
             }
