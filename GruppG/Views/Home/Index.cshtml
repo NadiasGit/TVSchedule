@@ -30,8 +30,19 @@
         @foreach (var date in Model.Dates)
         {
             @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
-           
+            @*@Html.DropDownList(date, "Index", new { date})*@
+
+
         }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*@Html.DropDownListFor(model => model.Dates, new SelectList(Model.Dates, "date"), "Välj datum")*@
+                
+                <input type="submit" value="Ok" class="btn btn-default" />
+            </div>
+        </div>
+
+
         </div>
     </div>
 
