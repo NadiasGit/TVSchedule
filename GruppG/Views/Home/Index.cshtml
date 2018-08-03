@@ -22,45 +22,72 @@
         }*@
     </div>
 </div>
+
 <div class="date">
     <h4>Filtrera på datum</h4>
     <div class="list-group">
-        @* Ta bort "alla dagar"? *@
         @Html.ActionLink("Idag", "Index", null, new { })
         @foreach (var date in Model.Dates)
         {
-            //int id = 0;
             @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
-            @*if (d == Model.Program.Programstart)
-            {
-            @Html.ActionLink(d.ToShortDateString(), "Index", new { id = Model.Today }, new { })
-            <&nbsp></&nbsp>
-            }*@
+           
         }
         </div>
     </div>
 
     <div class="date">
-        <h4>Filtrera på kategori</h4>
-        <div class="list-group">
-            @Html.ActionLink("Alla kategorier", "Index", null, new { })
-            @foreach (var d in Model.CategoryListVM)
+    <h4>Filtrera på kategori</h4>
+    <div class="list-group">
+        @Html.ActionLink("Alla kategorier", "Index", null, new { })
+        @foreach (var d in Model.CategoryListVM)
             {
 
-                @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
-                <&nbsp></&nbsp>
+            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
+            <&nbsp></&nbsp>
 
-                @*@Html.ActionLink(item.Name, "Index", new { Channel = item.Name}, new { })*@
-            }
-        </div>
+        }
+    </div>
 
-        @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
-        @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
+
+        @*<div class="date">
+            <div class="list-group">
+               
+                @Html.ActionLink("Idag", "Index", null, new { })
+                @foreach (var date in Model.Dates)
+                {
+                   
+                    @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
+
+                    <div class="list-group">
+                        @Html.ActionLink("Alla kategorier", "Index", null, new { })
+                        @foreach (var d in Model.CategoryListVM)
+                        {
+
+                            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
+                            <&nbsp></&nbsp>
+
+                        }
+                    </div>
+
+                }
+            </div>
+            </div>*@
+
+
+
+
+
+
+
+
+
+            @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
+            @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
             @Html.ActionLink("   Idag   |", "Index", "Home")
             @Html.ActionLink("   Fredag   | ", "Friday", "Home")
-        *@
+            *@
 
-    </div>
+        </div>
 @*<div>
     <h4> Filtrering </h4>
     <div class="list-group">

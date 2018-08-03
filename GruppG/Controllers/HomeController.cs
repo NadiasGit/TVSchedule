@@ -69,28 +69,31 @@ namespace GruppG.Controllers
             var progCategories = viewModel.GetPrograms();
             var cat = viewModel.GetCategories();
 
-            if (date == null)
+            if (date == null && id == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
                 finalItem.ProgramListVM = programStart;
             }
-            else
+            else if (date != null &&  id == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
 
                 finalItem.ProgramListVM = programDate;
             }
-            
-            //finalItem.ProgramListVM = program;
-
-            if (id == null)
+            else if (date == null && id != null)
             {
-                //finalItem.ProgramListVM = program;
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+
+                finalItem.ProgramListVM = programDate;
             }
             else
             {
-                program = program.Where(c => c.Category == id).ToList();
-                finalItem.ProgramListVM = program;
+                var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+                var progDate = catDate.Where(c => c.Category == id).ToList();
+
+                //var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+
+                finalItem.ProgramListVM = progDate;
             }
 
             //if (Today == null)
