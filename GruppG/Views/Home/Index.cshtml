@@ -10,19 +10,18 @@
 }
 
 <div class="jumbotron">
-    
+
     <h4>Nyhetspuffar</h4>
-    
+
     <div class="nyhetspuff">
-    @*foreach i in puffs
-        <div class="col-md-4"></div>*@
-        
+        @*foreach i in puffs
+            <div class="col-md-4"></div>*@
+
         @*@{
-            Html.RenderAction("PartialViewPuffs");
-        }*@
+                Html.RenderAction("PartialViewPuffs");
+            }*@
     </div>
 </div>
-
 <div class="date">
     <h4>Filtrera på datum</h4>
     <div class="list-group">
@@ -36,8 +35,10 @@
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @*@Html.DropDownListFor(model => model.Dates, new SelectList(Model.Dates, "date"), "Välj datum")*@
+                @Html.DropDownListFor(model => model.Dates, new SelectList(Model.Dates, "date"), "Välj datum")
+                @Html.DropDownListFor(model => model.CategoryListVM, new SelectList(Model.CategoryListVM, "Id", "Name"), "Välj kategori")
                 
+              
                 <input type="submit" value="Ok" class="btn btn-default" />
             </div>
         </div>
@@ -47,34 +48,37 @@
     </div>
 
     <div class="date">
-    <h4>Filtrera på kategori</h4>
-    <div class="list-group">
-        @Html.ActionLink("Alla kategorier", "Index", null, new { })
-        @foreach (var d in Model.CategoryListVM)
+        <h4>Filtrera på kategori</h4>
+        <div class="list-group">
+            @Html.ActionLink("Alla kategorier", "Index", null, new { })
+            @foreach (var d in Model.CategoryListVM)
             {
 
-            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
-            <&nbsp></&nbsp>
+                @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
+                <&nbsp></&nbsp>
 
-        }
-    </div>
+            }
+        </div>
 
 
-        @*<div class="date">
+        <div class="date">
             <div class="list-group">
-               
+
                 @Html.ActionLink("Idag", "Index", null, new { })
                 @foreach (var date in Model.Dates)
                 {
-                   
-                    @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
+
+                    
 
                     <div class="list-group">
                         @Html.ActionLink("Alla kategorier", "Index", null, new { })
                         @foreach (var d in Model.CategoryListVM)
                         {
-
-                            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
+                            
+                            @*@Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
+                            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })*@
+                            @Html.ActionLink(date.ToShortDateString() + d.Name, "Index", new { date = date, id = d.Id }, new { })
+                            @*@Html.ActionLink(date.ToShortDateString(), d.Name, "Index", new { date = ,  }, new { })*@
                             <&nbsp></&nbsp>
 
                         }
@@ -82,10 +86,10 @@
 
                 }
             </div>
-            </div>*@
+            </div>
 
 
-
+    </div>
 
 
 
@@ -98,7 +102,7 @@
             @Html.ActionLink("   Fredag   | ", "Friday", "Home")
             *@
 
-        </div>
+       
 @*<div>
     <h4> Filtrering </h4>
     <div class="list-group">
@@ -127,6 +131,7 @@
                             {
                                 foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
                                 {
+                                    
                                     <tr>
                                         <td>@i.Titel</td>
                                         <td>@i.Programstart</td>
@@ -140,8 +145,8 @@
                             }*@
                         </table>
                         </div>
-                        }
-                        }
+                }
+            }
 
 </div>
 

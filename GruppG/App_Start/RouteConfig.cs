@@ -18,7 +18,9 @@ namespace GruppG
             routes.MapRoute(
                 name: "Home",
                 url: "Hem",
-                defaults: new { controller = "Home", action = "Index" }
+                defaults: new { controller = "Home", action = "Index",
+                date = UrlParameter.Optional,
+                id = UrlParameter.Optional}
                 //Lägg till datum som id här?
             );
 

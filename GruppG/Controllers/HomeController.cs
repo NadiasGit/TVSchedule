@@ -82,8 +82,19 @@ namespace GruppG.Controllers
             }
             else if (date == null && id != null)
             {
-                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-
+                 
+                //if (date == null)
+                //{
+                //    var programDate = program.Where(c => c.Category == id).ToList();
+                //    finalItem.ProgramListVM = programDate;
+                //}
+                //else
+                //{
+                    //var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+                    var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+                //    finalItem.ProgramListVM = programDate;
+                //}
+                
                 finalItem.ProgramListVM = programDate;
             }
             else
