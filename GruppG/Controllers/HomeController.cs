@@ -74,7 +74,7 @@ namespace GruppG.Controllers
             }
             else
             {
-                var programDate = program.Where(d => d.Programstart == date).ToList();
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).ToList();
 
                 finalItem.ProgramListVM = programDate;
             }
@@ -83,7 +83,7 @@ namespace GruppG.Controllers
 
             if (id == null)
             {
-                finalItem.ProgramListVM = program;
+                //finalItem.ProgramListVM = program;
             }
             else
             {

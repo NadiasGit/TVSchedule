@@ -35,7 +35,7 @@ namespace GruppG.Models.ViewModels
             Dates = new List<DateTime>();
             Dates.Add(Today);
             Dates.Add(Today.AddDays(1));
-            //Dates.Add(Today.AddDays(2).ToShortDateString());
+            //Dates.Add(Today.AddDays(2));
             //Dates.Add(Today.AddDays(3).ToShortDateString());
             //Dates.Add(Today.AddDays(4).ToShortDateString());
             //Dates.Add(Today.AddDays(5).ToShortDateString());
