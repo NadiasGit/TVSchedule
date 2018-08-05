@@ -22,6 +22,9 @@
             }*@
     </div>
 </div>
+
+
+
 <div class="date">
     <h4>Filtrera på datum</h4>
     <div class="list-group">
@@ -92,7 +95,35 @@
     </div>
 
 
+<div>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <h4>KOPIA DENNA KAN FILTRERA :P :D </h4>
+        <div class="date">
+            <h4>Filtrera på datum</h4>
+            <div class="list-group">
+                @Html.ActionLink("Idag", "Index", null, new { })
+                @foreach (var date in Model.Dates)
+                {
+                    @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
+                    @*@Html.DropDownList(date, "Index", new { date})*@
 
+
+                }
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Välj datum", new { onchange = "form.submit();" })
+                        @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Välj kategori", new { onchange = "form.submit();" }))
+                        <input type="submit" value="Ok" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <h4>KOPIA SLUT</h4>
+    }
+</div>
 
 
 
