@@ -22,6 +22,8 @@ namespace GruppG.Models.ViewModels
 
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public List<DateTime> Dates { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
@@ -37,7 +39,7 @@ namespace GruppG.Models.ViewModels
             //Today = new DateTime(2017, 11, 09);
 
             Dates = new List<DateTime>();
-            Dates.Add(Today);
+            Dates.Add(Today.Date);
             Dates.Add(Today.AddDays(1));
             Dates.Add(Today.AddDays(2));
             Dates.Add(Today.AddDays(3));
