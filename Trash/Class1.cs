@@ -126,5 +126,20 @@ namespace Trash
         //viewModel.Channel = channelList;
 
         //return View(p);
+
+
+        //Länk
+        //<div class="date">
+        //<h4>Filtrera på kategori</h4>
+        //<div class="list-group">
+        //    @Html.ActionLink("Alla kategorier", "Index", null, new { })
+        //    @foreach(var d in Model.CategoryListVM)
+        //{
+
+        //    @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
+        //    < &nbsp ></ &nbsp >
+
+        //    }
+        //</div>
     }
 }

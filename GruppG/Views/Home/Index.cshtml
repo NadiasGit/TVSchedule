@@ -24,122 +24,31 @@
 </div>
 
 
-
-<div class="date">
-    <h4>Filtrera på datum</h4>
-    <div class="list-group">
-        @Html.ActionLink("Idag", "Index", null, new { })
-        @foreach (var date in Model.Dates)
-        {
-            @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
-            @*@Html.DropDownList(date, "Index", new { date})*@
+            @*<div class="col-md-offset-2 col-md-10">
+               
+            </div>*@
 
 
-        }
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.DropDownListFor(model => model.Dates, new SelectList(Model.Dates, "date"), "Välj datum")
-                @Html.DropDownListFor(model => model.CategoryListVM, new SelectList(Model.CategoryListVM, "Id", "Name"), "Välj kategori")
-                
-              
-                <input type="submit" value="Ok" class="btn btn-default" />
-            </div>
-        </div>
 
 
-        </div>
-    </div>
-
-    <div class="date">
-        <h4>Filtrera på kategori</h4>
-        <div class="list-group">
-            @Html.ActionLink("Alla kategorier", "Index", null, new { })
-            @foreach (var d in Model.CategoryListVM)
-            {
-
-                @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })
-                <&nbsp></&nbsp>
-
-            }
-        </div>
-
-
-        <div class="date">
-            <div class="list-group">
-
-                @Html.ActionLink("Idag", "Index", null, new { })
-                @foreach (var date in Model.Dates)
-                {
-
-                    
-
-                    <div class="list-group">
-                        @Html.ActionLink("Alla kategorier", "Index", null, new { })
-                        @foreach (var d in Model.CategoryListVM)
-                        {
-                            
-                            @*@Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
-                            @Html.ActionLink(d.Name, "Index", new { id = d.Id }, new { })*@
-                            @Html.ActionLink(date.ToShortDateString() + d.Name, "Index", new { date = date, id = d.Id }, new { })
-                            @*@Html.ActionLink(date.ToShortDateString(), d.Name, "Index", new { date = ,  }, new { })*@
-                            <&nbsp></&nbsp>
-
-                        }
-                    </div>
-
-                }
-            </div>
-            </div>
-
-
-    </div>
-
-
-<div>
+<div class ="date">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
-        <h4>KOPIA DENNA KAN FILTRERA :P :D </h4>
-        <div class="date">
             <h4>Filtrera på datum</h4>
-            <div class="list-group">
-                @Html.ActionLink("Idag", "Index", null, new { })
-                @foreach (var date in Model.Dates)
-                {
-                    @Html.ActionLink(date.ToShortDateString(), "Index", new { date }, new { })
-                    @*@Html.DropDownList(date, "Index", new { date})*@
-
-
-                }
+            @*<div class="list-group">*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Välj datum", new { onchange = "form.submit();" })
-                        @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Välj kategori", new { onchange = "form.submit();" }))
-                        <input type="submit" value="Ok" class="btn btn-default" />
-                    </div>
+                        @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date"), "Idag", new { onchange = "form.submit();" })
+                        @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
+                       
+                   @*</div>*@
                 </div>
 
 
             </div>
-        </div>
-        <h4>KOPIA SLUT</h4>
     }
 </div>
 
-
-
-            @*@Html.ActionLink("   Test   |", "_Channel", "Home", new { date = "11/11/2017" })*@
-            @*@Html.ActionLink("Test2","Index", "Home", new { date = "friday"})
-            @Html.ActionLink("   Idag   |", "Index", "Home")
-            @Html.ActionLink("   Fredag   | ", "Friday", "Home")
-            *@
-
-       
-@*<div>
-    <h4> Filtrering </h4>
-    <div class="list-group">
-    @Html.ActionLink("Alla", "Index", null, new { })
-    </div>
-</div>*@
 
 
 <div class="row">
@@ -170,10 +79,10 @@
                                     </tr>
                                 }
                             }
-                            @*else
+                            else
                             {
                                 @ViewBag.Message
-                            }*@
+                            }
                         </table>
                         </div>
                 }

@@ -27,10 +27,10 @@ namespace GruppG.Models.ViewModels
         public ProgramChannelVM()
         {
             //Om vi/du vill ha aktuella datum
-            //DateTime today = DateTime.Now;
+            //Today = DateTime.Now;
             //Om vi vill se hårdkodade programmen
-            DateTime today = Convert.ToDateTime("2017-11-09");
-            Today = Convert.ToDateTime("2017-11-09");
+            //DateTime today = Convert.ToDateTime("2017-11-09");
+            Today = Convert.ToDateTime("2017-11-09").Date;
 
             Dates = new List<DateTime>();
             Dates.Add(Today);

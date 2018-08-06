@@ -129,8 +129,8 @@ namespace GruppG.Controllers
 
             //finalItem.ProgramListVM = program;
             //var programs = programChannelVM.Programs;
-            //ViewBag.Message = ("Inget på TV idag :( ... ");
-            
+            ViewBag.Message = ("Inget på TV idag :( ... ");
+
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
             return View(finalItem);
