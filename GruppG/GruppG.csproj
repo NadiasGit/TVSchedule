@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Data\ChannelData.cs" />
+    <Compile Include="Models\ListOfDaysModel.cs" />
     <Compile Include="Data\ObjectCache.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Data\ProgramData.cs" />
@@ -201,6 +202,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\SelectedDate.cs" />
     <Compile Include="Models\db\Category.cs">
       <DependentUpon>dataModel.tt</DependentUpon>
     </Compile>

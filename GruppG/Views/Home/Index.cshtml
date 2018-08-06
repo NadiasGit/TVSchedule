@@ -41,8 +41,9 @@
                         
                         @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
                         @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
-                       
-                   @*</div>*@
+                        @*@Html.DropDownListFor(model => model.SelectedDate, Model.AllDates.GetDays()),"Idag")*@
+                @*@Html.DropDownListFor(model => model.Product.Category, new SelectList(Model.ProductCategories, "Name", "Name"), new { htmlAttributes = new { @class = "form-control" } })*@
+                       @*</div>*@
                 </div>
 
 
@@ -55,10 +56,10 @@
 <div class="row">
 
             @if (Model.ChannelListVM != null)
-            {
-                foreach (var item in Model.ChannelListVM)
+                                {
+                                    foreach (var item in Model.ChannelListVM)
 
-                {
+                                    {
                     <div class="col-md-4">
                         <h2> @item.Name </h2>
                         
@@ -67,7 +68,8 @@
                                 <th> Program </th>
                                 <th> Tid </th>
                             </tr>
-                    
+
+
                             @if (Model.ProgramListVM.Any())
                             {
                                 foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))

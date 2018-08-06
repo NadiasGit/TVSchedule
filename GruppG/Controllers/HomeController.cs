@@ -11,6 +11,7 @@ using GruppG.Models.db;
 using GruppG.Data;
 using GruppG.Models.ViewModels;
 using System.Web.Security;
+using GruppG.Models;
 
 namespace GruppG.Controllers
 {
@@ -56,10 +57,17 @@ namespace GruppG.Controllers
         public ActionResult Index(DateTime? date, int ? id = null )
         //public ActionResult Index(string date)
         {
-            
-            
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
+            ListOfDaysModel Dates = new ListOfDaysModel();
+            //SelectedDate selectedDay = new SelectedDate();
+
+            //Början till att få bort nollorna (?)
+            //finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
+            //{
+            //    Value = d.Id.ToString(),
+            //    Text = d.Today.Value.ToShortDateString();
+            //}).ToList();
             //ProgramChannelVM categories = new ProgramChannelVM();
 
             //var program = viewModel.GetPrograms();

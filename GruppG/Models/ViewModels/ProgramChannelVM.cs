@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.DynamicData;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using GruppG.Data;
 
 namespace GruppG.Models.ViewModels
 {
@@ -19,7 +21,8 @@ namespace GruppG.Models.ViewModels
         public List<Program> ProgramListVM { get; set; }
         public List<Program> ProgramCategoryVM { get; set; }
         public List<Category> CategoryListVM { get; set; }
-
+        public ListOfDaysModel AllDates { get; set; }
+        public SelectedDate SelectedDate { get; set; }
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
 
@@ -28,15 +31,18 @@ namespace GruppG.Models.ViewModels
 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Today { get; set; }
+        
 
         public ProgramChannelVM()
         {
+           
+            
             //Om vi/du vill ha aktuella datum
-            Today = DateTime.Today;
+            //Today = DateTime.Today;
             //Om vi vill se hårdkodade programmen
             //DateTime today = Convert.ToDateTime("2017-11-09");
             //Today = Convert.ToDateTime("2017-11-09").Date;
-            //Today = new DateTime(2017, 11, 09);
+            Today = new DateTime(2017, 11, 09);
 
             Dates = new List<DateTime>();
             Dates.Add(Today.Date);
