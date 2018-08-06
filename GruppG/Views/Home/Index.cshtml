@@ -25,10 +25,10 @@
 
 
             @*<div class="col-md-offset-2 col-md-10">
-               
-            </div>*@
+                  <div class="list-group">
 
-
+        </div>
+                </div>*@
 
 
 <div class ="date">
@@ -38,7 +38,8 @@
             @*<div class="list-group">*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date"), "Idag", new { onchange = "form.submit();" })
+                        
+                        @Html.DropDownList("date", new SelectList(Model.Dates, "date".ToString(), "date"), "Idag", new { onchange = "form.submit();" })
                         @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
                        
                    @*</div>*@
