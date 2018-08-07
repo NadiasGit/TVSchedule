@@ -25,6 +25,7 @@ namespace GruppG.Models.ViewModels
         public SelectedDate SelectedDate { get; set; }
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
+        public List<Program> GetPuffListVM { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public List<DateTime> Dates { get; set; }

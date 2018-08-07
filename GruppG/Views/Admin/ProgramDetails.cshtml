@@ -1,0 +1,81 @@
+﻿@model GruppG.Models.db.Program
+
+@{
+    ViewBag.Title = "ProgramDetails";
+}
+
+<h2>Mer information om programmet</h2>
+
+<div>
+    <h4>Programinformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <strong>Program</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titel)
+        </dd>
+
+        <dt>
+            <strong>Om programmet</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            <strong>Kanal</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chanel1.Name)
+        </dd>
+
+        <dt>
+            <strong>Kategori</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category1.Name)
+        </dd>
+
+        <dt>
+            <strong>Datum</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programstart.Value.Date)
+        </dd>
+
+        <dt>
+            <strong>Starttid</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
+        </dd>
+
+        <dt>
+            <strong>Sluttid</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
+        </dd>
+
+        <dt>
+            <strong>Puff</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Puff)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

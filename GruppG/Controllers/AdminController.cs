@@ -1,4 +1,5 @@
 ﻿using GruppG.Data;
+using GruppG.Models.db;
 using GruppG.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace GruppG.Controllers
         private ProgramData pd = new ProgramData();
         ProgramChannelVM viewModel = new ProgramChannelVM();
         ProgramChannelVM finalItem = new ProgramChannelVM();
+        U4Entities db = new U4Entities();
 
         // GET: Admin
         public ActionResult Index(DateTime? date, int? id = null)
@@ -22,7 +24,7 @@ namespace GruppG.Controllers
             //Lista på dagens program 
             //Filtrera datum och kanal
 
-
+            var puff = pd.PuffPrograms();
             var channel = viewModel.GetChannels();
             var program = viewModel.GetPrograms();
 
@@ -55,9 +57,19 @@ namespace GruppG.Controllers
             ViewBag.Message = ("Inget på TV idag :( ... ");
 
             finalItem.ChannelListVM = channel;
-            //finalItem.CategoryListVM = cat;
+            finalItem.GetPuffListVM = puff;
             return View(finalItem);
         }
+
+        //Details
+        public ActionResult ProgramDetails(int id)
+        {
+            //Lägg till ett felmeddelande/felhantering om program-id saknas
+            var progDetails = db.Program.Single(e => e.Id == id);
+            //return RedirectToAction("ProgramDetails", "Home");
+            return View(progDetails);
+        }
+
 
         //Create puff
 
