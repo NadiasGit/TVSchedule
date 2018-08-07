@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Runtime.Caching;
+using GruppG.Models.db;
 
 namespace GruppG.Data
 {
@@ -20,6 +21,11 @@ namespace GruppG.Data
             {
                 items = new List<PlaceHolder>();
             }
+        }
+
+        public void Commit()
+        {
+            cache[className] = items;
         }
 
         public IQueryable<PlaceHolder> Collection()

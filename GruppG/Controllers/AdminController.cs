@@ -15,6 +15,7 @@ namespace GruppG.Controllers
         ProgramChannelVM viewModel = new ProgramChannelVM();
         ProgramChannelVM finalItem = new ProgramChannelVM();
         U4Entities db = new U4Entities();
+        
 
         // GET: Admin
         public ActionResult Index(DateTime? date, int? id = null)
@@ -98,28 +99,39 @@ namespace GruppG.Controllers
         // POST: ProgramsC/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Program program)
         {
-            Program puffDelete = db.Program.Find(id);
-            if (puffDelete == null)
+            Program puffToEdit = db.Program.Find(id);
+            if (puffToEdit == null)
             {
                 return HttpNotFound();
             }
+            else
+                if (!ModelState.IsValid)
+                {
+                return View(program);
+                }
 
-            puffDelete.Puff = program.Puff;
-            if (program.Puff == 1)
-            {
-                pd.PuffPrograms().Add(program);
-            }
-            else if (program.Puff == null)
-            {
-                pd.PuffPrograms().Remove(program);
-            }
-        
+            puffToEdit.Puff = program.Puff;
+            pd.Commit();
+            //if (program.Puff == 1)
+            //{
+            var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
             return RedirectToAction("Index");
-        }
+            //}
+            //else if (program.Puff == null)
+            //{
+            //    pd.PuffPrograms().Remove(program);
+            //    var newPuff = pd.PuffPrograms().Where(p => p.Puff == 1).ToList();
+            //    return View(newPuff);
+            }
+
+            
+            
+        
 
         //Delete puffar
         public ActionResult Delete(int? id)

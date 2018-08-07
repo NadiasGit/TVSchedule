@@ -3,6 +3,7 @@ using GruppG.Models.db;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Caching;
 using System.Web;
 
 namespace GruppG.Data
@@ -15,9 +16,23 @@ namespace GruppG.Data
         private Person pr = new Person();
         Models.db.Program program = new Models.db.Program();
         Chanel channel = new Chanel();
+        List<Program> puffList;
         //private DateTime selectedDates = new DateTime();
-        
+         System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
 
+        public ProgramData()
+        {
+            puffList = cache["puffList"] as List<Program>;
+            if (puffList == null)                            //Kolla om det finns en lista
+            {
+                puffList = new List<Program>();             //Annars lista produkter i products
+            }
+        }
+
+        public void Commit()
+        {
+            cache["puffList"] = puffList;
+        }
 
         public bool CheckUserCreadentials(string username, string password)
         {
@@ -31,9 +46,9 @@ namespace GruppG.Data
 
         public List<Models.db.Program> PuffPrograms()
         {
-            
-            var puff = db.Program.Where(p => p.Puff == 1);
-            return puff.ToList();
+            puffList = db.Program.Where(p => p.Puff == 1).ToList();
+            //var puff = db.Program.Where(p => p.Puff == 1);
+            return puffList;
         }
 
 
