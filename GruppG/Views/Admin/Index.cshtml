@@ -5,10 +5,29 @@
 
 <h2>Admin</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@* --Pufflista-- *@
+<div>
+    @foreach (var item in Model.GetPuffListVM)
+    {
+        <ul>
+            <li>
+                Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
+                @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                @Html.ActionLink("Ta bort", "Delete", new { /* id=item.PrimaryKey */ })
+            </li>
+        </ul>
+
+    }
+</div>
+
+<h4>Filtrera på datum</h4>
 <div class="date">
     @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
     {
-        <h4>Filtrera på datum</h4>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
 
@@ -21,20 +40,7 @@
     }
 </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
-@foreach (var item in Model.GetPuffListVM)
-{
-    <ul>
-        <li>
-            Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
-            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-        </li>
-    </ul>
-
-}
 
 
 
