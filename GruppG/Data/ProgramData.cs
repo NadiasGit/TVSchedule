@@ -29,13 +29,14 @@ namespace GruppG.Data
             return true;
         }
 
-        //public List<Models.db.Program> PuffPrograms()
-        //{
-        //    var puff = db.Program.Where(p => p.Puff == 1);
-        //    return puff.ToList();
-        //}
+        public List<Models.db.Program> PuffPrograms()
+        {
+            
+            var puff = db.Program.Where(p => p.Puff == 1);
+            return puff.ToList();
+        }
 
-      
+
 
 
         //Ny metod 15 dec. 2017

@@ -60,17 +60,17 @@ namespace GruppG.Controllers
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
             ListOfDaysModel Dates = new ListOfDaysModel();
-            //SelectedDate selectedDay = new SelectedDate();
+            SelectedDate selectedDay = new SelectedDate();
 
             //Början till att få bort nollorna (?)
-            //finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
-            //{
-            //    Value = d.Id.ToString(),
-            //    Text = d.Today.Value.ToShortDateString();
-            //}).ToList();
-            //ProgramChannelVM categories = new ProgramChannelVM();
+        //    finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
+        //    {
+        //        Value = d.Id.ToString(),
+        //        Text = d.Today.Value.ToShortDateString()
+        //}).ToList();
+        ProgramChannelVM categories = new ProgramChannelVM();
 
-            //var program = viewModel.GetPrograms();
+        //var program = viewModel.GetPrograms();
             var channel = viewModel.GetChannels();
             var program = viewModel.GetPrograms();
             
@@ -164,11 +164,11 @@ namespace GruppG.Controllers
             return View(thisDay.ToList());
         }
 
-        //public ActionResult PartialViewPuffs()
-        //{
-        //    var puff = pd.PuffPrograms();
-        //    return PartialView(puff);
-        //}
+        public ActionResult PartialViewPuffs()
+        {
+            var puff = pd.PuffPrograms();
+            return PartialView(puff);
+        }
 
         //Flytta Admin till en egen controller? 18/7-2018
         public ActionResult Admin()

@@ -11,15 +11,15 @@
 
 <div class="jumbotron">
 
-    <h4>Nyhetspuffar</h4>
+    <h4>Nyhetspuffar - viktiga </h4>
 
     <div class="nyhetspuff">
-        @*foreach i in puffs
+        @*@foreach (var i in puffs)
             <div class="col-md-4"></div>*@
 
-        @*@{
+        @{
                 Html.RenderAction("PartialViewPuffs");
-            }*@
+            }
     </div>
 </div>
 

@@ -1,0 +1,49 @@
+﻿@model GruppG.Models.ViewModels.ProgramChannelVM
+@{
+    ViewBag.Title = "Administrera program och puffar";
+}
+
+<h2>Admin</h2>
+
+<div class="date">
+    @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+    {
+        <h4>Filtrera på datum</h4>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
+                    @Html.DropDownList("id", new SelectList(Model.GetChannels(), "Id", "Name", "id"), "Alla kanaler", new { onchange = "form.submit();" })
+                </div>
+
+
+            </div>
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    
+    <tr>
+        <th> Program </th>
+        <th> Tid </th>
+        <th> Redigera </th>
+    </tr>
+@foreach (var item in Model.ProgramListVM)
+{
+    <tr>
+        
+        <td>@item.Titel</td>
+        <td>@item.Programstart</td>
+        <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+        
+    </tr>
+}
+
+</table>
