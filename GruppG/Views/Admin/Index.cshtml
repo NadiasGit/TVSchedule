@@ -17,7 +17,7 @@
             <li>
                 Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
                 @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-                @Html.ActionLink("Ta bort", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Ta bort", "DeletePuff", new { /* id=item.PrimaryKey */ })
             </li>
         </ul>
 
@@ -58,7 +58,7 @@
         <td>@item.Titel</td>
         <td>@item.Programstart</td>
         <td>
-        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Edit Puff", "Edit", new { @id = item.Id }, null ) |
         @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null) |
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>

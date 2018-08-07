@@ -32,12 +32,11 @@ namespace GruppG.Models.ViewModels
 
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Today { get; set; }
+        public List<string> PuffName { get; set; }
         
 
         public ProgramChannelVM()
         {
-           
-            
             //Om vi/du vill ha aktuella datum
             //Today = DateTime.Today;
             //Om vi vill se hårdkodade programmen
@@ -53,6 +52,8 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(4));
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
+
+            PuffName = new List<string>() { "Nej", "Ja"};
 
         }
 

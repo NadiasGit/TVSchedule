@@ -73,9 +73,80 @@ namespace GruppG.Controllers
 
         //Create puff
 
+
+
+
         //Edit puffar
+        public ActionResult Edit(int? id)
+        {
+            Program program = db.Program.Find(id);
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return ViewBag.Message=("FEL!!!!!");
+            }
+            
+            else
+            {
+                var progEdit = db.Program.Single(e => e.Id == id);
+                return View(progEdit);
+            }
+            
+            
+        }
+
+        // POST: ProgramsC/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, Program program)
+        {
+            Program puffDelete = db.Program.Find(id);
+            if (puffDelete == null)
+            {
+                return HttpNotFound();
+            }
+
+            puffDelete.Puff = program.Puff;
+            if (program.Puff == 1)
+            {
+                pd.PuffPrograms().Add(program);
+            }
+            else if (program.Puff == null)
+            {
+                pd.PuffPrograms().Remove(program);
+            }
+        
+            return RedirectToAction("Index");
+        }
 
         //Delete puffar
+        public ActionResult Delete(int? id)
+        {
+            Program puffDelete = db.Program.Find(id);
+            if (id == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return ViewBag.Message = ("Finns inget att radera...");
+            }
+            else
+            {
+                return View(puffDelete);
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Program program = db.Program.Find(id);
+            var puff = db.Program.Select(p => p.Puff == 1 );
+            db.Program.Remove(program);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
 
     }
