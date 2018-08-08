@@ -11,16 +11,16 @@
 
 <div class="jumbotron">
 
-    <h4>Nyhetspuffar - viktiga </h4>
+    <h2>Nyhetspuffar (program du inte får missa!) </h2>
 
-    <div class="nyhetspuff">
+    @*<div class="nyhetspuff">*@
         @*@foreach (var i in puffs)
             <div class="col-md-4"></div>*@
 
         @{
                 Html.RenderAction("PartialViewPuffs");
             }
-    </div>
+    @*</div>*@
 </div>
 
 

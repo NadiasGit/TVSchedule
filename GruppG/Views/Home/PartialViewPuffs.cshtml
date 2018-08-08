@@ -1,12 +1,24 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
 
-@foreach (var item in Model)
-{
-    <ul>
-        <li>
-            Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
-            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-        </li>
-   </ul>
 
-}
+    @foreach (var item in Model)
+    {
+        <div>
+
+            @*<ul>
+                <li>*@
+
+            @Html.DisplayFor(modelItem => item.Titel)
+
+            Tid: @item.Starttime.Value.ToShortDateString()
+
+            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+
+            @*</li>
+                </ul>*@
+        </div>
+
+    }
+
+
+

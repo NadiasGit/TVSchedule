@@ -16,7 +16,7 @@
         <ul>
             <li>
                 @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
-                @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)  |
+                @*@Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)*@  |
                 @Html.ActionLink("Ta bort puffen", "Delete", new { @id = item.Id }, null)
                
             </li>
