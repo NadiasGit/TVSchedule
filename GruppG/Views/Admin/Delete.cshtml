@@ -1,16 +1,11 @@
 ﻿@model GruppG.Models.db.Program
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Ta bort";
 }
 
-<h2>Delete</h2>
-
 <h3>Är du säker på att du vill ta bort den här puffen?</h3>
-<div>
-    
-    
-    
+
 
     @*<div class="date">
         @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
@@ -19,12 +14,11 @@
                 <div class="col-md-offset-2 col-md-10">
                     @Html.ActionLink("Ta bort puff", "Index", new { Model.Id }, new { onclick = "return confirm ('Are you sure wants to delete?');" })
                 </div>
-
-
             </div>
         }
     </div>*@
-    <h4>Program</h4>
+
+
     <hr />
     <div class="form-group">
 
@@ -75,8 +69,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Ta bort puffen" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Ta bort puffen" class="btn btn-default" /> 
+            <br />
+            @Html.ActionLink("Tillbaka", "Index")
         </div>
     }
 

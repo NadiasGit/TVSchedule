@@ -1,13 +1,13 @@
 ﻿@model GruppG.Models.db.Program
 
 @{
-    ViewBag.Title = "ProgramDetails";
+    ViewBag.Title = "Programinfo";
 }
 
-<h2>Mer information om programmet</h2>
+<h2>Programinformation</h2>
 
 <div>
-    <h4>Programinformation</h4>
+    @*<h4>Programinformation</h4>*@
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -76,6 +76,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Lägg till som puff", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Tillbaka", "Index")
 </p>

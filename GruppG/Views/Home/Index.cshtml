@@ -11,7 +11,8 @@
 
 <div class="jumbotron">
 
-    <h2>Nyhetspuffar (program du inte får missa!) </h2>
+    <h2>Vi rekommenderar: </h2>
+    @*Nyhetspuffar - viktigt*@
 
     @*<div class="nyhetspuff">*@
         @*@foreach (var i in puffs)
@@ -34,19 +35,17 @@
 <div class ="date">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
-            <h4>Filtrera på datum</h4>
             @*<div class="list-group">*@
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
+                    <h4>Filtrera</h4>
+                    @*<div class="col-md-offset-2 col-md-10">*@
                         
                         @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
                         @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
                         @*@Html.DropDownListFor(model => model.SelectedDate, Model.AllDates.GetDays()),"Idag")*@
                 @*@Html.DropDownListFor(model => model.Product.Category, new SelectList(Model.ProductCategories, "Name", "Name"), new { htmlAttributes = new { @class = "form-control" } })*@
                        @*</div>*@
-                </div>
-
-
+                @*</div>*@
             </div>
     }
 </div>
