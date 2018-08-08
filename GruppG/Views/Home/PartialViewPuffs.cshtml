@@ -1,24 +1,32 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
 
+<div class="list-unstyled">
+    @*<dl class="dl-horizontal">*@
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
 
-    @foreach (var item in Model)
-    {
-        <div>
+                @*<ul>
+                    <li>*@
+                <td>
+                    <strong> @Html.DisplayFor(modelItem => item.Chanel1.Name): </strong>
+                    @Html.DisplayFor(modelItem => item.Titel)
+                    ( Kl: @item.Programstart.Value.ToShortTimeString(),
+                    | @item.Programstart.Value.ToShortDateString() )
+                </td>
+              
+                <td>
+                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                </td>
 
-            @*<ul>
-                <li>*@
+                @*</li>
+                    </ul>*@
+            </tr>
 
-            @Html.DisplayFor(modelItem => item.Titel)
-
-            Tid: @item.Starttime.Value.ToShortDateString()
-
-            @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
-
-            @*</li>
-                </ul>*@
-        </div>
-
-    }
+        }
+        </table>
+    </div>
 
 
 
