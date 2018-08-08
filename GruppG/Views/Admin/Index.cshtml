@@ -26,7 +26,7 @@
 
 @if (TempData["message"] != null)
 {
-    <link href="~/css/boostrap.css" rel="stylesheet" />
+    @*<link href="~/css/boostrap.css" rel="stylesheet" />
     <script src="~/js/boostrap.min.js"></script>
 
         <div class="alert alert-danger">
@@ -35,7 +35,13 @@
 
             <strong style="width:12px">OBS: </strong> Det maximala antalet puffar är 3!
 
-        </div>
+        </div>*@
+
+    //Så här hämtar man meddelandet från controllern:
+    <div class="alert alert-danger">
+        <a class="close" data-dismiss="alert">&times;</a>
+        <strong> OBS:</strong> @TempData["message"]
+    </div>
 
 }
 
