@@ -63,9 +63,20 @@ namespace GruppG
                 defaults: new { controller = "Login", action = "Register" }
             );
 
-           
 
 
+            //AdminController
+            routes.MapRoute(
+               name: "Admin",
+               url: "Admin",
+               defaults: new
+               {
+                   controller = "Admin",
+                   action = "Index",
+                   date = UrlParameter.Optional,
+                   id = UrlParameter.Optional
+               }
+           );
 
 
 
