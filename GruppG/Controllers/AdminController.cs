@@ -62,6 +62,35 @@ namespace GruppG.Controllers
             return View(finalItem);
         }
 
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Index(int id, Program program)
+        //{
+        //    Program puffToEdit = db.Program.Find(id);
+        //    if (puffToEdit == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    else
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(program);
+        //    }
+        //    puffToEdit.Puff = program.Puff;
+        //    puffToEdit.Puff = 0;
+        //    var puffToRemove = pd.PuffPrograms().Where(i => i.Puff != 1).ToList();
+            
+            
+        //    db.SaveChanges();
+
+        //    //var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
+        //    return RedirectToAction("Index");
+
+
+        //}
+
+
         //Details
         public ActionResult ProgramDetails(int id)
         {
@@ -112,25 +141,27 @@ namespace GruppG.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Program program)
+        public ActionResult Edit(int id)
         {
-            
+                //Index -> program i modelstate-view
+                //Program som inp. 
             
                 Program puffToEdit = db.Program.Find(id);
-                if (puffToEdit == null)
-                {
-                    return HttpNotFound();
-                }
+                //if (puffToEdit == null)
+                //{
+                //    return HttpNotFound();
+                //}
 
-                else
+                
                 if (!ModelState.IsValid)
                 {
-                    return View(program);
+                    return View("Index");
                 }
-                puffToEdit.Puff = program.Puff;
-                db.SaveChanges();
+                else
+            puffToEdit.Puff = 1;
+            db.SaveChanges();
             
-            var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
+            //var newPuff = pd.PuffPrograms().Where(p => p.Puff == 1);
             return RedirectToAction("Index");
 
             
@@ -159,10 +190,21 @@ namespace GruppG.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Program program = db.Program.Find(id);
-            var puff = db.Program.Select(p => p.Puff == 1 );
-            db.Program.Remove(program);
+            Program programToRemove = db.Program.Find(id);
+
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            else
+
+            programToRemove.Puff = 0;
             db.SaveChanges();
+            
+            //var puff = db.Program.Select(p => p.Puff == 1 );
+            //db.Program.Remove(program);
+            //db.SaveChanges();
+            //var puffList = pd.PuffPrograms().Where(p => p.Puff == 1);
             return RedirectToAction("Index");
         }
 

@@ -6,83 +6,79 @@
 
 <h2>Delete</h2>
 
-<h3>Är du säker på att du vill radera den här puffen?</h3>
+<h3>Är du säker på att du vill ta bort den här puffen?</h3>
 <div>
+    
+    
+    
+
+    @*<div class="date">
+        @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Ta bort puff", "Index", new { Model.Id }, new { onclick = "return confirm ('Are you sure wants to delete?');" })
+                </div>
+
+
+            </div>
+        }
+    </div>*@
     <h4>Program</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titel)
-        </dt>
+    <div class="form-group">
 
-        <dd>
+        <div>
+            <strong>Program</strong>
+
             @Html.DisplayFor(model => model.Titel)
-        </dd>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        @*<div>
+            <strong>Om programmet</strong>
 
-        <dd>
             @Html.DisplayFor(model => model.Description)
-        </dd>
+        </div>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Starttime)
-        </dt>
+        <div>
+            <strong>Kanal</strong>
 
-        <dd>
-            @Html.DisplayFor(model => model.Programstart )
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Endtime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endtime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Puff)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Puff)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Programstart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Programstart)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category1.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category1.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Chanel1.Name)
-        </dt>
-
-        <dd>
             @Html.DisplayFor(model => model.Chanel1.Name)
-        </dd>
+        </div>
 
-    </dl>
+        <div>
+            <strong>Kategori</strong>
+
+            @Html.DisplayFor(model => model.Category1.Name)
+        </div>
+
+        <div>
+            <strong>Datum</strong>
+
+            @Html.DisplayFor(model => model.Programstart.Value.Date)
+        </div>
+
+        <div>
+            <strong>Starttid</strong>
+
+            @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
+        </div>
+
+        <div>
+            <strong>Sluttid</strong>
+
+            @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
+        </div>
+
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Ta bort puffen" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }
+
+ 
 </div>
