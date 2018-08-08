@@ -80,8 +80,18 @@ namespace GruppG.Controllers
         //Edit puffar
         public ActionResult Edit(int? id)
         {
+            ViewBag.Message = "Max antal puffar är 3!";
             Program program = db.Program.Find(id);
-            if (id == null)
+            if (pd.CountPuff() == true)
+            {
+                //return ViewBag.Message = "Max antal puffar är 3!";
+                //return View("Index");
+                //return Content("<script language='javascript' type='text/javascript'>alert ('Det maximala antalet puffar är 3');</script>");
+                //return JavaScript(alert('Det maximala antalet puffar är 3'));
+                TempData["message"] = "Det maximala antalet puffar är 3";
+                return RedirectToAction("Index");
+            }
+            else if (id == null)
             {
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 return ViewBag.Message=("FEL!!!!!");
@@ -92,7 +102,6 @@ namespace GruppG.Controllers
                 var progEdit = db.Program.Single(e => e.Id == id);
                 return View(progEdit);
             }
-            
             
         }
 
@@ -106,34 +115,26 @@ namespace GruppG.Controllers
         public ActionResult Edit(int id, Program program)
         {
             
-
-
-            Program puffToEdit = db.Program.Find(id);
-            if (puffToEdit == null)
-            {
-                return HttpNotFound();
-            }
-            else
-                if (!ModelState.IsValid)
+            
+                Program puffToEdit = db.Program.Find(id);
+                if (puffToEdit == null)
                 {
-                return View(program);
+                    return HttpNotFound();
                 }
 
-            //db.Program.Add(program);
-            puffToEdit.Puff = program.Puff;
-            db.SaveChanges();
-            //pd.Commit();
-            //if (program.Puff == 1)
-            //{
+                else
+                if (!ModelState.IsValid)
+                {
+                    return View(program);
+                }
+                puffToEdit.Puff = program.Puff;
+                db.SaveChanges();
+            
             var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
             return RedirectToAction("Index");
-            //}
-            //else if (program.Puff == null)
-            //{
-            //    pd.PuffPrograms().Remove(program);
-            //    var newPuff = pd.PuffPrograms().Where(p => p.Puff == 1).ToList();
-            //    return View(newPuff);
-            }
+
+            
+        }
 
             
             

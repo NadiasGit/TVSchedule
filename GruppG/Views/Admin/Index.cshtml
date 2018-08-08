@@ -15,7 +15,7 @@
     {
         <ul>
             <li>
-                Program:  @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
+                @Html.DisplayFor(modelItem => item.Titel)  Tid: @item.Starttime.Value.ToShortDateString()
                 @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
                 @Html.ActionLink("Ta bort", "DeletePuff", new { /* id=item.PrimaryKey */ })
             </li>
@@ -23,6 +23,21 @@
 
     }
 </div>
+
+@if (TempData["message"] != null)
+{
+    <link href="~/css/boostrap.css" rel="stylesheet" />
+    <script src="~/js/boostrap.min.js"></script>
+
+        <div class="alert alert-danger">
+
+            <a class="close" data-dismiss="alert">&times;</a>
+
+            <strong style="width:12px">OBS: </strong> Det maximala antalet puffar är 3!
+
+        </div>
+
+}
 
 <h4>Filtrera på datum</h4>
 <div class="date">
@@ -43,7 +58,6 @@
 
 
 
-
 <table class="table">
     
     <tr>
@@ -51,6 +65,7 @@
         <th> Tid </th>
         <th> Redigera </th>
     </tr>
+   
 @foreach (var item in Model.ProgramListVM)
 {
     <tr>
@@ -58,8 +73,16 @@
         <td>@item.Titel</td>
         <td>@item.Programstart</td>
         <td>
-        @Html.ActionLink("Edit Puff", "Edit", new { @id = item.Id }, null ) |
-        @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null) |
+        @*@if(null != TempData["alertMessage"])
+        {
+        <script type="text/javascript">
+       alert("TempData[alertMessage]");
+       </script>
+        }
+        else
+        {*@ 
+        @Html.ActionLink("Edit Puff", "Edit", new { @id = item.Id }, null) 
+        @Html.ActionLink("| Mer information", "ProgramDetails", new { @id = item.Id }, null) |
         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
         
