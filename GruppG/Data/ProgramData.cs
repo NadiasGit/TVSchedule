@@ -51,7 +51,15 @@ namespace GruppG.Data
             return puffList;
         }
 
-
+        public bool CountPuff()
+        {
+            if(PuffPrograms().Count > 3)
+            {
+                string message = "Max antal puffar är 3!";
+                return true;
+            }
+            return false;
+        }
 
 
         //Ny metod 15 dec. 2017

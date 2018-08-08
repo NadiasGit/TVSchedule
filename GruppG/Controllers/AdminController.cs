@@ -100,10 +100,14 @@ namespace GruppG.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, Program program)
         {
+            
+
+
             Program puffToEdit = db.Program.Find(id);
             if (puffToEdit == null)
             {
@@ -115,8 +119,10 @@ namespace GruppG.Controllers
                 return View(program);
                 }
 
+            //db.Program.Add(program);
             puffToEdit.Puff = program.Puff;
-            pd.Commit();
+            db.SaveChanges();
+            //pd.Commit();
             //if (program.Puff == 1)
             //{
             var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);

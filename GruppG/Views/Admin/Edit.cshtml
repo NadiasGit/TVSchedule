@@ -16,76 +16,73 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
+        @*<dl class="dl-horizontal">*@
         <div class="form-group">
-            @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Titel, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div>
+                <strong>Program</strong>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Chanel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Chanel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Chanel, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.Titel)
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @*<div>
+                <strong>Om programmet</strong>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Starttime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Starttime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Starttime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.DisplayFor(model => model.Description)
+            </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Endtime, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Endtime, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Endtime, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div>
+                <strong>Kanal</strong>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Puff, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Puff, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Puff, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.Chanel1.Name)
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Programstart, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Programstart, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Programstart, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div>
+                <strong>Kategori</strong>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                @Html.DisplayFor(model => model.Category1.Name)
             </div>
+
+            <div>
+                <strong>Datum</strong>
+
+                @Html.DisplayFor(model => model.Programstart.Value.Date)
+            </div>
+
+            <div>
+                <strong>Starttid</strong>
+
+                @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
+            </div>
+
+            <div>
+                <strong>Sluttid</strong>
+
+                @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
+            </div>
+
+
+            @*</dl>*@
+
+
+            @*<div class="form-group">*@
+                @Html.LabelFor(model => model.Puff, htmlAttributes: new { @class = "control-label col-md-2" })
+                @*<div class="col-md-10">*@
+                    @Html.EditorFor(model => model.Puff, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Puff, "", new { @class = "text-danger" })
+                @*</div>*@
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+
+
         </div>
-    </div>
 }
 
 <div>
