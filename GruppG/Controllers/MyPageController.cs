@@ -21,17 +21,22 @@ namespace GruppG.Controllers
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var person = u4.Person;
-            return View(person);
+            //var person = u4.Person;
+            //return View(person);
+            var pers = u4.Person.Single(e => e.Id == id);
+            return View(pers);
         }
 
-        public ActionResult MyFavoriteChannels()
+        public ActionResult MyFavoriteChannels(int id)
         {
+            var pers = u4.Person.Single(e => e.Id == id);
             var channel = pd.GetChannels();
             finalItem.ChannelListVM = channel;
+            finalItem.PersonP = pers;
             return View(finalItem);
+
         }
 
         public ActionResult MyFavotieChannel(int id)

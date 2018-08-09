@@ -6,13 +6,14 @@
 
 <h2>MyFavoriteChannels</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm())
+{ 
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Person)
+            @Html.DisplayNameFor(model => model.PersonP.FirstName )
+            @Html.DisplayFor(model => model.PersonP.FirstName)
         </th>
        
         
@@ -29,8 +30,19 @@
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
         </td>
     </tr>
 }
-
 </table>
+
+    @*@Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)*@
+    @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
+
+
+}
+

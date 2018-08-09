@@ -70,7 +70,7 @@ namespace GruppG.Controllers
                 {
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("MyPage", "Login", new { @id = user.Id });
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                 }
             }
         }

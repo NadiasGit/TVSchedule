@@ -1,11 +1,49 @@
-﻿@model IEnumerable<GruppG.Models.db.Person>
+﻿@model GruppG.Models.db.Person
     @{
         ViewBag.Title = "Index";
     }
 
     <h2>Index</h2>
 
-    <table class="table">
+<h2>Välkommen till mina sidor  @Model.FirstName @Model.LastName</h2>
+
+<h4></h4>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <strong>Förnamn:</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            <strong>Efternamn</strong>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            <strong>Användarnamn</strong>
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+    @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)
+
+</div>
+
+    @*<table class="table">
         <tr>
             <th>
                 <p>Person</p>
@@ -15,13 +53,13 @@
                     <p>Kanal</p>
                 </th>*@
 
-            <th>
+            @*<th>
                 <p>Datum</p>
             </th>
 
-        </tr>
+        </tr>*@
 
-        @foreach (var item in Model)
+        @*@foreach (var item in Model)
         {
             <tr>
 
@@ -39,5 +77,5 @@
 
         }
 
-    </table>
+    </table>*@
 
