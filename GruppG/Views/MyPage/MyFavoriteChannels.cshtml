@@ -1,0 +1,36 @@
+﻿@model GruppG.Models.ViewModels.FavoritChannelVM
+
+@{
+    ViewBag.Title = "MyFavoriteChannels";
+}
+
+<h2>MyFavoriteChannels</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Person)
+        </th>
+       
+        
+    </tr>
+
+    @foreach (var item in Model.ChannelListVM)
+    {
+    <tr>
+        <td>
+            <h2> @item.Name </h2>
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

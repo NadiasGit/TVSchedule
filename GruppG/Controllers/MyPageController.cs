@@ -1,4 +1,5 @@
-﻿using GruppG.Models.db;
+﻿using GruppG.Data;
+using GruppG.Models.db;
 using GruppG.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,21 @@ namespace GruppG.Controllers
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
+        FavoritChannelVM finalItem = new FavoritChannelVM();
+        ProgramData pd = new ProgramData();
         Person person = new Person();
 
         public ActionResult Index()
         {
-            var prog = u4.Person;
-            return View(prog.ToList());
+            var person = u4.Person;
+            return View(person);
+        }
+
+        public ActionResult MyFavoriteChannels()
+        {
+            var channel = pd.GetChannels();
+            finalItem.ChannelListVM = channel;
+            return View(finalItem);
         }
 
         public ActionResult MyFavotieChannel(int id)

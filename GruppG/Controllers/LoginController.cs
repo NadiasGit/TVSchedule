@@ -72,8 +72,6 @@ namespace GruppG.Controllers
                     Session["UserName"] = user.UserName.ToString();
                     return RedirectToAction("MyPage", "Login", new { @id = user.Id });
                 }
-
-
             }
         }
 

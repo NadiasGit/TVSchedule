@@ -27,7 +27,7 @@ namespace GruppG.Controllers
             //Filtrera datum och kanal
 
             var puff = pd.PuffPrograms();
-            var channel = viewModel.GetChannels();
+            var channel = pd.GetChannels();
             var program = viewModel.GetPrograms();
 
             if (date == null && id == null)

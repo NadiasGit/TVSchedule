@@ -36,6 +36,18 @@ namespace GruppG.Data
             cache["puffList"] = puffList;
         }
 
+        //Get channels
+        public List<Chanel> GetChannels()
+        {
+            db = new U4Entities();
+            var result = db.Chanel;
+            return result.ToList();
+        }
+
+
+
+
+
         public bool CheckUserCreadentials(string username, string password)
         {
             var user = db.Person.Where(p => p.UserName == username && p.Password == password).FirstOrDefault();

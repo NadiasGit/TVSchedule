@@ -81,13 +81,13 @@ namespace GruppG.Models.ViewModels
             var result = u4.Program.Where(q => q.Programstart == date);
             return result.ToList();
         }
-        public List<Chanel> GetChannels()
-        {
-            U4Entities u4 = new U4Entities();
+        //public List<Chanel> GetChannels()
+        //{
+        //    U4Entities u4 = new U4Entities();
 
-            var result = u4.Chanel;
-            return result.ToList();
-        }
+        //    var result = u4.Chanel;
+        //    return result.ToList();
+        //}
 
         public List<Program> GetCategoriesTest(int id)
         {
