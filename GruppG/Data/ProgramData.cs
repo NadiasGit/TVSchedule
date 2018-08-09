@@ -31,21 +31,22 @@ namespace GruppG.Data
             }
         }
 
+        //Save --remove?
         public void Commit()
         {
             cache["puffList"] = puffList;
         }
 
-        //Get channels
-        public List<Chanel> GetChannels()
+        
+
+        //Get programs
+        public List<Program> GetPrograms()
         {
-            db = new U4Entities();
-            var result = db.Chanel;
+            U4Entities u4 = new U4Entities();
+
+            var result = u4.Program;
             return result.ToList();
         }
-
-
-
 
 
         public bool CheckUserCreadentials(string username, string password)

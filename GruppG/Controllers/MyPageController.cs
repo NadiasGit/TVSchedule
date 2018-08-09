@@ -18,6 +18,7 @@ namespace GruppG.Controllers
         FavoriteChannel favchannel = new FavoriteChannel();
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
         FavoritChannelVM finalItem = new FavoritChannelVM();
+        ProgramChannelVM pcViewModel = new ProgramChannelVM();
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
@@ -32,7 +33,7 @@ namespace GruppG.Controllers
         public ActionResult MyFavoriteChannels(int id)
         {
             var pers = u4.Person.Single(e => e.Id == id);
-            var channel = pd.GetChannels();
+            var channel = pcViewModel.GetChannels();
             finalItem.ChannelListVM = channel;
             finalItem.PersonP = pers;
             return View(finalItem);

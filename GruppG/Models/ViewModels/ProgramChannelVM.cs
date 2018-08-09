@@ -58,13 +58,13 @@ namespace GruppG.Models.ViewModels
 
         }
 
-       
 
-        public List<Program> GetPrograms()
+
+        //Get channels
+        public List<Chanel> GetChannels()
         {
-            U4Entities u4 = new U4Entities();
-
-            var result = u4.Program;
+            db = new U4Entities();
+            var result = db.Chanel;
             return result.ToList();
         }
 

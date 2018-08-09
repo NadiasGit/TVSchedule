@@ -71,10 +71,10 @@ namespace GruppG.Controllers
         ProgramChannelVM categories = new ProgramChannelVM();
 
         //var program = viewModel.GetPrograms();
-            var channel = pd.GetChannels();
-            var program = viewModel.GetPrograms();
+            var channel = viewModel.GetChannels();
+            var program = pd.GetPrograms();
             
-            var progCategories = viewModel.GetPrograms();
+            var progCategories = pd.GetPrograms();
             var cat = viewModel.GetCategories();
 
             if (date == null && id == null)
