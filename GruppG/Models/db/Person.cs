@@ -17,6 +17,8 @@ namespace GruppG.Models.db
     public partial class Person
     {
         public int Id { get; set; }
+        //Firstname måste finnas med (från Eriks FL4 1:05)
+        [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
