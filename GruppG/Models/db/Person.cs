@@ -18,7 +18,7 @@ namespace GruppG.Models.db
     {
         public int Id { get; set; }
         //Firstname måste finnas med (från Eriks FL4 1:05)
-        [Required]
+        [Required (ErrorMessage ="Du måste fylla i ett namn.")]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
