@@ -53,7 +53,7 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
 
-            PuffName = new List<string>() { "Nej", "Ja"};
+            
 
         }
 

@@ -15,6 +15,7 @@ namespace GruppG.Controllers
         ProgramChannelVM viewModel = new ProgramChannelVM();
         ProgramChannelVM finalItem = new ProgramChannelVM();
         U4Entities db = new U4Entities();
+        Program program;
         
 
         // GET: Admin
@@ -96,6 +97,7 @@ namespace GruppG.Controllers
         {
             //Lägg till ett felmeddelande/felhantering om program-id saknas
             var progDetails = db.Program.Single(e => e.Id == id);
+            ViewBag.Message = pd.PuffName(progDetails.Puff);
             //return RedirectToAction("ProgramDetails", "Home");
             return View(progDetails);
         }
@@ -110,7 +112,7 @@ namespace GruppG.Controllers
         public ActionResult Edit(int? id)
         {
             ViewBag.Message = "Max antal puffar är 3!";
-            Program program = db.Program.Find(id);
+            program = db.Program.Find(id);
             if (pd.CountPuff() == true)
             {
                 //return ViewBag.Message = "Max antal puffar är 3!";

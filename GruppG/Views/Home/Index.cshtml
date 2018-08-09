@@ -76,8 +76,8 @@
                                     
                                     <tr>
                                         <td>@i.Titel</td>
-                                        <td>@i.Programstart</td>
-                                        <td>@Html.ActionLink("Mer information", "ProgramDetails", new { @id = i.Id }, null)</td>
+                                        <td>@i.Programstart.Value.ToShortTimeString() </td>
+                                        <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
                                 }
                             }

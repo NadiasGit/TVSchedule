@@ -1,5 +1,6 @@
 ﻿using GruppG.Models;
 using GruppG.Models.db;
+using GruppG.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,10 @@ namespace GruppG.Data
 
         private U4Entities db = new U4Entities();
         private Person pr = new Person();
-        Models.db.Program program = new Models.db.Program();
+        Program program = new Program();
         Chanel channel = new Chanel();
         List<Program> puffList;
+        ProgramChannelVM viewModel = new ProgramChannelVM();
         //private DateTime selectedDates = new DateTime();
          System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
 
@@ -44,9 +46,14 @@ namespace GruppG.Data
             return true;
         }
 
-        public List<Models.db.Program> PuffPrograms()
+        public List<Program> PuffPrograms()
         {
-            puffList = db.Program.Where(p => p.Puff == 1).ToList();
+            
+            
+            
+            //.Where(p => p.Programstart >= p.Programstart.Value.AddDays(-1)).ToList()
+            puffList = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= viewModel.Today).ToList();
+
             //var puff = db.Program.Where(p => p.Puff == 1);
             return puffList;
         }
@@ -58,6 +65,18 @@ namespace GruppG.Data
                 return true;
             }
             return false;
+        }
+
+        public string PuffName(int? puff)
+        {
+            if (puff == 1)
+            {
+                return "Ja";
+            }
+            else
+            {
+                return "Nej";
+            }
         }
 
 

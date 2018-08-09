@@ -11,13 +11,16 @@
                     <li>*@
                 <td>
                     <strong> @Html.DisplayFor(modelItem => item.Chanel1.Name): </strong>
+                    
                     @Html.DisplayFor(modelItem => item.Titel)
-                    ( Kl: @item.Programstart.Value.ToShortTimeString(),
-                    | @item.Programstart.Value.ToShortDateString() )
-                </td>
+                        </td>
+                <td>
+                    | Kl: @item.Programstart.Value.ToShortTimeString()
+                    | @item.Programstart.Value.ToShortDateString() |
+                        </td>
               
                 <td>
-                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)
+                    @Html.ActionLink("Mer info", "ProgramDetails", new { @id = item.Id }, null)
                 </td>
 
                 @*</li>
