@@ -33,7 +33,8 @@ namespace GruppG.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime Today { get; set; }
         public List<string> PuffName { get; set; }
-        
+        public ProgramData ProgramData { get; set; }
+
 
         public ProgramChannelVM()
         {
