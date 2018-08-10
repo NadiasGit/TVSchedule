@@ -1,4 +1,4 @@
-﻿@model GruppG.Models.db.Person
+﻿@model GruppG.Models.ViewModels.ProgramChannelVM
     @{
         ViewBag.Title = "Index";
     }
@@ -78,4 +78,46 @@
         }
 
     </table>*@
+
+@*<div class="row">
+
+    @if (Model.ChannelListVM != null)
+    {
+        foreach (var item in Model.ChannelListVM)
+
+        {
+            <div class="col-md-4">
+                <h2> @item.Name </h2>
+
+                <table class="table">
+                    <tr>
+                        <th> Program </th>
+                        <th> Tid </th>
+                    </tr>
+
+
+                    @if (Model.ProgramListVM.Any())
+                    {
+                        foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                        {
+
+                            <tr>
+                                <td>@i.Titel</td>
+                                <td>@i.Programstart.Value.ToShortTimeString() </td>
+                                <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        @ViewBag.Message
+                    }
+                </table>
+            </div>
+        }
+    }
+
+</div>*@
+
+
 

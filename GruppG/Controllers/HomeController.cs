@@ -54,8 +54,7 @@ namespace GruppG.Controllers
         //List<Program> Programs = new List<Program>();
 
         //NY INDEX:
-        public ActionResult Index(DateTime? date, int ? id = null )
-        //public ActionResult Index(string date)
+        public ActionResult Index(DateTime? date, int? id = null)
         {
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
@@ -63,26 +62,25 @@ namespace GruppG.Controllers
             SelectedDate selectedDay = new SelectedDate();
 
             //Början till att få bort nollorna (?)
-        //    finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
-        //    {
-        //        Value = d.Id.ToString(),
-        //        Text = d.Today.Value.ToShortDateString()
-        //}).ToList();
-        ProgramChannelVM categories = new ProgramChannelVM();
+            //    finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
+            //    {
+            //        Value = d.Id.ToString(),
+            //        Text = d.Today.Value.ToShortDateString()
+            //}).ToList();
+            //ProgramChannelVM categories = new ProgramChannelVM();
 
-        //var program = viewModel.GetPrograms();
-            var channel = viewModel.GetChannels();
+            var channel = pd.GetChannels();
             var program = pd.GetPrograms();
-            
+
             var progCategories = pd.GetPrograms();
-            var cat = viewModel.GetCategories();
+            var cat = pd.GetCategories();
 
             if (date == null && id == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
                 finalItem.ProgramListVM = programStart;
             }
-            else if (date != null &&  id == null)
+            else if (date != null && id == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
 
@@ -90,19 +88,9 @@ namespace GruppG.Controllers
             }
             else if (date == null && id != null)
             {
-                 
-                //if (date == null)
-                //{
-                //    var programDate = program.Where(c => c.Category == id).ToList();
-                //    finalItem.ProgramListVM = programDate;
-                //}
-                //else
-                //{
-                    //var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-                    var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-                //    finalItem.ProgramListVM = programDate;
-                //}
-                
+
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+
                 finalItem.ProgramListVM = programDate;
             }
             else
@@ -110,37 +98,16 @@ namespace GruppG.Controllers
                 var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
                 var progDate = catDate.Where(c => c.Category == id).ToList();
 
-                //var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-
                 finalItem.ProgramListVM = progDate;
             }
 
-            //if (Today == null)
-            //{
 
-            //    // finalItem.ChannelListVM = channel;
-            //    program = viewModel.GetPrograms();
-            //    finalItem.ProgramListVM = program;
-
-
-            //}
-            //else
-            //{
-            //    //finalItem.ChannelListVM = channel;
-            //    //finalItem.ProgramListVM = viewModel.GetDate(Convert.ToDateTime(Today));
-            //    //finalItem.ProgramListVM = program.Where(q => q.Programstart.ToString() == Today).ToList();
-            //    program = viewModel.GetPrograms().Where(q => q.Programstart.ToString() == Today).ToList();
-            //    finalItem.ProgramCategoryVM = progCategories;
-            //    finalItem.ProgramListVM = program;
-
-            //}
-
-            //finalItem.ProgramListVM = program;
-            //var programs = programChannelVM.Programs;
             ViewBag.Message = ("Inget på TV idag :( ... ");
 
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
+            //return View(finalItem);
+
             return View(finalItem);
 
         }

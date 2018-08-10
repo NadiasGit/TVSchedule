@@ -62,7 +62,7 @@
                 @*<div class="col-md-offset-2 col-md-10">*@
                     
                     @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
-                    @Html.DropDownList("id", new SelectList(Model.GetChannels(), "Id", "Name", "id"), "Alla kanaler", new { onchange = "form.submit();" })
+                    @Html.DropDownList("id", new SelectList(Model.ChannelListVM, "Id", "Name", "id"), "Alla kanaler", new { onchange = "form.submit();" })
                 @*</div>*@
             </div>
         }

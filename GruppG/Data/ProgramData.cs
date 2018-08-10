@@ -21,6 +21,8 @@ namespace GruppG.Data
         ProgramChannelVM viewModel = new ProgramChannelVM();
         //private DateTime selectedDates = new DateTime();
          System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
+        ProgramChannelVM finalItem = new ProgramChannelVM();
+        ProgramChannelVM categories = new ProgramChannelVM();
 
         public ProgramData()
         {
@@ -46,6 +48,62 @@ namespace GruppG.Data
 
             var result = u4.Program;
             return result.ToList();
+        }
+
+        //Get channels
+        public List<Chanel> GetChannels()
+        {
+            db = new U4Entities();
+            var result = db.Chanel;
+            return result.ToList();
+        }
+
+        //Get categories
+        public List<Category> GetCategories()
+        {
+            U4Entities u4 = new U4Entities();
+
+            var result = u4.Category;
+            return result.ToList();
+        }
+
+
+        //Filter-method
+        public ProgramChannelVM FilterPrograms(DateTime? date, int? id = null)
+        {
+            
+            ListOfDaysModel Dates = new ListOfDaysModel();
+            var channel = GetChannels();
+            var program = GetPrograms();
+
+            var progCategories = GetPrograms();
+            var cat = GetCategories();
+
+            if (date == null && id == null)
+            {
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
+                finalItem.ProgramListVM = programStart;
+            }
+            else if (date != null &&  id == null)
+            {
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+                finalItem.ProgramListVM = programDate;
+            }
+            else if (date == null && id != null)
+            {
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+                finalItem.ProgramListVM = programDate;
+            }
+            else
+            {
+                var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+                //var progDate = catDate.Where(c => c.Category == id).ToList();
+                finalItem.ProgramListVM = catDate;
+            }
+
+            finalItem.ChannelListVM = channel;
+            finalItem.CategoryListVM = cat;
+            return finalItem;
         }
 
 

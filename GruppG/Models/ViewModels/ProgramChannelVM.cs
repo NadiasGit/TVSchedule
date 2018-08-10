@@ -60,21 +60,21 @@ namespace GruppG.Models.ViewModels
 
 
 
-        //Get channels
-        public List<Chanel> GetChannels()
-        {
-            db = new U4Entities();
-            var result = db.Chanel;
-            return result.ToList();
-        }
+        ////Get channels
+        //public List<Chanel> GetChannels()
+        //{
+        //    db = new U4Entities();
+        //    var result = db.Chanel;
+        //    return result.ToList();
+        //}
 
-        public List<Category> GetCategories()
-        {
-            U4Entities u4 = new U4Entities();
+        //public List<Category> GetCategories()
+        //{
+        //    U4Entities u4 = new U4Entities();
 
-            var result = u4.Category;
-            return result.ToList();
-        }
+        //    var result = u4.Category;
+        //    return result.ToList();
+        //}
 
         public List<Program> GetDate(DateTime date)
         {

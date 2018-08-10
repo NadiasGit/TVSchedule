@@ -33,7 +33,7 @@ namespace GruppG.Controllers
         public ActionResult MyFavoriteChannels(int id)
         {
             var pers = u4.Person.Single(e => e.Id == id);
-            var channel = pcViewModel.GetChannels();
+            var channel = pd.GetChannels();
             finalItem.ChannelListVM = channel;
             finalItem.PersonP = pers;
             return View(finalItem);
