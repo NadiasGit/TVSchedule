@@ -11,8 +11,7 @@
 
 <div class="jumbotron">
 
-    <h2>Vi rekommenderar: </h2>
-    <h1>test</h1>
+    <h1>Vi rekommenderar: </h1>
     @*Nyhetspuffar - viktigt*@
 
     @*<div class="nyhetspuff">*@
@@ -56,10 +55,9 @@
 <div class="row">
 
             @if (Model.ChannelListVM != null)
-                                {
-                                    foreach (var item in Model.ChannelListVM)
-
-                                    {
+            {
+                 foreach (var item in Model.ChannelListVM)
+                 {
                     <div class="col-md-4">
                         <h2> @item.Name </h2>
                         
@@ -74,17 +72,19 @@
                             {
                                 foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
                                 {
-                                    
+
                                     <tr>
                                         <td>@i.Titel</td>
                                         <td>@i.Programstart.Value.ToShortTimeString() </td>
                                         <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
+
+
                                 }
                             }
                             else
                             {
-                                @ViewBag.Message
+                                  @ViewBag.Message
                             }
                         </table>
                         </div>

@@ -22,8 +22,7 @@ namespace GruppG.Data
         //private DateTime selectedDates = new DateTime();
          System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
         ProgramChannelVM finalItem = new ProgramChannelVM();
-        ProgramChannelVM categories = new ProgramChannelVM();
-
+        
         public ProgramData()
         {
             puffList = cache["puffList"] as List<Program>;
@@ -44,9 +43,9 @@ namespace GruppG.Data
         //Get programs
         public List<Program> GetPrograms()
         {
-            U4Entities u4 = new U4Entities();
+            db = new U4Entities();
 
-            var result = u4.Program;
+            var result = db.Program;
             return result.ToList();
         }
 
@@ -61,15 +60,15 @@ namespace GruppG.Data
         //Get categories
         public List<Category> GetCategories()
         {
-            U4Entities u4 = new U4Entities();
+            db = new U4Entities();
 
-            var result = u4.Category;
+            var result = db.Category;
             return result.ToList();
         }
 
 
-        //Filter-method
-        public ProgramChannelVM FilterPrograms(DateTime? date, int? id = null)
+        //Filter-methods
+        public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
         {
             
             ListOfDaysModel Dates = new ListOfDaysModel();
@@ -91,8 +90,8 @@ namespace GruppG.Data
             }
             else if (date == null && id != null)
             {
-                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-                finalItem.ProgramListVM = programDate;
+                var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
+                finalItem.ProgramListVM = programDateCat;
             }
             else
             {
@@ -106,6 +105,43 @@ namespace GruppG.Data
             return finalItem;
         }
 
+        public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)
+        {
+            var puff = PuffPrograms();
+            var channel = GetChannels();
+            var program = GetPrograms();
+
+            if (date == null && id == null)
+            {
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
+                finalItem.ProgramListVM = programStart;
+            }
+            else if (date != null && id == null)
+            {
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+
+                finalItem.ProgramListVM = programDate;
+            }
+            else if (date == null && id != null)
+            {
+                //Har bytt ut kategori mot kanal
+                var programCat = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
+
+                finalItem.ProgramListVM = programCat;
+            }
+            else
+            {
+                var channelDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
+                //var progDate = channelDate.Where(c => c.Chanel == id).ToList();
+
+                finalItem.ProgramListVM = channelDateCat;
+            }
+
+            finalItem.ChannelListVM = channel;
+            finalItem.GetPuffListVM = puff;
+
+            return finalItem;
+        }
 
         public bool CheckUserCreadentials(string username, string password)
         {
