@@ -1,11 +1,11 @@
-﻿@model GruppG.Models.ViewModels.ProgramChannelVM
+﻿@model GruppG.Models.ViewModels.FavoritChannelVM
     @{
-        ViewBag.Title = "Index";
+        ViewBag.Title = "Mina sidor";
     }
 
     <h2>Index</h2>
 
-<h2>Välkommen till mina sidor  @Model.FirstName @Model.LastName</h2>
+<h2>Välkommen till mina sidor  @Model.PersonP.FirstName @Model.PersonP.LastName</h2>
 
 <h4></h4>
 
@@ -18,7 +18,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.PersonP.FirstName)
         </dd>
 
         <dt>
@@ -26,7 +26,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.PersonP.LastName)
         </dd>
 
         <dt>
@@ -35,11 +35,11 @@
 
         <dd>
 
-            @Html.DisplayFor(model => model.UserName)
+            @Html.DisplayFor(model => model.PersonP.UserName)
         </dd>
 
     </dl>
-    @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)
+    @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
 
 </div>
 
@@ -79,7 +79,7 @@
 
     </table>*@
 
-@*<div class="row">
+<div class="row">
 
     @if (Model.ChannelListVM != null)
     {
@@ -117,7 +117,7 @@
         }
     }
 
-</div>*@
+</div>
 
 
 

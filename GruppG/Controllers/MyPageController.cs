@@ -24,10 +24,15 @@ namespace GruppG.Controllers
 
         public ActionResult Index(int id)
         {
-            //var person = u4.Person;
-            //return View(person);
-            var pers = u4.Person.Single(e => e.Id == id);
-            return View(pers);
+            var channel = pd.GetChannels();
+            var program = pd.GetPrograms();
+            var person = pd.GetPersonById(id);
+
+            finalItem.PersonP = person;
+            finalItem.ChannelListVM = channel;
+            finalItem.ProgramListVM = program;
+
+            return View(finalItem);
         }
 
         public ActionResult MyFavoriteChannels(int id)

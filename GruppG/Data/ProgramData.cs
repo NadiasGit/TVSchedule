@@ -66,6 +66,19 @@ namespace GruppG.Data
             return result.ToList();
         }
 
+        //Get person by id
+        public Person GetPersonById(int id)
+        {
+            db = new U4Entities();
+            var result = db.Person.Single(e => e.Id == id);
+           
+            return result;
+        }
+
+
+
+
+
         //Puffar/rekommenderade program
 
         public List<Program> PuffPrograms()
