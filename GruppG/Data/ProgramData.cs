@@ -70,19 +70,21 @@ namespace GruppG.Data
 
         public List<Program> PuffPrograms()
         {
+            db = new U4Entities();
             //.Where(p => p.Programstart >= p.Programstart.Value.AddDays(-1)).ToList()
-            puffList = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= viewModel.Today).ToList();
+            var result = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= viewModel.Today).ToList();
             //var puff = db.Program.Where(p => p.Puff == 1);
-            return puffList;
+            return result;
         }
 
         //Filter-methods
-        public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
+        public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)
         {
             
             ListOfDaysModel Dates = new ListOfDaysModel();
             var channel = GetChannels();
             var program = GetPrograms();
+            
 
             var progCategories = GetPrograms();
             var cat = GetCategories();
@@ -105,20 +107,22 @@ namespace GruppG.Data
             else
             {
                 var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-                //var progDate = catDate.Where(c => c.Category == id).ToList();
+               
                 finalItem.ProgramListVM = catDate;
             }
 
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
+            
             return finalItem;
         }
 
-        public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)
+        public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
         {
-            var puff = PuffPrograms();
+            
             var channel = GetChannels();
             var program = GetPrograms();
+            var puff = PuffPrograms();
 
             if (date == null && id == null)
             {
@@ -133,21 +137,20 @@ namespace GruppG.Data
             }
             else if (date == null && id != null)
             {
-                //Har bytt ut kategori mot kanal
                 var programCat = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
 
                 finalItem.ProgramListVM = programCat;
             }
             else
             {
-                var channelDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
-                //var progDate = channelDate.Where(c => c.Chanel == id).ToList();
+                var channelDateChan = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
 
-                finalItem.ProgramListVM = channelDateCat;
+                finalItem.ProgramListVM = channelDateChan;
             }
 
             finalItem.ChannelListVM = channel;
             finalItem.GetPuffListVM = puff;
+
 
             return finalItem;
         }

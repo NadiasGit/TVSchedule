@@ -22,45 +22,8 @@ namespace GruppG.Controllers
         // GET: Admin
         public ActionResult Index(DateTime? date, int? id = null)
         {
-            //Visa en pufflista 
-
-            //Lista på dagens program 
-            //Filtrera datum och kanal
-
-            //var puff = pd.PuffPrograms();
-            //var channel = pd.GetChannels();
-            //var program = pd.GetPrograms();
-
-            //if (date == null && id == null)
-            //{
-            //    var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
-            //    finalItem.ProgramListVM = programStart;
-            //}
-            //else if (date != null && id == null)
-            //{
-            //    var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-
-            //    finalItem.ProgramListVM = programDate;
-            //}
-            //else if (date == null && id != null)
-            //{
-            //    //Har bytt ut kategori mot kanal
-            //    var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
-
-            //    finalItem.ProgramListVM = programDate;
-            //}
-            //else
-            //{
-            //    var channelDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-            //    var progDate = channelDate.Where(c => c.Chanel == id).ToList();
-
-            //    finalItem.ProgramListVM = progDate;
-            //}
-
             ViewBag.Message = ("Inget på TV idag :( ... ");
 
-            //finalItem.ChannelListVM = channel;
-            //finalItem.GetPuffListVM = puff;
             return View(pd.FilterProgramsByDateAndChannel(date,id));
         }
 
