@@ -25,17 +25,17 @@ namespace GruppG.Data
         
         public ProgramData()
         {
-            puffList = cache["puffList"] as List<Program>;
-            if (puffList == null)                            //Kolla om det finns en lista
-            {
-                puffList = new List<Program>();             //Annars lista produkter i products
-            }
+            //puffList = cache["puffList"] as List<Program>;
+            //if (puffList == null)                            //Kolla om det finns en lista
+            //{
+            //    puffList = new List<Program>();             //Annars lista produkter i products
+            //}
         }
 
         //Save --remove?
         public void Commit()
         {
-            cache["puffList"] = puffList;
+            //cache["puffList"] = puffList;
         }
 
         
@@ -66,6 +66,15 @@ namespace GruppG.Data
             return result.ToList();
         }
 
+        //Puffar/rekommenderade program
+
+        public List<Program> PuffPrograms()
+        {
+            //.Where(p => p.Programstart >= p.Programstart.Value.AddDays(-1)).ToList()
+            puffList = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= viewModel.Today).ToList();
+            //var puff = db.Program.Where(p => p.Puff == 1);
+            return puffList;
+        }
 
         //Filter-methods
         public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
@@ -153,17 +162,7 @@ namespace GruppG.Data
             return true;
         }
 
-        public List<Program> PuffPrograms()
-        {
-            
-            
-            
-            //.Where(p => p.Programstart >= p.Programstart.Value.AddDays(-1)).ToList()
-            puffList = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= viewModel.Today).ToList();
-
-            //var puff = db.Program.Where(p => p.Puff == 1);
-            return puffList;
-        }
+     
 
         public bool CountPuff()
         {

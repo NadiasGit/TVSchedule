@@ -16,6 +16,7 @@ namespace GruppG.Controllers
         ProgramChannelVM finalItem = new ProgramChannelVM();
         U4Entities db = new U4Entities();
         Program program;
+
         
 
         // GET: Admin
