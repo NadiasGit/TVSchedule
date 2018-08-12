@@ -50,6 +50,12 @@ namespace GruppG.Data
             return result.ToList();
         }
 
+        public Program GetSpecificProgram(int id)
+        {
+            var prog = db.Program.Single(e => e.Id == id);
+            return (prog);
+        }
+
         //Get channels
         public List<Chanel> GetChannels()
         {
@@ -71,7 +77,7 @@ namespace GruppG.Data
         public Person GetPersonById(int id)
         {
             db = new U4Entities();
-            var result = db.Person.Single(e => e.Id == id);
+            var result = db.Person.First(e => e.Id == id);
            
             return result;
         }
