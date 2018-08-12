@@ -4,45 +4,78 @@
     ViewBag.Title = "MyFavoriteChannels";
 }
 
-<h2>MyFavoriteChannels</h2>
 
-@using (Html.BeginForm())
-{ 
+
+<h4>
+    Dina favoritkanaler
+    @Html.DisplayFor(model => model.PersonP.FirstName)
+    @Html.DisplayFor(model => model.PersonP.LastName) :
+</h4>
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonP.FirstName )
-            @Html.DisplayFor(model => model.PersonP.FirstName)
-        </th>
-       
-        
-    </tr>
-
-    @foreach (var item in Model.ChannelListVM)
+    @foreach (var item in Model.FavoriteChannelsVM)
     {
-    <tr>
-        <td>
-            <h2> @item.Name </h2>
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+        <tr>
+            
+            <td>
+                <h2> @item.Chanel1.Name</h2>
+            </td>
+           
+            <td>
+                @Html.ActionLink("Ta bort", "Delete", new { @id=item.Id })
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ta bort som favoritkanal" class="btn btn-default" />
+                    </div>
                 </div>
-            </div>
-        </td>
-    </tr>
-}
-</table>
+            </td>
+        </tr>
+    }
+    </table>
 
-    @*@Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)*@
-    @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
+<h2>Alla kanaler</h2>
+    @using (Html.BeginForm())
+    {
 
 
-}
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PersonP.FirstName)
+                    @Html.DisplayFor(model => model.PersonP.FirstName)
+                </th>
+
+
+            </tr>
+
+
+
+            @foreach (var item in Model.ChannelListVM)
+            {
+                <tr>
+                    <td>
+                        <h2> @item.Name </h2>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        @*@Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)*@
+        @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
+
+
+    }
 

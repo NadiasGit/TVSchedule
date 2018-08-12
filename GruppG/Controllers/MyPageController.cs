@@ -13,7 +13,7 @@ namespace GruppG.Controllers
     {
         // GET: MyPage
 
-        U4Entities u4 = new U4Entities();
+        U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
@@ -37,17 +37,48 @@ namespace GruppG.Controllers
 
         public ActionResult MyFavoriteChannels(int id)
         {
-            var pers = u4.Person.Single(e => e.Id == id);
+            var pers = db.Person.Single(e => e.Id == id);
             var channel = pd.GetChannels();
             finalItem.ChannelListVM = channel;
             finalItem.PersonP = pers;
+
+            var favoriteChannel = pd.GetFavoriteChannels(id);
+            finalItem.FavoriteChannelsVM = favoriteChannel;
+
             return View(finalItem);
 
         }
 
+        //Remove favoritechannels
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var favoriteDelete =  db.FavoriteChannel.Find(id);
+            if (!ModelState.IsValid)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                db.FavoriteChannel.Remove(favoriteDelete);
+                db.SaveChanges();
+
+                //Mata ev in , "Index"
+                return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Person });
+            }
+        }
+            
+
+
+
+
+
+        //Ta bort?
         public ActionResult MyFavotieChannel(int id)
         {
-            var persEdit = u4.Person.Single(e => e.Id == id);
+            var persEdit = db.Person.Single(e => e.Id == id);
             return View(persEdit);
         }
 

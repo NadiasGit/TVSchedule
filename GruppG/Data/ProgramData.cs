@@ -17,6 +17,7 @@ namespace GruppG.Data
         private Person pr = new Person();
         Program program = new Program();
         Chanel channel = new Chanel();
+        FavoriteChannel favoritChannel = new FavoriteChannel();
         List<Program> puffList;
         ProgramChannelVM viewModel = new ProgramChannelVM();
         //private DateTime selectedDates = new DateTime();
@@ -74,9 +75,6 @@ namespace GruppG.Data
            
             return result;
         }
-
-
-
 
 
         //Puffar/rekommenderade program
@@ -167,6 +165,17 @@ namespace GruppG.Data
 
             return finalItem;
         }
+
+        public List<FavoriteChannel> GetFavoriteChannels(int id)
+        {
+            db = new U4Entities();
+
+            var favCannel = db.FavoriteChannel.Where(f => f.Person == id).OrderBy(c => c.Chanel).ToList();
+            
+            return favCannel;
+        }
+
+
 
         public bool CheckUserCreadentials(string username, string password)
         {

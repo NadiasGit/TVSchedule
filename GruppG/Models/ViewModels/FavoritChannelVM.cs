@@ -19,6 +19,7 @@ namespace GruppG.Models.ViewModels
         public Person PersonP { get; set; }
         public List<Chanel> ChannelListVM { get; set; }
         public List<Program> ProgramListVM { get; set; }
+        public List<FavoriteChannel> FavoriteChannelsVM { get; set; }
 
     }
 }
