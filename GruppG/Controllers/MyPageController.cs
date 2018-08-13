@@ -32,6 +32,10 @@ namespace GruppG.Controllers
             finalItem.ChannelListVM = channel;
             finalItem.ProgramListVM = program;
 
+
+            var favoriteChannel = pd.GetFavoriteChannels(id);
+            finalItem.FavoriteChannelsVM = favoriteChannel;
+
             return View(finalItem);
         }
 

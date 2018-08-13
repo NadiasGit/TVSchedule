@@ -68,7 +68,54 @@
             </tr>
         }
     </table>*@
+<h2>Favoritkanaler</h2>
+<div class="row">
 
+    @if (Model.FavoriteChannelsVM != null)
+    {
+        foreach (var item in Model.FavoriteChannelsVM)
+        {
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <h2> @item.Chanel1.Name</h2>
+                        </td>
+                    </tr>
+
+                    @foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                    {
+                    <tr>
+                        <td>@i.Titel</td>
+                        <td>@i.Programstart.Value.ToShortTimeString() </td>
+                        <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                    </tr>
+                    }
+                </table>
+            </div>
+        }
+
+    }
+    else
+    {
+        @ViewBag.Message
+    }
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Alla kanaler</h2>
 <div class="row">
 
     @if (Model.ChannelListVM != null)
