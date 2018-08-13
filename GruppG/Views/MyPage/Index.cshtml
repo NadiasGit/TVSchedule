@@ -3,43 +3,41 @@
         ViewBag.Title = "Mina sidor";
     }
 
-    <h2>Index</h2>
 
-<h2>Välkommen till mina sidor  @Model.PersonP.FirstName @Model.PersonP.LastName</h2>
+<h2>Välkommen till mina sidor <br />
+    @Model.PersonP.FirstName @Model.PersonP.LastName</h2>
 
-<h4></h4>
-
+@*Userinfo*@
 <div>
     <hr />
     <dl class="dl-horizontal">
-
         <dt>
-            <strong>Förnamn:</strong>
+            <strong>Förnamn: </strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PersonP.FirstName)
         </dd>
-
         <dt>
-            <strong>Efternamn</strong>
+            <strong>Efternamn: </strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.PersonP.LastName)
         </dd>
-
         <dt>
-            <strong>Användarnamn</strong>
+            <strong>Användarnamn:</strong>
         </dt>
-
         <dd>
-
             @Html.DisplayFor(model => model.PersonP.UserName)
+        </dd>
+        <dt>
+            <strong>Lösenord:</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PersonP.Password)
         </dd>
 
     </dl>
-    @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
+    @Html.ActionLink("Lägg till/ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
 
 </div>
 
@@ -52,17 +50,14 @@
             @*<th>
                     <p>Kanal</p>
                 </th>*@
-
             @*<th>
                 <p>Datum</p>
             </th>
-
         </tr>*@
 
         @*@foreach (var item in Model)
         {
             <tr>
-
                 <td> @item.FirstName</td>
 
                 <td> @item.LastName</td>
@@ -70,13 +65,8 @@
                 <td> @Html.ActionLink("Mer information", "ProgramDetails", "MyPage", new { @id = item.Id }, null)</td>
 
                 <td> @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = item.Id }, null)</td>
-
-
-
             </tr>
-
         }
-
     </table>*@
 
 <div class="row">
@@ -95,12 +85,10 @@
                         <th> Tid </th>
                     </tr>
 
-
                     @if (Model.ProgramListVM.Any())
                     {
                         foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
                         {
-
                             <tr>
                                 <td>@i.Titel</td>
                                 <td>@i.Programstart.Value.ToShortTimeString() </td>

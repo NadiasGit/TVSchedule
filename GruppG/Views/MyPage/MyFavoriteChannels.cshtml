@@ -1,10 +1,8 @@
 ﻿@model GruppG.Models.ViewModels.FavoritChannelVM
 
 @{
-    ViewBag.Title = "MyFavoriteChannels";
+    ViewBag.Title = "Mina favoritkanaler";
 }
-
-
 
 <h4>
     Dina favoritkanaler
@@ -16,11 +14,9 @@
     @foreach (var item in Model.FavoriteChannelsVM)
     {
         <tr>
-            
             <td>
                 <h2> @item.Chanel1.Name</h2>
             </td>
-           
             <td>
                 @Html.ActionLink("Ta bort", "Delete", new { @id=item.Id })
                 <div class="form-group">
@@ -36,21 +32,8 @@
 <h2>Alla kanaler</h2>
     @using (Html.BeginForm())
     {
-
-
-
         <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.PersonP.FirstName)
-                    @Html.DisplayFor(model => model.PersonP.FirstName)
-                </th>
-
-
-            </tr>
-
-
-
+         
             @foreach (var item in Model.ChannelListVM)
             {
                 <tr>
@@ -73,7 +56,7 @@
 
         </table>
 
-        @*@Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)*@
+        @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
         @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
 
 
