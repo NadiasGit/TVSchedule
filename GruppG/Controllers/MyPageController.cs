@@ -75,7 +75,7 @@ namespace GruppG.Controllers
         public ActionResult MyFavoriteChannels(int? id)
         {
             var favoriteDelete = db.FavoriteChannel.Find(id);
-            //var favoriteDelete = favchannelVM.SingleOrDefault(i => i.Id == id);
+            //var favoriteDelete1 = pd.GetFavoriteChannels().SingleOrDefault(i => i.Id == id);
             //favoriteDelete = favchannel;
 
             if (!ModelState.IsValid)

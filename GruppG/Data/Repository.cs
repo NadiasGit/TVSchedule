@@ -4,14 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Runtime.Caching;
 using GruppG.Models.db;
+using System.Data.Entity;
 
 namespace GruppG.Data
 {
-    public class Repository<PlaceHolder>  //Gemensam "samlingsklass" av metoder mm för flera klasser
+    public class Repository<PlaceHolder> /*where PlaceHolder : U4Entities*/ //Gemensam "samlingsklass" av metoder mm för flera klasser
     {
         System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
         List<PlaceHolder> items;
         string className;
+        DbSet dbSet;
 
         public Repository()
         {
@@ -28,11 +30,20 @@ namespace GruppG.Data
             cache[className] = items;
         }
 
+        
+
         public IQueryable<PlaceHolder> Collection()
         {
             return items.AsQueryable();
         }
 
+        public void Delete(int id)
+        {
+            //var p = Find(id);
+            //if (context.Entry(p).State == EntityState.Detached)
+            //    dbSet.Attach(p);
 
+            //dbSet.Remove(p);
+        }
     }
 }
