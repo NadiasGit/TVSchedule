@@ -54,12 +54,30 @@ namespace GruppG.Controllers
         }
 
         //Remove favoritechannels
+        //public ActionResult Delete(int? id)
+        //{
+        //    FavoriteChannel favDelete = db.FavoriteChannel.Find(id);
+        //    if (id == null)
+        //    {
+        //        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        return ViewBag.Message = ("Finns inget att radera...");
+        //    }
+        //    else
+        //    {
+        //        return View(favDelete);
+        //    }
+        //}
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult MyFavoriteChannels(int? id)
         {
-            var favoriteDelete =  db.FavoriteChannel.Find(id);
+            var favoriteDelete = db.FavoriteChannel.Find(id);
+            //var favoriteDelete = favchannelVM.SingleOrDefault(i => i.Id == id);
+            //favoriteDelete = favchannel;
+
             if (!ModelState.IsValid)
             {
                 return HttpNotFound();
@@ -70,7 +88,8 @@ namespace GruppG.Controllers
                 db.SaveChanges();
 
                 //Mata ev in , "Index"
-                return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Person });
+                //return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Id });
+                return RedirectToAction("Index", new { @id = person.Id });
             }
         }
             

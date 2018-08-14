@@ -10,6 +10,9 @@
     @Html.DisplayFor(model => model.PersonP.LastName) :
 </h4>
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 <table class="table">
     @foreach (var item in Model.FavoriteChannelsVM)
     {
@@ -18,7 +21,7 @@
                 <h2> @item.Chanel1.Name</h2>
             </td>
             <td>
-                @Html.ActionLink("Ta bort", "Delete", new { @id=item.Id })
+                @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @id=item.Id })
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Ta bort som favoritkanal" class="btn btn-default" />
@@ -28,14 +31,15 @@
         </tr>
     }
     </table>
+}
 
 <h2>Alla kanaler</h2>
-    @using (Html.BeginForm())
-    {
+    
         <table class="table">
          
             @foreach (var item in Model.ChannelListVM)
             {
+                  
                 <tr>
                     <td>
                         <h2> @item.Name </h2>
@@ -45,20 +49,18 @@
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
-                            </div>
-                        </div>
+                        
+                           
                     </td>
                 </tr>
-            }
-
+                    
+                }
         </table>
+           
 
         @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
         @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
 
 
-    }
+    
 
