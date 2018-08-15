@@ -72,8 +72,12 @@ namespace GruppG.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyFavoriteChannels(int? id)
+        public ActionResult MyFavoriteChannels(FavoriteChannel favC, int id, string action)
         {
+            
+
+            if (action.Equals("Ta bort som favoritkanal"))
+            { 
             var favoriteDelete = db.FavoriteChannel.Find(id);
             //var favoriteDelete1 = pd.GetFavoriteChannels().SingleOrDefault(i => i.Id == id);
             //favoriteDelete = favchannel;
@@ -89,10 +93,23 @@ namespace GruppG.Controllers
 
                 //Mata ev in , "Index"
                 //return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Id });
-                return RedirectToAction("Index", new { @id = person.Id });
+                
             }
+            }
+            else if (action.Equals("Lägg till"))
+            {
+                var pers = db.Person.Single(e => e.Id == id);
+                var fc = pd.GetFavoriteChannels(finalItem.PersonP.Id);
+
+                finalItem.FavoriteChannelsVM = fc;
+
+                finalItem.FavoriteChannelsVM.Add(favC);
+                db.SaveChanges();
+            }
+                return RedirectToAction("Index", new { @id = person.Id });
         }
-            
+
+        
 
 
 

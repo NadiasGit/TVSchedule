@@ -24,14 +24,14 @@
                 @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @id=item.Id })
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Ta bort som favoritkanal" class="btn btn-default" />
+                        <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
                     </div>
                 </div>
             </td>
         </tr>
     }
     </table>
-}
+
 
 <h2>Alla kanaler</h2>
     
@@ -49,14 +49,14 @@
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        
+                        <input type="submit" value="Lägg till" name="action" class="btn btn-default" />
                            
                     </td>
                 </tr>
                     
                 }
         </table>
-           
+}        
 
         @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
         @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
