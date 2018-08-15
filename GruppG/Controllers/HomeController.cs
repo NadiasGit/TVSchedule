@@ -128,10 +128,11 @@ namespace GruppG.Controllers
         public ActionResult ProgramDetails(int id)
         {
             //Lägg till ett felmeddelande/felhantering om program-id saknas
-            //var progEdit = db.Program.Single(e => e.Id == id);
+            var prog = pd.GetSpecificProgram(id);
             //var progDetails = programChannelVM.ProgramListVM.Single(d => d.Id == id);
-           
-            return View(pd.GetSpecificProgram(id));
+            ViewBag.Message = pd.PuffName(prog.Puff);
+            
+            return View(prog);
         }
 
 

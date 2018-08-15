@@ -20,7 +20,6 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Description)*@
             <strong>Om programmet</strong>
         </dt>
 
@@ -29,46 +28,30 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Programstart)*@
             <strong>Datum & tid</strong>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Programstart)
+            @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay )
             
         </dd>
         <dd><strong>-</strong>
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Endtime)
-        </dt>*@
-
         <dd>
             @Html.DisplayFor(model => model.Endtime)
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Puff)
-        </dt>*@
         <dt>
-            Rekommenderat program: 
+            Rekommenderat 
         </dt>
 
         <dd>
+            @ViewBag.Message
             @*@Html.DisplayFor(model => model.ProgramData.PuffName(Model.Program.Puff))*@
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Programstart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Programstart)
-        </dd>*@
-
         <dt>
-            @*@Html.DisplayNameFor(model => model.Category1.Name)*@
             <strong>Kategori</strong>
         </dt>
 
@@ -77,7 +60,6 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Chanel1.Name)*@
             <strong>Kanal</strong>
         </dt>
 

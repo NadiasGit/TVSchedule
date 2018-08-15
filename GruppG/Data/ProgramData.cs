@@ -84,7 +84,6 @@ namespace GruppG.Data
 
 
         //Puffar/rekommenderade program
-
         public List<Program> PuffPrograms()
         {
             db = new U4Entities();
@@ -93,6 +92,37 @@ namespace GruppG.Data
             //var puff = db.Program.Where(p => p.Puff == 1);
             return result;
         }
+        public bool CountPuff()
+        {
+            if (PuffPrograms().Count >= 3)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string PuffName(int? puff)
+        {
+            if (puff == 1)
+            {
+                return "Ja";
+            }
+            else
+            {
+                return "Nej";
+            }
+        }
+
+        //Get favoritechannels by person-id
+        public List<FavoriteChannel> GetFavoriteChannels(int id)
+        {
+            db = new U4Entities();
+
+            var favCannel = db.FavoriteChannel.Where(f => f.Person == id).OrderBy(c => c.Chanel).ToList();
+
+            return favCannel;
+        }
+
 
         //Filter-methods
         public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)
@@ -172,14 +202,7 @@ namespace GruppG.Data
             return finalItem;
         }
 
-        public List<FavoriteChannel> GetFavoriteChannels(int id)
-        {
-            db = new U4Entities();
-
-            var favCannel = db.FavoriteChannel.Where(f => f.Person == id).OrderBy(c => c.Chanel).ToList();
-            
-            return favCannel;
-        }
+        
 
 
 
@@ -195,26 +218,7 @@ namespace GruppG.Data
 
      
 
-        public bool CountPuff()
-        {
-            if(PuffPrograms().Count >= 3)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public string PuffName(int? puff)
-        {
-            if (puff == 1)
-            {
-                return "Ja";
-            }
-            else
-            {
-                return "Nej";
-            }
-        }
+       
 
 
         //Ny metod 15 dec. 2017
