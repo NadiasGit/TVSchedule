@@ -10,12 +10,13 @@
     @Html.DisplayFor(model => model.PersonP.LastName) :
 </h4>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("MyFavoriteChannels", "MyPage", new { id = Model.PersonP.Id }, FormMethod.Post, new { enctype = "multipart / form - data" }))
 {
-    @Html.AntiForgeryToken()
-<table class="table">
+    
+     @Html.AntiForgeryToken()
+            <table class="table">
     @foreach (var item in Model.FavoriteChannelsVM)
-    {
+        {
         <tr>
             <td>
                 <h2> @item.Chanel1.Name</h2>
@@ -33,13 +34,17 @@
     </table>
 
 
+ 
+
 <h2>Alla kanaler</h2>
     
         <table class="table">
-         
+
+
             @foreach (var item in Model.ChannelListVM)
             {
-                  
+                
+
                 <tr>
                     <td>
                         <h2> @item.Name </h2>
@@ -49,14 +54,14 @@
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        <input type="submit" value="Lägg till" name="action" class="btn btn-default" />
-                           
+                        @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @chan = item.Id })
+                        <input type="submit" value="Lägg till" @*name="action"*@ class="btn btn-default" />
                     </td>
                 </tr>
                     
                 }
         </table>
-}        
+       }
 
         @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
         @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
