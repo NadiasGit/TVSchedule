@@ -10,31 +10,31 @@
     @Html.DisplayFor(model => model.PersonP.LastName) :
 </h4>
 
-@using (Html.BeginForm("MyFavoriteChannels", "MyPage", new { id = Model.PersonP.Id }, FormMethod.Post, new { enctype = "multipart / form - data" }))
+@using (Html.BeginForm())
 {
     
      @Html.AntiForgeryToken()
-            <table class="table">
-    @foreach (var item in Model.FavoriteChannelsVM)
+    <table class="table">
+        @foreach (var item in Model.FavoriteChannelsVM)
         {
-        <tr>
-            <td>
-                <h2> @item.Chanel1.Name</h2>
-            </td>
-            <td>
-                @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @id=item.Id })
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
+            <tr>
+                <td>
+                    <h2> @item.Chanel1.Name</h2>
+                </td>
+                <td>
+                    @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @id = item.Id })
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
-    }
+                </td>
+            </tr>
+        }
     </table>
 
 
- 
+
 
 <h2>Alla kanaler</h2>
     
