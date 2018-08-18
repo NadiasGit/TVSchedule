@@ -10,13 +10,13 @@
     @Html.DisplayFor(model => model.PersonP.LastName) :
 </h4>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(@*"MyFavoriteChannels", "MyPage", FormMethod.Post, new { id = Model.PersonP.Id }*@))
 {
-    
-     @Html.AntiForgeryToken()
-    <table class="table">
+
+            @Html.AntiForgeryToken()
+           <table class="table">
         @foreach (var item in Model.FavoriteChannelsVM)
-        {
+    {
             <tr>
                 <td>
                     <h2> @item.Chanel1.Name</h2>
@@ -42,8 +42,9 @@
 
 
             @foreach (var item in Model.ChannelListVM)
-            {
-                
+{
+
+
 
                 <tr>
                     <td>
@@ -54,7 +55,7 @@
                         @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @chan = item.Id })
+                        @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @id = Model.PersonP.Id, @chan = item.Id })
                         <input type="submit" value="Lägg till" @*name="action"*@ class="btn btn-default" />
                     </td>
                 </tr>

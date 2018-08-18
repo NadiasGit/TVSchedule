@@ -16,6 +16,7 @@ namespace GruppG.Controllers
         U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
+        FavoriteChannel newFavoriteChannel;
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
         FavoritChannelVM finalItem = new FavoritChannelVM();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
@@ -97,15 +98,20 @@ namespace GruppG.Controllers
                 //id på person
                 //id på kanal
                 //var favoriteChannel = pd.GetFavoriteChannels(id);
-                
+                //Ändra ID till annat namn...
+                int p = id;
+                int c = chan;
+                newFavoriteChannel = new FavoriteChannel() { Id = p, Chanel = c};
 
                 var pers = db.Person.Single(e => e.Id == id);
                 //var fpers = db.FavoriteChannel.Single(p => p.Person == id);
-                var ch = db.Chanel.Single(c => c.Id == chan);
+                var ch = db.Chanel.Single(a => a.Id == chan);
 
-                //var newFavoritChannel = favchannelVM.FavoriteChannelsVM.Insert(f => f.Person == id).Insert(f => f.Chanel == chan);
+                var n = db.FavoriteChannel.Add(newFavoriteChannel);
+
+                //var newFc = newFavoriteChannel .Insert(f => f.Person == id).Insert(f => f.Chanel == chan);
                 //db.FavoriteChannel.Add(pd.GetFavoriteChannels(id, chan));
-                pd.GetFavoriteChannels(id, chan);
+                //pd.GetFavoriteChannels(id, chan);
                 //pd.GetFavoriteChannels(pers.Id, ch.Id);
 
                 //finalItem.FavoriteChannelsVM = pd.GetFavoriteChannels(pers.Id, ch.Id);
@@ -115,7 +121,7 @@ namespace GruppG.Controllers
                 //finalItem.FavoriteChannelsVM.Add();
                 //favoriteChannel.Add(favC);
                 db.SaveChanges();
-                //return RedirectToAction("Index");
+                return RedirectToAction("Index", new { @id = id });
             }
                 return RedirectToAction("MyFavoriteChannels", new { @id = id });
         }
