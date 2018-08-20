@@ -27,10 +27,12 @@ namespace GruppG.Models.ViewModels
         public Program Program { get; set; }
         public List<Program> GetPuffListVM { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public List<DateTime> Dates { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public DateTime Today { get; set; }
         public List<string> PuffName { get; set; }
         public ProgramData ProgramData { get; set; }
@@ -44,19 +46,26 @@ namespace GruppG.Models.ViewModels
             //DateTime today = Convert.ToDateTime("2017-11-09");
             //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
-            
+
 
             Dates = new List<DateTime>();
-            Dates.Add(Today.Date);
+            Dates.Add(Today);
             Dates.Add(Today.AddDays(1));
             Dates.Add(Today.AddDays(2));
             Dates.Add(Today.AddDays(3));
             Dates.Add(Today.AddDays(4));
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
-
-            //Today.ToString("dd/mm/yy");
+            
+            //Försök till att bara visa datum i drop-down-list
+            /*
+            Today.ToString("dd/mm/yy");
             Today.ToShortDateString();
+            Today = DateTime.Parse("2017, 11, 09");
+            Today = Today.Date;
+            */
+
+
 
         }
 

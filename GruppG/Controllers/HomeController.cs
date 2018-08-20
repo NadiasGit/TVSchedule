@@ -58,8 +58,8 @@ namespace GruppG.Controllers
         {
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
-            ListOfDaysModel Dates = new ListOfDaysModel();
-            SelectedDate selectedDay = new SelectedDate();
+            //ListOfDaysModel Dates = new ListOfDaysModel();
+            //SelectedDate selectedDay = new SelectedDate();
 
             //Början till att få bort nollorna (?)
             //    finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
