@@ -24,6 +24,20 @@ namespace GruppG
                 //Lägg till datum som id här?
             );
 
+            //HomeController
+            routes.MapRoute(
+                name: "MyFavoriteChannels",
+                url: "MinaFavoritkanaler",
+                defaults: new
+                {
+                    controller = "MyPage",
+                    action = "MyFavoriteChannels",
+                    id = UrlParameter.Optional,
+                    chan = UrlParameter.Optional 
+                }
+                //Lägg till datum som id här?
+            );
+
             routes.MapRoute(
                 name: "About",
                 url: "Hem/Om/{id}",

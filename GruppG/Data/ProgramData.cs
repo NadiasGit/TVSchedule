@@ -17,6 +17,7 @@ namespace GruppG.Data
         private Person pr = new Person();
         Program program = new Program();
         Chanel channel = new Chanel();
+        FavoriteChannel favoriteChannel = new FavoriteChannel();
         FavoriteChannel favoritChannel = new FavoriteChannel();
         List<Program> puffList;
         ProgramChannelVM viewModel = new ProgramChannelVM();
@@ -114,15 +115,38 @@ namespace GruppG.Data
         }
 
         //Get favoritechannels by person-id
-        public List<FavoriteChannel> GetFavoriteChannels(int id)
+        public List<FavoriteChannel> GetFavoriteChannels(int person)
         {
             db = new U4Entities();
 
-            var favCannel = db.FavoriteChannel.Where(f => f.Person == id).OrderBy(c => c.Chanel).ToList();
+            var favCannel = db.FavoriteChannel.Where(f => f.Person == person).OrderBy(c => c.Chanel).ToList();
+            //var favCannel = db.FavoriteChannel.Where(f => f.Person == person).Where(f => f.Chanel == channel).OrderBy(c => c.Chanel).ToList();
 
             return favCannel;
         }
 
+        public List<FavoriteChannel> GetFavoriteChannels(int person, int channel)
+        {
+            db = new U4Entities();
+
+            var favCannel = db.FavoriteChannel.Where(f => f.Person == person).Where(f => f.Chanel == channel).OrderBy(c => c.Chanel).ToList();
+
+            return favCannel;
+        }
+
+        public List<FavoriteChannel> AddFavoriteChannel(int person, int channel)
+        {
+            db = new U4Entities();
+
+            //var favCannel = db.FavoriteChannel.Where(f => f.Person == id).OrderBy(c => c.Chanel).ToList();
+            var favCannel = db.FavoriteChannel.Where(f => f.Person == person).Where(f => f.Chanel == channel).OrderBy(c => c.Chanel).ToList();
+            var newFavoritChannel = GetFavoriteChannels(person).Where(f => f.Person == person).Where(f => f.Chanel == channel).ToList();
+            //GetFavoriteChannels(id).Add()
+
+            return favCannel;
+        }
+
+        
 
         //Filter-methods
         public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)

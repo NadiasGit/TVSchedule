@@ -16,6 +16,7 @@ namespace GruppG.Controllers
         U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
+        FavoriteChannel newFavoriteChannel;
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
         FavoritChannelVM finalItem = new FavoritChannelVM();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
@@ -52,7 +53,7 @@ namespace GruppG.Controllers
             return View(finalItem);
 
         }
-
+       
         //Remove favoritechannels
         //public ActionResult Delete(int? id)
         //{
@@ -72,27 +73,54 @@ namespace GruppG.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyFavoriteChannels(int? id)
+        public ActionResult MyFavoriteChannels(FavoriteChannel favorite, int id, int chan, string action)
         {
-            var favoriteDelete = db.FavoriteChannel.Find(id);
-            //var favoriteDelete1 = pd.GetFavoriteChannels().SingleOrDefault(i => i.Id == id);
-            //favoriteDelete = favchannel;
-
+            //FavoriteChannel favC, , int channel  , string action
             if (!ModelState.IsValid)
             {
                 return HttpNotFound();
             }
-            else
+            else if (action.Equals("Spara"))
             {
-                db.FavoriteChannel.Remove(favoriteDelete);
+                //Lägg till favoritkanal
+                int p = id;
+                int c = chan;
+                newFavoriteChannel = new FavoriteChannel() { Person = p, Chanel = c};
+
+                var pers = db.Person.Single(e => e.Id == id);
+                var ch = db.Chanel.Single(a => a.Id == chan);
+
+                var n = db.FavoriteChannel.Add(newFavoriteChannel);
+
+               
+                db.SaveChanges();
+                return RedirectToAction("Index", new { @id = id });
+            }
+            else if (action.Equals("Ta bort som favoritkanal"))
+            {
+                //var favoriteDelete = db.FavoriteChannel.Find(favchannel.Id);
+                //var deleteFavorite = db.FavoriteChannel = favorite;
+                newFavoriteChannel = favorite;
+                favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
+                var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
+                
+                
+                //db.FavoriteChannel.Remove(newFavoriteChannel);
+
+                //db.FavoriteChannel.Remove(removeFavoriteChannel);
                 db.SaveChanges();
 
+                return RedirectToAction("Index", new { @id = id });
                 //Mata ev in , "Index"
                 //return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Id });
-                return RedirectToAction("Index", new { @id = person.Id });
+                //var favoriteDelete1 = pd.GetFavoriteChannels().SingleOrDefault(i => i.Id == id);
+                //favoriteDelete = favchannel;
+
             }
+            return RedirectToAction("MyFavoriteChannels", new { @id = id });
         }
-            
+
+        
 
 
 
