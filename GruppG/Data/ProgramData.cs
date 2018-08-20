@@ -159,11 +159,17 @@ namespace GruppG.Data
 
             var progCategories = GetPrograms();
             var cat = GetCategories();
+            
+            
 
             if (date == null && id == null)
             {
-                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).ToList();
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
                 finalItem.ProgramListVM = programStart;
+
+                //var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToString("dd/mm/yy"));
+                //finalItem.ProgramListVM = programStart.ToList();
+
             }
             else if (date != null &&  id == null)
             {

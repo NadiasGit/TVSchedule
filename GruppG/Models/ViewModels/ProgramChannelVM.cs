@@ -44,6 +44,7 @@ namespace GruppG.Models.ViewModels
             //DateTime today = Convert.ToDateTime("2017-11-09");
             //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
+            
 
             Dates = new List<DateTime>();
             Dates.Add(Today.Date);
@@ -54,7 +55,8 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
 
-            
+            //Today.ToString("dd/mm/yy");
+            Today.ToShortDateString();
 
         }
 
