@@ -59,16 +59,17 @@
             @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
         </div>
 
-
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Ta bort puffen" class="btn btn-default" /> 
             <br />
-            @Html.ActionLink("Tillbaka", "Index")
         </div>
     }
 
- 
+        <br />
+        <br />
+
+ @Html.ActionLink("Tillbaka", "Index")
 </div>
