@@ -37,6 +37,19 @@
 </div>
 @*----Pufflista End----*@
 
+@*----Alertmessage - puff added ----*@
+
+@*@if (TempData["message"] != null)
+{
+
+    <div class="alert alert-info">
+        <a class="close" data-dismiss="alert">&times;</a>
+        <strong> OBS:</strong> @TempData["message"]
+    </div>
+}*@
+    @*---Alert message End----*@
+
+
 
 
 @*----Alertmessage - too many puff's----*@
@@ -75,7 +88,7 @@
     <table class="table">
         <tr>
             <th> Program </th>
-            <th> Tid </th>
+            <th> Datum & tid </th>
             <th> Redigera </th>
         </tr>
 
@@ -94,7 +107,7 @@
                          else
                          {*@
                     | @Html.ActionLink("Lägg till som puff", "Edit", new { @id = item.Id }, null) |
-                    @Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null) |
+                    @Html.ActionLink("Mer info", "ProgramDetails", new { @id = item.Id }, null) |
                 </td>
             </tr>
         }
