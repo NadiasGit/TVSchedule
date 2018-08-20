@@ -119,10 +119,11 @@ namespace GruppG.Data
         {
             db = new U4Entities();
 
-            var favCannel = db.FavoriteChannel.Where(f => f.Person == person).OrderBy(c => c.Chanel).ToList();
+            var favChannel = db.FavoriteChannel.Where(f => f.Person == person).OrderBy(c => c.Chanel).ToList();
             //var favCannel = db.FavoriteChannel.Where(f => f.Person == person).Where(f => f.Chanel == channel).OrderBy(c => c.Chanel).ToList();
+            
 
-            return favCannel;
+            return favChannel;
         }
 
         public List<FavoriteChannel> GetFavoriteChannels(int person, int channel)

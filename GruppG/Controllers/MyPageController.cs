@@ -73,7 +73,7 @@ namespace GruppG.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MyFavoriteChannels(FavoriteChannel favorite, int id, int chan, string action)
+        public ActionResult MyFavoriteChannels(FavoriteChannel favorite, int fcid, int id, int chan, string action)
         {
             //FavoriteChannel favC, , int channel  , string action
             if (!ModelState.IsValid)
@@ -98,7 +98,7 @@ namespace GruppG.Controllers
             }
             else if (action.Equals("Ta bort som favoritkanal"))
             {
-                int fc = id;
+                int f = fcid;
                 //newFavoriteChannel = new FavoriteChannel() { Id = fc };
                 //var favoriteDelete = db.FavoriteChannel.Find(favchannel.Id);
                 //var deleteFavorite = db.FavoriteChannel = favorite;
@@ -106,7 +106,7 @@ namespace GruppG.Controllers
                 //favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
                 //var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
 
-                var channelsDelete = db.FavoriteChannel.Single(x => x.Id == fc);
+                var channelsDelete = db.FavoriteChannel.Single(x => x.Id == f);
 
                 db.FavoriteChannel.Remove(channelsDelete);
 
