@@ -98,18 +98,21 @@ namespace GruppG.Controllers
             }
             else if (action.Equals("Ta bort som favoritkanal"))
             {
+                int fc = id;
+                //newFavoriteChannel = new FavoriteChannel() { Id = fc };
                 //var favoriteDelete = db.FavoriteChannel.Find(favchannel.Id);
                 //var deleteFavorite = db.FavoriteChannel = favorite;
-                newFavoriteChannel = favorite;
-                favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
-                var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
-                
-                
-                //db.FavoriteChannel.Remove(newFavoriteChannel);
+                //newFavoriteChannel = favorite;
+                //favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
+                //var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
+
+                var channelsDelete = db.FavoriteChannel.Single(x => x.Id == fc);
+
+                db.FavoriteChannel.Remove(channelsDelete);
 
                 //db.FavoriteChannel.Remove(removeFavoriteChannel);
                 db.SaveChanges();
-
+                
                 return RedirectToAction("Index", new { @id = id });
                 //Mata ev in , "Index"
                 //return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Id });
