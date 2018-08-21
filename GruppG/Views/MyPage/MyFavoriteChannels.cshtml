@@ -22,8 +22,9 @@
                     <h2> @item.Chanel1.Name</h2>
                 </td>
                 <td>
-                    @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @fcid = item.Id, @id = item.Person })
+                    @Html.ActionLink("Ta bort", "MyFavoriteChannels", new { fcid = item.Id, id = item.Person })
                     @*@Html.ActionLink("Ta bort", "MyFavoriteChannels", new { @chan = item.Chanel })*@
+                    @Html.ActionLink("Delete", "Delete", new { fcid = item.Id, id = item.Person })
                     @*<div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />

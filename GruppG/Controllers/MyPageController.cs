@@ -80,18 +80,21 @@ namespace GruppG.Controllers
             {
                 return HttpNotFound();
             }
-            else if (action.Equals("Spara"))
+            else if (action == "Spara")
+                //else if (action.Equals("Spara"))
             {
                 //Lägg till favoritkanal
                 int p = id;
                 int c = chan;
-                newFavoriteChannel = new FavoriteChannel() { Person = p, Chanel = c};
+                //newFavoriteChannel = new FavoriteChannel() { Person = p, Chanel = c};
+                favorite = new FavoriteChannel() { Person = p, Chanel = c };
 
                 var pers = db.Person.Single(e => e.Id == id);
                 var ch = db.Chanel.Single(a => a.Id == chan);
 
-                var n = db.FavoriteChannel.Add(newFavoriteChannel);
-
+                //var n = db.FavoriteChannel.Add(newFavoriteChannel);
+                db.FavoriteChannel.Add(favorite);
+                
                
                 db.SaveChanges();
                 return RedirectToAction("Index", new { @id = id });
@@ -106,9 +109,12 @@ namespace GruppG.Controllers
                 //favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
                 //var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
 
-                var channelsDelete = db.FavoriteChannel.Single(x => x.Id == f);
+                //var channelsDelete = db.FavoriteChannel.Single(x => x.Id == f);
+                
+                //db.FavoriteChannel.Remove(channelsDelete);
 
-                db.FavoriteChannel.Remove(channelsDelete);
+                var delete = db.FavoriteChannel.Single(x => x.Id == f);
+                db.FavoriteChannel.Remove(delete);
 
                 //db.FavoriteChannel.Remove(removeFavoriteChannel);
                 db.SaveChanges();
@@ -167,6 +173,45 @@ namespace GruppG.Controllers
             }
             return View();
         }
+
+
+
+
+
+        //DELETE - FUNGERAR! :)
+        public ActionResult Delete(int? fcid, int? id)
+        {
+            FavoriteChannel favDelete = db.FavoriteChannel.Find(fcid);
+            if (fcid == null && id != null)
+            {
+                return ViewBag.Message = ("Finns inget att radera...");
+            }
+            else
+            {
+                db.FavoriteChannel.Remove(favDelete);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { @id = id });
+            }
+            
+        }
+
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int fcid)
+        //{
+        //    FavoriteChannel favToRemove = db.FavoriteChannel.Find(fcid);
+
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View("Index");
+        //    }
+        //    else
+
+        //    db.FavoriteChannel.Remove(favToRemove);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("Index");
+        //}
 
     }
 }
