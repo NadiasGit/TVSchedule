@@ -175,7 +175,35 @@ namespace GruppG.Controllers
         }
 
 
+        //ADD - fungerar halvt (den lägger till flera av samma)
+        public ActionResult Add(int? pId, int? cId)
+        {
+            var p = pId;
+            var c = cId;
+            
+            var favorite = new FavoriteChannel() { Person = p, Chanel = c };
 
+            var pers = db.Person.Single(e => e.Id == p);
+            var chan = db.Chanel.Single(a => a.Id == c);
+
+            if (pd.CheckFavChanExists(p, c) == true)
+            {
+                TempData["message"] = "Finns redan som din favorit";
+                return RedirectToAction("MyFavoriteChannels", new { @id = pId });
+            }
+            else if (p == null && c == null)
+            {
+                return ViewBag.Message = ("Det finns ingen användare eller kanal");
+            }
+
+            else
+            {  
+                db.FavoriteChannel.Add(favorite);
+                db.SaveChanges();
+                return RedirectToAction("MyFavoriteChannels", new { @id = pId });
+            }
+
+        }
 
 
         //DELETE - FUNGERAR! :)
@@ -190,28 +218,11 @@ namespace GruppG.Controllers
             {
                 db.FavoriteChannel.Remove(favDelete);
                 db.SaveChanges();
-                return RedirectToAction("Index", new { @id = id });
+                return RedirectToAction("MyFavoriteChannels", new { @id = id });
             }
             
         }
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int fcid)
-        //{
-        //    FavoriteChannel favToRemove = db.FavoriteChannel.Find(fcid);
-
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View("Index");
-        //    }
-        //    else
-
-        //    db.FavoriteChannel.Remove(favToRemove);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
 
     }
 }

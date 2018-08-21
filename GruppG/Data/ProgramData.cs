@@ -135,6 +135,23 @@ namespace GruppG.Data
             return favCannel;
         }
 
+        public bool CheckFavChanExists(int? pers, int? chan)
+        {
+            //var n = new FavoritChannelVM();
+            
+            //foreach (var i in n.FavoriteChannelsVM)
+            //{
+                if (pers == favoriteChannel.Person && chan == favoriteChannel.Chanel)
+                {
+                    return true;
+                }
+                
+
+            //}
+            return false;
+
+        }
+
         public List<FavoriteChannel> AddFavoriteChannel(int person, int channel)
         {
             db = new U4Entities();
