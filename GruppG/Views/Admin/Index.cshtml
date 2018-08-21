@@ -65,6 +65,17 @@
 @*---Alert message End----*@
 
 
+@*----Alertmessage - added puff----*@
+
+@if (TempData["messageSuccess"] != null)
+{
+
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">&times;</a>
+        @TempData["messageSuccess"]
+    </div>
+}
+@*---Alert message End----*@
 
 @*----Filter-function---- (lägg till kategori?)*@
     <div class="date">

@@ -94,7 +94,9 @@ namespace GruppG.Controllers
             
             else
             {
+                
                 var progEdit = db.Program.Single(e => e.Id == id);
+                TempData["messageSuccess"] = "Puffen är registrerad.";
                 ViewBag.Message = pd.PuffName(progEdit.Puff);
                 return View(progEdit);
             }
