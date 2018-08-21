@@ -178,6 +178,7 @@ namespace GruppG.Controllers
         //ADD - fungerar halvt (den lägger till flera av samma)
         public ActionResult Add(int? pId, int? cId)
         {
+            ViewBag.Message = " ";
             var p = pId;
             var c = cId;
             
@@ -186,13 +187,14 @@ namespace GruppG.Controllers
             var pers = db.Person.Single(e => e.Id == p);
             var chan = db.Chanel.Single(a => a.Id == c);
 
-            if (pd.CheckFavChanExists(p, c) == true)
+            if (pd.CheckFavChanExists(p,c) == true)
             {
-                TempData["message"] = "Finns redan som din favorit";
+                TempData["message"] = "Kanalen finns redan som din favorit";
                 return RedirectToAction("MyFavoriteChannels", new { @id = pId });
             }
             else if (p == null && c == null)
             {
+                TempData["message"] = "Det finns ingen användare eller kanal";
                 return ViewBag.Message = ("Det finns ingen användare eller kanal");
             }
 

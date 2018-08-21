@@ -37,7 +37,7 @@
         </dd>
 
     </dl>
-    @Html.ActionLink("Lägg till/ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
+    @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
 
 </div>
 
@@ -72,6 +72,7 @@
 <h2>Favoritkanaler</h2>
 <div class="row">
 
+    @*Foreach item in FavoriteChannelsVM where p => p.Person == item.Id - persentera kanaler...annars presentera alla kanaler*@
     @if (Model.FavoriteChannelsVM != null)
     {
         foreach (var item in Model.FavoriteChannelsVM)
@@ -99,61 +100,64 @@
     }
     else
     {
-        @ViewBag.Message
-    }
+        <h2>Alla kanaler</h2>
+        <div class="row">
 
-</div>
+            @if (Model.ChannelListVM != null)
+            {
+                foreach (var item in Model.ChannelListVM)
 
+                {
+                    <div class="col-md-4">
+                        <h2> @item.Name </h2>
 
-
-
-
-
-
-
-
-
-
-
-
-<h2>Alla kanaler</h2>
-<div class="row">
-
-    @if (Model.ChannelListVM != null)
-    {
-        foreach (var item in Model.ChannelListVM)
-
-        {
-            <div class="col-md-4">
-                <h2> @item.Name </h2>
-
-                <table class="table">
-                    <tr>
-                        <th> Program </th>
-                        <th> Tid </th>
-                    </tr>
-
-                    @if (Model.ProgramListVM.Any())
-                    {
-                        foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
-                        {
+                        <table class="table">
                             <tr>
-                                <td>@i.Titel</td>
-                                <td>@i.Programstart.Value.ToShortTimeString() </td>
-                                <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                                <th> Program </th>
+                                <th> Tid </th>
                             </tr>
-                        }
-                    }
-                    else
-                    {
-                        @ViewBag.Message
-                    }
-                </table>
-            </div>
-        }
+
+                            @if (Model.ProgramListVM.Any())
+                            {
+                                foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                                {
+                                    <tr>
+                                        <td>@i.Titel</td>
+                                        <td>@i.Programstart.Value.ToShortTimeString() </td>
+                                        <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                @ViewBag.Message
+                            }
+                        </table>
+                    </div>
+                }
+            }
+
+        </div>
+
+
+
     }
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

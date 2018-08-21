@@ -35,7 +35,17 @@
         }
     </table>
 
+@*----Alertmessage - fav-channel already exists----*@
 
+    if (TempData["message"] != null)
+    {
+
+        <div class="alert alert-danger">
+            <a class="close" data-dismiss="alert">&times;</a>
+            <strong> OBS:</strong> @TempData["message"]
+        </div>
+    }
+    @*---Alert message End----*@
 
 
 <h2>Alla kanaler</h2>
