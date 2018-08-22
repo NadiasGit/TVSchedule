@@ -48,7 +48,7 @@ namespace GruppG.Controllers
         //    return View();
         //}
 
-
+        //[Authorize]
         [HttpPost]
         public ActionResult LogIn(Person pers)
         {
