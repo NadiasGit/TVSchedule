@@ -25,6 +25,12 @@
                     <li>@Html.ActionLink("Mina sidor", "LogIn", "Login")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    @*//Logga ut*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
+                    }
+
                 </ul>
                 <!--ANVÄND DEN EGNA LOGINFUNKTIONEN-->
                 

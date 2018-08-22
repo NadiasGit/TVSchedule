@@ -49,51 +49,85 @@ namespace GruppG.Controllers
         //}
 
 
-        //[HttpPost]
-        //public ActionResult LogIn(Person pers)
-        //{
-        //    using (U4Entities u4 = new U4Entities())
-        //    {
-        //        var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-        //        if (user == null)
-        //        {
-        //            pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-        //            return View();
-        //        }
-        //        else
-        //        {
-        //            Session["Id"] = user.Id;
-        //            Session["UserName"] = user.UserName.ToString();
-        //            return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-        //        }
-        //    }
-        //}
-
-
         [HttpPost]
-        public ActionResult LogIn(LoginVM model, string ReturnUrl)
+        public ActionResult LogIn(Person pers)
         {
             using (U4Entities u4 = new U4Entities())
             {
-                //var user = u4.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
-                //if (user == null)
+                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
 
-                    if (!ModelState.IsValid)
+                if (user == null)
                 {
+                    ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
                     return View();
                 }
-                
                 else
                 {
-                    //FormsAuthentication
-                        //Session["Id"] = user.Id;
-                        //Session["UserName"] = user.UserName.ToString();
-                        //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                        return Redirect(ReturnUrl);
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                 }
-                //return View();
             }
         }
+
+        //Nadias test
+        //[HttpPost]
+        //public ActionResult LogIn(LoginVM model)
+        //{
+        //        var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
+        //        if (ModelState.IsValid)
+        //        {
+        //            if (personData.CheckUser(model.UserName, model.Password))
+        //            {
+        //                //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+        //                FormsAuthentication.SetAuthCookie(model.UserName, false);
+        //                Session["Id"] = user.Id;
+        //                Session["UserName"] = user.UserName.ToString();
+        //                return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+        //            }
+        //            return View();
+        //        }  
+        //}
+
+
+
+
+
+
+        //Nadias test
+        //[HttpPost]
+        //public ActionResult LogIn(LoginVM model, string ReturnUrl)
+        //{
+        //    using (U4Entities u4 = new U4Entities())
+        //    {
+        //        //var user = u4.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
+        //        //if (user == null)
+
+        //        if (ModelState.IsValid)
+        //        {
+        //            if (personData.CheckUser(model.UserName, model.Password)) 
+        //            {
+        //                //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+        //                FormsAuthentication.SetAuthCookie(model.UserName, false);
+        //                return Redirect(ReturnUrl);
+        //            }
+        //        }   
+        //        else
+        //        {
+        //            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");    
+        //            //Session["Id"] = user.Id;
+        //            //Session["UserName"] = user.UserName.ToString();
+        //            //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+
+        //        }
+        //        return View();
+        //    }
+        //}
 
 
         public ActionResult LogInAdmin()
@@ -129,7 +163,18 @@ namespace GruppG.Controllers
                 }
             }
         }
-        //chack user account/details
+
+        //SignOut
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+
+        //check user account/details
         public ActionResult Details()
         {
             var userId = User.Identity.GetUserId();

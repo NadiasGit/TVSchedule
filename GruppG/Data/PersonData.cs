@@ -25,5 +25,24 @@ namespace GruppG.Data
             }
             return pers;
         }
+
+        public bool CheckUser (string username, string password)
+        {
+                var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password));
+                
+            if(user.Any())
+                {
+                return true;    
+
+                }
+            else
+            {
+                return false;
+
+            }
+
+        }
+
+
     }
 }
