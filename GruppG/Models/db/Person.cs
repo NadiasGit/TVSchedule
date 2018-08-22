@@ -18,10 +18,13 @@ namespace GruppG.Models.db
     {
         public int Id { get; set; }
         //Firstname måste finnas med (från Eriks FL4 1:05)
-        [Required (ErrorMessage ="Du måste fylla i ett namn.")]
+        [Required (ErrorMessage ="Du måste fylla i ett förnamn.")]
         public string FirstName { get; set; }
+        [Required(ErrorMessage = "Du måste fylla i ett efternamn.")]
         public string LastName { get; set; }
+        //[Required(ErrorMessage = "Du måste ange användarnamn.")]
         public string UserName { get; set; }
+        //[Required(ErrorMessage = "Du måste ange lösenord.")]
         public string Password { get; set; }
         public Nullable<int> Role { get; set; }
     

@@ -15,21 +15,18 @@ namespace GruppG.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-
         U4Entities ue = new U4Entities();
         Program pr = new Program();
         Person person = new Person();
         PersonData personData = new PersonData();
-        //Chanel channel = new Chanel();
         PersonData pd = new PersonData();
         FavoriteChannel favC = new FavoriteChannel();
         Chanel channel = new Chanel();
+
         private U4Entities db = new U4Entities();
 
-        
 
-
+        // GET: Login (Account?)
         public ActionResult LogIn()
         {
             //Log in
@@ -46,32 +43,55 @@ namespace GruppG.Controllers
         //        //FormsAuthentication.SetAuthCookie(model.UserName, false);
         //        ////FormsAuthentication.SetAuthCookie(model.Password, false);
         //        //return Redirect(ReturnUrl);
-
-
         //    }
 
         //    return View();
         //}
 
 
+        //[HttpPost]
+        //public ActionResult LogIn(Person pers)
+        //{
+        //    using (U4Entities u4 = new U4Entities())
+        //    {
+        //        var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
+        //        if (user == null)
+        //        {
+        //            pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+        //            return View();
+        //        }
+        //        else
+        //        {
+        //            Session["Id"] = user.Id;
+        //            Session["UserName"] = user.UserName.ToString();
+        //            return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+        //        }
+        //    }
+        //}
+
 
         [HttpPost]
-        public ActionResult LogIn(Person pers)
+        public ActionResult LogIn(LoginVM model, string ReturnUrl)
         {
             using (U4Entities u4 = new U4Entities())
             {
-                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-                if (user == null)
+                //var user = u4.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
+                //if (user == null)
+
+                    if (!ModelState.IsValid)
                 {
-                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
                     return View();
                 }
+                
                 else
                 {
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    //FormsAuthentication
+                        //Session["Id"] = user.Id;
+                        //Session["UserName"] = user.UserName.ToString();
+                        //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                        return Redirect(ReturnUrl);
                 }
+                //return View();
             }
         }
 

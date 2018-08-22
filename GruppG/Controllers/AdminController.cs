@@ -9,8 +9,10 @@ using System.Web.Mvc;
 
 namespace GruppG.Controllers
 {
+    //[Authorize] <= Ska användas för att inte komma åt sidan om man inte är inloggad
     public class AdminController : Controller
     {
+        
         private ProgramData pd = new ProgramData();
         ProgramChannelVM viewModel = new ProgramChannelVM();
         ProgramChannelVM finalItem = new ProgramChannelVM();
