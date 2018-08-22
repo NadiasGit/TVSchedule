@@ -6,7 +6,7 @@ using System.Web;
 
 namespace GruppG.Models.ViewModels
 {
-    public class FavoritChannelVM
+    public class FavoritChannelVM : ProgramChannelVM
     {
         public int Person { get; set; }
         public int Chanel { get; set; }

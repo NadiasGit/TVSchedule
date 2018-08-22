@@ -145,6 +145,18 @@
 
 </div>
 
+@*<div class="date">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="form-group">
+            <h4>Filtrera</h4>
+            @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
+            @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
+           
+        </div>
+    }
+</div>*@
+
 
 
 TEST

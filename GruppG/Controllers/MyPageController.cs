@@ -28,6 +28,7 @@ namespace GruppG.Controllers
             var channel = pd.GetChannels();
             var program = pd.GetPrograms();
             var person = pd.GetPersonById(id);
+            //var filter = pd.FilterProgramsByDateAndCategory(date, id);
 
             finalItem.PersonP = person;
             finalItem.ChannelListVM = channel;
@@ -36,6 +37,7 @@ namespace GruppG.Controllers
 
             var favoriteChannel = pd.GetFavoriteChannels(id);
             finalItem.FavoriteChannelsVM = favoriteChannel;
+            
 
             return View(finalItem);
         }
