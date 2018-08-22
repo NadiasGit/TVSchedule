@@ -83,7 +83,7 @@ namespace GruppG.Data
             return result;
         }
 
-
+#region PUFF-METHODS
         //Puffar/rekommenderade program
         public List<Program> PuffPrograms()
         {
@@ -113,6 +113,9 @@ namespace GruppG.Data
                 return "Nej";
             }
         }
+        #endregion
+
+
 
         //Get favoritechannels by person-id
         public List<FavoriteChannel> GetFavoriteChannels(int person)
