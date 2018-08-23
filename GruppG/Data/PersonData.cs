@@ -26,6 +26,7 @@ namespace GruppG.Data
             return pers;
         }
 
+        //Check if user and password exists (Login)
         public bool CheckUser (string username, string password)
         {
                 var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password));
@@ -40,8 +41,16 @@ namespace GruppG.Data
                 return false;
 
             }
-
         }
+
+        //Check user role
+        public bool UserInRole(string userName, int role)
+        {
+
+            var roles = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(role));
+            return roles.Any();
+        }
+
 
 
     }
