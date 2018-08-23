@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GruppG.Models.db;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace GruppG.Models.ViewModels
         //Eric använder inte dessa (31 min)
         public Nullable<int> Role { get; set; }
         public string LoginErrorMessage { get; set; }
+        public Person Person { get; set; }
     }
 }

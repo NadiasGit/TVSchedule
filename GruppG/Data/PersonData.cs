@@ -44,11 +44,24 @@ namespace GruppG.Data
         }
 
         //Check user role
-        public bool UserInRole(string userName, int role)
+        public bool UserInRole(string userName, int? role)
         {
 
             var roles = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(role));
             return roles.Any();
+        }
+
+        //Check Admin/User
+        public bool GetRole(int? role)
+        {
+            var roles = db.Person.Where(x => x.Role == role);
+            if (role == 1)
+            {
+                return true;
+            }
+            else
+                return false;
+            
         }
 
 
