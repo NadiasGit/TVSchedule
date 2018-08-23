@@ -78,29 +78,32 @@ namespace GruppG.Controllers
         public ActionResult LogIn(Person person)
         {
             var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password).FirstOrDefault();
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (user.UserName == person.UserName && person.Role == 1)
+                if (user.UserName == person.UserName && user.Password == person.Password && person.Role == 1)
                 {
-                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                        FormsAuthentication.SetAuthCookie(user.UserName, false);
-                        Session["Id"] = user.Id;
-                        Session["UserName"] = user.UserName.ToString();
-                        return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                 }
-                    else if (user.UserName == person.UserName && person.Role == 2)
-                    {
-                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                        FormsAuthentication.SetAuthCookie(person.UserName, false);
-                        Session["Id"] = user.Id;
-                        Session["UserName"] = user.UserName.ToString();
-                        return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    }                    
-                
+                    //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                }
+                else if (user.UserName == person.UserName && user.Password == person.Password && person.Role == 2)
+                {
+                    //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                    FormsAuthentication.SetAuthCookie(person.UserName, false);
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                }
+                else if (person.Role == 2)
+                {
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                }
                 else
                 {
                     ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
-                    
+
                 }
             }
 
