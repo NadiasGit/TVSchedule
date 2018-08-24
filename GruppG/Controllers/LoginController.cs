@@ -75,7 +75,7 @@ namespace GruppG.Controllers
 
         //Nadias test
         [HttpPost]
-        public ActionResult LogIn(Person person)
+        public ActionResult LogIn(LoginVM person)
         {
             using (U4Entities u4 = new U4Entities())
                   {
