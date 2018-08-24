@@ -16,6 +16,16 @@ namespace GruppG.Data
             return person;
         }
 
+        //Hämtar personen med rollen
+        public Person GetPersonByRole(int role)
+        {
+            var person = db.Person.FirstOrDefault(x => x.Role == role);
+
+            return person;
+            
+        }
+
+
         public Person RegisterNewPerson(Person pers)
         {
             using (U4Entities newPerson = new U4Entities())
