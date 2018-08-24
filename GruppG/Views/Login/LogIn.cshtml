@@ -17,7 +17,6 @@
         <div class="form-group">
             @* LableFor "UserName" is connected to the EditorFor "UserName" *@
             @Html.LabelFor(model => model.UserName, "Användarnamn", htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
@@ -27,7 +26,6 @@
         <div class="form-group">
             @* LableFor "Password" is connected to the EditorFor "Password" *@
             @Html.LabelFor(model => model.Password, "Lösenord", htmlAttributes: new { @class = "control-label col-md-2" })
-            @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Password, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
