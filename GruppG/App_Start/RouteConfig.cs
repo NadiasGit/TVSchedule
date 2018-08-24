@@ -24,19 +24,8 @@ namespace GruppG
                 //Lägg till datum som id här?
             );
 
-            //HomeController
-            routes.MapRoute(
-                name: "MyFavoriteChannels",
-                url: "MinaFavoritkanaler",
-                defaults: new
-                {
-                    controller = "MyPage",
-                    action = "MyFavoriteChannels",
-                    id = UrlParameter.Optional,
-                    chan = UrlParameter.Optional 
-                }
-                //Lägg till datum som id här?
-            );
+            
+
 
             routes.MapRoute(
                 name: "About",
@@ -54,27 +43,41 @@ namespace GruppG
             routes.MapRoute(
                 name: "Programinfo",
                 url: "Programdetaljer/{title}",
-                defaults: new { controller = "Home", action = "ProgramDetails", title = "" }
+                defaults: new { controller = "Home", action = "ProgramDetails", title = ""}
             );
 
-            //PersonController
-            //routes.MapRoute(
-            //    name: "MyPage",
-            //    url: "Minasidor/{id}",
-            //    defaults: new { controller = "Person", action = "MyPage", id = UrlParameter.Optional }
-            //);
+         
 
             //LoginController
             routes.MapRoute(
                 name: "LogIn",
-                url: "MinaSidor",
-                defaults: new { controller = "Login", action = "LogIn" }
+                url: "LoggaIn",
+                defaults: new { controller = "Login", action = "LogIn", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Register",
                 url: "Registrering",
                 defaults: new { controller = "Login", action = "Register" }
+            );
+
+            //MyPage
+            routes.MapRoute(
+                name: "MyPage",
+                url: "MinaSidor, {firstName}, {lastName}",
+                defaults: new { controller = "MyPage", action = "Index", firstName = "", lastName = "", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "MyFavoriteChannels",
+                url: "Lägg till/Ta bort",
+                defaults: new
+                {
+                    controller = "MyPage",
+                    action = "MyFavoriteChannels",
+                    id = UrlParameter.Optional
+                }
+                //Lägg till datum som id här?
             );
 
 

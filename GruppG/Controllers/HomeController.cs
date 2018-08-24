@@ -125,13 +125,18 @@ namespace GruppG.Controllers
         //---------------------------------------------------------------
 
 
-        public ActionResult ProgramDetails(int id)
+        public ActionResult ProgramDetails(int id, string title)
         {
             //Lägg till ett felmeddelande/felhantering om program-id saknas
             var prog = pd.GetSpecificProgram(id);
+
+            //För att visa kanalens namn i URL
+            title = prog.Chanel1.ToString();
             //var progDetails = programChannelVM.ProgramListVM.Single(d => d.Id == id);
             ViewBag.Message = pd.PuffName(prog.Puff);
             
+            
+
             return View(prog);
         }
 
