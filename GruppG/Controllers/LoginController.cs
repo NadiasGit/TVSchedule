@@ -79,12 +79,8 @@ namespace GruppG.Controllers
         {
             using (U4Entities u4 = new U4Entities())
                   {
-                var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password && x.Role == person.Role).FirstOrDefault();
-    
-            //        if (ModelState.IsValid)
-            //        {
-            //            if (personData.CheckUser(model.UserName, model.Password)) 
-            //            {
+                var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password).FirstOrDefault();
+ 
             if (ModelState.IsValid)
                 {
                     using (U4Entities db = new U4Entities())
@@ -92,23 +88,22 @@ namespace GruppG.Controllers
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                             FormsAuthentication.SetAuthCookie(user.UserName, false);
-                        Session["Id"] = user.Id;
-                        Session["UserName"] = user.UserName.ToString();
-                        return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                            Session["Id"] = user.Id;
+                            Session["UserName"] = user.UserName.ToString();
+                            return RedirectToAction("Index", "Admin", new { @id = user.Id });
                         }
                         else if (user.Role == 2 )
                         {
-                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                        FormsAuthentication.SetAuthCookie(user.UserName, false);
-                        Session["Id"] = user.Id;
-                        Session["UserName"] = user.UserName.ToString();
-                        return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                            //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                            FormsAuthentication.SetAuthCookie(user.UserName, false);
+                            Session["Id"] = user.Id;
+                            Session["UserName"] = user.UserName.ToString();
+                            return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                         }
                       else
                         {
                             ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
-                    
-                         }
+                        }
                 }
 
                 return View();

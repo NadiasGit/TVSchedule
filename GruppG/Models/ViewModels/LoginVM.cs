@@ -11,11 +11,13 @@ namespace GruppG.Models.ViewModels
     {
         //Log in function
 
-        [Required(ErrorMessage = "Du måste ange ett användarnamn")]
+        //[Required(ErrorMessage = "Du måste ange ett användarnamn")]
+        [Required]
         public string UserName { get; set; }
-        
-        [Required(ErrorMessage = "Du måste ange ett lösenord")]
+
+        //[Required(ErrorMessage = "Du måste ange ett lösenord")]
         //För att lösenordet inte ska synas
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

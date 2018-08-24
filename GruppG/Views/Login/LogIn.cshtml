@@ -1,4 +1,4 @@
-﻿@model GruppG.Models.ViewModels.LoginVM 
+﻿@model GruppG.Models.ViewModels.LoginVM
 
 
 @{
@@ -27,7 +27,7 @@
             @* LableFor "Password" is connected to the EditorFor "Password" *@
             @Html.LabelFor(model => model.Password, "Lösenord", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { @class = "form-control" })
+                @Html.EditorFor(model => model.Password , new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
             </div>
