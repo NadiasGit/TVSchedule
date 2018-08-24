@@ -25,22 +25,28 @@ namespace GruppG.Controllers
 
         public ActionResult Index(int id)
         {
-            var channel = pd.GetChannels();
-            var program = pd.GetPrograms();
-            var person = pd.GetPersonById(id);
-            //var filter = pd.FilterProgramsByDateAndCategory(date, id);
+            //if (Session["UserName"] != null)
+            //{
+                var channel = pd.GetChannels();
+                var program = pd.GetPrograms();
+                var person = pd.GetPersonById(id);
+                //var filter = pd.FilterProgramsByDateAndCategory(date, id);
 
-            finalItem.PersonP = person;
-            finalItem.ChannelListVM = channel;
-            finalItem.ProgramListVM = program;
+                finalItem.PersonP = person;
+                finalItem.ChannelListVM = channel;
+                finalItem.ProgramListVM = program;
 
+                var favoriteChannel = pd.GetFavoriteChannels(id);
+                finalItem.FavoriteChannelsVM = favoriteChannel;
 
-            var favoriteChannel = pd.GetFavoriteChannels(id);
-            finalItem.FavoriteChannelsVM = favoriteChannel;
-            
-
-            return View(finalItem);
-        }
+                return View(finalItem);
+            }
+            //else
+            //{
+            //    return RedirectToAction("Login", "LogIn");
+            //}
+           
+        //}
 
         public ActionResult MyFavoriteChannels(int id)
         {

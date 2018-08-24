@@ -77,35 +77,31 @@ namespace GruppG.Controllers
         [HttpPost]
         public ActionResult LogIn(Person person)
         {
-            var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password).FirstOrDefault();
-            if (!ModelState.IsValid)
-            {
-                if (user.UserName == person.UserName && user.Password == person.Password && person.Role == 1)
+            var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password && x.Role == person.Role).FirstOrDefault();
+            
+                if (ModelState.IsValid && person.Role == 1)
                 {
+                    using (U4Entities db = new U4Entities())
+                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                        FormsAuthentication.SetAuthCookie(user.UserName, false);
+                        Session["Id"] = user.Id;
+                        Session["UserName"] = user.UserName.ToString();
+                        return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                 }
+                 else if (ModelState.IsValid && person.Role == 2)
+                    {
+                    using (U4Entities db = new U4Entities())
                     //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                }
-                else if (user.UserName == person.UserName && user.Password == person.Password && person.Role == 2)
-                {
-                    //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                    FormsAuthentication.SetAuthCookie(person.UserName, false);
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
-                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                }
-                else if (person.Role == 2)
-                {
-                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                }
+                        Session["Id"] = user.Id;
+                        Session["UserName"] = user.UserName.ToString();
+                        return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    }
                 else
                 {
                     ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
-
+                    
                 }
-            }
 
             return View();
         }
