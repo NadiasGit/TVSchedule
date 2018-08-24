@@ -85,7 +85,7 @@ namespace GruppG.Controllers
             //        {
             //            if (personData.CheckUser(model.UserName, model.Password)) 
             //            {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
                 {
                     using (U4Entities db = new U4Entities())
                         if (user.Role == 1)
