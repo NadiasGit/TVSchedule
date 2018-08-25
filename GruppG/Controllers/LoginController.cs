@@ -202,6 +202,7 @@ namespace GruppG.Controllers
         //Register new user-account
         public ActionResult Register()
         {
+            
             return View();
         }
 
@@ -212,9 +213,10 @@ namespace GruppG.Controllers
             {
                 db.Person.Add(pers);
                 db.SaveChanges();
-                return RedirectToAction("LogIn");
+                TempData["message"] = "Registreringen lyckades";
             }
-            return View(pers);
+            ModelState.Clear();
+            return View();
         }
 
         

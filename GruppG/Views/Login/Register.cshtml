@@ -6,11 +6,33 @@
 
 <h2>Ny användare</h2>
 
+@if (TempData["message"] != null)
+{
+
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">&times;</a>
+        @TempData["message"]
+    </div>
+        @*<script src="../../Scripts/jquery-2.0.3.js"></script>
+        <script type="text/javascript">
+
+            $("input[type='text'], textarea, input[type='password']").foreach(
+        function () {
+            $(this).val('');
+
+        }
+      );
+
+
+        </script>*@
+}
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
+
     
+
     <div class="form-horizontal">
         <hr />
         <h4>Registrera dig nedan:</h4>
