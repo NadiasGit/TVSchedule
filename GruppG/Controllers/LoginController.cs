@@ -199,7 +199,7 @@ namespace GruppG.Controllers
             return View(person);
         }
 
-
+        //Register new user-account
         public ActionResult Register()
         {
             return View();
@@ -208,13 +208,13 @@ namespace GruppG.Controllers
         [HttpPost]
         public ActionResult Register(Person pers)
         {
-            //Ingen vy
-            using (U4Entities newPerson = new U4Entities())
+            if(ModelState.IsValid)
             {
-                newPerson.Person.Add(pers);
-                newPerson.SaveChanges();
+                db.Person.Add(pers);
+                db.SaveChanges();
+                return RedirectToAction("LogIn");
             }
-            return View();
+            return View(pers);
         }
 
         
