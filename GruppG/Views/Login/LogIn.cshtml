@@ -4,6 +4,13 @@
 @{
     ViewBag.Title = "Logga in";
 }
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-success">
+        <a class="close" data-dismiss="alert">&times;</a>
+        @TempData["message"]
+    </div>
+}
 
 @*"Login", "Login", FormMethod.Post)*@
 @using (Html.BeginForm())

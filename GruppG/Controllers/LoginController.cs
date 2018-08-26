@@ -214,6 +214,7 @@ namespace GruppG.Controllers
                 db.Person.Add(pers);
                 db.SaveChanges();
                 TempData["message"] = "Registreringen lyckades";
+                return RedirectToAction("Login");
             }
             ModelState.Clear();
             return View();
