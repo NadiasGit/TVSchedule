@@ -209,16 +209,24 @@ namespace GruppG.Controllers
         [HttpPost]
         public ActionResult Register(Person pers)
         {
+            var username = pers.UserName;
             //If modelstate is valid and användaren nonexists
             if (ModelState.IsValid)
             {
-                db.Person.Add(pers);
-                db.SaveChanges();
-                TempData["message"] = "Registreringen lyckades";
-                return RedirectToAction("Login");
+                if (pd.CheckUserNameExists(username))
+                {
+                    db.Person.Add(pers);
+                    db.SaveChanges();
+                    TempData["message"] = "Registreringen lyckades";
+                    return RedirectToAction("Login");   
+                } 
+                else
+                {
+                    TempData["message"] = "Användaren finns redan";
+                    ModelState.Clear();
+                    return View();
+                }
             }
-            //else if (ModelState.IsValid) (kontrollera om användaren redan finns)
-            //TempData["message"] = "Användaren finns redan";
             
             ModelState.Clear();
             return View();

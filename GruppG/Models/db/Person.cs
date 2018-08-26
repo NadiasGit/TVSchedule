@@ -34,6 +34,7 @@ namespace GruppG.Models.db
         public virtual Role Role1 { get; set; }
         public string LoginErrorMessage { get; set; }
 
+        //New registred user is always role = 2
         public Person()
         {
             Role = 2;

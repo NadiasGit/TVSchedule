@@ -74,6 +74,14 @@ namespace GruppG.Data
             
         }
 
+        public bool CheckUserNameExists(string username)
+        {
+            var user = db.Person.Any(x => x.UserName == username);
+
+            return true;
+
+        }
+
 
 
     }
