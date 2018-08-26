@@ -209,13 +209,17 @@ namespace GruppG.Controllers
         [HttpPost]
         public ActionResult Register(Person pers)
         {
-            if(ModelState.IsValid)
+            //If modelstate is valid and användaren nonexists
+            if (ModelState.IsValid)
             {
                 db.Person.Add(pers);
                 db.SaveChanges();
                 TempData["message"] = "Registreringen lyckades";
                 return RedirectToAction("Login");
             }
+            //else if (ModelState.IsValid) (kontrollera om användaren redan finns)
+            //TempData["message"] = "Användaren finns redan";
+            
             ModelState.Clear();
             return View();
         }
