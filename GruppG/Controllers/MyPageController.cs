@@ -142,50 +142,7 @@ namespace GruppG.Controllers
         }
 
         
-
-
-
-
-
-        //Ta bort?
-        public ActionResult MyFavotieChannel(int id)
-        {
-            var persEdit = db.Person.Single(e => e.Id == id);
-            return View(persEdit);
-        }
-
-        [HttpPost]
-        public ActionResult MyFavotieChannel(FavoritChannelVM fchannel)
-        {
-            favchannel = new Models.db.FavoriteChannel()
-            {
-                Person = fchannel.Person,
-                Chanel = fchannel.Chanel
-            };
-
-            channel = new Chanel()
-            {
-                Id = fchannel.Chanel,
-                Name = fchannel.ChannelName,
-            };
-
-            person = new Person()
-            {
-                FirstName = fchannel.FirstName,
-                LastName = fchannel.LastName,
-                UserName = fchannel.UserName,
-                Password = fchannel.Password
-            };
-
-
-            using (U4Entities myChannel = new U4Entities())
-            {
-                myChannel.FavoriteChannel.Add(favchannel);
-                myChannel.SaveChanges();
-            }
-            return View();
-        }
-
+        
 
         //ADD - fungerar halvt (den lägger till flera av samma)
         public ActionResult Add(int? pId, int? cId)

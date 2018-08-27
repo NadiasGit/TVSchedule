@@ -52,7 +52,7 @@
             Idag
         </option>
     }
-    else if (Model.Dates[i].ToString() == Model.Today.ToString())
+    else if (Model.Dates[i].ToString() == Model.Dates.ToString())
     {
         <option selected value=@Model.Dates[i]>
             @Model.Dates[i].ToShortDateString();
