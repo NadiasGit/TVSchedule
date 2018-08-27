@@ -190,7 +190,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
-    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Data\ChannelData.cs" />
     <Compile Include="Models\ListOfDaysModel.cs" />
@@ -324,7 +323,6 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\Kanal5.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Person\GetPerson.cshtml" />
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
     <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
