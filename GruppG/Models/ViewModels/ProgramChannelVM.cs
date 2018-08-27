@@ -28,10 +28,13 @@ namespace GruppG.Models.ViewModels
         public List<Program> GetPuffListVM { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public List<DateTime> Dates { get; set; }
+        public List<string> DateString { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public DateTime Today { get; set; }
         public List<string> PuffName { get; set; }
@@ -46,6 +49,7 @@ namespace GruppG.Models.ViewModels
             //DateTime today = Convert.ToDateTime("2017-11-09");
             //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
+            //Today = DateTime.Parse("2017, 11, 09");
 
             Dates = new List<DateTime>();
             Dates.Add(Today);
@@ -55,6 +59,15 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(4));
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
+
+            DateString = new List<string>();
+            DateString.Add(Today.ToShortDateString());
+            DateString.Add(Today.AddDays(1).ToShortDateString());
+            DateString.Add(Today.AddDays(2).ToShortDateString());
+            DateString.Add(Today.AddDays(3).ToShortDateString());
+            DateString.Add(Today.AddDays(4).ToShortDateString());
+            DateString.Add(Today.AddDays(5).ToShortDateString());
+            DateString.Add(Today.AddDays(6).ToShortDateString());
 
             //Today.ToShortDateString();
 
