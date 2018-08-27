@@ -20,7 +20,7 @@
 }
 
 @*"Login", "Login", FormMethod.Post)*@
-@using (Html.BeginForm())
+@using (Html.BeginForm("LogIn", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 
     @Html.AntiForgeryToken()  /* erik har med detta*/

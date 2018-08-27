@@ -75,7 +75,7 @@ namespace GruppG.Controllers
 
         //Nadias test
         [HttpPost]
-        public ActionResult LogIn(LoginVM person, string ReturnUrl)
+        public ActionResult LogIn(LoginVM person, string returnUrl)
         {
             using (U4Entities u4 = new U4Entities())
                   {
@@ -92,9 +92,9 @@ namespace GruppG.Controllers
                             //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
-                            return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                            //return RedirectToAction("Index", "Admin", new { @id = user.Id });
                         //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
-                        //return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, RememberMe = person.RememberMe });
+                        return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
                     }
                         else if (pd.CheckUser(person.UserName, person.Password) && user.Role == 2)
                         {
@@ -102,13 +102,13 @@ namespace GruppG.Controllers
                             //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
-                        return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                        //return Redirect(ReturnUrl);
+                        //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                        return RedirectToAction("Index", "MyPage", new { ReturnUrl = returnUrl, @id = user.Id });
                         }
                         else
                         {
-                            TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
-                        //ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+                            //TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
+                            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
                         }
                 }
 
@@ -121,35 +121,6 @@ namespace GruppG.Controllers
 
 
 
-        //Nadias test
-        //[HttpPost]
-        //public ActionResult LogIn(LoginVM model, string ReturnUrl)
-        //{
-        //    using (U4Entities u4 = new U4Entities())
-        //    {
-        //        //var user = u4.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
-        //        //if (user == null)
-
-        //        if (ModelState.IsValid)
-        //        {
-        //            if (personData.CheckUser(model.UserName, model.Password)) 
-        //            {
-        //                //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-        //                FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //                return Redirect(ReturnUrl);
-        //            }
-        //        }   
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");    
-        //            //Session["Id"] = user.Id;
-        //            //Session["UserName"] = user.UserName.ToString();
-        //            //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-
-        //        }
-        //        return View();
-        //    }
-        //}
 
 
         //public ActionResult LogInAdmin()
