@@ -23,7 +23,7 @@ namespace GruppG.Controllers
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
-        public ActionResult Index(int id)
+        public ActionResult Index(int id, DateTime? date, int? category = null)
         {
             //if (Session["UserName"] != null)
             //{
@@ -31,7 +31,7 @@ namespace GruppG.Controllers
                 var program = pd.GetPrograms();
                 var person = pd.GetPersonById(id);
                 //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
-                //var filter = pd.FilterProgramsByDateAndCategory(date, id);
+                //var filter = pd.FilterProgramsByDateAndCategory(date, category);
 
                 finalItem.PersonP = person;
                 finalItem.ChannelListVM = channel;
@@ -39,7 +39,8 @@ namespace GruppG.Controllers
 
                 var favoriteChannel = pd.GetFavoriteChannels(id);
                 finalItem.FavoriteChannelsVM = favoriteChannel;
-                
+                //finalItem.ProgramListVM = filter;
+
                 return View(finalItem);
             }
             //else

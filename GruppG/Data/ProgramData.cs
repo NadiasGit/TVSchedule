@@ -14,7 +14,8 @@ namespace GruppG.Data
         //Class for our methods
 
         private U4Entities db = new U4Entities();
-        private Person pr = new Person();
+        Person pr = new Person();
+
         Program program = new Program();
         Chanel channel = new Chanel();
         FavoriteChannel favoriteChannel = new FavoriteChannel();
@@ -87,6 +88,16 @@ namespace GruppG.Data
             var result = db.Program;
             return result.ToList();
         }
+
+        //public FavoritChannelVM Name(int id, DateTime? date, int? category = null)
+        //{
+        //    FilterProgramsByDateAndCategory(date, id);
+        //    var person = GetPersonById(id);
+            
+             
+
+        //    //return finalItem;
+        //}
 
         public Program GetSpecificProgram(int id)
         {
