@@ -47,7 +47,6 @@ namespace GruppG.Models.ViewModels
             //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
 
-
             Dates = new List<DateTime>();
             Dates.Add(Today);
             Dates.Add(Today.AddDays(1));
@@ -56,17 +55,15 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(4));
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
-            
+
+            //Today.ToShortDateString();
+
             //Försök till att bara visa datum i drop-down-list
             /*
-            Today.ToString("dd/mm/yy");
-            Today.ToShortDateString();
+            Today.ToString("dd/mm/yy");       
             Today = DateTime.Parse("2017, 11, 09");
             Today = Today.Date;
             */
-
-
-
         }
 
 
