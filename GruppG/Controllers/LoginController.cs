@@ -15,15 +15,13 @@ namespace GruppG.Controllers
 {
     public class LoginController : Controller
     {
-        U4Entities ue = new U4Entities();
+        U4Entities db = new U4Entities();
+        PersonData pd = new PersonData();
         Program pr = new Program();
         Person person = new Person();
-        PersonData personData = new PersonData();
-        PersonData pd = new PersonData();
         FavoriteChannel favC = new FavoriteChannel();
         Chanel channel = new Chanel();
-
-        private U4Entities db = new U4Entities();
+        
 
 
         // GET: Login (Account?)
@@ -224,8 +222,8 @@ namespace GruppG.Controllers
 
         public ActionResult FavoriteChannel()
         {
-            var chan = ue.Chanel.Include(c => c.Name);
-            var chan1 = ue.Chanel;
+            var chan = db.Chanel.Include(c => c.Name);
+            var chan1 = db.Chanel;
             return PartialView(chan1.ToList());
         }
 
@@ -248,8 +246,8 @@ namespace GruppG.Controllers
         
         public ActionResult PartialViewChannels()
         {
-            var chan = ue.Chanel.Include(c => c.Name);
-            var chan1 = ue.Chanel;
+            var chan = db.Chanel.Include(c => c.Name);
+            var chan1 = db.Chanel;
             return PartialView(chan1.ToList());
         }
 
