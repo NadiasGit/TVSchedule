@@ -56,6 +56,8 @@ namespace GruppG.Controllers
         //NY INDEX:
         public ActionResult Index(DateTime? date, int? id = null)
         {
+
+            //DateTime?
             ProgramChannelVM viewModel = new ProgramChannelVM();
             ProgramChannelVM finalItem = new ProgramChannelVM();
             //ListOfDaysModel Dates = new ListOfDaysModel();
@@ -67,7 +69,11 @@ namespace GruppG.Controllers
             //        Value = d.Id.ToString(),
             //        Text = d.Today.Value.ToShortDateString()
             //}).ToList();
-            
+
+            //DateTime.Parse(date);
+            //Convert.ToDateTime(date);
+
+
             ViewBag.Message = ("Inget på TV idag :( ... ");
            
             return View(pd.FilterProgramsByDateAndCategory(date, id));
