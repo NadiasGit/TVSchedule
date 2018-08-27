@@ -24,9 +24,24 @@ namespace GruppG.Data
         //private DateTime selectedDates = new DateTime();
          System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
         ProgramChannelVM finalItem = new ProgramChannelVM();
-        
+
+        public List<DateTime> Dates { get; set; }
+
+
         public ProgramData()
         {
+            DateTime Today = new DateTime(2017, 11, 09);
+
+            Dates = new List<DateTime>();
+            Dates.Add(Today);
+            Dates.Add(Today.AddDays(1));
+            Dates.Add(Today.AddDays(2));
+            Dates.Add(Today.AddDays(3));
+            Dates.Add(Today.AddDays(4));
+            Dates.Add(Today.AddDays(5));
+            Dates.Add(Today.AddDays(6));
+
+
             //puffList = cache["puffList"] as List<Program>;
             //if (puffList == null)                            //Kolla om det finns en lista
             //{
@@ -40,6 +55,28 @@ namespace GruppG.Data
             //cache["puffList"] = puffList;
         }
 
+        //Get Dates
+
+       public List<DateTime> GetDates()
+        {
+            //DateTimeToday = DateTime.Today;
+            //Om vi vill se hårdkodade programmen
+            //DateTime today = Convert.ToDateTime("2017-11-09");
+            //Today = Convert.ToDateTime("2017-11-09").Date;
+            DateTime Today = new DateTime(2017, 11, 09);
+
+
+            //GetDates() = new List<DateTime>();
+            GetDates().Add(Today);
+            GetDates().Add(Today.AddDays(1));
+            GetDates().Add(Today.AddDays(2));
+            GetDates().Add(Today.AddDays(3));
+            GetDates().Add(Today.AddDays(4));
+            GetDates().Add(Today.AddDays(5));
+            GetDates().Add(Today.AddDays(6));
+
+            return GetDates();
+        }
         
 
         //Get programs
@@ -215,6 +252,50 @@ namespace GruppG.Data
             return finalItem;
         }
 
+        public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(DateTime? date, int? category = null)
+        {
+
+            ListOfDaysModel Dates = new ListOfDaysModel();
+            var channel = GetChannels();
+            var program = GetPrograms();
+
+
+            var progCategories = GetPrograms();
+            var cat = GetCategories();
+
+
+
+            if (date == null && category == null)
+            {
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+                finalItem.ProgramListVM = programStart;
+
+                //var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToString("dd/mm/yy"));
+                //finalItem.ProgramListVM = programStart.ToList();
+
+            }
+            else if (date != null && category == null)
+            {
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+                finalItem.ProgramListVM = programDate;
+            }
+            else if (date == null && category != null)
+            {
+                var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
+                finalItem.ProgramListVM = programDateCat;
+            }
+            else
+            {
+                var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
+
+                finalItem.ProgramListVM = catDate;
+            }
+
+            finalItem.ChannelListVM = channel;
+            finalItem.CategoryListVM = cat;
+
+            return finalItem;
+        }
         public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
         {
             
