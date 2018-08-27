@@ -44,12 +44,10 @@ namespace GruppG.Data
             if(user.Any())
                 {
                 return true;    
-
                 }
             else
             {
                 return false;
-
             }
         }
 

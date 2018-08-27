@@ -75,7 +75,7 @@ namespace GruppG.Controllers
 
         //Nadias test
         [HttpPost]
-        public ActionResult LogIn(LoginVM person)
+        public ActionResult LogIn(LoginVM person, string ReturnUrl)
         {
             using (U4Entities u4 = new U4Entities())
                   {
@@ -86,26 +86,28 @@ namespace GruppG.Controllers
                     using (U4Entities db = new U4Entities())
                         //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                         FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    if (user.Role == 1)
+                    if (pd.CheckUser(person.UserName, person.Password) && user.Role == 1)
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                             //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
                             return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                            //return Redirect(ReturnUrl) <-- string ReturnUrl som inparameter
+                            //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
                         }
-                        else if (user.Role == 2)
+                        else if (pd.CheckUser(person.UserName, person.Password) && user.Role == 2)
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                             //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
-                            return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                        return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                        //return Redirect(ReturnUrl);
                         }
                         else
                         {
-                            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+                            TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
+                        //ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
                         }
                 }
 
@@ -149,39 +151,42 @@ namespace GruppG.Controllers
         //}
 
 
-        public ActionResult LogInAdmin()
-        {
-            //Log in
+        //public ActionResult LogInAdmin()
+        //{
+        //    //Log in
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult LogInAdmin(LoginVM pers)
-        {
-            using (U4Entities u4 = new U4Entities())
-            {
-                var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password && pers.Role ==1).FirstOrDefault();
+        //[HttpPost]
+        //public ActionResult LogInAdmin(LoginVM pers)
+        //{
+        //    using (U4Entities u4 = new U4Entities())
+        //    {
+        //        var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password && pers.Role ==1).FirstOrDefault();
 
-                if(person.Role == 2)
-                {
-                    pers.LoginErrorMessage = "Du är ej behörig för denna sida";
-                    return View("LogInAdmin");
-                }
-                else if (user == null)
-                {
-                    pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-                    return View("LogInAdmin");
-                }
-                else
-                {
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
-                    //var p = ue.Person.Where(per => per.Id == user.Id);
-                    return RedirectToAction("MyPage", "Login");
-                }
-            }
-        }
+        //        if(person.Role == 2)
+        //        {
+        //            pers.LoginErrorMessage = "Du är ej behörig för denna sida";
+        //            return View("LogInAdmin");
+        //        }
+        //        else if (user == null)
+        //        {
+        //            pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
+        //            return View("LogInAdmin");
+        //        }
+        //        else
+        //        {
+        //            Session["Id"] = user.Id;
+        //            Session["UserName"] = user.UserName.ToString();
+        //            //var p = ue.Person.Where(per => per.Id == user.Id);
+        //            return RedirectToAction("MyPage", "Login");
+        //        }
+        //    }
+        //}
+
+
+
 
         //SignOut
         public ActionResult SignOut()
