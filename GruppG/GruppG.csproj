@@ -191,7 +191,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
-    <Compile Include="Controllers\ProgramController.cs" />
     <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Data\ChannelData.cs" />
     <Compile Include="Models\ListOfDaysModel.cs" />
@@ -317,8 +316,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Program\Index.cshtml" />
-    <Content Include="Views\Program\Tableau.cshtml" />
     <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
