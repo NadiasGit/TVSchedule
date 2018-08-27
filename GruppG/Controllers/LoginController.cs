@@ -93,8 +93,9 @@ namespace GruppG.Controllers
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
                             return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                            //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
-                        }
+                        //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
+                        //return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, RememberMe = person.RememberMe });
+                    }
                         else if (pd.CheckUser(person.UserName, person.Password) && user.Role == 2)
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).

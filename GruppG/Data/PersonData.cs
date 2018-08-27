@@ -9,6 +9,7 @@ namespace GruppG.Data
     public class PersonData
     {
         private U4Entities db = new U4Entities();
+        
         //Koppla ihop inloggad person med person i databasen.
         public Person GetPersonById(int id)
         {
@@ -52,10 +53,11 @@ namespace GruppG.Data
         }
 
         //Check user role
-        public bool UserInRole(string userName, int? role)
+        public bool UserInRole(string userName, int role)
         {
 
-            var roles = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(role));
+            var roles = db.Person.Where(x => x.UserName.Equals(userName));
+            //&& x.Role.Equals(role));
             return roles.Any();
         }
 

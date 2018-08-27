@@ -1,6 +1,7 @@
 ﻿using GruppG.Data;
 using GruppG.Models.db;
 using GruppG.Models.ViewModels;
+using GruppG.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace GruppG.Controllers
 {
-    //[AuthorizeRoles("Admin")] //<= Ska användas för att inte komma åt sidan om man inte är inloggad
+    [AuthorizeRoles(1)] //<= Ska användas för att inte komma åt sidan om man inte är inloggad
     public class AdminController : Controller
     {
         
