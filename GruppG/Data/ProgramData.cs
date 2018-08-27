@@ -263,18 +263,14 @@ namespace GruppG.Data
             return finalItem;
         }
 
-        public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(DateTime? date, int? category = null)
+        public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(int id, DateTime? date, int? category = null)
         {
 
             ListOfDaysModel Dates = new ListOfDaysModel();
             var channel = GetChannels();
             var program = GetPrograms();
-
-
-            var progCategories = GetPrograms();
+            var fav = GetFavoriteChannels(id);
             var cat = GetCategories();
-
-
 
             if (date == null && category == null)
             {

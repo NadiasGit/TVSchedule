@@ -30,8 +30,10 @@ namespace GruppG.Controllers
                 var channel = pd.GetChannels();
                 var program = pd.GetPrograms();
                 var person = pd.GetPersonById(id);
-                //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
-                //var filter = pd.FilterProgramsByDateAndCategory(date, category);
+            //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
+            //var filter = pd.FilterProgramsByDateAndCategory(date, category);
+            var myFav = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
+            
 
                 finalItem.PersonP = person;
                 finalItem.ChannelListVM = channel;
