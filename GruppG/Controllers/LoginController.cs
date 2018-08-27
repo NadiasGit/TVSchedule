@@ -84,23 +84,26 @@ namespace GruppG.Controllers
             if (ModelState.IsValid)
                 {
                     using (U4Entities db = new U4Entities())
-                        if (user.Role == 1)
+                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                        FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    if (user.Role == 1)
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                            FormsAuthentication.SetAuthCookie(user.UserName, false);
+                            //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
                             return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                            //return Redirect(ReturnUrl) <-- string ReturnUrl som inparameter
                         }
-                        else if (user.Role == 2 )
+                        else if (user.Role == 2)
                         {
                             //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                            FormsAuthentication.SetAuthCookie(user.UserName, false);
+                            //FormsAuthentication.SetAuthCookie(user.UserName, false);
                             Session["Id"] = user.Id;
                             Session["UserName"] = user.UserName.ToString();
                             return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                         }
-                      else
+                        else
                         {
                             ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
                         }
@@ -187,6 +190,14 @@ namespace GruppG.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //// POST: /Account/LogOff
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult LogOff()
+        //{
+        //    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+        //    return RedirectToAction("Index", "Home");
+        //}
 
 
 
