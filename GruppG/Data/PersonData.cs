@@ -52,6 +52,20 @@ namespace GruppG.Data
             }
         }
 
+        public bool CheckIsUserAdmin ()
+        {
+            var user = db.Person.Where(p => p.Role == 1);
+
+            if (user.Any())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         //Check user role
         public bool UserInRole(string userName, int role)
         {

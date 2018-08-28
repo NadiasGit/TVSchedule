@@ -24,16 +24,17 @@
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
                     <li>@Html.ActionLink("Mina sidor", "LogIn", "Login")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    
-                    @*//Logga ut*@
-                    @if (User.Identity.IsAuthenticated)
+
+                    @if (User.IsInRole("Admin"))
                     {
-                        if (User.IsInRole("Admin"))
-                        {
-                            <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
-                        }
+                        <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                        //Logout admin
                         <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
-                        
+                    }
+                    else if(User.IsInRole("User"))
+                    {
+                        //Logout user
+                        <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
                     }
 
                 </ul>
