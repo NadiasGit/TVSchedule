@@ -68,12 +68,12 @@ namespace GruppG.Data
         }
 
         //Check user role
-        public bool UserInRole(string userName, string roleName)
+        public bool UserInRole(string userName, string roleType)
         {
 
             //var role = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(roleName));
 
-            var role = db.Person.Where(x => x.UserName.Equals(userName)).Include(x => x.Role1).Where(x => x.Role1.Type.Equals(roleName));
+            var role = db.Person.Where(x => x.UserName.Equals(userName)).Include(x => x.Role1).Where(x => x.Role1.Type.Equals(roleType));
             //var r = db.Role.Where(x => x.Type == roleName);
             return role.Any();
         }

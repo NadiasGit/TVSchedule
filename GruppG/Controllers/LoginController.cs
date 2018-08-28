@@ -67,7 +67,7 @@ namespace GruppG.Controllers
                     //return Redirect(returnUrl, new { id = user.Id });
                     //return RedirectToAction(returnUrl, "Index", "Admin", new { @id = user.Id });
                     //return RedirectToAction("Index","Admin", new { returnUrl = returnUrl, @id = user.Id });
-                    return RedirectToAction("Index", "Admin", new { returnUrl});
+                    return Redirect(returnUrl);
                 }
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)

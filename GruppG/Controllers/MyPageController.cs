@@ -24,7 +24,7 @@ namespace GruppG.Controllers
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
-        //[AuthorizeRoles("User")]
+        [Authorize(Roles = "User")]
         //[Authorize]
         public ActionResult Index(int id, DateTime? date, int? category = null)
         {

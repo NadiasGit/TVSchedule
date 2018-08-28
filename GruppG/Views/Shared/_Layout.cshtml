@@ -24,8 +24,9 @@
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
                     <li>@Html.ActionLink("Mina sidor", "LogIn", "Login")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
 
-                    @if (User.IsInRole("Admin"))
+                    @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
                         //Logout admin
