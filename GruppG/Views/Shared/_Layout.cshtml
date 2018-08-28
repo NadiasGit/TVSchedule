@@ -24,11 +24,16 @@
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
                     <li>@Html.ActionLink("Mina sidor", "LogIn", "Login")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    
                     @*//Logga ut*@
                     @if (User.Identity.IsAuthenticated)
                     {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                        }
                         <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
+                        
                     }
 
                 </ul>

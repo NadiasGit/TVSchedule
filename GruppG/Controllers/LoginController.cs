@@ -27,8 +27,6 @@ namespace GruppG.Controllers
         // GET: Login (Account?)
         public ActionResult LogIn()
         {
-            //Log in
-
             return View();
         }
 
@@ -78,6 +76,7 @@ namespace GruppG.Controllers
             using (U4Entities u4 = new U4Entities())
                   {
                 var user = db.Person.Where(x => x.UserName == person.UserName && x.Password == person.Password).FirstOrDefault();
+                var pers = db.Person.Include(p => p.Role);
  
             if (ModelState.IsValid)
                 {
@@ -105,7 +104,7 @@ namespace GruppG.Controllers
                         }
                         else
                         {
-                            //TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
+                            TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
                             ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
                         }
                 }

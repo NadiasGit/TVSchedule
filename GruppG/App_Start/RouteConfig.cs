@@ -65,7 +65,10 @@ namespace GruppG
             routes.MapRoute(
                 name: "MyPage",
                 url: "MinaSidor, {firstName}, {lastName}",
-                defaults: new { controller = "MyPage", action = "Index", firstName = "", lastName = "", id = UrlParameter.Optional }
+                defaults: new { controller = "MyPage", action = "Index", firstName = "", lastName = "",
+                    date = UrlParameter.Optional,
+                    category = UrlParameter.Optional,
+                    id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
