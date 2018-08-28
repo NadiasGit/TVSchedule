@@ -19,7 +19,7 @@
 }
 @* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s*@
 
-@using (Html.BeginForm("LogIn", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("LogIn", "Login", new { returnUrl = Request.QueryString["returnUrl"] }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     //Safety from Microsoft
     @Html.AntiForgeryToken()
