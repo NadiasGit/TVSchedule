@@ -62,13 +62,28 @@ namespace GruppG
             );
 
             //MyPage
+            //routes.MapRoute(
+            //    name: "Index",
+            //    url: "MinaSidor, {firstName}, {lastName}",
+            //    defaults: new { controller = "MyPage", action = "Index",
+            //        firstName = "",
+            //        lastName = "",
+            //        date = UrlParameter.Optional,
+            //        category = UrlParameter.Optional,
+            //        id = UrlParameter.Optional }
+            //);
+
             routes.MapRoute(
-                name: "MyPage",
-                url: "MinaSidor, {firstName}, {lastName}",
-                defaults: new { controller = "MyPage", action = "Index", firstName = "", lastName = "",
+                name: "Index",
+                url: "MinaSidor",
+                defaults: new
+                {
+                    controller = "MyPage",
+                    action = "Index",
                     date = UrlParameter.Optional,
                     category = UrlParameter.Optional,
-                    id = UrlParameter.Optional }
+                    id = UrlParameter.Optional
+                }
             );
 
             routes.MapRoute(

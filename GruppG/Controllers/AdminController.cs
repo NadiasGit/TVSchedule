@@ -11,6 +11,7 @@ using System.Web.Mvc;
 namespace GruppG.Controllers
 {
     [AuthorizeRoles("Admin")] //<= Ska användas för att inte komma åt sidan om man inte är inloggad
+    //[Authorize]
     public class AdminController : Controller
     {
         

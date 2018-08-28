@@ -15,7 +15,7 @@ namespace GruppG.Security
         private U4Entities db = new U4Entities();
         private PersonData pd = new PersonData();
 
-        public AuthorizeRolesAttribute (params string[] roles)
+        public AuthorizeRolesAttribute(params string[] roles)
         {
             this.userAssignedRole = roles;
         }

@@ -74,7 +74,7 @@ namespace GruppG.Data
             //var role = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(roleName));
 
             var role = db.Person.Where(x => x.UserName.Equals(userName)).Include(x => x.Role1).Where(x => x.Role1.Type.Equals(roleName));
-            var r = db.Role.Where(x => x.Type == roleName);
+            //var r = db.Role.Where(x => x.Type == roleName);
             return role.Any();
         }
 

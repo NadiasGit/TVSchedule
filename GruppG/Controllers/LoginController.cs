@@ -42,19 +42,32 @@ namespace GruppG.Controllers
             {
                 //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                 FormsAuthentication.SetAuthCookie(user.UserName, false);
+                //if(Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") &&
+                //    !returnUrl.StartsWith("/\\"))
+                //{
+                //    return Redirect(returnUrl);
+                //}
+                //else 
+                //{
+                //    Session["Id"] = user.Id;
+                //    Session["UserName"] = user.UserName.ToString();
+                //    //    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+
+                //    return RedirectToAction("MinaSidor", "MyPage"/*, new { @id = user.Id }*/);
+                //}     
 
                 if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
                     //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
                     //FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    Session["Id"] = user.Id;
-                    Session["UserName"] = user.UserName.ToString();
+                    //Session["Id"] = user.Id;
+                    //Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                    return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
+                    //return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
                     //return Redirect(returnUrl, new { id = user.Id });
                     //return RedirectToAction(returnUrl, "Index", "Admin", new { @id = user.Id });
                     //return RedirectToAction("Index","Admin", new { returnUrl = returnUrl, @id = user.Id });
-                    //return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                    return RedirectToAction("Index", "Admin", new { returnUrl});
                 }
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
@@ -64,9 +77,9 @@ namespace GruppG.Controllers
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    return Redirect(returnUrl);
+                    //return Redirect(returnUrl);
                     //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
-                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                 }
 
             }

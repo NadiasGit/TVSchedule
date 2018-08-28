@@ -24,12 +24,14 @@ namespace GruppG.Controllers
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
-        [AuthorizeRoles("User")]
+        //[AuthorizeRoles("User")]
+        //[Authorize]
         public ActionResult Index(int id, DateTime? date, int? category = null)
         {
-            //if (Session["UserName"] != null)
+            //if (Session["UserName"] != null)     int id, 
             //{
-                var channel = pd.GetChannels();
+            
+            var channel = pd.GetChannels();
                 var program = pd.GetPrograms();
                 var person = pd.GetPersonById(id);
             //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
