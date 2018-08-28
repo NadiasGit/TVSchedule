@@ -331,7 +331,6 @@
     <Content Include="Views\Home\PartialViewPuffs.cshtml" />
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />
-    <Content Include="Views\Login\LogInAdmin.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
     <Content Include="Views\Channel\Channels.cshtml" />
     <Content Include="Views\Home\_Channel.cshtml" />
