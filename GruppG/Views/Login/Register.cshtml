@@ -1,10 +1,9 @@
 ﻿@model GruppG.Models.db.Person
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Nu användare";
 }
 
-<h2>Ny användare</h2>
 
 @if (TempData["message"] != null)
 {
@@ -13,18 +12,6 @@
         <a class="close" data-dismiss="alert">&times;</a>
         @TempData["message"]
     </div>
-    @*<script src="../../Scripts/jquery-2.0.3.js"></script>
-          <script type="text/javascript">
-
-              $("input[type='text'], textarea, input[type='password']").foreach(
-          function () {
-              $(this).val('');
-
-          }
-        );
-
-
-          </script>*@
 }
 
 @using (Html.BeginForm()) 

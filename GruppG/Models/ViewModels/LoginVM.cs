@@ -20,11 +20,11 @@ namespace GruppG.Models.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public string RoleType { get; set; }
+        //public string RoleType { get; set; }
 
         //Eric använder inte dessa (31 min)
-        public Nullable<int> Role { get; set; }
-        public string LoginErrorMessage { get; set; }
-        public Person Person { get; set; }
+        //public Nullable<int> Role { get; set; }
+        //public string LoginErrorMessage { get; set; }
+        //public Person Person { get; set; }
     }
 }

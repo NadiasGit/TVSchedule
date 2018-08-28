@@ -21,6 +21,7 @@
 
 @using (Html.BeginForm("LogIn", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    //Safety from Microsoft
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
