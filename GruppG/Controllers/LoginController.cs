@@ -37,37 +37,42 @@ namespace GruppG.Controllers
         {
                 var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
                 var pers = db.Person.Include(p => p.Role);
- 
+
             if (ModelState.IsValid)
+            {
+                //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+
+                if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
-                    using (U4Entities db = new U4Entities())
-                        //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                        FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
-                        {
-                            //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                            //FormsAuthentication.SetAuthCookie(user.UserName, false);
-                            Session["Id"] = user.Id;
-                            Session["UserName"] = user.UserName.ToString();
-                            //return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                        //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
-                        return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
-                    }
-                        else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
-                        {
-                            //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                            //FormsAuthentication.SetAuthCookie(user.UserName, false);
-                            Session["Id"] = user.Id;
-                            Session["UserName"] = user.UserName.ToString();
-                        //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                        return RedirectToAction("Index", "MyPage", new { ReturnUrl = returnUrl, @id = user.Id });
-                        }
-                        else
-                        {
-                            TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
-                            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
-                        }
+                    //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                    //FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    //return RedirectToAction("Index", "Admin", new { @id = user.Id });
+                    //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
+
+                    return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
                 }
+
+                else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
+                {
+                    //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                    //FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    Session["Id"] = user.Id;
+                    Session["UserName"] = user.UserName.ToString();
+                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+
+                    return RedirectToAction("Index", "MyPage", new { ReturnUrl = returnUrl, @id = user.Id });
+                }
+
+            }
+
+            else
+            {
+                TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
+                ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+            }
 
                 return View();
         }
