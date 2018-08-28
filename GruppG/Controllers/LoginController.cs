@@ -50,9 +50,11 @@ namespace GruppG.Controllers
                     Session["Id"] = user.Id;
                     Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "Admin", new { @id = user.Id });
-                    //return Redirect(ReturnUrl); //<-- string ReturnUrl som inparameter
-
-                    return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
+                    //return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
+                    //return Redirect(returnUrl, new { id = user.Id });
+                    //return RedirectToAction(returnUrl, "Index", "Admin", new { @id = user.Id });
+                    return RedirectToAction("Index","Admin", new { returnUrl = returnUrl, @id = user.Id });
+                    //return RedirectToAction("Index", "Admin", new { @id = user.Id });
                 }
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
@@ -64,13 +66,14 @@ namespace GruppG.Controllers
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
 
                     return RedirectToAction("Index", "MyPage", new { ReturnUrl = returnUrl, @id = user.Id });
+                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                 }
 
             }
 
             else
             {
-                TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
+                //TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
                 ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
             }
 

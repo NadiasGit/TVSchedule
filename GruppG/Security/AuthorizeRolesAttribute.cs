@@ -11,11 +11,11 @@ namespace GruppG.Security
     //Från Eriks FL5
     public class AuthorizeRolesAttribute : AuthorizeAttribute
     {
-        private readonly int[] userAssignedRole;
+        private readonly string[] userAssignedRole;
         private U4Entities db = new U4Entities();
         private PersonData pd = new PersonData();
 
-        public AuthorizeRolesAttribute (params int[] roles)
+        public AuthorizeRolesAttribute (params string[] roles)
         {
             this.userAssignedRole = roles;
         }

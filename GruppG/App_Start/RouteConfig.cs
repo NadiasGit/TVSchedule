@@ -51,7 +51,7 @@ namespace GruppG
             //LoginController
             routes.MapRoute(
                 name: "LogIn",
-                url: "LoggaIn",
+                url: "LogIn",
                 defaults: new { controller = "Login", action = "LogIn", id = UrlParameter.Optional }
             );
 

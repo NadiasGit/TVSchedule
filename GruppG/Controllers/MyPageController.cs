@@ -1,6 +1,7 @@
 ﻿using GruppG.Data;
 using GruppG.Models.db;
 using GruppG.Models.ViewModels;
+using GruppG.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace GruppG.Controllers
         ProgramData pd = new ProgramData();
         Person person = new Person();
 
+        [AuthorizeRoles("User")]
         public ActionResult Index(int id, DateTime? date, int? category = null)
         {
             //if (Session["UserName"] != null)
