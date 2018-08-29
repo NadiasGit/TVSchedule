@@ -4501,7 +4501,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  /*background-color: #222222; <==================== ORIGINAL */
+  /*background-color: #222222; <============================ ORIGINAL */
   /*background-color: #FCA43A;*/
   background-color: #FC9300;
   border-color: #080808;
@@ -4522,7 +4522,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-nav > li > a {
-  /*color: #999999; <=======================   ORIGINAL */
+  /*color: #999999; <==========================================   ORIGINAL */
   color: #333333;
 }
 
