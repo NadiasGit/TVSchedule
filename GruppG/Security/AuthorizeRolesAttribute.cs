@@ -27,6 +27,7 @@ namespace GruppG.Security
             foreach (var roles in userAssignedRole)
             {
                 authorize = pd.UserInRole(httpContext.User.Identity.Name, roles);
+                
                 //Testkod:
                 //var test = this.pd.UserInRole(httpContext.User.Identity.Name, roles);
                 //var user = httpContext.User;

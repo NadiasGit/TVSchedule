@@ -22,21 +22,24 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Hem", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Mina sidor", "LogIn", "Login")</li>
+                    <li>@Html.ActionLink("Mina sidor", "Index", "MyPage")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
-                    <li>@Html.ActionLink("Logga in", "LogIn", "Login")</li>
+                    @*<li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                    <li>@Html.ActionLink("Logga in", "LogIn", "Login")</li>*@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
-                        //Logout admin
-                        <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
-                    }
-                    else if(User.IsInRole("User"))
-                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Administration", "Index", "Admin")</li>
+                            //Logout admin
+                            <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
+                        }
+                        else if(User.IsInRole("User"))
+                        {
                         //Logout user
                         <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
+                        }
                     }
 
                 </ul>

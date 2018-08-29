@@ -17,14 +17,16 @@
     @TempData["messageError"]
     </div>
 }
+
 @* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s*@
 
-@using (Html.BeginForm("LogIn", "Login", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    //Safety from Microsoft
-    @Html.AntiForgeryToken()
+@*@using (Html.BeginForm("LogIn", "Login", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
+@using (Html.BeginForm())
+        {
+            //Safety from Microsoft
+            @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+            <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

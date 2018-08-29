@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace GruppG.Controllers
 {
+    [AuthorizeRoles("User")]
     public class MyPageController : Controller
     {
         // GET: MyPage
@@ -25,7 +26,7 @@ namespace GruppG.Controllers
 
         //[Authorize(Roles = "User")]
         //[Authorize]
-        public ActionResult Index(int id, string d, int? category = null)
+        public ActionResult Index( int id, string d, int? category = null)
         //DateTime date
         {
             //if (Session["UserName"] != null)     int id, 
