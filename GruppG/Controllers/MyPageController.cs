@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
 
 namespace GruppG.Controllers
 {
@@ -14,7 +16,7 @@ namespace GruppG.Controllers
     public class MyPageController : Controller
     {
         // GET: MyPage
-
+        
         U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
@@ -26,16 +28,21 @@ namespace GruppG.Controllers
 
         //[Authorize(Roles = "User")]
         //[Authorize]
-        public ActionResult Index( int id, string d, int? category = null)
+        public ActionResult Index(string d, int? category = null)
         //DateTime date
         {
             //if (Session["UserName"] != null)     int id, 
             //{
 
+
+            int id = int.Parse(User.Identity.GetUserId());
+            //int iid = int.Parse(id);
             var channel = pd.GetChannels();
             var program = pd.GetPrograms();
             var person = pd.GetPersonById(id);
+
             
+           
 
             //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
             //var filter = pd.FilterProgramsByDateAndCategory(date, category);

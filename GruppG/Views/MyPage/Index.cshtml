@@ -9,6 +9,16 @@
 
 @*Userinfo*@
 <div>
+    <p>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Model.PersonP.FirstName
+        }
+    </p>
+</div>
+
+
+<div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
