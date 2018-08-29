@@ -14,7 +14,6 @@ using Microsoft.AspNet.Identity.Owin;
 namespace GruppG.Controllers
 {
     [AuthorizeRoles("User")]
-    [AuthorizeRoles("Admin")]
     public class MyPageController : Controller
     {
         // GET: MyPage

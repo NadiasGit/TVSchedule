@@ -11,6 +11,7 @@ using GruppG.Data;
 using GruppG.Models.db;
 using Microsoft.AspNet.Identity;
 
+
 namespace GruppG.Controllers
 {
     public class LoginController : Controller
@@ -79,6 +80,19 @@ namespace GruppG.Controllers
                     //return Redirect(returnUrl);
                     //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
                     //Session["Id"] = user.Id.ToString();
+
+                    if (Session["Id"] == null)
+                        Session["Id"] = user.Id;
+
+                    //To Get it:
+
+
+                    if (System.Web.HttpContext.Current.Session["UserID"] != null)
+                    {
+                        var test = System.Web.HttpContext.Current.Session["UserID"];
+                    }
+
+
                     return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                     //FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                     //return RedirectToAction("Index", "MyPage");
