@@ -40,11 +40,12 @@
                     <h4>Filtrera</h4>
                     @*<div class="col-md-offset-2 col-md-10">*@
                      
-                    @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })   
-                    @*@Html.DropDownList("date", new SelectList(Model.Dates.Select(x => new SelectListItem {Text = x.ToShortDateString(), Value = x.ToString()}) , "date", "date", "date"), "Idag", new { onchange = "form.submit();" })*@
+                    @*@Html.DropDownList("date", new SelectList(Model.Dates, "date", "Day", "date"), "Idag", new { onchange = "form.submit();" })*@   
+                    @Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())),"Idag", new { onchange = "form.submit();" })                
+                     @*@Html.DropDownList("date", new SelectList(Model.Dates.Select(x => new SelectListItem {Text = x.ToShortDateString(), Value = x.ToString()}) , "date", "date", "date"), "Idag", new { onchange = "form.submit();" })*@
                     @*@Html.DropDownList("date", new SelectList(), "Idag", new { onchange = "form.submit();" })*@    
-                    <select onchange="form.submit();" id="date" name="date">
-@for (int i = 0; i < Model.Dates.Count; i++)
+                    @*<select onchange="form.submit();" id="date" name="date">*@
+@*@for (int i = 0; i < Model.Dates.Count; i++)
 {
     if (i == 0)
     {
@@ -64,14 +65,14 @@
             @Model.Dates[i].ToShortDateString();
         </option>
     }
-}
+}*@
 @*@foreach (var item in Model.Dates)
 {
     <option value= @item>
         @item.ToShortDateString()
     </option>
 }*@
-                    </select>
+                    @*</select>*@
                     @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
                         @*@Html.DropDownListFor(model => model.SelectedDate, Model.AllDates.GetDays()),"Idag")*@
                 @*@Html.DropDownListFor(model => model.Product.Category, new SelectList(Model.ProductCategories, "Name", "Name"), new { htmlAttributes = new { @class = "form-control" } })*@
