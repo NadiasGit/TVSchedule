@@ -4503,7 +4503,14 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar-inverse {
   /*background-color: #222222; <============================ ORIGINAL */
   /*background-color: #FCA43A;*/
-  background-color: #FC9300;
+  /*background-color: #fbeed5;*/
+  /*background-color: #f1e219;*/
+  /*background-color: #FC9300;*/
+  /*background-color: #f0ad4e;*/
+  /*background-color: #eea236;*/ /*Orange*/
+  /*background-color: #5cb85c;*/ /*Grön*/
+  background-color: #f0ad4e;
+
   border-color: #080808;
 }
 
