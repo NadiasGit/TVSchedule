@@ -9,10 +9,12 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using System.Security.Claims;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace GruppG.Controllers
 {
     [AuthorizeRoles("User")]
+    [AuthorizeRoles("Admin")]
     public class MyPageController : Controller
     {
         // GET: MyPage
@@ -28,15 +30,21 @@ namespace GruppG.Controllers
 
         //[Authorize(Roles = "User")]
         //[Authorize]
-        public ActionResult Index(string d, int? category = null)
+        public ActionResult Index(int id, string d, int? category = null)
         //DateTime date
         {
             //if (Session["UserName"] != null)     int id, 
             //{
 
+            //string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+            //string iid = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            //name = User.Identity.Name;
 
-            int id = int.Parse(User.Identity.GetUserId());
-            //int iid = int.Parse(id);
+            //int id = finalItem.PersonP.Id;
+            
+            //var iid = User.Identity.GetUserId();
+            //iid = id.ToString();
+            //int getId = int.Parse(iid);
             var channel = pd.GetChannels();
             var program = pd.GetPrograms();
             var person = pd.GetPersonById(id);

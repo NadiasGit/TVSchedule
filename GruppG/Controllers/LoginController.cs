@@ -21,6 +21,7 @@ namespace GruppG.Controllers
         Person person = new Person();
         FavoriteChannel favC = new FavoriteChannel();
         Chanel channel = new Chanel();
+        FavoritChannelVM viewmodel = new FavoritChannelVM();
         
 
 
@@ -35,11 +36,16 @@ namespace GruppG.Controllers
         [HttpPost]
         public ActionResult LogIn(LoginVM model, string returnUrl)
         {
+
             if (ModelState.IsValid)
             {
+
                 var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
                 //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                //FormsAuthentication.SetAuthCookie(model.UserName, false);
+                
                 FormsAuthentication.SetAuthCookie(model.UserName, false);
+                //Session["Id"] = user.Id;
                 //if(Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") &&
                 //    !returnUrl.StartsWith("/\\"))
                 //{
@@ -66,14 +72,16 @@ namespace GruppG.Controllers
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
                 {
-                   
+
                     //Session["Id"] = user.Id;
                     //Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                     //return Redirect(returnUrl);
                     //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
-                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    return RedirectToAction("Index", "MyPage");
+                    //Session["Id"] = user.Id.ToString();
+                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    //FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
+                    //return RedirectToAction("Index", "MyPage");
                 }
             }
 

@@ -12,8 +12,10 @@
     <p>
         @if (User.Identity.IsAuthenticated)
         {
-            @Model.PersonP.FirstName
+            @Model.PersonP.Id
         }
+        
+        
     </p>
 </div>
 
@@ -56,8 +58,10 @@
     @using (Html.BeginForm("Index", "MyPage", FormMethod.Get))
     {
         @*<div class="list-group">*@
+
         <div class="form-group">
             <h4>Filtrera</h4>
+            
             @*<div class="col-md-offset-2 col-md-10">*@
 
             @*@Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
