@@ -43,7 +43,7 @@
 
 
 <div class="date">
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    @using (Html.BeginForm("Index", "MyPage", FormMethod.Get))
     {
         @*<div class="list-group">*@
         <div class="form-group">
@@ -67,10 +67,10 @@
                 <p>Person</p>
             </th>
 
-            @*<th>
+            <th>
                     <p>Kanal</p>
-                </th>*@
-            @*<th>
+                </th>
+            <th>
                 <p>Datum</p>
             </th>
         </tr>*@
@@ -86,8 +86,8 @@
 
                 <td> @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = item.Id }, null)</td>
             </tr>
-        }
-    </table>*@
+        }*@
+   @* </table>*@
 
 <h2>Favoritkanaler</h2>
 <div class="row">
@@ -105,14 +105,14 @@
                         </td>
                     </tr>
 
-                    @foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
-                    {
-                    <tr>
-                        <td>@i.Titel</td>
+                    @*@foreach (var i in Model.FavoriteChannelsVM.Where(p => p.Chanel == item.Id))
+                    {*@
+                    @*<tr>
+                        <td>@i.Title</td>
                         <td>@i.Programstart.Value.ToShortTimeString() </td>
                         <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
-                    </tr>
-                    }
+                    </tr>*@
+                    @*}*@
                 </table>
             </div>
         }
@@ -165,17 +165,18 @@
 
 </div>
 
-@*<div class="date">
+<div class="date">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
         <div class="form-group">
             <h4>Filtrera</h4>
-            @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
-            @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
+            @*@Html.DropDownList("date", new SelectList(Model.DateString, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })*@
+            @*@Html.DropDownList("d", new SelectList(Model.Dates, "d", "d", "d"), "Idag", new { onchange = "form.submit();" })*@
+            @*@Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })*@
            
         </div>
     }
-</div>*@
+</div>
 
 
 

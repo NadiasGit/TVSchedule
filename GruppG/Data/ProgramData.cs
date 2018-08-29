@@ -529,6 +529,94 @@ namespace GruppG.Data
 
         }
 
+
+
+
+        //Filter-methods NY! Med string istället för dateTime
+        public ProgramChannelVM FilterProgramsByDAndCategoryMyPage(int id, string date, int? category = null)
+        {
+            var channel = GetChannels();
+            var program = GetPrograms();
+            var fav = GetFavoriteChannels(id);
+            var cat = GetCategories();
+
+            if (date == null && category == null)
+            {
+                var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
+                finalItem.ProgramListVM = programStart;
+
+            }
+            else if (date != null && category == null)
+            {
+                var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date).OrderBy(d => d.Programstart).ToList();
+                finalItem.ProgramListVM = programDate;
+            }
+            else if (date == null && category != null)
+            {
+                var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
+                finalItem.ProgramListVM = programDateCat;
+            }
+            else
+            {
+                var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
+
+                finalItem.ProgramListVM = catDate;
+            }
+
+            finalItem.ChannelListVM = channel;
+            finalItem.CategoryListVM = cat;
+
+            return finalItem;
+        }
+
+
+
+
+        //public ProgramChannelVM FilterProgramsByDAndCategory(string d, int? id = null)
+        //{
+
+        //    ListOfDaysModel Dates = new ListOfDaysModel();
+        //    var channel = GetChannels();
+        //    var program = GetPrograms();
+
+
+        //    var progCategories = GetPrograms();
+        //    var cat = GetCategories();
+
+
+
+        //    if (d == null && id == null)
+        //    {
+        //        var programStart = program.Where(x => x.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(x => x.Programstart).ToList();
+        //        finalItem.ProgramListVM = programStart;
+
+        //    }
+        //    else if (d != null && id == null)
+        //    {
+        //        var programDate = program.Where(x => x.Programstart.Value.ToShortDateString() == d).OrderBy(x => x.Programstart).ToList();
+        //        finalItem.ProgramListVM = programDate;
+        //    }
+        //    else if (d == null && id != null)
+        //    {
+        //        var programDateCat = program.Where(x => x.Programstart.Value.ToShortDateString() == viewModel.Today.ToShortDateString()).OrderBy(x => x.Programstart).Where(c => c.Category == id).ToList();
+        //        finalItem.ProgramListVM = programDateCat;
+        //    }
+        //    else
+        //    {
+        //        var catDate = program.Where(x => x.Programstart.Value.ToShortDateString() == d).OrderBy(x => x.Programstart).Where(c => c.Category == id).ToList();
+
+        //        finalItem.ProgramListVM = catDate;
+        //    }
+
+        //    finalItem.ChannelListVM = channel;
+        //    finalItem.CategoryListVM = cat;
+
+        //    return finalItem;
+        //}
+
+
+
+
     }
 
 }

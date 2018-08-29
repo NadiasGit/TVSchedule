@@ -21,8 +21,8 @@ namespace GruppG.Models.ViewModels
         public List<Program> ProgramListVM { get; set; }
         public List<Program> ProgramCategoryVM { get; set; }
         public List<Category> CategoryListVM { get; set; }
-        public ListOfDaysModel AllDates { get; set; }
-        public SelectedDate SelectedDate { get; set; }
+        //public ListOfDaysModel AllDates { get; set; }
+        //public SelectedDate SelectedDate { get; set; }
         public IEnumerable<Program> Programs { get; set; }
         public Program Program { get; set; }
         public List<Program> GetPuffListVM { get; set; }
@@ -32,6 +32,7 @@ namespace GruppG.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public List<DateTime> Dates { get; set; }
         public List<string> DateString { get; set; }
+        public string date { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [DataType(DataType.Date)]
@@ -77,7 +78,20 @@ namespace GruppG.Models.ViewModels
             Today = DateTime.Parse("2017, 11, 09");
             Today = Today.Date;
             */
+            date = "2017, 11, 09";
+            var parseddate = DateTime.Parse(date);
+
+            DateString = new List<string>();
+            DateString.Add(date);
+            DateString.Add("2017, 11, 10");
+            DateString.Add("2017, 11, 11");
+            DateString.Add("2017, 11, 12");
+            DateString.Add("2017, 11, 13");
+            DateString.Add("2017, 11, 14");
+            DateString.Add("2017, 11, 15");
+
         }
+
 
 
 
@@ -97,12 +111,12 @@ namespace GruppG.Models.ViewModels
         //    return result.ToList();
         //}
 
-        public List<Program> GetDate(DateTime date)
-        {
-            U4Entities u4 = new U4Entities();
-            var result = u4.Program.Where(q => q.Programstart == date);
-            return result.ToList();
-        }
+        //public List<Program> GetDate(DateTime date)
+        //{
+        //    U4Entities u4 = new U4Entities();
+        //    var result = u4.Program.Where(q => q.Programstart == date);
+        //    return result.ToList();
+        //}
         //public List<Chanel> GetChannels()
         //{
         //    U4Entities u4 = new U4Entities();
@@ -111,13 +125,13 @@ namespace GruppG.Models.ViewModels
         //    return result.ToList();
         //}
 
-        public List<Program> GetCategoriesTest(int id)
-        {
-            U4Entities u4 = new U4Entities();
+        //public List<Program> GetCategoriesTest(int id)
+        //{
+        //    U4Entities u4 = new U4Entities();
 
-            var result = u4.Program.Where(c => c.Category == id);
-            return result.ToList();
-        }
+        //    var result = u4.Program.Where(c => c.Category == id);
+        //    return result.ToList();
+        //}
 
         //List<string> Channels = new List<string>();
 

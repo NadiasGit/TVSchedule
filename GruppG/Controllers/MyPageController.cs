@@ -17,7 +17,6 @@ namespace GruppG.Controllers
         U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
-        FavoriteChannel newFavoriteChannel;
         FavoritChannelVM favchannelVM = new FavoritChannelVM();
         FavoritChannelVM finalItem = new FavoritChannelVM();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
@@ -26,28 +25,35 @@ namespace GruppG.Controllers
 
         //[Authorize(Roles = "User")]
         //[Authorize]
-        public ActionResult Index(int id, DateTime? date, int? category = null)
+        public ActionResult Index(int id, string d, int? category = null)
+        //DateTime date
         {
             //if (Session["UserName"] != null)     int id, 
             //{
-            
+
             var channel = pd.GetChannels();
-                var program = pd.GetPrograms();
-                var person = pd.GetPersonById(id);
+            var program = pd.GetPrograms();
+            var person = pd.GetPersonById(id);
+            
+
             //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
             //var filter = pd.FilterProgramsByDateAndCategory(date, category);
-            var myFav = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
-            
+            //var myFav = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
 
-                finalItem.PersonP = person;
-                finalItem.ChannelListVM = channel;
-                finalItem.ProgramListVM = program;
+            //NY med string date
+            var ny = pd.FilterProgramsByDAndCategoryMyPage(id, d, category);
 
-                var favoriteChannel = pd.GetFavoriteChannels(id);
-                finalItem.FavoriteChannelsVM = favoriteChannel;
-                //finalItem.ProgramListVM = filter;
+            finalItem.PersonP = person;
+            finalItem.ChannelListVM = channel;
+            finalItem.ProgramListVM = program;
 
-                return View(finalItem);
+
+            var favoriteChannel = pd.GetFavoriteChannels(id);
+            finalItem.FavoriteChannelsVM = favoriteChannel;
+            //finalItem.ProgramListVM = ny;
+
+            //return View(finalItem);
+            return View(finalItem);
             }
             //else
             //{
