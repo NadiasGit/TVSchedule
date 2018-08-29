@@ -72,8 +72,8 @@ namespace GruppG.Controllers
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                     //return Redirect(returnUrl);
                     //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
-                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    //return RedirectToAction("Index", "MyPage");
+                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    return RedirectToAction("Index", "MyPage");
                 }
             }
 
