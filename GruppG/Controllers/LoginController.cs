@@ -152,7 +152,7 @@ namespace GruppG.Controllers
             //If modelstate is valid and användaren nonexists
             if (ModelState.IsValid)
             {
-                if (pd.CheckUserNameExists(username))
+                if (pd.CheckUserExists(username)== false)
                 {
                     db.Person.Add(pers);
                     db.SaveChanges();

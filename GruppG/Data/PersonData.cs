@@ -70,6 +70,16 @@ namespace GruppG.Data
             return pers;
         }
 
+        public bool CheckUserExists(string username)
+        {
+            if (db.Person.Where(p => p.UserName == username).Any())
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
         //Check if user and password exists (Login)
         public bool CheckUser (string username, string password)
         {

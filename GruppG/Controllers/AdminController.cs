@@ -11,17 +11,13 @@ using System.Web.Mvc;
 namespace GruppG.Controllers
 {
     [AuthorizeRoles("Admin")] //<= Ska användas för att inte komma åt sidan om man inte är inloggad
-    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        
         private ProgramData pd = new ProgramData();
         ProgramChannelVM viewModel = new ProgramChannelVM();
-        ProgramChannelVM finalItem = new ProgramChannelVM();
         U4Entities db = new U4Entities();
         Program program;
-
-        
+  
 
         // GET: Admin
         public ActionResult Index(DateTime? date, int? id = null)

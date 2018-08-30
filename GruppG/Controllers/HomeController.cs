@@ -26,7 +26,6 @@ namespace GruppG.Controllers
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
         private Repository<Program> ProgramRepository = new Repository<Program>();
         private Repository<Chanel> ChannelRepository = new Repository<Chanel>();
-        List<Program> programList;
 
         //Dessa kommer att tas bort när datumparametern fungerar
         DateTime yesterday = DateTime.Today.Date.AddDays(-1);
@@ -37,42 +36,9 @@ namespace GruppG.Controllers
         
 
 
-
-        //var d = pd.SortByDate(date);
-        //return View(d);
-        //Hämtar alla program i databasen To-do: .OrderByDescending(Chanel1)
-        //var program = db.Program.Include(p => p.Chanel1);
-        //Chanel c = new Chanel();
-        //Program p = new Program();
-        //var cp = viewModel.GetChannels();
-        //var program = db.Program;
-        //foreach (var item in viewModel.GetChannels())
-        //{
-        //    Channels.Add(item);
-        //}
-        //List<Chanel> Channels = new List<Chanel>();
-        //List<Program> Programs = new List<Program>();
-
         //NY INDEX:
         public ActionResult Index(DateTime? date, int? id = null)
         {
-
-            //DateTime?
-            ProgramChannelVM viewModel = new ProgramChannelVM();
-            ProgramChannelVM finalItem = new ProgramChannelVM();
-            //ListOfDaysModel Dates = new ListOfDaysModel();
-            //SelectedDate selectedDay = new SelectedDate();
-
-            //Början till att få bort nollorna (?)
-            //    finalItem.SelectedDate.SelectedDates = Dates.GetDays().Select(d => new SelectListItem
-            //    {
-            //        Value = d.Id.ToString(),
-            //        Text = d.Today.Value.ToShortDateString()
-            //}).ToList();
-
-            //DateTime.Parse(date);
-            //Convert.ToDateTime(date);
-
 
             ViewBag.Message = ("Inget på TV idag :( ... ");
            
@@ -86,8 +52,6 @@ namespace GruppG.Controllers
             var puff = pd.PuffPrograms();
             return PartialView(puff);
         }
-
-    
 
         //ProgramDetails
         public ActionResult ProgramDetails(int id, string title)
