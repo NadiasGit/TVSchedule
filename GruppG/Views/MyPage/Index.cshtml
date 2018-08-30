@@ -8,14 +8,14 @@
     @Model.Person.FirstName @Model.Person.LastName</h2>
 
 @*Userinfo*@
-<div>
+@*<div>
     <p>
         @if (User.Identity.IsAuthenticated)
         {
-            @Model.Person.Id
+            <p>kontrollId: </p>@Model.Person.Id
         }   
     </p>
-</div>
+</div>*@
 
 
 <div>
@@ -73,17 +73,93 @@
 </div>
 
 <div class="row">
-Mitten
     @*Foreach item in FavoriteChannelsVM where p => p.Person == item.Id - persentera kanaler...annars presentera alla kanaler*@
     @if (Model.FavoriteChannelsVM != null)
     {
         foreach (var item in Model.FavoriteChannelsVM)
         {
             <div class="col-md-4">
+                <h2> @item.Chanel </h2>
+                <table class="table">
+                    <tr>
+                        <th> Program </th>
+                        <th> Tid </th>
+                    </tr>
+                    @if (Model.ProgramListVM.Any())
+                    {
+                        foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Chanel))
+                        {
+                            <tr>
+                                <td>@i.Titel</td>
+                                <td>@i.Programstart.Value.ToShortTimeString() </td>
+                                <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                            </tr>
+                        }
+                    }
+                    </table>
+                </div>
+        }
+    }
+
+    else
+    {
+        <h2>Alla kanaler</h2>
+        <div class="row">
+        @if (Model.ChannelListVM != null)
+        {
+            foreach (var item in Model.ChannelListVM)
+            {
+                <div class="col-md-4">
+                    <h2> @item.Name </h2>
+                    <table class="table">
+                        <tr>
+                            <th> Program </th>
+                            <th> Tid </th>
+                        </tr>
+                        @if (Model.ProgramListVM.Any())
+                        {
+                            foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
+                            {
+                                <tr>
+                                    <td>@i.Titel</td>
+                                    <td>@i.Programstart.Value.ToShortTimeString() </td>
+                                    <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            @ViewBag.Message
+                        }
+                    </table>
+                </div>
+            }
+        }
+        </div>
+    }
+    </div>
+
+
+
+
+
+                       
+                    @*}
+                </table>
+            </div>
+        }
+    }*@
+
+
+
+
+            @*foreach (var item in Model.FavoriteChannelsVM)
+            {
+            <div class="col-md-4">
                 @*<table class="table">
                     <tr>
                         <td>*@
-                            <h4> @item.Chanel1.Name</h4>
+                            @*<h4>*@ @*@item.Chanel1.Name</h4>*@
                         @*</td>
                     </tr>*@
                     @*@foreach (var i in Model.FavoriteChannelsVM.Where(p => p.Chanel == item.Id))
@@ -95,15 +171,15 @@ Mitten
                     </tr>*@
                     @*}*@
                 @*</table>*@
-            </div>
-        }
-    }
-    else
-    {
-        <h2>Alla kanaler</h2>
-        <div class="row">
+            @*</div>*@
+        @*}
+    }*@
+    @*else
+    {*@
+        @*<h2>Alla kanaler</h2>
+        <div class="row">*@
 
-            @if (Model.ChannelListVM != null)
+            @*@if (Model.ChannelListVM != null)
             {
                 foreach (var item in Model.ChannelListVM)
 
@@ -124,7 +200,7 @@ Mitten
                                     <tr>
                                         <td>@i.Titel</td>
                                         <td>@i.Programstart.Value.ToShortTimeString() </td>
-                                        <td>@Html.ActionLink("Mer info", "ProgramDetails", "Home", new { @id = i.Id }, null)</td>
+                                        <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
                                 }
                             }
@@ -138,10 +214,10 @@ Mitten
             }
         </div>
     }
-</div>
+</div>*@
 
 
-<div class="row">
+@*<div class="row">
     Nedre
     @if (Model.FavoriteChannelsVM != null)
     {
@@ -161,7 +237,7 @@ Mitten
                             <tr>
                                 <td>@i.Titel</td>
                                 <td>@i.Programstart.Value.ToShortTimeString() </td>
-                                <td>@Html.ActionLink("Mer info", "ProgramDetails", "Home", new { @id = i.Id }, null)</td>
+                                <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                             </tr>
                         }
                     }
@@ -174,7 +250,7 @@ Mitten
         }
     }
 
-</div>
+</div>*@
 
 
 
