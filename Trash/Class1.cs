@@ -219,7 +219,7 @@ namespace Trash
         //@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
 
 
- //:::::::Partial views från Home-Controller::::::::::::::::::::::::::::::::::::::
+        //:::::::Partial views från Home-Controller::::::::::::::::::::::::::::::::::::::
 
 
         //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
@@ -277,7 +277,23 @@ namespace Trash
         //}
 
 
+        //TESTKOD AUTHORIZE
 
+        //Testkod:
+        //var test = this.pd.UserInRole(httpContext.User.Identity.Name, roles);
+        //var user = httpContext.User;
+        //var allowedRoles = this.Roles.Split(',');
+        //if (!user.Identity.IsAuthenticated)
+        //{
+        //    return false;
+        //}
+        //else
+        //{
+        //    authorize = true;
+        //}
+        //var test = this.pd.UserInRole(httpContext.User.Identity.Name, roles);
+
+        //------
 
 
     }
