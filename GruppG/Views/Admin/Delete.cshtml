@@ -7,67 +7,47 @@
 <h3>Är du säker på att du vill ta bort den här puffen?</h3>
 
 
-    @*<div class="date">
-        @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
-        {
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    @Html.ActionLink("Ta bort puff", "Index", new { Model.Id }, new { onclick = "return confirm ('Are you sure wants to delete?');" })
-                </div>
-            </div>
-        }
-    </div>*@
-
-
     <hr />
     <div class="form-group">
 
         <div>
             <strong>Program</strong>
-
             @Html.DisplayFor(model => model.Titel)
         </div>
 
         <div>
             <strong>Kanal</strong>
-
             @Html.DisplayFor(model => model.Chanel1.Name)
         </div>
 
         <div>
             <strong>Kategori</strong>
-
             @Html.DisplayFor(model => model.Category1.Name)
         </div>
 
         <div>
             <strong>Datum</strong>
-
             @Html.DisplayFor(model => model.Programstart.Value.Date)
         </div>
 
         <div>
             <strong>Starttid</strong>
-
             @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
-          
         </div>
 
         <div>
             <strong>Sluttid</strong>
-
             @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
         </div>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
         <div class="form-actions no-color">
             <input type="submit" value="Ta bort puffen" class="btn btn-default" /> 
             <br />
         </div>
     }
-
         <br />
         <br />
 

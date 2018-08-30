@@ -14,101 +14,30 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
 
-    //Alt 1
-        @*<dl class="dl-horizontal">
-            <dt>
-                <strong>Program</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Titel)
-            </dd>
-
-            <dt>
-                <strong>Om programmet</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-
-            <dt>
-                <strong>Kanal</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Chanel1.Name)
-            </dd>
-
-            <dt>
-                <strong>Kategori</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Category1.Name)
-            </dd>
-
-            <dt>
-                <strong>Datum</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Programstart.Value.Date )
-            </dd>
-
-            <dt>
-                <strong>Tid</strong>
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
-                -
-                @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay )
-            </dd>
-
-            <dt>
-                <strong>Puff</strong>
-            </dt>
-            <dd>
-                @ViewBag.Message
-            </dd>
-            
-            <dd>
-                    <input type="submit" value="Lägg till som puff" class="btn btn-default" />
-            </dd>
-        </dl>*@
-
-
-
-        //Alt 2
         <div>
             <div class="form-group">
-
                 <div>
                     <strong>Program</strong>
                     @Html.DisplayFor(model => model.Titel)
                 </div>
-
                 <div>
                     <strong>Om programmet</strong>
                     @Html.DisplayFor(model => model.Description)
                 </div>
-
                 <div>
                     <strong>Kanal</strong>
-
                     @Html.DisplayFor(model => model.Chanel1.Name)
                 </div>
-
                 <div>
                     <strong>Kategori</strong>
-
                     @Html.DisplayFor(model => model.Category1.Name)
                 </div>
-
                 <div>
                     <strong>Datum</strong>
-
                     @Html.DisplayFor(model => model.Programstart.Value.Date)
                 </div>
-
                 <div>
                     <strong>Tid</strong>
-
                     @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
                     -
                     @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
@@ -122,33 +51,6 @@
                 </div>
                 <br />
                 <br />
-
-
-                @*//GAMLA*@
-                @*<div class="form-group">*@
-                @*<div>
-                    <strong> @Html.LabelFor(model => model.Puff, htmlAttributes: new { @class = "control-label col-md-2" })</strong>
-
-                    @*<div class="col-md-10">*@
-
-                    @*@Html.EditorFor(model => model.Puff, new { htmlAttributes = new { @class = "form-control" } })
-                    @ViewBag.Message
-                    @Html.ValidationMessageFor(model => model.Puff, "", new { @class = "text-danger" })*@
-                @*</div>*@
-                @*</div>*@
-
-
-                @*</div>*@
-
-                @*<div class="form-group">*@
-                @*<div>*@
-                    @*<div class="col-md-offset-2 col-md-10">*@
-                    @*<input type="submit" value="Spara som puff" class="btn btn-default" />*@
-                    @*</div>*@
-                @*</div>*@
-                @*</div>*@
-
-
             </div>
         </div>
 }

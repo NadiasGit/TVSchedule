@@ -13,67 +13,51 @@
         <dt>
             <strong>Program</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Titel)
         </dd>
-
         <dt>
             <strong>Om programmet</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
         <dt>
             <strong>Kanal</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Chanel1.Name)
         </dd>
-
         <dt>
             <strong>Kategori</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Category1.Name)
         </dd>
-
         <dt>
             <strong>Datum</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Programstart.Value.Date)
         </dd>
-
         <dt>
             <strong>Starttid</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
         </dd>
-
         <dt>
             <strong>Sluttid</strong>
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
         </dd>
-
         <dt>
             <strong>Puff</strong>
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Puff)
-            @ViewBag.Message
-            
+            @*@Html.DisplayFor(model => model.Puff)*@
+            @ViewBag.Message  
         </dd>
     </dl>
 </div>
