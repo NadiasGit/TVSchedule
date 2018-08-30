@@ -40,10 +40,8 @@ namespace GruppG.Controllers
 
             if (ModelState.IsValid)
             {
-
                 var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
                 //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                //FormsAuthentication.SetAuthCookie(model.UserName, false);
                 
                 FormsAuthentication.SetAuthCookie(model.UserName, false);
                 //Session["Id"] = user.Id;
@@ -57,10 +55,8 @@ namespace GruppG.Controllers
                 //    Session["Id"] = user.Id;
                 //    Session["UserName"] = user.UserName.ToString();
                 //    //    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-
                 //    return RedirectToAction("MinaSidor", "MyPage"/*, new { @id = user.Id }*/);
                 //}     
-
                 if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
                     //return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
@@ -73,7 +69,7 @@ namespace GruppG.Controllers
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
                 {
-
+                    var id = pd.GetId(model.UserName, model.Password);
                     //Session["Id"] = user.Id;
                     //Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
@@ -81,19 +77,22 @@ namespace GruppG.Controllers
                     //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
                     //Session["Id"] = user.Id.ToString();
 
-                    if (Session["Id"] == null)
-                        Session["Id"] = user.Id;
-
+                    //if (Session["Id"] == null)
+                    //    Session["Id"] = user.Id;
                     //To Get it:
 
+                    //if (System.Web.HttpContext.Current.Session["UserID"] != null)
+                    //{
+                    //    var test = System.Web.HttpContext.Current.Session["UserID"];
+                    //}
 
-                    if (System.Web.HttpContext.Current.Session["UserID"] != null)
-                    {
-                        var test = System.Web.HttpContext.Current.Session["UserID"];
-                    }
+                    //new { patientId = @Model }
+                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
+                    //return RedirectToAction("Index", "MyPage", new { @id = model.Id });
 
+                    //Skickar inparameter - Men då går det inte att surfa runt bland länkarna...
+                    return RedirectToAction("Index", "MyPage", new { @id = id });
 
-                    return RedirectToAction("Index", "MyPage", new { @id = user.Id });
                     //FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                     //return RedirectToAction("Index", "MyPage");
                 }

@@ -4,76 +4,70 @@
     ViewBag.Title = "Mina favoritkanaler";
 }
 
-<h4>
-    Dina favoritkanaler
-    @Html.DisplayFor(model => model.PersonP.FirstName)
-    @Html.DisplayFor(model => model.PersonP.LastName) :
-</h4>
 
-@using (Html.BeginForm(@*"MyFavoriteChannels", "MyPage", FormMethod.Post, new { id = Model.PersonP.Id }*@))
-{
-
+<div class="jumbotron">
+    <div class="list-group-item">
+        <h2>
+            Dina favoritkanaler
+            @Html.DisplayFor(model => model.PersonP.FirstName)
+            @Html.DisplayFor(model => model.PersonP.LastName) :
+        </h2>
+        @using (Html.BeginForm(@*"MyFavoriteChannels", "MyPage", FormMethod.Post, new { id = Model.PersonP.Id }*@))
+        {
             @Html.AntiForgeryToken()
-           <table class="table">
-        @foreach (var item in Model.FavoriteChannelsVM)
-    {
+            <table class="table">
+                @foreach (var item in Model.FavoriteChannelsVM)
+                {
+                    <tr>
+                        <td>
+                            <h2> @item.Chanel1.Name</h2>
+                        </td>
+                        <td>
+                            @Html.ActionLink("Ta bort", "Delete", new { fcid = item.Id, id = item.Person })
+                            @*<div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
+                                    </div>
+                                </div>*@
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+            </div>
+            </div>
+@*----Alertmessage - fav-channel already exists----*@
+
+        @if (TempData["message"] != null)
+        {
+
+            <div class="alert alert-danger">
+                <a class="close" data-dismiss="alert">&times;</a>
+                <strong> OBS:</strong> @TempData["message"]
+            </div>
+        }
+@*---Alert message End----*@
+
+<div class="list-group-item">
+    <h3>Lägg till som favoritkanal:</h3>
+    <table class="table">
+        @foreach (var item in Model.ChannelListVM)
+        {
             <tr>
                 <td>
-                    <h2> @item.Chanel1.Name</h2>
+                    <h4> @item.Name </h4>
                 </td>
                 <td>
-                    @Html.ActionLink("Ta bort", "Delete", new { fcid = item.Id, id = item.Person })
-                    @*<div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
-                        </div>
-                    </div>*@
+                    @Html.ActionLink("Lägg till", "Add", new { pId = Model.PersonP.Id, cId = item.Id })
+                    @*<input type="submit" value="Spara" name="action" class="btn btn-default" />*@
                 </td>
             </tr>
         }
     </table>
+    </div>
 
-@*----Alertmessage - fav-channel already exists----*@
-
-    if (TempData["message"] != null)
-    {
-
-        <div class="alert alert-danger">
-            <a class="close" data-dismiss="alert">&times;</a>
-            <strong> OBS:</strong> @TempData["message"]
-        </div>
-    }
-    @*---Alert message End----*@
-
-
-<h2>Alla kanaler</h2>
-    
-        <table class="table">
-
-
-            @foreach (var item in Model.ChannelListVM)
-{
+    @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
 
 
 
-                <tr>
-                    <td>
-                        <h2> @item.Name </h2>
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Lägg till", "Add", new {pId = Model.PersonP.Id, cId = item.Id}) 
-                        @*<input type="submit" value="Spara" name="action" class="btn btn-default" />*@
-                    </td>
-                </tr>
-                    
-                }
-        </table>
-       }
-
-        @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
-        @*@Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Id }, null)*@
-
-
-    
 

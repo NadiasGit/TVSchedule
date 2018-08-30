@@ -131,7 +131,9 @@ namespace GruppG.Data
             return result;
         }
 
-#region PUFF-METHODS
+
+
+        #region PUFF-METHODS
         //Puffar/rekommenderade program
         public List<Program> PuffPrograms()
         {

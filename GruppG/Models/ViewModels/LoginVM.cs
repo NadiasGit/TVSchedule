@@ -20,6 +20,7 @@ namespace GruppG.Models.ViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public int Id { get; set; }
         public bool RememberMe { get; set; }
         //public string RoleType { get; set; }
 
