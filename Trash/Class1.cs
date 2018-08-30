@@ -183,40 +183,99 @@ namespace Trash
 
 
         //Partial-Views-Channels
-    //     @*<div class="col-md-4">
-    //        <h2>SVT1</h2>
+        //     @*<div class="col-md-4">
+        //        <h2>SVT1</h2>
 
-    //        @{
-    //            Html.RenderAction("SVT1");
-    //        }
-    //@Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
+        //        @{
+        //            Html.RenderAction("SVT1");
+        //        }
+        //@Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
 
-    //    </div>
+        //    </div>
 
-    //    <div class="col-md-4">
-    //        <h2>SVT2</h2>
+        //    <div class="col-md-4">
+        //        <h2>SVT2</h2>
 
-    //        @{
-    //            Html.RenderAction("SVT2");
-    //        }
-    //        @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
+        //        @{
+        //            Html.RenderAction("SVT2");
+        //        }
+        //        @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
 
-    //    </div>
-    //    <div class="col-md-4">
-    //        <h2>TV3</h2>
-    //        @{
-    //            Html.RenderAction("TV3");
-    //        }
-    //    </div>
-       
-    //</div>*@
+        //    </div>
+        //    <div class="col-md-4">
+        //        <h2>TV3</h2>
+        //        @{
+        //            Html.RenderAction("TV3");
+        //        }
+        //    </div>
+
+        //</div>*@
 
 
         //From Home-Index
-//        @*@model IEnumerable<GruppG.Models.db.Program>*@
-//@*@model IEnumerable<GruppG.Models.db.Chanel>*@
-//@*@model IEnumerable<GruppG.Models.db.U4Entities>*@
-//@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+        //        @*@model IEnumerable<GruppG.Models.db.Program>*@
+        //@*@model IEnumerable<GruppG.Models.db.Chanel>*@
+        //@*@model IEnumerable<GruppG.Models.db.U4Entities>*@
+        //@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+
+
+ //:::::::Partial views från Home-Controller::::::::::::::::::::::::::::::::::::::
+
+
+        //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
+        //public ActionResult SVT1()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == today);
+
+        //    return PartialView(p.ToList());
+        //}
+
+        //-------------------------------------
+
+        //public ActionResult SVT2()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    // (-1) visar gårdagens program :)
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
+
+        //    return PartialView(p.ToList());
+        //}
+
+        //--------------------
+
+        //PartialView TV3
+        //public ActionResult TV3()
+        //{
+
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
+
+        //    return PartialView(p.ToList());
+        //}
+
+        //--------------------------------------
+
+        //PartialView TV4
+        //public ActionResult TV4()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 4).Where(q => q.Starttime == today);
+
+        //    return PartialView(p.ToList());
+        //}
+
+        //--------------------------------------
+
+        //PartialView Kanal5
+        //public ActionResult Kanal5()
+        //{
+        //    U4Entities pwdb = new U4Entities();
+        //    var p = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == today);
+
+        //    return PartialView(p.ToList());
+        //}
+
 
 
 

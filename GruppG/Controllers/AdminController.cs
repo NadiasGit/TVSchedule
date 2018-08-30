@@ -31,36 +31,8 @@ namespace GruppG.Controllers
             return View(pd.FilterProgramsByDateAndChannel(date,id));
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Index(int id, Program program)
-        //{
-        //    Program puffToEdit = db.Program.Find(id);
-        //    if (puffToEdit == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
 
-        //    else
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(program);
-        //    }
-        //    puffToEdit.Puff = program.Puff;
-        //    puffToEdit.Puff = 0;
-        //    var puffToRemove = pd.PuffPrograms().Where(i => i.Puff != 1).ToList();
-            
-            
-        //    db.SaveChanges();
-
-        //    //var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
-        //    return RedirectToAction("Index");
-
-
-        //}
-
-
-        //Details
+        //Program Details
         public ActionResult ProgramDetails(int id)
         {
             //Lägg till ett felmeddelande/felhantering om program-id saknas
@@ -72,33 +44,26 @@ namespace GruppG.Controllers
 
 
         //Create puff
+            //For future tasks...
 
 
-
-
-        //Edit puffar
+        //Edit PUFF
         public ActionResult Edit(int? id)
         {
             ViewBag.Message = "Max antal puffar är 3!";
             program = db.Program.Find(id);
             if (pd.CountPuff() == true)
             {
-                //return ViewBag.Message = "Max antal puffar är 3!";
-                //return View("Index");
-                //return Content("<script language='javascript' type='text/javascript'>alert ('Det maximala antalet puffar är 3');</script>");
-                //return JavaScript(alert('Det maximala antalet puffar är 3'));
                 TempData["message"] = "Det maximala antalet puffar är 3";
                 return RedirectToAction("Index");
             }
             else if (id == null)
             {
                 //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                return ViewBag.Message=("FEL!!!!!");
+                return ViewBag.Message=("Något blev fel!");
             }
-            
             else
             {
-                
                 var progEdit = db.Program.Single(e => e.Id == id);
                 TempData["messageSuccess"] = "Puffen är registrerad.";
                 ViewBag.Message = pd.PuffName(progEdit.Puff);
@@ -107,11 +72,9 @@ namespace GruppG.Controllers
             
         }
 
-        // POST: ProgramsC/Edit/5
+
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id)
@@ -138,10 +101,7 @@ namespace GruppG.Controllers
             return RedirectToAction("Index");
 
             
-        }
-
-            
-            
+        }        
         
 
         //Delete puffar
@@ -180,6 +140,38 @@ namespace GruppG.Controllers
             //var puffList = pd.PuffPrograms().Where(p => p.Puff == 1);
             return RedirectToAction("Index");
         }
+
+
+
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Index(int id, Program program)
+        //{
+        //    Program puffToEdit = db.Program.Find(id);
+        //    if (puffToEdit == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    else
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(program);
+        //    }
+        //    puffToEdit.Puff = program.Puff;
+        //    puffToEdit.Puff = 0;
+        //    var puffToRemove = pd.PuffPrograms().Where(i => i.Puff != 1).ToList();
+
+
+        //    db.SaveChanges();
+
+        //    //var newPuff = pd.PuffPrograms().Where(p => p.Puff == program.Puff);
+        //    return RedirectToAction("Index");
+
+
+        //}
 
 
 

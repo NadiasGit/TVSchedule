@@ -78,7 +78,86 @@ namespace GruppG.Controllers
            
             return View(pd.FilterProgramsByDateAndCategory(date, id));
         }
+  
 
+        //Recommended programs (PUFF-list)
+        public ActionResult PartialViewPuffs()
+        {
+            var puff = pd.PuffPrograms();
+            return PartialView(puff);
+        }
+
+    
+
+        //ProgramDetails
+        public ActionResult ProgramDetails(int id, string title)
+        {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var prog = pd.GetSpecificProgram(id);
+
+                //För att visa kanalens namn i URL
+                title = prog.Chanel1.ToString();
+                ViewBag.Message = pd.PuffName(prog.Puff);
+
+                return View(prog);
+            }     
+        }
+
+        //Contact-info
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Kontakta oss:";
+
+            return View();
+        }
+
+
+        #region TA BORT?
+
+        //----TA BORT? ------------------------ KOMMENTERA UT FÖRST OCH TA BORT VYN INNAN (KONTROLLERA ATT ALLT FUNGERAR)
+
+        public ActionResult Datum(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Program program = db.Program.Find(id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(program);
+        }
+
+        //------------------------------------------------------------
+
+        //Nytt 16/12 - Visar specifik kanals program med hjälp av parametern "channel".
+        public ActionResult _Channel(int channel, DateTime date)
+        {
+            var p = pd.GetChannel(channel, date);
+            return PartialView(p);
+        }
+        //------------------------------------------------------------
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Program program = db.Program.Find(id);
+            if (program == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(program);
+        }
 
         // GET: ProgramsCategory/Details/
         /*Den här action-metoden kan vi använda för att visa detaljer om programmen 
@@ -88,21 +167,21 @@ namespace GruppG.Controllers
             return View();
         }
 
+
         public ActionResult About()
         {
             DateTime today = DateTime.Today.Date;
             var thisDay = db.Program.Where(x => x.Starttime == today);
-            
+
             //Lägg till en dag:
             //DateTime.Today.AddDays(1);
             return View(thisDay.ToList());
         }
 
-        public ActionResult PartialViewPuffs()
-        {
-            var puff = pd.PuffPrograms();
-            return PartialView(puff);
-        }
+
+
+
+        //::::::ÄR DET HÄR FLYTTAT?::::::::::
 
         //Flytta Admin till en egen controller? 18/7-2018
         public ActionResult Admin()
@@ -131,131 +210,6 @@ namespace GruppG.Controllers
         //---------------------------------------------------------------
 
 
-        public ActionResult ProgramDetails(int id, string title)
-        {
-            //Lägg till ett felmeddelande/felhantering om program-id saknas
-            var prog = pd.GetSpecificProgram(id);
-
-            //För att visa kanalens namn i URL
-            title = prog.Chanel1.ToString();
-            //var progDetails = programChannelVM.ProgramListVM.Single(d => d.Id == id);
-            ViewBag.Message = pd.PuffName(prog.Puff);
-            
-            
-
-            return View(prog);
-        }
-
-
-       
-
-        //------------------------------------------------------------
-
-        //Nytt 16/12 - Visar specifik kanals program med hjälp av parametern "channel".
-        public ActionResult _Channel (int channel, DateTime date)
-        {
-            var p = pd.GetChannel(channel, date);
-            return PartialView(p);
-        }
-        //------------------------------------------------------------
-        
-
-        // Hämtar programdetaljer
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Program program = db.Program.Find(id);
-            if (program == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(program);
-        }
-        
-
-        public ActionResult Datum(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Program program = db.Program.Find(id);
-            if (program == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(program);
-        }
-
-
-        //Kontakt
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Kontakta oss:";
-
-            return View();
-        }
-
-
-
-        //PartialViews ref: https://www.youtube.com/watch?v=SABg7RyjX-4
-        //public ActionResult SVT1()
-        //{
-        //    U4Entities pwdb = new U4Entities();
-        //    var p = pwdb.Program.Where(Program => Program.Chanel == 1).Where(q => q.Starttime == today);
-
-        //    return PartialView(p.ToList());
-        //}
-
-        //-------------------------------------
-
-        //public ActionResult SVT2()
-        //{
-        //    U4Entities pwdb = new U4Entities();
-        //    // (-1) visar gårdagens program :)
-        //    var p = pwdb.Program.Where(Program => Program.Chanel == 2).Where(q => q.Starttime == today);
-
-        //    return PartialView(p.ToList());
-        //}
-
-        //--------------------
-
-        //PartialView TV3
-        //public ActionResult TV3()
-        //{
-
-        //    U4Entities pwdb = new U4Entities();
-        //    var p = pwdb.Program.Where(Program => Program.Chanel == 3).Where(q => q.Starttime == today);
-          
-        //    return PartialView(p.ToList());
-        //}
-
-        //--------------------------------------
-
-        //PartialView TV4
-        //public ActionResult TV4()
-        //{
-        //    U4Entities pwdb = new U4Entities();
-        //    var p = pwdb.Program.Where(Program => Program.Chanel == 4).Where(q => q.Starttime == today);
-
-        //    return PartialView(p.ToList());
-        //}
-       
-        //--------------------------------------
-
-        //PartialView Kanal5
-        //public ActionResult Kanal5()
-        //{
-        //    U4Entities pwdb = new U4Entities();
-        //    var p = pwdb.Program.Where(Program => Program.Chanel == 5).Where(q => q.Starttime == today);
-
-        //    return PartialView(p.ToList());
-        //}
-
- 
-
+        #endregion
     }
 }
