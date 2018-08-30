@@ -13,9 +13,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             @Model.PersonP.Id
-        }
-        
-        
+        }   
     </p>
 </div>
 
@@ -47,26 +45,26 @@
         <dd>
             @Html.DisplayFor(model => model.PersonP.Password)
         </dd>
-
     </dl>
-    @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
+</div>
 
+<div class="dl-horizontal">
+    @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
 </div>
 
 
+
+<h2>Favoritkanaler</h2>
 <div class="date">
     @using (Html.BeginForm("Index", "MyPage", FormMethod.Get))
     {
         @*<div class="list-group">*@
-
         <div class="form-group">
             <h4>Filtrera</h4>
-            
             @*<div class="col-md-offset-2 col-md-10">*@
+            @*@Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())), "Idag", new { onchange = "form.submit();" })
+                @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })*@
 
-            @*@Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
-            @Html.DropDownList("category", new SelectList(Model.CategoryListVM, "Id", "Name", "category"), "Alla kategorier", new { onchange = "form.submit();" })*@
-            @*@Html.DropDownListFor(model => model.SelectedDate, Model.AllDates.GetDays()),"Idag")*@
             @*@Html.DropDownListFor(model => model.Product.Category, new SelectList(Model.ProductCategories, "Name", "Name"), new { htmlAttributes = new { @class = "form-control" } })*@
             @*</div>*@
             @*</div>*@
@@ -74,51 +72,20 @@
     }
 </div>
 
-
-    @*<table class="table">
-        <tr>
-            <th>
-                <p>Person</p>
-            </th>
-
-            <th>
-                    <p>Kanal</p>
-                </th>
-            <th>
-                <p>Datum</p>
-            </th>
-        </tr>*@
-
-        @*@foreach (var item in Model)
-        {
-            <tr>
-                <td> @item.FirstName</td>
-
-                <td> @item.LastName</td>
-
-                <td> @Html.ActionLink("Mer information", "ProgramDetails", "MyPage", new { @id = item.Id }, null)</td>
-
-                <td> @Html.ActionLink("Lägg till favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = item.Id }, null)</td>
-            </tr>
-        }*@
-   @* </table>*@
-
-<h2>Favoritkanaler</h2>
 <div class="row">
-
+Mitten
     @*Foreach item in FavoriteChannelsVM where p => p.Person == item.Id - persentera kanaler...annars presentera alla kanaler*@
     @if (Model.FavoriteChannelsVM != null)
     {
         foreach (var item in Model.FavoriteChannelsVM)
         {
             <div class="col-md-4">
-                <table class="table">
+                @*<table class="table">
                     <tr>
-                        <td>
-                            <h2> @item.Chanel1.Name</h2>
-                        </td>
-                    </tr>
-
+                        <td>*@
+                            <h4> @item.Chanel1.Name</h4>
+                        @*</td>
+                    </tr>*@
                     @*@foreach (var i in Model.FavoriteChannelsVM.Where(p => p.Chanel == item.Id))
                     {*@
                     @*<tr>
@@ -127,10 +94,9 @@
                         <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                     </tr>*@
                     @*}*@
-                </table>
+                @*</table>*@
             </div>
         }
-
     }
     else
     {
@@ -170,60 +136,33 @@
                     </div>
                 }
             }
-
-        </div>
-
-
-
-    }
-
-</div>
-
-<div class="date">
-    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-    {
-        <div class="form-group">
-            <h4>Filtrera</h4>
-            @*@Html.DropDownList("date", new SelectList(Model.DateString, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })*@
-            @*@Html.DropDownList("d", new SelectList(Model.Dates, "d", "d", "d"), "Idag", new { onchange = "form.submit();" })*@
-            @*@Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })*@
-           
         </div>
     }
 </div>
 
-
-
-TEST
 
 <div class="row">
-
+    Nedre
     @if (Model.FavoriteChannelsVM != null)
     {
         foreach (var item in Model.FavoriteChannelsVM)
         {
             <div class="col-md-4">
                 <h2> @item.Chanel </h2>
-
                 <table class="table">
                     <tr>
                         <th> Program </th>
                         <th> Tid </th>
                     </tr>
-
-
                     @if (Model.ProgramListVM.Any())
                     {
                         foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Chanel))
                         {
-
                             <tr>
                                 <td>@i.Titel</td>
                                 <td>@i.Programstart.Value.ToShortTimeString() </td>
                                 <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                             </tr>
-
-
                         }
                     }
                     else
