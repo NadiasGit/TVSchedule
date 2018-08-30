@@ -139,7 +139,24 @@ namespace GruppG.Controllers
             
         }
 
+        //ProgramDetails
+        public ActionResult ProgramDetails(int id, string title)
+        {
+            if (id == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var prog = pd.GetSpecificProgram(id);
 
+                //För att visa kanalens namn i URL
+                title = prog.Chanel1.ToString();
+                ViewBag.Message = pd.PuffName(prog.Puff);
+
+                return View(prog);
+            }
+        }
         //FLYTTA TILL TRASH?/////
 
         //Remove favoritechannels
