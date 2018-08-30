@@ -56,13 +56,12 @@ namespace GruppG.Controllers
             {
                 return ViewBag.Message=("Något blev fel!");
             }
-            else
+            else   
             {
                 var progEdit = db.Program.Single(e => e.Id == id);
-                TempData["messageSuccess"] = "Puffen är registrerad.";
                 ViewBag.Message = pd.PuffName(progEdit.Puff);
                 return View(progEdit);
-            }            
+            }
         }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -76,13 +75,21 @@ namespace GruppG.Controllers
             {
                 return HttpNotFound();
             }
+            else if (id == 0)
+            {
+                TempData["message"] = "Puffen är ej registrerad.";
+                return RedirectToAction("Index");
+            }
+
             else
             {
                 puffToEdit.Puff = 1;
                 db.SaveChanges();
+                TempData["messageSuccess"] = "Puffen är registrerad.";
                 return RedirectToAction("Index");
             }
-        }        
+
+    }        
         
 
         //Delete PUFF
