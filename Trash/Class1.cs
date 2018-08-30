@@ -180,5 +180,46 @@ namespace Trash
         //        }
         //    }
         //}
+
+
+        //Partial-Views-Channels
+    //     @*<div class="col-md-4">
+    //        <h2>SVT1</h2>
+
+    //        @{
+    //            Html.RenderAction("SVT1");
+    //        }
+    //@Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
+
+    //    </div>
+
+    //    <div class="col-md-4">
+    //        <h2>SVT2</h2>
+
+    //        @{
+    //            Html.RenderAction("SVT2");
+    //        }
+    //        @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
+
+    //    </div>
+    //    <div class="col-md-4">
+    //        <h2>TV3</h2>
+    //        @{
+    //            Html.RenderAction("TV3");
+    //        }
+    //    </div>
+       
+    //</div>*@
+
+
+        //From Home-Index
+//        @*@model IEnumerable<GruppG.Models.db.Program>*@
+//@*@model IEnumerable<GruppG.Models.db.Chanel>*@
+//@*@model IEnumerable<GruppG.Models.db.U4Entities>*@
+//@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
+
+
+
+
     }
 }

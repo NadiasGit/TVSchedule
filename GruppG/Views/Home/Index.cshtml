@@ -1,37 +1,19 @@
-﻿@*@model IEnumerable<GruppG.Models.db.Program>*@
-@*@model IEnumerable<GruppG.Models.db.Chanel>*@
-@*@model IEnumerable<GruppG.Models.db.U4Entities>*@
-@*@model IEnumerable<GruppG.Models.ViewModels.ProgramChannelVM>*@
-@model GruppG.Models.ViewModels.ProgramChannelVM
+﻿@model GruppG.Models.ViewModels.ProgramChannelVM
  
-@*@model GruppG.Models.ViewModels.ProgramChannelVM*@
 @{
     ViewBag.Title = "Hem";
 }
 
+
+@* --- Recommended programs (PUFF-list) *@
 <div class="jumbotron">
-
     <h1>Vi rekommenderar: </h1>
-    @*Nyhetspuffar - viktigt*@
-
-    @*<div class="nyhetspuff">*@
-        @*@foreach (var i in puffs)
-            <div class="col-md-4"></div>*@
-
- @{
-     Html.RenderAction("PartialViewPuffs");
-  }
-    @*</div>*@
+    @{Html.RenderAction("PartialViewPuffs");}
 </div>
 
 
-            @*<div class="col-md-offset-2 col-md-10">
-                  <div class="list-group">
 
-        </div>
-                </div>*@
-
-
+@* --- Filter-function--->(Date/Category) *@
 <div class ="date">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
@@ -39,11 +21,8 @@
                 <div class="form-group">
                     <h4>Filtrera</h4>
                     @*<div class="col-md-offset-2 col-md-10">*@
-                     
                     @*@Html.DropDownList("date", new SelectList(Model.Dates, "date", "Day", "date"), "Idag", new { onchange = "form.submit();" })*@   
                     @Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())),"Idag", new { onchange = "form.submit();" })                
-                     @*@Html.DropDownList("date", new SelectList(Model.Dates.Select(x => new SelectListItem {Text = x.ToShortDateString(), Value = x.ToString()}) , "date", "date", "date"), "Idag", new { onchange = "form.submit();" })*@
-                    @*@Html.DropDownList("date", new SelectList(), "Idag", new { onchange = "form.submit();" })*@    
                     @*<select onchange="form.submit();" id="date" name="date">*@
 @*@for (int i = 0; i < Model.Dates.Count; i++)
 {
@@ -72,10 +51,9 @@
         @item.ToShortDateString()
     </option>
 }*@
-                    @*</select>*@
-                    @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
-                        @*@Html.DropDownListFor(model => model.SelectedDate, Model.AllDates.GetDays()),"Idag")*@
-                @*@Html.DropDownListFor(model => model.Product.Category, new SelectList(Model.ProductCategories, "Name", "Name"), new { htmlAttributes = new { @class = "form-control" } })*@
+@*</select>*@
+
+@Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
                        @*</div>*@
                 @*</div>*@
             </div>
@@ -85,7 +63,6 @@
 
 
 <div class="row">
-
             @if (Model.ChannelListVM != null)
             {
                  foreach (var item in Model.ChannelListVM)
@@ -99,19 +76,15 @@
                                 <th> Tid </th>
                             </tr>
 
-
                             @if (Model.ProgramListVM.Any())
                             {
                                 foreach (var i in Model.ProgramListVM.Where(p => p.Chanel == item.Id))
                                 {
-
-                                    <tr>
+                                     <tr>
                                         <td>@i.Titel</td>
                                         <td>@i.Programstart.Value.ToShortTimeString() </td>
                                         <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
                                     </tr>
-
-
                                 }
                             }
                             else
@@ -132,33 +105,7 @@
 
 
 
-    @*<div class="col-md-4">
-            <h2>SVT1</h2>
-
-            @{
-                Html.RenderAction("SVT1");
-            }
-            @Html.Action("_Channel", "Home", new { channel = 1 , date = "11/11/2017" })
-
-        </div>
-
-        <div class="col-md-4">
-            <h2>SVT2</h2>
-
-            @{
-                Html.RenderAction("SVT2");
-            }
-            @Html.Action("_Channel", "Home", new { channel = 2, date = "11/11/2017" })
-
-        </div>
-        <div class="col-md-4">
-            <h2>TV3</h2>
-            @{
-                Html.RenderAction("TV3");
-            }
-        </div>
-       
-    </div>*@
+   
 
 
 

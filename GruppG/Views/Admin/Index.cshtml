@@ -3,12 +3,12 @@
     ViewBag.Title = "Administrera puffar";
 }
 
-<h2>Admin</h2>
+<h3>Admin</h3>
 
-<p>
-    @*For future tasks - create new program*@
+@*<p>*@
+    @*For future tasks -> create new program*@
     @*@Html.ActionLink("Create New", "Create")*@
-</p>
+@*</p>*@
 
 
 @* ----Pufflista---- *@
@@ -26,7 +26,6 @@
                         <td>| @item.Starttime.Value.ToShortDateString() |</td>
 
                         <td>
-                            @*@Html.ActionLink("Mer information", "ProgramDetails", new { @id = item.Id }, null)*@
                             | @Html.ActionLink("Ta bort puffen", "Delete", new { @id = item.Id }, null) |
                         </td>
                     </tr>
@@ -38,17 +37,6 @@
 @*----Pufflista End----*@
 
 @*----Alertmessage - puff added ----*@
-
-@*@if (TempData["message"] != null)
-{
-
-    <div class="alert alert-info">
-        <a class="close" data-dismiss="alert">&times;</a>
-        <strong> OBS:</strong> @TempData["message"]
-    </div>
-}*@
-    @*---Alert message End----*@
-
 
 
 
@@ -79,17 +67,14 @@
 
 
 
-@*----Filter-function---- (lägg till kategori?)*@
+@*----Filter-function---->(Date/Channel)*@
     <div class="date">
         @using (Html.BeginForm("Index", "Admin", FormMethod.Get))
         {
             <div class="form-group">
                 <h4>Filtrera:</h4>
-                @*<div class="col-md-offset-2 col-md-10">*@
-                    
-                    @Html.DropDownList("date", new SelectList(Model.Dates, "date", "date", "date"), "Idag", new { onchange = "form.submit();" })
-                    @Html.DropDownList("id", new SelectList(Model.ChannelListVM, "Id", "Name", "id"), "Alla kanaler", new { onchange = "form.submit();" })
-                @*</div>*@
+                @Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())), "Idag", new { onchange = "form.submit();" })
+                @Html.DropDownList("id", new SelectList(Model.ChannelListVM, "Id", "Name", "id"), "Alla kanaler", new { onchange = "form.submit();" })
             </div>
         }
     </div>
@@ -104,22 +89,13 @@
             <th> Datum & tid </th>
             <th> Redigera </th>
         </tr>
-
         @foreach (var item in Model.ProgramListVM)
         {
             <tr>
                 <td>@item.Titel</td>
                 <td>@item.Programstart</td>
                 <td>
-                    @*@if(null != TempData["alertMessage"])
-                         {
-                         <script type="text/javascript">
-                        alert("TempData[alertMessage]");
-                        </script>
-                         }
-                         else
-                         {*@
-                    | @Html.ActionLink("Lägg till som puff", "Edit", new { @id = item.Id }, null) |
+                    @Html.ActionLink("Lägg till som puff", "Edit", new { @id = item.Id }, null) |
                     @Html.ActionLink("Mer info", "ProgramDetails", new { @id = item.Id }, null) |
                 </td>
             </tr>
