@@ -50,7 +50,6 @@ namespace GruppG.Models.ViewModels
             //DateTime today = Convert.ToDateTime("2017-11-09");
             //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
-            //Today = DateTime.Parse("2017, 11, 09");
 
             Dates = new List<DateTime>();
             Dates.Add(Today);
@@ -92,56 +91,6 @@ namespace GruppG.Models.ViewModels
 
         }
 
-
-
-
-        ////Get channels
-        //public List<Chanel> GetChannels()
-        //{
-        //    db = new U4Entities();
-        //    var result = db.Chanel;
-        //    return result.ToList();
-        //}
-
-        //public List<Category> GetCategories()
-        //{
-        //    U4Entities u4 = new U4Entities();
-
-        //    var result = u4.Category;
-        //    return result.ToList();
-        //}
-
-        //public List<Program> GetDate(DateTime date)
-        //{
-        //    U4Entities u4 = new U4Entities();
-        //    var result = u4.Program.Where(q => q.Programstart == date);
-        //    return result.ToList();
-        //}
-        //public List<Chanel> GetChannels()
-        //{
-        //    U4Entities u4 = new U4Entities();
-
-        //    var result = u4.Chanel;
-        //    return result.ToList();
-        //}
-
-        //public List<Program> GetCategoriesTest(int id)
-        //{
-        //    U4Entities u4 = new U4Entities();
-
-        //    var result = u4.Program.Where(c => c.Category == id);
-        //    return result.ToList();
-        //}
-
-        //List<string> Channels = new List<string>();
-
-        //public List<Program> GetChannelPrograms(string channel)
-        //{
-        //    U4Entities u4 = new U4Entities();
-        //    //var result = u4.Program.Where(c => c.Chanel == channel);
-        //    var result = u4.Program.Where(Program => Program.Chanel.ToString() == channel);
-        //    return result.ToList();
-        //}
 
 
 
