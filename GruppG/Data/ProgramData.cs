@@ -244,7 +244,7 @@ namespace GruppG.Data
             var program = GetPrograms();
             var fav = GetFavoriteChannels(id);
             var cat = GetCategories();
-            
+            var favoriteChannel = GetFavoriteChannels(id);
 
             if (date == null && category == null)
             {
@@ -272,7 +272,8 @@ namespace GruppG.Data
                 finalItem.ProgramListVM = catDate;
             }
 
-
+            
+            finalItem.FavoriteChannelsVM = favoriteChannel;
             finalItem.Person = iid;
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
