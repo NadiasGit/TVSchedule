@@ -20,9 +20,11 @@ namespace GruppG.Data
         Chanel channel = new Chanel();
         FavoriteChannel favoriteChannel = new FavoriteChannel();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
+        
         ProgramChannelVM finalItem = new ProgramChannelVM();
         //private DateTime selectedDates = new DateTime();
         System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
+        PersonData personData = new PersonData();
         
 
         public List<DateTime> Dates { get; set; }
@@ -232,14 +234,17 @@ namespace GruppG.Data
             return finalItem;
         }
 
-        public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(int id, DateTime? date, int? category = null)
+        public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(string name, DateTime? date, int? category = null)
         {
 
             ListOfDaysModel Dates = new ListOfDaysModel();
+            var id = personData.GetId(name);
+            var iid = db.Person.Single(x => x.Id == id);
             var channel = GetChannels();
             var program = GetPrograms();
             var fav = GetFavoriteChannels(id);
             var cat = GetCategories();
+            
 
             if (date == null && category == null)
             {
@@ -267,6 +272,8 @@ namespace GruppG.Data
                 finalItem.ProgramListVM = catDate;
             }
 
+
+            finalItem.Person = iid;
             finalItem.ChannelListVM = channel;
             finalItem.CategoryListVM = cat;
 

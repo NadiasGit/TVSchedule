@@ -40,6 +40,9 @@ namespace GruppG.Models.ViewModels
         public DateTime Today { get; set; }
         public List<string> PuffName { get; set; }
         public ProgramData ProgramData { get; set; }
+        public Person Person { get; set; }
+        public List<FavoriteChannel> FavoriteChannelsVM { get; set; }
+
 
 
         public ProgramChannelVM()

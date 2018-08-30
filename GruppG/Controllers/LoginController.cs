@@ -91,7 +91,7 @@ namespace GruppG.Controllers
                     //return RedirectToAction("Index", "MyPage", new { @id = model.Id });
 
                     //Skickar inparameter - Men då går det inte att surfa runt bland länkarna...
-                    return RedirectToAction("Index", "MyPage", new { @id = id });
+                    return RedirectToAction("Index", "MyPage"/*, new { @id = id }*/);
 
                     //FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
                     //return RedirectToAction("Index", "MyPage");

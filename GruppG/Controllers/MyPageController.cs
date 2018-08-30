@@ -24,11 +24,12 @@ namespace GruppG.Controllers
         FavoritChannelVM finalItem = new FavoritChannelVM();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
         ProgramData pd = new ProgramData();
+        PersonData pr = new PersonData();
         Person person = new Person();
 
         //[Authorize(Roles = "User")]
         //[Authorize]
-        public ActionResult Index(int id, string d, int? category = null)
+        public ActionResult Index(DateTime? date, int? category = null)
         //DateTime date
         {
             //if (Session["UserName"] != null)     int id, 
@@ -39,32 +40,38 @@ namespace GruppG.Controllers
             //name = User.Identity.Name;
 
             //int id = finalItem.PersonP.Id;
-            
+            var name = User.Identity.Name;
             //var iid = User.Identity.GetUserId();
             //iid = id.ToString();
             //int getId = int.Parse(iid);
-            var channel = pd.GetChannels();
-            var program = pd.GetPrograms();
-            var person = pd.GetPersonById(id);
+            //var channel = pd.GetChannels();
+            //var program = pd.GetPrograms();
+            ////var person = pd.GetPersonById(id);
+            //var user = pr.GetPersonByUserName(name);
+
+            //var id = pr.GetId(name);
+
 
             //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
             //var filter = pd.FilterProgramsByDateAndCategory(date, category);
-            //var myFav = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
-
+            //var myFav = pd.FilterProgramsByDateAndCategoryMyPage(name, date, category);
+            //finalItem.ProgramListVM = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
             //NY med string date
-            var ny = pd.FilterProgramsByDAndCategoryMyPage(id, d, category);
+            //var ny = pd.FilterProgramsByDAndCategoryMyPage(id, d, category);
 
-            finalItem.PersonP = person;
-            finalItem.ChannelListVM = channel;
-            finalItem.ProgramListVM = program;
+            //finalItem.PersonP = user;
+            //finalItem.ChannelListVM = channel;
+            //finalItem.ProgramListVM = program;
 
 
-            var favoriteChannel = pd.GetFavoriteChannels(id);
-            finalItem.FavoriteChannelsVM = favoriteChannel;
+
+            //var favoriteChannel = pd.GetFavoriteChannels(id);
+            //finalItem.FavoriteChannelsVM = favoriteChannel;
             //finalItem.ProgramListVM = ny;
 
             //return View(finalItem);
-            return View(finalItem);
+            return View(pd.FilterProgramsByDateAndCategoryMyPage(name, date, category));
+
             }
             //else
             //{
@@ -77,13 +84,13 @@ namespace GruppG.Controllers
         {
             var pers = db.Person.Single(e => e.Id == id);
             var channel = pd.GetChannels();
-            finalItem.ChannelListVM = channel;
-            finalItem.PersonP = pers;
+            pcViewModel.ChannelListVM = channel;
+            pcViewModel.Person = pers;
 
             var favoriteChannel = pd.GetFavoriteChannels(id);
-            finalItem.FavoriteChannelsVM = favoriteChannel;
+            pcViewModel.FavoriteChannelsVM = favoriteChannel;
 
-            return View(finalItem);
+            return View(pcViewModel);
         }
        
 

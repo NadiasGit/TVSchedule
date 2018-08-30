@@ -1,18 +1,18 @@
-﻿@model  GruppG.Models.ViewModels.FavoritChannelVM
+﻿@model  GruppG.Models.ViewModels.ProgramChannelVM
     @{
         ViewBag.Title = "Mina sidor";
     }
 
 
 <h2>Välkommen till mina sidor <br />
-    @Model.PersonP.FirstName @Model.PersonP.LastName</h2>
+    @Model.Person.FirstName @Model.Person.LastName</h2>
 
 @*Userinfo*@
 <div>
     <p>
         @if (User.Identity.IsAuthenticated)
         {
-            @Model.PersonP.Id
+            @Model.Person.Id
         }   
     </p>
 </div>
@@ -25,31 +25,31 @@
             <strong>Förnamn: </strong>
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PersonP.FirstName)
+            @Html.DisplayFor(model => model.Person.FirstName)
         </dd>
         <dt>
             <strong>Efternamn: </strong>
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PersonP.LastName)
+            @Html.DisplayFor(model => model.Person.LastName)
         </dd>
         <dt>
             <strong>Användarnamn:</strong>
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PersonP.UserName)
+            @Html.DisplayFor(model => model.Person.UserName)
         </dd>
         <dt>
             <strong>Lösenord:</strong>
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PersonP.Password)
+            @Html.DisplayFor(model => model.Person.Password)
         </dd>
     </dl>
 </div>
 
 <div class="dl-horizontal">
-    @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.PersonP.Id }, null)
+    @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Person.Id }, null)
 </div>
 
 

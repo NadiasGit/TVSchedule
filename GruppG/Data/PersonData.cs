@@ -34,6 +34,29 @@ namespace GruppG.Data
             return person;
         }
 
+        public Person GetPersonByUserName(string name)
+        {
+            var person = db.Person.First(x => x.UserName == name);
+            return person;
+        }
+
+        public int GetId(string username)
+        {
+            //var personId = db.Person.FirstOrDefault(p => p.Id == id && p.UserName.Equals(username) && p.Password.Equals(password));
+            //var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password));
+
+            var usId = db.Person.Where(u => u.UserName == username).Select(usr => new
+            {
+                Id = usr.Id,
+                Name = usr.UserName
+            }).FirstOrDefault();
+
+            var pId = usId.Id;
+
+
+            return pId;
+        }
+
         public int GetId(string username, string password)
         {
             //var personId = db.Person.FirstOrDefault(p => p.Id == id && p.UserName.Equals(username) && p.Password.Equals(password));

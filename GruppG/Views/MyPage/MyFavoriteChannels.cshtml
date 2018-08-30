@@ -1,4 +1,4 @@
-﻿@model GruppG.Models.ViewModels.FavoritChannelVM
+﻿@model GruppG.Models.ViewModels.ProgramChannelVM
 
 @{
     ViewBag.Title = "Mina favoritkanaler";
@@ -8,8 +8,8 @@
     <div class="list-group-item">
         <h2>
             Dina favoritkanaler
-            @Html.DisplayFor(model => model.PersonP.FirstName)
-            @Html.DisplayFor(model => model.PersonP.LastName) :
+            @Html.DisplayFor(model => model.Person.FirstName)
+            @Html.DisplayFor(model => model.Person.LastName) :
         </h2>
         @using (Html.BeginForm(@*"MyFavoriteChannels", "MyPage", FormMethod.Post, new { id = Model.PersonP.Id }*@))
         {
@@ -57,7 +57,7 @@
                     <h4> @item.Name </h4>
                 </td>
                 <td>
-                    @Html.ActionLink("Lägg till", "Add", new { pId = Model.PersonP.Id, cId = item.Id })
+                    @Html.ActionLink("Lägg till", "Add", new { pId = Model.Person.Id, cId = item.Id })
                     @*<input type="submit" value="Spara" name="action" class="btn btn-default" />*@
                 </td>
             </tr>
@@ -65,7 +65,7 @@
     </table>
     </div>
 
-    @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.PersonP.Id }, null)
+    @Html.ActionLink("Tillbaka", "Index", "MyPage", new { @id = Model.Person.Id }, null)
 
 
 
