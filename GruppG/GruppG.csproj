@@ -185,7 +185,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\ChannelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -332,7 +331,6 @@
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
-    <Content Include="Views\Channel\Channels.cshtml" />
     <Content Include="Views\Home\_Channel.cshtml" />
     <Content Include="Views\ProgramsC\Create.cshtml" />
     <Content Include="Views\ProgramsC\Delete.cshtml" />

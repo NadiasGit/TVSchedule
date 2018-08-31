@@ -12,6 +12,8 @@ using GruppG.Models;
 
 namespace GruppG.Controllers
 {
+    //Använder vi inte OBS inehåller många referenser!
+
     [Authorize]
     public class AccountController : Controller
     {

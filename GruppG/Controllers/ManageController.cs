@@ -10,6 +10,8 @@ using GruppG.Models;
 
 namespace GruppG.Controllers
 {
+    //Används inte
+
     [Authorize]
     public class ManageController : Controller
     {

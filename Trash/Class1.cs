@@ -8,6 +8,134 @@ namespace Trash
 {
     public class Class1
     {
+        //Mypage controller
+
+        //var iid = User.Identity.GetUserId();
+        //iid = id.ToString();
+        //int getId = int.Parse(iid);
+        //var channel = pd.GetChannels();
+        //var program = pd.GetPrograms();
+        ////var person = pd.GetPersonById(id);
+        //var user = pr.GetPersonByUserName(name);
+
+        //var id = pr.GetId(name);
+
+
+        //var filter = pd.FilterProgramsByDateAndCategoryMyPage(date);
+        //var filter = pd.FilterProgramsByDateAndCategory(date, category);
+        //var myFav = pd.FilterProgramsByDateAndCategoryMyPage(name, date, category);
+        //finalItem.ProgramListVM = pd.FilterProgramsByDateAndCategoryMyPage(id, date, category);
+        //NY med string date
+        //var ny = pd.FilterProgramsByDAndCategoryMyPage(id, d, category);
+
+        //finalItem.PersonP = user;
+        //finalItem.ChannelListVM = channel;
+        //finalItem.ProgramListVM = program;
+
+
+
+        //var favoriteChannel = pd.GetFavoriteChannels(id);
+        //finalItem.FavoriteChannelsVM = favoriteChannel;
+        //finalItem.ProgramListVM = ny;
+
+        //if (Session["UserName"] != null)     int id, 
+        //{
+
+        //string userId = SignInManager.AuthenticationManager.AuthenticationResponseGrant.Identity.GetUserId();
+        //string iid = System.Web.HttpContext.Current.User.Identity.GetUserId();
+        //name = User.Identity.Name;
+
+        //int id = finalItem.PersonP.Id;
+
+        //else
+        //{
+        //    return RedirectToAction("Login", "LogIn");
+        //}
+
+        //}
+
+        //return View(finalItem);
+
+
+        //FLYTTA TILL TRASH?/////
+
+        //Remove favoritechannels
+        //public ActionResult Delete(int? id)
+        //{
+        //    FavoriteChannel favDelete = db.FavoriteChannel.Find(id);
+        //    if (id == null)
+        //    {
+        //        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //        return ViewBag.Message = ("Finns inget att radera...");
+        //    }
+        //    else
+        //    {
+        //        return View(favDelete);
+        //    }
+        //}
+
+
+        //FLYTTA TILL TRASH?///////////////////////////
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult MyFavoriteChannels(FavoriteChannel favorite, int fcid, int id, int chan, string action)
+        //{
+        //    //FavoriteChannel favC, , int channel  , string action
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    else if (action == "Spara")
+        //    {
+        //        //Add favoritechannel
+        //        int p = id;
+        //        int c = chan;
+        //        //newFavoriteChannel = new FavoriteChannel() { Person = p, Chanel = c};
+        //        favorite = new FavoriteChannel() { Person = p, Chanel = c };
+
+        //        var pers = db.Person.Single(e => e.Id == id);
+        //        var ch = db.Chanel.Single(a => a.Id == chan);
+
+        //        //var n = db.FavoriteChannel.Add(newFavoriteChannel);
+        //        db.FavoriteChannel.Add(favorite);
+
+
+        //        db.SaveChanges();
+        //        return RedirectToAction("Index", new { @id = id });
+        //    }
+        //    else if (action.Equals("Ta bort som favoritkanal"))
+        //    {
+        //        int f = fcid;
+        //        //newFavoriteChannel = new FavoriteChannel() { Id = fc };
+        //        //var favoriteDelete = db.FavoriteChannel.Find(favchannel.Id);
+        //        //var deleteFavorite = db.FavoriteChannel = favorite;
+        //        //newFavoriteChannel = favorite;
+        //        //favchannelVM.FavoriteChannelsVM = pd.GetFavoriteChannels(id, chan);
+        //        //var channelsDelete = favchannelVM.FavoriteChannelsVM.Where(x => x.Chanel != chan);
+
+        //        //var channelsDelete = db.FavoriteChannel.Single(x => x.Id == f);
+
+        //        //db.FavoriteChannel.Remove(channelsDelete);
+
+        //        var delete = db.FavoriteChannel.Single(x => x.Id == f);
+        //        db.FavoriteChannel.Remove(delete);
+
+        //        //db.FavoriteChannel.Remove(removeFavoriteChannel);
+        //        db.SaveChanges();
+
+        //        return RedirectToAction("Index", new { @id = id });
+        //        //Mata ev in , "Index"
+        //        //return RedirectToAction("MyFavoriteChannels", "MyPage", new { @id =favoriteDelete.Id });
+        //        //var favoriteDelete1 = pd.GetFavoriteChannels().SingleOrDefault(i => i.Id == id);
+        //        //favoriteDelete = favchannel;
+
+        //    }
+        //    return RedirectToAction("MyFavoriteChannels", new { @id = id });
+        //}
+
+        //
+
         //GAMLA INDEX
         //public ActionResult Index()
         //{

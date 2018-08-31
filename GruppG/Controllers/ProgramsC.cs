@@ -10,6 +10,8 @@ using GruppG.Models.db;
 
 namespace GruppG.Controllers
 {
+    //Används inte
+
     //Skapad med hjälp av entity-framework
     public class ProgramsC : Controller
     {
