@@ -123,7 +123,7 @@ namespace GruppG.Controllers
             return RedirectToAction("Index");
         }
 
-
+        
 
     }
 }

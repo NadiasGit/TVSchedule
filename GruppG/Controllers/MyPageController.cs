@@ -14,7 +14,7 @@ using System.Net;
 
 namespace GruppG.Controllers
 {
-    [AuthorizeRoles("User")]
+    [AuthorizeRoles("User", "Admin")]
     public class MyPageController : Controller
     {
         // GET: MyPage

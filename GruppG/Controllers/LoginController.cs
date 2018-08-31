@@ -11,7 +11,6 @@ using GruppG.Data;
 using GruppG.Models.db;
 using Microsoft.AspNet.Identity;
 
-
 namespace GruppG.Controllers
 {
     public class LoginController : Controller
@@ -59,6 +58,7 @@ namespace GruppG.Controllers
                 //}     
                 if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
+                    var id = pd.GetId(model.UserName, model.Password);
                     //return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
                     //return Redirect(returnUrl, new { id = user.Id });
                     //return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
@@ -70,6 +70,7 @@ namespace GruppG.Controllers
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
                 {
                     var id = pd.GetId(model.UserName, model.Password);
+                    
                     //Session["Id"] = user.Id;
                     //Session["UserName"] = user.UserName.ToString();
                     //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
@@ -204,9 +205,7 @@ namespace GruppG.Controllers
             return PartialView(chan1.ToList());
         }
 
-
-
-
+        
 
         //[HttpPost]
         //public ActionResult LogIn(LoginVM model/*, string ReturnUrl*/)

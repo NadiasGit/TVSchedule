@@ -29,18 +29,34 @@
                     @*@using Microsoft.AspNet.Identity*@
                     @*@if (Request.IsAuthenticated)*@
 
+                    
+                    
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li> @Html.ActionLink("Logga ut", "SignOut", "Login") </li>
-
-                        if (User.IsInRole("Admin"))
-                        {
-                            <li> @Html.ActionLink("Administration", "Index", "Admin")</li>
-                        }
                         
-                    }
+                        @*<li> @Html.ActionLink("Administration", "Index", "Admin")</li>*@
 
+                    if (User.IsInRole("Admin"))
+                    {
+                            <li> @Html.ActionLink("Administration", "Index", "Admin")</li>
+                    }
+                    if (User.IsInRole("User"))
+                    {
+                        <li> @Html.ActionLink("AdministrationTest", "Index", "Admin")</li>
+
+
+                        }
+                    }
+                    
+                    
                 </ul>
+                
+                @*@{Html.RenderAction("PartialViewNavBar", "Admin");}*@
+
+                <div class="navbar-header pull-right">
+                        @Html.Partial("_LoginPartial", new { @class = "navbar-brand" })
+                    </div>
                 <!--ANVÄND DEN EGNA LOGINFUNKTIONEN-->
                 
                 <!--@Html.Partial("_LoginPartial")-->
