@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@*@if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
@@ -13,9 +13,7 @@
         <li> @Html.ActionLink("Administration", "Index", "Admin")</li>
        
         @*<li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>*@
-    </ul>
-
-
+    @*</ul>
     }
 }
 else
@@ -24,5 +22,24 @@ else
         <li> @Html.ActionLink("Administration", "Index", "Admin")</li>
         @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
         @*<li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
-    </ul>
+    @*</ul>
+}*@
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("SignOut", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        <ul class="nav navbar-nav navbar-right">
+            @if (User.Identity.GetUserName() == "admin")
+                {
+            @Html.AntiForgeryToken()
+
+            <li>
+                @Html.ActionLink("Administration", "Index", "Admin", routeValues: null, htmlAttributes: new { title = "Admin" })
+            </li>
+            }
+            <li>@Html.ActionLink("Logga ut", "SignOut", "Login")</li>
+        </ul>
+    }
 }
+

@@ -31,9 +31,9 @@
 
                     
                     
-                    @if (User.Identity.IsAuthenticated)
+                    @*@if (User.Identity.IsAuthenticated)
                     {
-                        <li> @Html.ActionLink("Logga ut", "SignOut", "Login") </li>
+                        <li> @Html.ActionLink("Logga ut", "SignOut", "Login") </li>*@
                         
                         @*<li> @Html.ActionLink("Administration", "Index", "Admin")</li>*@
 
@@ -45,7 +45,7 @@
                     {
                         <li> @Html.ActionLink("AdministrationTest", "Index", "Admin")</li>
                     }*@
-                    }
+                    @*}*@
                     
                     
                 </ul>
