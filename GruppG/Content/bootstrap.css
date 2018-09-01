@@ -2320,6 +2320,7 @@ fieldset[disabled] .btn-link {
 .btn-link:hover,
 .btn-link:focus {
   color: #2a6496;
+  /*color: #b200ff;*/
   text-decoration: underline;
   background-color: transparent;
 }
@@ -4516,7 +4517,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-brand {
-  color: #999999;
+  /*color: #999999;  <==========================================   ORIGINAL */
+  color: #444444;
 }
 
 .navbar-inverse .navbar-brand:hover,
