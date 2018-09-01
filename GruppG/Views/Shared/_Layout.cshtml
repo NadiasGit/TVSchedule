@@ -37,16 +37,14 @@
                         
                         @*<li> @Html.ActionLink("Administration", "Index", "Admin")</li>*@
 
-                    if (User.IsInRole("Admin"))
+                    @*if (User.IsInRole("Admin"))
                     {
                             <li> @Html.ActionLink("Administration", "Index", "Admin")</li>
                     }
                     if (User.IsInRole("User"))
                     {
                         <li> @Html.ActionLink("AdministrationTest", "Index", "Admin")</li>
-
-
-                        }
+                    }*@
                     }
                     
                     

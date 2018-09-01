@@ -4,6 +4,16 @@
 }
 
 <h3>Admin</h3>
+@*Userinfo*@
+@*<div>
+        <p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>Användare: </p>@Model.Person.UserName
+            }
+        </p>
+    </div>*@
+
 
 @*<p>*@
     @*For future tasks -> create new program*@

@@ -21,11 +21,7 @@ namespace GruppG
                 defaults: new { controller = "Home", action = "Index",
                 date = UrlParameter.Optional,
                 id = UrlParameter.Optional}
-                //Lägg till datum som id här?
             );
-
-            
-
 
             routes.MapRoute(
                 name: "About",
@@ -88,13 +84,9 @@ namespace GruppG
 
             routes.MapRoute(
                 name: "MyFavoriteChannels",
-                url: "Lägg till/Ta bort",
+                url: "Redigera",
                 defaults: new
-                {
-                    controller = "MyPage",
-                    action = "MyFavoriteChannels",
-                    id = UrlParameter.Optional
-                }
+                { controller = "MyPage", action = "MyFavoriteChannels", username = UrlParameter.Optional }
                 //Lägg till datum som id här?
             );
 
