@@ -292,7 +292,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -319,9 +318,7 @@
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Login\MyPage.cshtml" />
-    <Content Include="Views\Home\SVT1.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
-    <Content Include="Views\Home\Kanal5.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Login\PartialViewPerson.cshtml" />
     <Content Include="Views\Login\UserPage.cshtml" />
@@ -331,7 +328,6 @@
     <Content Include="Views\Home\ProgramDetails.cshtml" />
     <Content Include="Views\Home\AdminProgramEdit.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
-    <Content Include="Views\Home\_Channel.cshtml" />
     <Content Include="Views\ProgramsC\Create.cshtml" />
     <Content Include="Views\ProgramsC\Delete.cshtml" />
     <Content Include="Views\ProgramsC\Details.cshtml" />
