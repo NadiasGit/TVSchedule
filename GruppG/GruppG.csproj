@@ -191,7 +191,6 @@
     <Compile Include="Controllers\MyPageController.cs" />
     <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Models\ListOfDaysModel.cs" />
-    <Compile Include="Data\ObjectCache.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Data\ProgramData.cs" />
     <Compile Include="Data\Repository.cs" />
@@ -235,7 +234,6 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ViewModels\FavoritChannelVM.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\ProgramChannelVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

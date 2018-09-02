@@ -22,7 +22,6 @@ namespace GruppG.Controllers
         U4Entities db = new U4Entities();
         Chanel channel = new Chanel();
         FavoriteChannel favchannel = new FavoriteChannel();
-        FavoritChannelVM finalItem = new FavoritChannelVM();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
         ProgramData pd = new ProgramData();
         PersonData pr = new PersonData();

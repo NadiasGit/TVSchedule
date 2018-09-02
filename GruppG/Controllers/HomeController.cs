@@ -23,8 +23,6 @@ namespace GruppG.Controllers
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
-        private Repository<Program> ProgramRepository = new Repository<Program>();
-        private Repository<Chanel> ChannelRepository = new Repository<Chanel>();
         
         DateTime today = Convert.ToDateTime("11/09/2017");
         

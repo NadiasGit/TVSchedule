@@ -21,7 +21,7 @@ namespace GruppG.Controllers
         Person person = new Person();
         FavoriteChannel favC = new FavoriteChannel();
         Chanel channel = new Chanel();
-        FavoritChannelVM viewmodel = new FavoritChannelVM();
+        //FavoritChannelVM viewmodel = new FavoritChannelVM();
         
 
 
@@ -118,31 +118,17 @@ namespace GruppG.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //// POST: /Account/LogOff
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult LogOff()
-        //{
-        //    FormsAuthentication.SignOut();
-        //    //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-        //    return RedirectToAction("Index", "Home");
-        //}
-
-
 
         //check user account/details
         public ActionResult Details()
         {
             var userId = User.Identity.GetUserId();
-            //Person person = new Person();
-            //var personDetails = db.Person.Where(x => x.Id == userId);
             return View(person);
         }
 
         //Register new user-account
         public ActionResult Register()
-        {
-            
+        {     
             return View();
         }
 
