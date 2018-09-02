@@ -20,9 +20,6 @@ namespace GruppG.Data
         Chanel channel = new Chanel();
         FavoriteChannel favoriteChannel = new FavoriteChannel();
         ProgramChannelVM pcViewModel = new ProgramChannelVM();
-        
-        ProgramChannelVM finalItem = new ProgramChannelVM();
-        //private DateTime selectedDates = new DateTime();
         System.Runtime.Caching.ObjectCache cache = MemoryCache.Default;
         PersonData personData = new PersonData();
         
@@ -205,7 +202,7 @@ namespace GruppG.Data
             if (date == null && id == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programStart;
+                pcViewModel.ProgramListVM = programStart;
 
                 //var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToString("dd/mm/yy"));
                 //finalItem.ProgramListVM = programStart.ToList();
@@ -214,24 +211,24 @@ namespace GruppG.Data
             else if (date != null &&  id == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programDate;
+                pcViewModel.ProgramListVM = programDate;
             }
             else if (date == null && id != null)
             {
                 var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
-                finalItem.ProgramListVM = programDateCat;
+                pcViewModel.ProgramListVM = programDateCat;
             }
             else
             {
                 var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == id).ToList();
                
-                finalItem.ProgramListVM = catDate;
+                pcViewModel.ProgramListVM = catDate;
             }
 
-            finalItem.ChannelListVM = channel;
-            finalItem.CategoryListVM = cat;
+            pcViewModel.ChannelListVM = channel;
+            pcViewModel.CategoryListVM = cat;
             
-            return finalItem;
+            return pcViewModel;
         }
 
         public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(string name, DateTime? date, int? category = null)
@@ -249,7 +246,7 @@ namespace GruppG.Data
             if (date == null && category == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programStart;
+                pcViewModel.ProgramListVM = programStart;
 
                 //var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToString("dd/mm/yy"));
                 //finalItem.ProgramListVM = programStart.ToList();
@@ -258,27 +255,27 @@ namespace GruppG.Data
             else if (date != null && category == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programDate;
+                pcViewModel.ProgramListVM = programDate;
             }
             else if (date == null && category != null)
             {
                 var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
-                finalItem.ProgramListVM = programDateCat;
+                pcViewModel.ProgramListVM = programDateCat;
             }
             else
             {
                 var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
 
-                finalItem.ProgramListVM = catDate;
+                pcViewModel.ProgramListVM = catDate;
             }
 
             
-            finalItem.FavoriteChannelsVM = favoriteChannel;
-            finalItem.Person = iid;
-            finalItem.ChannelListVM = channel;
-            finalItem.CategoryListVM = cat;
+            pcViewModel.FavoriteChannelsVM = favoriteChannel;
+            pcViewModel.Person = iid;
+            pcViewModel.ChannelListVM = channel;
+            pcViewModel.CategoryListVM = cat;
 
-            return finalItem;
+            return pcViewModel;
         }
         public ProgramChannelVM FilterProgramsByDateAndChannel(DateTime? date, int? id = null)
         {
@@ -290,31 +287,31 @@ namespace GruppG.Data
             if (date == null && id == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).ToList();
-                finalItem.ProgramListVM = programStart;
+                pcViewModel.ProgramListVM = programStart;
             }
             else if (date != null && id == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
 
-                finalItem.ProgramListVM = programDate;
+                pcViewModel.ProgramListVM = programDate;
             }
             else if (date == null && id != null)
             {
                 var programCat = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
 
-                finalItem.ProgramListVM = programCat;
+                pcViewModel.ProgramListVM = programCat;
             }
             else
             {
                 var channelDateChan = program.Where(d => d.Programstart.Value.ToShortDateString() == date.Value.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Chanel == id).ToList();
 
-                finalItem.ProgramListVM = channelDateChan;
+                pcViewModel.ProgramListVM = channelDateChan;
             }
 
-            finalItem.ChannelListVM = channel;
-            finalItem.GetPuffListVM = puff;
+            pcViewModel.ChannelListVM = channel;
+            pcViewModel.GetPuffListVM = puff;
 
-            return finalItem;
+            return pcViewModel;
         }
 
         //Filter-methods NY! Med string istället för dateTime
@@ -328,30 +325,30 @@ namespace GruppG.Data
             if (date == null && category == null)
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programStart;
+                pcViewModel.ProgramListVM = programStart;
 
             }
             else if (date != null && category == null)
             {
                 var programDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date).OrderBy(d => d.Programstart).ToList();
-                finalItem.ProgramListVM = programDate;
+                pcViewModel.ProgramListVM = programDate;
             }
             else if (date == null && category != null)
             {
                 var programDateCat = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
-                finalItem.ProgramListVM = programDateCat;
+                pcViewModel.ProgramListVM = programDateCat;
             }
             else
             {
                 var catDate = program.Where(d => d.Programstart.Value.ToShortDateString() == date).OrderBy(d => d.Programstart).Where(c => c.Category == category).ToList();
 
-                finalItem.ProgramListVM = catDate;
+                pcViewModel.ProgramListVM = catDate;
             }
 
-            finalItem.ChannelListVM = channel;
-            finalItem.CategoryListVM = cat;
+            pcViewModel.ChannelListVM = channel;
+            pcViewModel.CategoryListVM = cat;
 
-            return finalItem;
+            return pcViewModel;
         }
 
 

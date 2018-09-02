@@ -42,9 +42,6 @@ namespace GruppG.Data
 
         public int GetId(string username)
         {
-            //var personId = db.Person.FirstOrDefault(p => p.Id == id && p.UserName.Equals(username) && p.Password.Equals(password));
-            //var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password));
-
             var usId = db.Person.Where(u => u.UserName == username).Select(usr => new
             {
                 Id = usr.Id,
@@ -53,22 +50,17 @@ namespace GruppG.Data
 
             var pId = usId.Id;
 
-
             return pId;
         }
 
         public int GetId(string username, string password)
         {
-            //var personId = db.Person.FirstOrDefault(p => p.Id == id && p.UserName.Equals(username) && p.Password.Equals(password));
-            //var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password));
-
-            var usId = db.Person.Where(u => u.UserName == username && u.Password == password).Select(usr => new
+             var usId = db.Person.Where(u => u.UserName == username && u.Password == password).Select(usr => new
             {
                 Id = usr.Id,
                 Name = usr.UserName}).FirstOrDefault();
 
             var pId = usId.Id;
-
 
             return pId;
         }
@@ -107,8 +99,6 @@ namespace GruppG.Data
         public bool CheckUser (string username, string password)
         {
                 var user = db.Person.Where(p => p.UserName.Equals(username) && p.Password.Equals(password)).Include(i => i.Id);
-            //var role = db.Person.Where(x => x.UserName.Equals(userName)).Include(x => x.Role1).Where(x => x.Role1.Type.Equals(roleType));
-
             if (user.Any())
                 {
                 return true;    
