@@ -22,16 +22,10 @@ namespace GruppG.Controllers
         private U4Entities db = new U4Entities();
         private ProgramData pd = new ProgramData();
         private Person person = new Person();
-        private ChannelData channeldate = new ChannelData();
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
         private Repository<Program> ProgramRepository = new Repository<Program>();
         private Repository<Chanel> ChannelRepository = new Repository<Chanel>();
-
-        //Dessa kommer att tas bort när datumparametern fungerar
-        DateTime yesterday = DateTime.Today.Date.AddDays(-1);
-        DateTime todayGammal = DateTime.Today;
-        DateTime tomorrow = DateTime.Today.Date.AddDays(2);
-        //mm/dd/yy
+        
         DateTime today = Convert.ToDateTime("11/09/2017");
         
 
@@ -101,12 +95,7 @@ namespace GruppG.Controllers
 
         //------------------------------------------------------------
 
-        //Nytt 16/12 - Visar specifik kanals program med hjälp av parametern "channel".
-        public ActionResult _Channel(int channel, DateTime date)
-        {
-            var p = pd.GetChannel(channel, date);
-            return PartialView(p);
-        }
+   
         //------------------------------------------------------------
 
         public ActionResult Details(int? id)
@@ -130,20 +119,6 @@ namespace GruppG.Controllers
         {
             return View();
         }
-
-
-        public ActionResult About()
-        {
-            DateTime today = DateTime.Today.Date;
-            var thisDay = db.Program.Where(x => x.Starttime == today);
-
-            //Lägg till en dag:
-            //DateTime.Today.AddDays(1);
-            return View(thisDay.ToList());
-        }
-
-
-
 
         //::::::ÄR DET HÄR FLYTTAT?::::::::::
 
