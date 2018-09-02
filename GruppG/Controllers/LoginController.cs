@@ -20,19 +20,15 @@ namespace GruppG.Controllers
         Program pr = new Program();
         Person person = new Person();
         FavoriteChannel favC = new FavoriteChannel();
-        Chanel channel = new Chanel();
-        //FavoritChannelVM viewmodel = new FavoritChannelVM();
+        Chanel channel = new Chanel();      
+
         
-
-
-        // GET: Login (Account?)
+        // GET: Login
         public ActionResult LogIn()
         {
             return View();
         }
 
-
-        //Nadias test
         [HttpPost]
         public ActionResult LogIn(LoginVM model, string returnUrl)
         {
@@ -41,61 +37,20 @@ namespace GruppG.Controllers
             {
                 var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
                 //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
-                
                 FormsAuthentication.SetAuthCookie(model.UserName, false);
-                //Session["Id"] = user.Id;
-                //if(Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/") &&
-                //    !returnUrl.StartsWith("/\\"))
-                //{
-                //    return Redirect(returnUrl);
-                //}
-                //else 
-                //{
-                //    Session["Id"] = user.Id;
-                //    Session["UserName"] = user.UserName.ToString();
-                //    //    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                //    return RedirectToAction("MinaSidor", "MyPage"/*, new { @id = user.Id }*/);
-                //}     
+                 
                 if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
                     var id = pd.GetId(model.UserName, model.Password);
-                    //return Redirect(returnUrl); //<-- string ReturnUrl som inparameter
-                    //return Redirect(returnUrl, new { id = user.Id });
-                    //return RedirectToAction("Index","Admin", new { ReturnUrl = returnUrl, @id = user.Id });
+                   
                     return RedirectToAction("Index", "Admin");
-                    //return Redirect(returnUrl);
-                    //return Redirect("/");
                 }
 
                 else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
                 {
                     var id = pd.GetId(model.UserName, model.Password);
                     
-                    //Session["Id"] = user.Id;
-                    //Session["UserName"] = user.UserName.ToString();
-                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    //return Redirect(returnUrl);
-                    //return RedirectToAction("Index", "MyPage", new { returnUrl = returnUrl, @id = user.Id });
-                    //Session["Id"] = user.Id.ToString();
-
-                    //if (Session["Id"] == null)
-                    //    Session["Id"] = user.Id;
-                    //To Get it:
-
-                    //if (System.Web.HttpContext.Current.Session["UserID"] != null)
-                    //{
-                    //    var test = System.Web.HttpContext.Current.Session["UserID"];
-                    //}
-
-                    //new { patientId = @Model }
-                    //return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-                    //return RedirectToAction("Index", "MyPage", new { @id = model.Id });
-
-                    //Skickar inparameter - Men då går det inte att surfa runt bland länkarna...
-                    return RedirectToAction("Index", "MyPage"/*, new { @id = id }*/);
-
-                    //FormsAuthentication.SetAuthCookie(user.Id.ToString(), false);
-                    //return RedirectToAction("Index", "MyPage");
+                    return RedirectToAction("Index", "MyPage");   
                 }
             }
 
@@ -159,79 +114,6 @@ namespace GruppG.Controllers
         }
 
         
-
-        public ActionResult FavoriteChannel()
-        {
-            var chan = db.Chanel.Include(c => c.Name);
-            var chan1 = db.Chanel;
-            return PartialView(chan1.ToList());
-        }
-
-        
-
-
-        //[Authorize]
-        public ActionResult MyPage(int id)
-        {
-            var pers = db.Person.Single(e => e.Id == id);
-            return View(pers);
-        }
-
-        public ActionResult Userspage(int id)
-        {
-            var progEdit = db.Person.Single(e => e.Id == id);
-            return View(progEdit);
-        }
-        
-        
-        public ActionResult PartialViewChannels()
-        {
-            var chan = db.Chanel.Include(c => c.Name);
-            var chan1 = db.Chanel;
-            return PartialView(chan1.ToList());
-        }
-
-        
-
-        //[HttpPost]
-        //public ActionResult LogIn(LoginVM model/*, string ReturnUrl*/)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ////Skapar en log in cookie som är persistent. Den försvinner när browsern stängs.
-        //        //FormsAuthentication.SetAuthCookie(model.UserName, false);
-        //        ////FormsAuthentication.SetAuthCookie(model.Password, false);
-        //        //return Redirect(ReturnUrl);
-        //    }
-
-        //    return View();
-        //}
-
-        //[Authorize]
-
-        //DENNA FUNGERAR TILL MYPAGE (vanlig användare)
-        //[HttpPost]
-        //public ActionResult LogIn(Person pers)
-        //{
-        //    using (U4Entities u4 = new U4Entities())
-        //    {
-        //        var user = u4.Person.Where(x => x.UserName == pers.UserName && x.Password == pers.Password).FirstOrDefault();
-
-        //        if (user == null)
-        //        {
-        //            ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
-        //            //pers.LoginErrorMessage = "Du har angett fel användarnamn eller lösenord";
-        //            return View();
-        //        }
-        //        else
-        //        {
-        //            Session["Id"] = user.Id;
-        //            Session["UserName"] = user.UserName.ToString();
-        //            return RedirectToAction("Index", "MyPage", new { @id = user.Id });
-        //        }
-        //    }
-        //}
-
 
 
 

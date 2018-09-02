@@ -27,8 +27,6 @@ namespace GruppG.Controllers
         DateTime today = Convert.ToDateTime("11/09/2017");
         
 
-
-        //NY INDEX:
         public ActionResult Index(DateTime? date, int? id = null)
         {
 
@@ -96,19 +94,19 @@ namespace GruppG.Controllers
    
         //------------------------------------------------------------
 
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Program program = db.Program.Find(id);
-            if (program == null)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(program);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Program program = db.Program.Find(id);
+        //    if (program == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return PartialView(program);
+        //}
 
         // GET: ProgramsCategory/Details/
         /*Den här action-metoden kan vi använda för att visa detaljer om programmen 

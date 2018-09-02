@@ -189,7 +189,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyPageController.cs" />
-    <Compile Include="Controllers\ProgramsC.cs" />
     <Compile Include="Models\ListOfDaysModel.cs" />
     <Compile Include="Data\PersonData.cs" />
     <Compile Include="Data\ProgramData.cs" />
@@ -198,7 +197,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\SelectedDate.cs" />
     <Compile Include="Models\db\Category.cs">
       <DependentUpon>dataModel.tt</DependentUpon>
     </Compile>
@@ -313,22 +311,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
-    <Content Include="Views\Login\MyPage.cshtml" />
-    <Content Include="Views\Home\Details.cshtml" />
-    <Content Include="Views\Home\Admin.cshtml" />
-    <Content Include="Views\Login\PartialViewPerson.cshtml" />
-    <Content Include="Views\Login\UserPage.cshtml" />
     <Content Include="Views\Login\Register.cshtml" />
-    <Content Include="Views\Login\PartialViewChannel.cshtml" />
     <Content Include="Views\Home\PartialViewPuffs.cshtml" />
     <Content Include="Views\Home\ProgramDetails.cshtml" />
-    <Content Include="Views\Home\AdminProgramEdit.cshtml" />
     <Content Include="Views\MyPage\Index.cshtml" />
-    <Content Include="Views\ProgramsC\Create.cshtml" />
-    <Content Include="Views\ProgramsC\Delete.cshtml" />
-    <Content Include="Views\ProgramsC\Details.cshtml" />
-    <Content Include="Views\ProgramsC\Edit.cshtml" />
-    <Content Include="Views\ProgramsC\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\ProgramDetails.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />

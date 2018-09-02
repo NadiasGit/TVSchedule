@@ -433,30 +433,42 @@ namespace Trash
 
 
         //Klassen ChannelData
-    //    public class ChannelData
-    //    {
+        //    public class ChannelData
+        //    {
 
-    //        private U4Entities db = new U4Entities();
+        //        private U4Entities db = new U4Entities();
 
-    //        List<Program> ProgramsToDayList = new List<Program>();
+        //        List<Program> ProgramsToDayList = new List<Program>();
 
-    //        public List<Program> Today()
-    //        {
-    //            //var today = DateTime.Today;
-    //            var thisDay = db.Program.Where(x => x.Starttime == DateTime.Today);
-    //            //where t.date >= new DateTime(2007, 9, 9) && t.date < new DateTime(2008, 1, 1) select t;
-    //            return thisDay.ToList();
+        //        public List<Program> Today()
+        //        {
+        //            //var today = DateTime.Today;
+        //            var thisDay = db.Program.Where(x => x.Starttime == DateTime.Today);
+        //            //where t.date >= new DateTime(2007, 9, 9) && t.date < new DateTime(2008, 1, 1) select t;
+        //            return thisDay.ToList();
 
-    //        }
+        //        }
 
-    //    }
-    //}
+        //    }
+        //}
+
+        //public ActionResult Userspage(int id)
+        //{
+        //    var progEdit = db.Person.Single(e => e.Id == id);
+        //    return View(progEdit);
+        //}
+
+
+        //public ActionResult PartialViewChannels()
+        //{
+        //    var chan = db.Chanel.Include(c => c.Name);
+        //    var chan1 = db.Chanel;
+        //    return PartialView(chan1.ToList());
+        //}
 
 
 
 
 
-
-
-}
+    }
 }
