@@ -68,13 +68,11 @@
 
 
     <div class="row">
-        @*Foreach item in FavoriteChannelsVM where p => p.Person == item.Id - persentera kanaler...annars presentera alla kanaler*@
         @if (Model.FavoriteChannelsVM != null)
         {
             foreach (var item in Model.FavoriteChannelsVM)
             {
                 <div class="col-md-4">
-                    @*<h2> @item.Chanel</h2>*@
                     <h2> @item.Chanel1.Name</h2>
                     <table class="table">
                         <tr>

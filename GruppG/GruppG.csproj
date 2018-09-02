@@ -314,7 +314,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\PartialViewDetails.cshtml" />
     <Content Include="Views\Shared\_Program.cshtml" />
     <Content Include="Views\Login\LogIn.cshtml" />
     <Content Include="Views\Login\MyPage.cshtml" />

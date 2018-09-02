@@ -23,11 +23,6 @@
                         </td>
                         <td>
                             @Html.ActionLink("Ta bort", "Delete", new { fcid = item.Id, id = item.Person })
-                            @*<div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Ta bort som favoritkanal" name="action" class="btn btn-default" />
-                                    </div>
-                                </div>*@
                         </td>
                     </tr>
                 }
@@ -58,14 +53,13 @@
                 </td>
                 <td>
                     @Html.ActionLink("Lägg till", "Add", new { pId = Model.Person.Id, cId = item.Id })
-                    @*<input type="submit" value="Spara" name="action" class="btn btn-default" />*@
                 </td>
             </tr>
         }
     </table>
     </div>
 
-    @Html.ActionLink("Tillbaka", "Index", "MyPage"@*, new { @id = Model.Person.Id }, null*@)
+    @Html.ActionLink("Tillbaka", "Index", "MyPage")
 
 
 
