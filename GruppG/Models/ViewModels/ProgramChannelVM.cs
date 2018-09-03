@@ -66,15 +66,6 @@ namespace GruppG.Models.ViewModels
 
         }
 
-        //public List<Dates> GetDates()
-        //{
-        //    foreach (var d in Dates)
-        //    {
-        //        GetDates().Add(d);
-        //    }
-
-        //    return Dates;
-        //}
 
 
 
