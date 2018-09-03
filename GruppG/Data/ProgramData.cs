@@ -24,63 +24,9 @@ namespace GruppG.Data
         PersonData personData = new PersonData();
         
 
-        public List<DateTime> Dates { get; set; }
-
-
-        public ProgramData()
-        {
-            DateTime Today = new DateTime(2017, 11, 09);
-
-            Dates = new List<DateTime>();
-            Dates.Add(Today);
-            Dates.Add(Today.AddDays(1));
-            Dates.Add(Today.AddDays(2));
-            Dates.Add(Today.AddDays(3));
-            Dates.Add(Today.AddDays(4));
-            Dates.Add(Today.AddDays(5));
-            Dates.Add(Today.AddDays(6));
-
-
-            //puffList = cache["puffList"] as List<Program>;
-            //if (puffList == null)                            //Kolla om det finns en lista
-            //{
-            //    puffList = new List<Program>();             //Annars lista produkter i products
-            //}
-        }
-
-        //Save --remove?
-        public void Commit()
-        {
-            //cache["puffList"] = puffList;
-        }
-
-        //Get Dates
-       public List<DateTime> GetDates()
-        {
-            //DateTimeToday = DateTime.Today;
-            //Om vi vill se hårdkodade programmen
-            //DateTime today = Convert.ToDateTime("2017-11-09");
-            //Today = Convert.ToDateTime("2017-11-09").Date;
-            DateTime Today = new DateTime(2017, 11, 09);
-
-            //GetDates() = new List<DateTime>();
-            GetDates().Add(Today);
-            GetDates().Add(Today.AddDays(1));
-            GetDates().Add(Today.AddDays(2));
-            GetDates().Add(Today.AddDays(3));
-            GetDates().Add(Today.AddDays(4));
-            GetDates().Add(Today.AddDays(5));
-            GetDates().Add(Today.AddDays(6));
-
-            return GetDates();
-        }
-        
-
         //Get programs
         public List<Program> GetPrograms()
         {
-            //db = new U4Entities();
-
             var result = db.Program;
             return result.ToList();
         }
@@ -95,7 +41,6 @@ namespace GruppG.Data
         //Get channels
         public List<Chanel> GetChannels()
         {
-            db = new U4Entities();
             var result = db.Chanel;
             return result.ToList();
         }
@@ -103,8 +48,6 @@ namespace GruppG.Data
         //Get categories
         public List<Category> GetCategories()
         {
-            db = new U4Entities();
-
             var result = db.Category;
             return result.ToList();
         }
@@ -112,9 +55,7 @@ namespace GruppG.Data
         //Get person by id
         public Person GetPersonById(int id)
         {
-            db = new U4Entities();
             var result = db.Person.First(e => e.Id == id);
-           
             return result;
         }
 
@@ -124,10 +65,7 @@ namespace GruppG.Data
         //Puffar/rekommenderade program
         public List<Program> PuffPrograms()
         {
-            db = new U4Entities();
-            //.Where(p => p.Programstart >= p.Programstart.Value.AddDays(-1)).ToList()
             var result = db.Program.Where(p => p.Puff == 1).Where(p => p.Programstart >= pcViewModel.Today).ToList();
-            //var puff = db.Program.Where(p => p.Puff == 1);
             return result;
         }
         public bool CountPuff()
@@ -158,19 +96,13 @@ namespace GruppG.Data
         //Get favoritechannels by person-id
         public List<FavoriteChannel> GetFavoriteChannels(int person)
         {
-            db = new U4Entities();
-
-            var favChannel = db.FavoriteChannel.Where(f => f.Person == person).OrderBy(c => c.Chanel).ToList();   
-
+            var favChannel = db.FavoriteChannel.Where(f => f.Person == person).OrderBy(c => c.Chanel).ToList();
             return favChannel;
         }
 
         public List<FavoriteChannel> GetFavoriteChannels(int person, int channel)
         {
-            db = new U4Entities();
-
             var favCannel = db.FavoriteChannel.Where(f => f.Person == person).Where(f => f.Chanel == channel).OrderBy(c => c.Chanel).ToList();
-
             return favCannel;
         }
 
@@ -540,7 +472,7 @@ namespace GruppG.Data
             return programs.ToList();
         }
         
-        List<U4Entities> Svt1List = new List<U4Entities>();
+        //List<U4Entities> Svt1List = new List<U4Entities>();
 
         //Ta bort?
         public List<U4Entities> GetProgramDate()

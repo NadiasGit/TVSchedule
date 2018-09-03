@@ -31,8 +31,6 @@ namespace GruppG.Models.ViewModels
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: MM-dd}")]
         public List<DateTime> Dates { get; set; }
-        public List<string> DateString { get; set; }
-        public string date { get; set; }
 
         //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [DataType(DataType.Date)]
@@ -47,11 +45,12 @@ namespace GruppG.Models.ViewModels
 
         public ProgramChannelVM()
         {
+            /*..:::DATES FOR DROPDOWNLIST:::..*/
+
             //Om vi/du vill ha aktuella datum
             //Today = DateTime.Today;
+
             //Om vi vill se hårdkodade programmen
-            //DateTime today = Convert.ToDateTime("2017-11-09");
-            //Today = Convert.ToDateTime("2017-11-09").Date;
             Today = new DateTime(2017, 11, 09);
 
             Dates = new List<DateTime>();
@@ -63,36 +62,19 @@ namespace GruppG.Models.ViewModels
             Dates.Add(Today.AddDays(5));
             Dates.Add(Today.AddDays(6));
 
-            DateString = new List<string>();
-            DateString.Add(Today.ToShortDateString());
-            DateString.Add(Today.AddDays(1).ToShortDateString());
-            DateString.Add(Today.AddDays(2).ToShortDateString());
-            DateString.Add(Today.AddDays(3).ToShortDateString());
-            DateString.Add(Today.AddDays(4).ToShortDateString());
-            DateString.Add(Today.AddDays(5).ToShortDateString());
-            DateString.Add(Today.AddDays(6).ToShortDateString());
-
-            //Today.ToShortDateString();
-
-            //Försök till att bara visa datum i drop-down-list
-            /*
-            Today.ToString("dd/mm/yy");       
-            Today = DateTime.Parse("2017, 11, 09");
-            Today = Today.Date;
-            */
-            date = "2017, 11, 09";
-            var parseddate = DateTime.Parse(date);
-
-            DateString = new List<string>();
-            DateString.Add(date);
-            DateString.Add("2017, 11, 10");
-            DateString.Add("2017, 11, 11");
-            DateString.Add("2017, 11, 12");
-            DateString.Add("2017, 11, 13");
-            DateString.Add("2017, 11, 14");
-            DateString.Add("2017, 11, 15");
+            //Today.ToShortDateString();     
 
         }
+
+        //public List<Dates> GetDates()
+        //{
+        //    foreach (var d in Dates)
+        //    {
+        //        GetDates().Add(d);
+        //    }
+
+        //    return Dates;
+        //}
 
 
 

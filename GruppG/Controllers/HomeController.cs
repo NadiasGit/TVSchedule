@@ -24,8 +24,6 @@ namespace GruppG.Controllers
         private Person person = new Person();
         private ProgramChannelVM programChannelVM = new ProgramChannelVM();
         
-        DateTime today = Convert.ToDateTime("11/09/2017");
-        
 
         public ActionResult Index(DateTime? date, int? id = null)
         {

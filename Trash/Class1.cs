@@ -466,7 +466,77 @@ namespace Trash
         //    return PartialView(chan1.ToList());
         //}
 
+        //Save --remove?
+        //public void Commit()
+        //{
+        //    //cache["puffList"] = puffList;
+        //}
 
+
+
+        /*:::::::::::::GET DATES::::::::::::::::::::::*/
+
+        //public List<DateTime> Dates { get; set; }
+
+
+        //public ProgramData()
+        //{
+        //    DateTime Today = new DateTime(2017, 11, 09);
+
+        //    Dates = new List<DateTime>();
+        //    Dates.Add(Today);
+        //    Dates.Add(Today.AddDays(1));
+        //    Dates.Add(Today.AddDays(2));
+        //    Dates.Add(Today.AddDays(3));
+        //    Dates.Add(Today.AddDays(4));
+        //    Dates.Add(Today.AddDays(5));
+        //    Dates.Add(Today.AddDays(6));
+
+        //}
+
+        //Get Dates
+        //public List<DateTime> GetDates()
+        // {
+        //     //DateTimeToday = DateTime.Today;
+
+        //     //Om vi vill se hårdkodade programmen
+        //     DateTime Today = new DateTime(2017, 11, 09);
+
+        //     //GetDates() = new List<DateTime>();
+        //     GetDates().Add(Today);
+        //     GetDates().Add(Today.AddDays(1));
+        //     GetDates().Add(Today.AddDays(2));
+        //     GetDates().Add(Today.AddDays(3));
+        //     GetDates().Add(Today.AddDays(4));
+        //     GetDates().Add(Today.AddDays(5));
+        //     GetDates().Add(Today.AddDays(6));
+
+        //     return GetDates();
+        // }
+
+
+        ////Get Dates
+        //public List<DateTime> GetDates()
+        //{
+        //    /*
+        //    //Om vi/du vill ha aktuella datum
+        //    DateTimeToday = DateTime.Today;*/
+        //    //Om vi vill se hårdkodade programmen
+        //    DateTime Today = new DateTime(2017, 11, 09);
+
+        //    Dates = new List<DateTime>();
+        //    Dates.Add(Today);
+        //    Dates.Add(Today.AddDays(1));
+        //    Dates.Add(Today.AddDays(2));
+        //    Dates.Add(Today.AddDays(3));
+        //    Dates.Add(Today.AddDays(4));
+        //    Dates.Add(Today.AddDays(5));
+        //    Dates.Add(Today.AddDays(6));
+        //    return Dates;
+        //}
+
+
+        /*:::::::::::::::::::::::::::::::::::*/
 
 
 
