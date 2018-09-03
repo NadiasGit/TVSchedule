@@ -40,8 +40,10 @@ namespace GruppG.Controllers
             }
             
 
-        public ActionResult MyFavoriteChannels(int id)
+        public ActionResult MyFavoriteChannels(/*int id*/)
         {
+            var name = User.Identity.Name;
+            var id = pr.GetId(name);
             var pers = db.Person.Single(e => e.Id == id);
             var channel = pd.GetChannels();
             pcViewModel.ChannelListVM = channel;

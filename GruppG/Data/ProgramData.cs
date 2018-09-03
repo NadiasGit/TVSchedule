@@ -59,6 +59,12 @@ namespace GruppG.Data
             return result;
         }
 
+        public Person GetPersonIdentity(string name)
+        {
+            var id = personData.GetId(name);
+            var iid = db.Person.Single(x => x.Id == id);
+            return iid;
+        }
 
 
         #region PUFF-METHODS
@@ -124,7 +130,6 @@ namespace GruppG.Data
         public ProgramChannelVM FilterProgramsByDateAndCategory(DateTime? date, int? id = null)
         {
             
-            ListOfDaysModel Dates = new ListOfDaysModel();
             var channel = GetChannels();
             var program = GetPrograms();
 
@@ -135,10 +140,6 @@ namespace GruppG.Data
             {
                 var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == pcViewModel.Today.ToShortDateString()).OrderBy(d => d.Programstart).ToList();
                 pcViewModel.ProgramListVM = programStart;
-
-                //var programStart = program.Where(d => d.Programstart.Value.ToShortDateString() == viewModel.Today.ToString("dd/mm/yy"));
-                //finalItem.ProgramListVM = programStart.ToList();
-
             }
             else if (date != null &&  id == null)
             {
@@ -163,10 +164,10 @@ namespace GruppG.Data
             return pcViewModel;
         }
 
+
+
         public ProgramChannelVM FilterProgramsByDateAndCategoryMyPage(string name, DateTime? date, int? category = null)
         {
-
-            ListOfDaysModel Dates = new ListOfDaysModel();
             var id = personData.GetId(name);
             var iid = db.Person.Single(x => x.Id == id);
             var channel = GetChannels();
