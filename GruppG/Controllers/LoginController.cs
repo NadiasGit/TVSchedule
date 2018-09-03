@@ -57,7 +57,7 @@ namespace GruppG.Controllers
             else
             {
                 //TempData["messageError"] = "Felaktigt användarnamn eller lösenord.";
-                ModelState.AddModelError("", "Felaktikt användarnamn eller lösenord.");
+                ModelState.AddModelError("", "Felaktigt användarnamn eller lösenord.");
             }
 
                 return View();
