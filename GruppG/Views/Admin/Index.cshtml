@@ -87,14 +87,14 @@
     <table class="table">
         <tr>
             <th> Program </th>
-            <th> Datum & tid </th>
+            <th> Datum | Tid </th>
             <th> Redigera </th>
         </tr>
         @foreach (var item in Model.ProgramListVM)
         {
             <tr>
                 <td>@item.Titel</td>
-                <td>@item.Programstart</td>
+                <td>@item.Programstart.Value.ToShortDateString() | @item.Programstart.Value.ToShortTimeString()  </td>
                 <td>
                     @Html.ActionLink("Lägg till som puff", "Edit", new { @id = item.Id }, null) |
                     @Html.ActionLink("Mer info", "ProgramDetails", new { @id = item.Id }, null) |

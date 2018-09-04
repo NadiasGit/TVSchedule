@@ -11,7 +11,7 @@ namespace GruppG.Models.db
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Program
     {
         public int Id { get; set; }
@@ -22,6 +22,7 @@ namespace GruppG.Models.db
         public Nullable<System.DateTime> Starttime { get; set; }
         public Nullable<System.DateTime> Endtime { get; set; }
         public Nullable<int> Puff { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Programstart { get; set; }
     
         public virtual Category Category1 { get; set; }
