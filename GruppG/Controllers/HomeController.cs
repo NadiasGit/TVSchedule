@@ -42,7 +42,7 @@ namespace GruppG.Controllers
         }
 
         //ProgramDetails
-        public ActionResult ProgramDetails(int id, string title)
+        public ActionResult ProgramDetails(int id, string chan)
         {
             if (id == 0)
             {
@@ -52,8 +52,7 @@ namespace GruppG.Controllers
             {
                 var prog = pd.GetSpecificProgram(id);
 
-                //För att visa kanalens namn i URL
-                title = prog.Chanel1.ToString();
+               
                 ViewBag.Message = pd.PuffName(prog.Puff);
 
                 return View(prog);

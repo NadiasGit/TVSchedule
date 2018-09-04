@@ -23,11 +23,6 @@ namespace GruppG
                 id = UrlParameter.Optional}
             );
 
-            routes.MapRoute(
-                name: "About",
-                url: "Hem/Om/{id}",
-                defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }
-            );
 
             routes.MapRoute(
                 name: "Contact",
@@ -38,8 +33,10 @@ namespace GruppG
 
             routes.MapRoute(
                 name: "Programinfo",
-                url: "Programdetaljer/{title}",
-                defaults: new { controller = "Home", action = "ProgramDetails", title = ""}
+                url: "Programdetaljer",
+                defaults: new { controller = "Home", action = "ProgramDetails",
+                
+                }
             );
 
          
