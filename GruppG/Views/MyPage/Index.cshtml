@@ -87,7 +87,7 @@
                                 <tr>
                                     <td>@i.Titel</td>
                                     <td>@i.Programstart.Value.ToShortTimeString() </td>
-                                    <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id }, null)</td>
+                                    <td>@Html.ActionLink("Mer info", "ProgramDetails", new { @id = i.Id, title = i.Titel.TrimEnd() }, null)</td>
                                 </tr>
                             }
                         }

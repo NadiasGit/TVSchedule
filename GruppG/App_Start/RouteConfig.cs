@@ -38,6 +38,7 @@ namespace GruppG
                 }
             );
     
+//--------------------------
 
             //LoginController
             routes.MapRoute(
@@ -52,7 +53,8 @@ namespace GruppG
                 defaults: new { controller = "Login", action = "Register" }
             );
 
-
+//--------------------------
+            //MyPageController
             routes.MapRoute(
                 name: "Index",
                 url: "MinaSidor",
@@ -73,6 +75,15 @@ namespace GruppG
                 { controller = "MyPage", action = "MyFavoriteChannels", username = UrlParameter.Optional }
             );
 
+            routes.MapRoute(
+                name: "MyPagePrograminfo",
+                url: "Detaljer",
+                defaults: new
+                { controller = "MyPage", action = "ProgramDetails",
+                }
+            );
+
+
 
 
             //AdminController
@@ -87,6 +98,39 @@ namespace GruppG
                    id = UrlParameter.Optional
                }
            );
+
+            routes.MapRoute(
+                name: "AdminPrograminfo",
+                url: "Programinfo",
+                defaults: new
+                {
+                    controller = "MyPage",
+                    action = "ProgramDetails",
+                }
+            );
+
+            routes.MapRoute(
+                name: "EditPuff",
+                url: "¨SparaPuff",
+                defaults: new
+                {
+                    controller = "Admin",
+                    action = "Edit",
+                }
+            );
+
+            routes.MapRoute(
+                name: "DeletePuff",
+                url: "TaBort",
+                defaults: new
+                {
+                    controller = "Admin",
+                    action = "Delete",
+                }
+            );
+
+
+
 
 
 
