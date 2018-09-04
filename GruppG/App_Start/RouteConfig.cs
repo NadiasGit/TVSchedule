@@ -34,12 +34,10 @@ namespace GruppG
             routes.MapRoute(
                 name: "Programinfo",
                 url: "Programdetaljer",
-                defaults: new { controller = "Home", action = "ProgramDetails",
-                
+                defaults: new { controller = "Home", action = "ProgramDetails", 
                 }
             );
-
-         
+    
 
             //LoginController
             routes.MapRoute(
@@ -54,17 +52,6 @@ namespace GruppG
                 defaults: new { controller = "Login", action = "Register" }
             );
 
-            //MyPage
-            //routes.MapRoute(
-            //    name: "Index",
-            //    url: "MinaSidor, {firstName}, {lastName}",
-            //    defaults: new { controller = "MyPage", action = "Index",
-            //        firstName = "",
-            //        lastName = "",
-            //        date = UrlParameter.Optional,
-            //        category = UrlParameter.Optional,
-            //        id = UrlParameter.Optional }
-            //);
 
             routes.MapRoute(
                 name: "Index",
@@ -84,7 +71,6 @@ namespace GruppG
                 url: "Redigera",
                 defaults: new
                 { controller = "MyPage", action = "MyFavoriteChannels", username = UrlParameter.Optional }
-                //Lägg till datum som id här?
             );
 
 
