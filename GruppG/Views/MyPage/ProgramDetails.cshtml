@@ -30,16 +30,13 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay)
+            @Html.DisplayFor(model => model.Programstart)
 
         </dd>
         <dd>
-            <strong>-</strong>
+            @Html.DisplayFor(model => model.Programstart.Value.TimeOfDay) <strong>-</strong> @Html.DisplayFor(model => model.Endtime.Value.TimeOfDay)
         </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Endtime)
-        </dd>
 
         <dt>
             Rekommenderat
