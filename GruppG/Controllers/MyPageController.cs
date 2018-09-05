@@ -29,7 +29,7 @@ namespace GruppG.Controllers
 
 
 
-        //Users page/myPage
+        //MyPage
         public ActionResult Index(DateTime? date, int? category = null)
         {
             
@@ -40,7 +40,7 @@ namespace GruppG.Controllers
             }
             
 
-        public ActionResult MyFavoriteChannels(/*int id*/)
+        public ActionResult MyFavoriteChannels()
         {
             var name = User.Identity.Name;
             var id = pr.GetId(name);
@@ -56,15 +56,14 @@ namespace GruppG.Controllers
         }
        
 
-        //Adds channel to favoritechannel (checks if channel allready exists in favoritechannel)
+        //Adds channel to favoritechannel & checks if channel allready exists in favoritechannel
         public ActionResult Add(int? pId, int? cId)
         {
             var p = pId;
             var c = cId;
             
             var favorite = new FavoriteChannel() { Person = p, Chanel = c };
-            //var pers = db.Person.Single(e => e.Id == p);
-            //var chan = db.Chanel.Single(a => a.Id == c);
+            
             if (pd.CheckFavChanExists(pId,cId) == true)
             {
                 TempData["message"] = "Kanalen finns redan som din favorit";
@@ -84,7 +83,7 @@ namespace GruppG.Controllers
         }
 
 
-        //Delete channel from favoritechannel
+        //Delete channel from my favoritechannels
         public ActionResult Delete(int? fcid, int? id)
         {
             FavoriteChannel favDelete = db.FavoriteChannel.Find(fcid);
@@ -98,7 +97,6 @@ namespace GruppG.Controllers
                 db.SaveChanges();
                 return RedirectToAction("MyFavoriteChannels", new { @id = id });
             }
-            
         }
 
         //ProgramDetails
@@ -112,22 +110,12 @@ namespace GruppG.Controllers
             {
                 var prog = pd.GetSpecificProgram(id);
 
-                //För att visa kanalens namn i URL
+                //För att visa kanalens namn i URL                         
                 title = prog.Chanel1.ToString();
                 ViewBag.Message = pd.PuffName(prog.Puff);
 
                 return View(prog);
             }
         }
-       
-
-
-
-
-
-
-
-
-
     }
 }

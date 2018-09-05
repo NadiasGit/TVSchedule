@@ -9,7 +9,12 @@
 //    public class Class1
 //    {
 
+//MY PAGE
 
+//var pers = db.Person.Single(e => e.Id == p);
+//var chan = db.Chanel.Single(a => a.Id == c);
+
+//.........................................................................................
 
 //        //MASSOR från programdata
 
