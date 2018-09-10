@@ -10,22 +10,6 @@ namespace GruppG.Data
     public class PersonData
     {
         private U4Entities db = new U4Entities();
-        
-        //Cockie-försök
-        public bool MyCockie(int id)
-        {
-            //create a cookie
-            HttpCookie myCookie = new HttpCookie("myCookie");
-
-            //Add key-values in the cookie
-            myCookie.Values.Add("userid", GetPersonById(id).Id.ToString());
-            return true;
-            //set cookie expiry date-time. Made it to last for next 12 hours.
-            //myCookie.Expires = DateTime.Now.AddHours(12);
-
-            //Most important, write the cookie to client.
-            //Response.Cookies.Add(myCookie);
-        }
 
         //Koppla ihop inloggad person med person i databasen.
         public Person GetPersonById(int id)
