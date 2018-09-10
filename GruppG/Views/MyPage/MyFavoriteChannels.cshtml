@@ -11,7 +11,7 @@
             @Html.DisplayFor(model => model.Person.FirstName)
             @Html.DisplayFor(model => model.Person.LastName) :
         </h2>
-        @using (Html.BeginForm(@*"MyFavoriteChannels", "MyPage", FormMethod.Post, new { id = Model.PersonP.Id }*@))
+        @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
             <table class="table">

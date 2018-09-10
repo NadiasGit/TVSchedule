@@ -43,7 +43,6 @@
 </div>
 
 <div class="dl-horizontal">
-    @*@Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage", new { @id = Model.Person.Id }, null)*@
     @Html.ActionLink("Lägg till/Ta bort - favoritkanaler", "MyFavoriteChannels", "MyPage")
 </div>
 
@@ -53,16 +52,10 @@
 <div class="date">
     @using (Html.BeginForm("Index", "MyPage", FormMethod.Get))
     {
-        @*<div class="list-group">*@
         <div class="form-group">
             <h4>Filtrera</h4>
-            @*<div class="col-md-offset-2 col-md-10">*@
             @Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())), "Idag", new { onchange = "form.submit();" })
-                @Html.DropDownList("category", new SelectList(Model.CategoryListVM, "Id", "Name", "category"), "Alla kategorier", new { onchange = "form.submit();" })
-
-            
-            @*</div>*@
-            @*</div>*@
+            @Html.DropDownList("category", new SelectList(Model.CategoryListVM, "Id", "Name", "category"), "Alla kategorier", new { onchange = "form.submit();" })
         </div>
     }
 </div>

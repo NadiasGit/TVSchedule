@@ -11,7 +11,6 @@ namespace GruppG.Data
     {
         private U4Entities db = new U4Entities();
 
-        //Koppla ihop inloggad person med person i databasen.
         public Person GetPersonById(int id)
         {
             var person = db.Person.FirstOrDefault(x => x.Id == id);
@@ -49,13 +48,11 @@ namespace GruppG.Data
             return pId;
         }
 
-        //Hämtar personen med rollen
         public Person GetPersonByRole(int role)
         {
             var person = db.Person.FirstOrDefault(x => x.Role == role);
 
-            return person;
-            
+            return person;         
         }
 
 

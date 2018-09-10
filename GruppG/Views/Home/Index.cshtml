@@ -17,45 +17,10 @@
 <div class ="date">
     @using (Html.BeginForm("Index", "Home", FormMethod.Get))
     {
-            @*<div class="list-group">*@
                 <div class="form-group">
                     <h4>Filtrera</h4>
-                    @*<div class="col-md-offset-2 col-md-10">*@
-                    @*@Html.DropDownList("date", new SelectList(Model.Dates, "date", "Day", "date"), "Idag", new { onchange = "form.submit();" })*@   
                     @Html.DropDownList("date", new SelectList(Model.Dates.Select(x => x.ToShortDateString())),"Idag", new { onchange = "form.submit();" })                
-                    @*<select onchange="form.submit();" id="date" name="date">*@
-@*@for (int i = 0; i < Model.Dates.Count; i++)
-{
-    if (i == 0)
-    {
-        <option value=@Model.Dates[i]>
-            Idag
-        </option>
-    }
-    else if (Model.Dates[i].ToString() == Model.Dates.ToString())
-    {
-        <option selected value=@Model.Dates[i]>
-            @Model.Dates[i].ToShortDateString();
-        </option>
-    }
-    else
-    {
-        <option value=@Model.Dates[i]>
-            @Model.Dates[i].ToShortDateString();
-        </option>
-    }
-}*@
-@*@foreach (var item in Model.Dates)
-{
-    <option value= @item>
-        @item.ToShortDateString()
-    </option>
-}*@
-@*</select>*@
-
-@Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
-                       @*</div>*@
-                @*</div>*@
+                    @Html.DropDownList("id", new SelectList(Model.CategoryListVM, "Id", "Name", "id"), "Alla kategorier", new { onchange = "form.submit();" })
             </div>
     }
 </div>

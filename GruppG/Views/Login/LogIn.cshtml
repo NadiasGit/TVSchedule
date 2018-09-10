@@ -18,9 +18,7 @@
     </div>
 }
 
-@* Referens: https://www.youtube.com/watch?v=EyrKUSwi4uI&t=1705s*@
 
-@*@using (Html.BeginForm("LogIn", "Login", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
 @using (Html.BeginForm())
         {
             //Safety from Microsoft
@@ -34,7 +32,6 @@
             @Html.LabelFor(model => model.UserName, "Användarnamn", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserName, new { @class = "form-control" })
-                @*@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -43,15 +40,11 @@
             @Html.LabelFor(model => model.Password, "Lösenord", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Password , new { @class = "form-control" })
-                @*@Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })*@
-
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @*@Html.ActionLink("Logga in", "LogIn", "LogIn", new { @id =  Model.Id }, null)*@
-                
                 <input type="submit" value="Logga in" class="btn-default" />
                 @Html.ActionLink("Ny användare", "Register", "Login")
             </div>    

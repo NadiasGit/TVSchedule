@@ -1,14 +1,10 @@
 ﻿@model IEnumerable<GruppG.Models.db.Program>
 
 <div class="list-unstyled">
-    @*<dl class="dl-horizontal">*@
     <table class="table">
         @foreach (var item in Model)
         {
             <tr>
-
-                @*<ul>
-                    <li>*@
                 <td>
                     <strong> @Html.DisplayFor(modelItem => item.Chanel1.Name): </strong>
                     
@@ -22,9 +18,6 @@
                 <td>
                     @Html.ActionLink("Mer info", "ProgramDetails", new { @id = item.Id }, null)
                 </td>
-
-                @*</li>
-                    </ul>*@
             </tr>
 
         }
