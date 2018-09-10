@@ -38,10 +38,6 @@ namespace GruppG.Controllers
         }
 
 
-        //Create puff
-        //For future tasks...
-
-
         //Add PUFF
         public ActionResult Edit(int? id)
         {

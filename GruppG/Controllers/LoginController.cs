@@ -91,7 +91,7 @@ namespace GruppG.Controllers
         public ActionResult Register(Person pers)
         {
             var username = pers.UserName;
-            //If modelstate is valid and användaren nonexists
+            //If modelstate is valid and the user nonexists
             if (ModelState.IsValid)
             {
                 if (pd.CheckUserExists(username)== false)
