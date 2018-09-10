@@ -39,7 +39,6 @@ namespace GruppG
             );
     
 //--------------------------
-
             //LoginController
             routes.MapRoute(
                 name: "LogIn",
@@ -84,8 +83,7 @@ namespace GruppG
             );
 
 
-
-
+//--------------------------
             //AdminController
             routes.MapRoute(
                name: "Admin",

@@ -18,26 +18,17 @@ namespace GruppG.Controllers
     public class MyPageController : Controller
     {
         // GET: MyPage
-        
-        U4Entities db = new U4Entities();
-        Chanel channel = new Chanel();
-        FavoriteChannel favchannel = new FavoriteChannel();
-        ProgramChannelVM pcViewModel = new ProgramChannelVM();
         ProgramData pd = new ProgramData();
         PersonData pr = new PersonData();
-        Person person = new Person();
-
-
+        ProgramChannelVM pcViewModel = new ProgramChannelVM();
+        U4Entities db = new U4Entities();
 
         //MyPage
         public ActionResult Index(DateTime? date, int? category = null)
         {
-            
             var name = User.Identity.Name;
-           
             return View(pd.FilterProgramsByDateAndCategoryMyPage(name, date, category));
-
-            }
+        }
             
 
         public ActionResult MyFavoriteChannels()
@@ -109,9 +100,6 @@ namespace GruppG.Controllers
             else
             {
                 var prog = pd.GetSpecificProgram(id);
-
-                //För att visa kanalens namn i URL                         
-                title = prog.Chanel1.ToString();
                 ViewBag.Message = pd.PuffName(prog.Puff);
 
                 return View(prog);

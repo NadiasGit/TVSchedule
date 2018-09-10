@@ -16,12 +16,8 @@ namespace GruppG.Controllers
     public class LoginController : Controller
     {
         U4Entities db = new U4Entities();
-        PersonData pd = new PersonData();
-        Program pr = new Program();
-        Person person = new Person();
-        FavoriteChannel favC = new FavoriteChannel();
-        Chanel channel = new Chanel();      
-
+        PersonData pr = new PersonData();
+        Person person = new Person();    
         
         // GET: Login
         public ActionResult LogIn()
@@ -36,19 +32,19 @@ namespace GruppG.Controllers
             if (ModelState.IsValid)
             {
                 var user = db.Person.Where(x => x.UserName == model.UserName && x.Password == model.Password).FirstOrDefault();
-                //Login-Cookie (försvinner när browsern stängs ner eftersom den inte är persistent).
+                //Login-Cookie
                 FormsAuthentication.SetAuthCookie(model.UserName, false);
                  
-                if (pd.CheckUser(model.UserName, model.Password) && user.Role == 1)
+                if (pr.CheckUser(model.UserName, model.Password) && user.Role == 1)
                 {
-                    var id = pd.GetId(model.UserName, model.Password);
+                    var id = pr.GetId(model.UserName, model.Password);
                    
                     return RedirectToAction("Index", "Admin");
                 }
 
-                else if (pd.CheckUser(model.UserName, model.Password) && user.Role == 2)
+                else if (pr.CheckUser(model.UserName, model.Password) && user.Role == 2)
                 {
-                    var id = pd.GetId(model.UserName, model.Password);
+                    var id = pr.GetId(model.UserName, model.Password);
                     
                     return RedirectToAction("Index", "MyPage");   
                 }
@@ -74,7 +70,7 @@ namespace GruppG.Controllers
         }
 
 
-        //check user account/details
+        //Check user account/details
         public ActionResult Details()
         {
             var userId = User.Identity.GetUserId();
@@ -94,7 +90,7 @@ namespace GruppG.Controllers
             //If modelstate is valid and the user nonexists
             if (ModelState.IsValid)
             {
-                if (pd.CheckUserExists(username)== false)
+                if (pr.CheckUserExists(username)== false)
                 {
                     db.Person.Add(pers);
                     db.SaveChanges();

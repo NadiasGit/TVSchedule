@@ -14,8 +14,7 @@ namespace GruppG.Controllers
     [AuthorizeRoles("Admin")] //<= Only admins will have access to these views/functions.
     public class AdminController : Controller
     {
-        private ProgramData pd = new ProgramData();
-        ProgramChannelVM viewModel = new ProgramChannelVM();
+        ProgramData pd = new ProgramData();
         U4Entities db = new U4Entities();
         Program program;
   
@@ -41,11 +40,10 @@ namespace GruppG.Controllers
         //Add PUFF
         public ActionResult Edit(int? id)
         {
-            ViewBag.Message = "Max antal puffar är 3!";
             program = db.Program.Find(id);
             if (pd.CountPuff() == true)
             {
-                TempData["message"] = "Det maximala antalet puffar är 3";
+                TempData["message"] = "Max antal puffar är 3";
                 return RedirectToAction("Index");
             }
             else if (id == null)

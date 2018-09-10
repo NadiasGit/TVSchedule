@@ -90,50 +90,12 @@ namespace GruppG.Data
             }
         }
 
-        public bool CheckIsUserAdmin ()
-        {
-            var user = db.Person.Where(p => p.Role == 1);
-
-            if (user.Any())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         //Check user role
         public bool UserInRole(string userName, string roleType)
         {
-
-            //var role = db.Person.Where(x => x.UserName.Equals(userName) && x.Role.Equals(roleName));
-
             var role = db.Person.Where(x => x.UserName.Equals(userName)).Include(x => x.Role1).Where(x => x.Role1.Type.Equals(roleType));
-            //var r = db.Role.Where(x => x.Type == roleName);
             return role.Any();
-        }
-
-        //Check Admin/User
-        public string GetRole(int? role)
-        {
-            var roles = db.Person.Where(x => x.Role == role);
-            if (role == 1)
-            {
-                return "Admin";
-            }
-            else
-                return "Medlem";
-            
-        }
-
-        public bool CheckUserNameExists(string username)
-        {
-            var user = db.Person.Any(x => x.UserName == username);
-
-            return true;
-
         }
 
 
